@@ -1,0 +1,5 @@
+/build
+
+# these should be auto generated
+src/main/assets/index.*.bundle
+src/main/res
