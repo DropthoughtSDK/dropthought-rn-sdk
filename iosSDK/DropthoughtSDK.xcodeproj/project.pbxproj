@@ -6,6 +6,19 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		B3E7CFF724726BEA00C1CF9D /* DropthoughtSDK_Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = B3E7CFF824726BEA00C1CF9D /* Build configuration list for PBXAggregateTarget "DropthoughtSDK_Universal" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = DropthoughtSDK_Universal;
+			productName = DropthoughtSDK_Universal;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		56EE8E935319C08005E33D64 /* Pods_DropthoughtSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EF651968F2C28EC730DB44 /* Pods_DropthoughtSDK.framework */; };
 		B3DA7DBD246BCE7200375EA4 /* DropthoughtSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B3DA7DBB246BCE7200375EA4 /* DropthoughtSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -261,6 +274,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3DA7DC0246BCE7200375EA4 /* Build configuration list for PBXNativeTarget "DropthoughtSDK" */;
 			buildPhases = (
+				B3E7CFF524724B4300C1CF9D /* Setup Frameworks By Configuration */,
 				3755C909EA91831AC36F4053 /* [CP] Check Pods Manifest.lock */,
 				B3DA7EBB246E855B00375EA4 /* Start Packager */,
 				B3DA7E0B246C42C800375EA4 /* Run Script - Rebuild React Native App */,
@@ -270,6 +284,7 @@
 				B3DA7DB6246BCE7200375EA4 /* Resources */,
 				B3DA7E14246CF02600375EA4 /* Embed Frameworks */,
 				B3DA7E5C246E7C9200375EA4 /* Bundle React Native code and images */,
+				B3E7CFF624726A5800C1CF9D /* Remove Frameworks for Next Build */,
 			);
 			buildRules = (
 			);
@@ -293,6 +308,9 @@
 						CreatedOnToolsVersion = 11.4.1;
 						LastSwiftMigration = 1140;
 					};
+					B3E7CFF724726BEA00C1CF9D = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 				};
 			};
 			buildConfigurationList = B3DA7DB2246BCE7200375EA4 /* Build configuration list for PBXProject "DropthoughtSDK" */;
@@ -309,6 +327,7 @@
 			projectRoot = "";
 			targets = (
 				B3DA7DB7246BCE7200375EA4 /* DropthoughtSDK */,
+				B3E7CFF724726BEA00C1CF9D /* DropthoughtSDK_Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -400,6 +419,42 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+		};
+		B3E7CFF524724B4300C1CF9D /* Setup Frameworks By Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Frameworks By Configuration";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Setup CoreModules.framework\"\n#rm -R \"${SRCROOT}/Frameworks/CoreModules.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-CoreModules/CoreModules.framework\" \"${SRCROOT}/Frameworks/CoreModules.framework\"\n\necho \"Setup cxxreact.framework\"\n#rm -R \"${SRCROOT}/Frameworks/cxxreact.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-cxxreact/cxxreact.framework\" \"${SRCROOT}/Frameworks/cxxreact.framework\"\n\necho \"Setup DoubleConversion.framework\"\n#rm -R \"${SRCROOT}/Frameworks/DoubleConversion.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/DoubleConversion/DoubleConversion.framework\" \"${SRCROOT}/Frameworks/DoubleConversion.framework\"\n\necho \"Setup FBReactNativeSpec.framework\"\n#rm -R \"${SRCROOT}/Frameworks/FBReactNativeSpec.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/FBReactNativeSpec/FBReactNativeSpec.framework\" \"${SRCROOT}/Frameworks/FBReactNativeSpec.framework\"\n\necho \"Setup folly.framework\"\n#rm -R \"${SRCROOT}/Frameworks/folly.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/folly/folly.framework\" \"${SRCROOT}/Frameworks/folly.framework\"\n\necho \"Setup glog.framework\"\n#rm -R \"${SRCROOT}/Frameworks/glog.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/glog/glog.framework\" \"${SRCROOT}/Frameworks/glog.framework\"\n\necho \"Setup jsi.framework\"\n#rm -R \"${SRCROOT}/Frameworks/jsi.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-jsi/jsi.framework\" \"${SRCROOT}/Frameworks/jsi.framework\"\n\necho \"Setup jsinspector.framework\"\n#rm -R \"${SRCROOT}/Frameworks/jsinspector.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-jsinspector/jsinspector.framework\" \"${SRCROOT}/Frameworks/jsinspector.framework\"\n\necho \"Setup jsireact.framework\"\n#rm -R \"${SRCROOT}/Frameworks/jsireact.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-jsiexecutor/jsireact.framework\" \"${SRCROOT}/Frameworks/jsireact.framework\"\n\necho \"Setup RCTAnimation.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTAnimation.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTAnimation/RCTAnimation.framework\" \"${SRCROOT}/Frameworks/RCTAnimation.framework\"\n\necho \"Setup RCTBlob.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTBlob.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTBlob/RCTBlob.framework\" \"${SRCROOT}/Frameworks/RCTBlob.framework\"\n\necho \"Setup RCTImage.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTImage.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTImage/RCTImage.framework\" \"${SRCROOT}/Frameworks/RCTImage.framework\"\n\necho \"Setup RCTLinking.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTLinking.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTLinking/RCTLinking.framework\" \"${SRCROOT}/Frameworks/RCTLinking.framework\"\n\necho \"Setup RCTNetwork.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTNetwork.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTNetwork/RCTNetwork.framework\" \"${SRCROOT}/Frameworks/RCTNetwork.framework\"\n\necho \"Setup RCTSettings.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTSettings.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTSettings/RCTSettings.framework\" \"${SRCROOT}/Frameworks/RCTSettings.framework\"\n\necho \"Setup RCTText.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTText.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTText/RCTText.framework\" \"${SRCROOT}/Frameworks/RCTText.framework\"\n\necho \"Setup RCTTypeSafety.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTTypeSafety.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/RCTTypeSafety/RCTTypeSafety.framework\" \"${SRCROOT}/Frameworks/RCTTypeSafety.framework\"\n\necho \"Setup RCTVibration.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTVibration.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTVibration/RCTVibration.framework\" \"${SRCROOT}/Frameworks/RCTVibration.framework\"\n\necho \"Setup React.framework\"\n#rm -R \"${SRCROOT}/Frameworks/React.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-Core/React.framework\" \"${SRCROOT}/Frameworks/React.framework\"\n\necho \"Setup ReactCommon.framework\"\n#rm -R \"${SRCROOT}/Frameworks/ReactCommon.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework\" \"${SRCROOT}/Frameworks/ReactCommon.framework\"\n\necho \"Setup yoga.framework\"\n#rm -R \"${SRCROOT}/Frameworks/yoga.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/Yoga/yoga.framework\" \"${SRCROOT}/Frameworks/yoga.framework\"\n\necho \"Setup RNGestureHandler.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RNGestureHandler.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/RNGestureHandler/RNGestureHandler.framework\" \"${SRCROOT}/Frameworks/RNGestureHandler.framework\"\n\necho \"Setup react-native-safe-area-context.framework\"\n#rm -R \"${SRCROOT}/Frameworks/react_native_safe_area_context.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/react-native-safe-area-context/react_native_safe_area_context.framework\" \"${SRCROOT}/Frameworks/react_native_safe_area_context.framework\"\n";
+		};
+		B3E7CFF624726A5800C1CF9D /* Remove Frameworks for Next Build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Remove Frameworks for Next Build";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "echo \"Remove All Frameworks\"\nrm -R \"${SRCROOT}/Frameworks/CoreModules.framework\"\nrm -R \"${SRCROOT}/Frameworks/cxxreact.framework\"\nrm -R \"${SRCROOT}/Frameworks/DoubleConversion.framework\"\nrm -R \"${SRCROOT}/Frameworks/FBReactNativeSpec.framework\"\nrm -R \"${SRCROOT}/Frameworks/folly.framework\"\nrm -R \"${SRCROOT}/Frameworks/glog.framework\"\nrm -R \"${SRCROOT}/Frameworks/jsi.framework\"\nrm -R \"${SRCROOT}/Frameworks/jsinspector.framework\"\nrm -R \"${SRCROOT}/Frameworks/jsireact.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTAnimation.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTBlob.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTImage.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTLinking.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTNetwork.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTSettings.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTText.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTTypeSafety.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTVibration.framework\"\nrm -R \"${SRCROOT}/Frameworks/React.framework\"\nrm -R \"${SRCROOT}/Frameworks/ReactCommon.framework\"\nrm -R \"${SRCROOT}/Frameworks/yoga.framework\"\nrm -R \"${SRCROOT}/Frameworks/RNGestureHandler.framework\"\nrm -R \"${SRCROOT}/Frameworks/react_native_safe_area_context.framework\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -606,6 +661,24 @@
 			};
 			name = Release;
 		};
+		B3E7CFF924726BEA00C1CF9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KFP6944LXB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B3E7CFFA24726BEA00C1CF9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KFP6944LXB;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -623,6 +696,15 @@
 			buildConfigurations = (
 				B3DA7DC1246BCE7200375EA4 /* Debug */,
 				B3DA7DC2246BCE7200375EA4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3E7CFF824726BEA00C1CF9D /* Build configuration list for PBXAggregateTarget "DropthoughtSDK_Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3E7CFF924726BEA00C1CF9D /* Debug */,
+				B3E7CFFA24726BEA00C1CF9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
