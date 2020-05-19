@@ -4,6 +4,13 @@
 
 ### Android
 
+```
+ /android
+    /app
+    /dt-sdk
+ /androidDemo
+```
+
 When developing react-native elements, just use the normal process as in other react-native project:
 
 Start the Metro Bundler:
@@ -21,7 +28,7 @@ $ yarn android
 When ready to test the result with SDK, run
 
 ```shell
-$ yarn build-android-sdk
+$ yarn build:android-sdk
 ```
 
 This will build the `dt-sdk` library, and save to local maven (it should be under the `~/.m2` directory)

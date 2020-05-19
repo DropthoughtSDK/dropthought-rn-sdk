@@ -9,7 +9,7 @@
     "test": "jest",
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.+(js|json|css|md|mdx|html)\"",
-    "build-android-sdk": "scripts/buildAndroidSDK.sh"
+    "build:android-sdk": "scripts/buildAndroidSDK.sh"
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
