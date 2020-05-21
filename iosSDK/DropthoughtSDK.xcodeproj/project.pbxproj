@@ -6,19 +6,6 @@
 	objectVersion = 50;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		B3E7CFF724726BEA00C1CF9D /* DropthoughtSDK_Universal */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B3E7CFF824726BEA00C1CF9D /* Build configuration list for PBXAggregateTarget "DropthoughtSDK_Universal" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = DropthoughtSDK_Universal;
-			productName = DropthoughtSDK_Universal;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		56EE8E935319C08005E33D64 /* Pods_DropthoughtSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EF651968F2C28EC730DB44 /* Pods_DropthoughtSDK.framework */; };
 		B3DA7DBD246BCE7200375EA4 /* DropthoughtSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B3DA7DBB246BCE7200375EA4 /* DropthoughtSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -145,6 +132,7 @@
 				B3DA7DB6246BCE7200375EA4 /* Resources */,
 				B3DA7E14246CF02600375EA4 /* Embed Frameworks */,
 				B3DA7E5C246E7C9200375EA4 /* Bundle React Native code and images */,
+				B3C7E8DE24765C2D00AFE840 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -168,9 +156,6 @@
 						CreatedOnToolsVersion = 11.4.1;
 						LastSwiftMigration = 1140;
 					};
-					B3E7CFF724726BEA00C1CF9D = {
-						CreatedOnToolsVersion = 11.4.1;
-					};
 				};
 			};
 			buildConfigurationList = B3DA7DB2246BCE7200375EA4 /* Build configuration list for PBXProject "DropthoughtSDK" */;
@@ -187,7 +172,6 @@
 			projectRoot = "";
 			targets = (
 				B3DA7DB7246BCE7200375EA4 /* DropthoughtSDK */,
-				B3E7CFF724726BEA00C1CF9D /* DropthoughtSDK_Universal */,
 			);
 		};
 /* End PBXProject section */
@@ -225,6 +209,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B3C7E8DE24765C2D00AFE840 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n\n# make sure the output directory exists\n\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n\n# Step 1. Build Device and Simulator versions\n\n#xcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n#xcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build\n\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\n\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\n\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\n\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\n\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\nfi\n\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\n\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n\n# Step 5. Convenience step to copy the framework to the project's directory\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n\n# Step 6. Convenience step to open the project's directory in Finder\n\nopen \"${BUILD_DIR}/${CONFIGURATION}-universal\"\n";
 		};
 		B3DA7E0B246C42C800375EA4 /* Run Script - Rebuild React Native App */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -485,24 +486,6 @@
 			};
 			name = Release;
 		};
-		B3E7CFF924726BEA00C1CF9D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KFP6944LXB;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		B3E7CFFA24726BEA00C1CF9D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KFP6944LXB;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -520,15 +503,6 @@
 			buildConfigurations = (
 				B3DA7DC1246BCE7200375EA4 /* Debug */,
 				B3DA7DC2246BCE7200375EA4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B3E7CFF824726BEA00C1CF9D /* Build configuration list for PBXAggregateTarget "DropthoughtSDK_Universal" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B3E7CFF924726BEA00C1CF9D /* Debug */,
-				B3E7CFFA24726BEA00C1CF9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
