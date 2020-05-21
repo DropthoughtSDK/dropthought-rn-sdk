@@ -1,0 +1,11 @@
+framework module DropthoughtSDK {
+  umbrella header "DropthoughtSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module DropthoughtSDK.Swift {
+    header "DropthoughtSDK-Swift.h"
+    requires objc
+}
