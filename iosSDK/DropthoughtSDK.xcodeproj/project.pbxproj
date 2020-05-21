@@ -23,53 +23,7 @@
 		56EE8E935319C08005E33D64 /* Pods_DropthoughtSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80EF651968F2C28EC730DB44 /* Pods_DropthoughtSDK.framework */; };
 		B3DA7DBD246BCE7200375EA4 /* DropthoughtSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B3DA7DBB246BCE7200375EA4 /* DropthoughtSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3DA7DC4246BCEF500375EA4 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3DA7DC3246BCEF500375EA4 /* Survey.swift */; };
-		B3DA7E2C246CFD8A00375EA4 /* RCTTypeSafety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E17246CFD8A00375EA4 /* RCTTypeSafety.framework */; };
-		B3DA7E2D246CFD8A00375EA4 /* RCTNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E18246CFD8A00375EA4 /* RCTNetwork.framework */; };
-		B3DA7E2E246CFD8A00375EA4 /* jsi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E19246CFD8A00375EA4 /* jsi.framework */; };
-		B3DA7E2F246CFD8A00375EA4 /* jsinspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1A246CFD8A00375EA4 /* jsinspector.framework */; };
-		B3DA7E30246CFD8A00375EA4 /* RCTSettings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1B246CFD8A00375EA4 /* RCTSettings.framework */; };
-		B3DA7E31246CFD8A00375EA4 /* React.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1C246CFD8A00375EA4 /* React.framework */; };
-		B3DA7E32246CFD8A00375EA4 /* CoreModules.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1D246CFD8A00375EA4 /* CoreModules.framework */; };
-		B3DA7E33246CFD8A00375EA4 /* RCTVibration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1E246CFD8A00375EA4 /* RCTVibration.framework */; };
-		B3DA7E34246CFD8A00375EA4 /* RCTBlob.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1F246CFD8A00375EA4 /* RCTBlob.framework */; };
-		B3DA7E35246CFD8A00375EA4 /* jsireact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E20246CFD8A00375EA4 /* jsireact.framework */; };
-		B3DA7E36246CFD8A00375EA4 /* ReactCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E21246CFD8A00375EA4 /* ReactCommon.framework */; };
-		B3DA7E37246CFD8A00375EA4 /* yoga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E22246CFD8A00375EA4 /* yoga.framework */; };
-		B3DA7E38246CFD8A00375EA4 /* folly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E23246CFD8A00375EA4 /* folly.framework */; };
-		B3DA7E39246CFD8A00375EA4 /* glog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E24246CFD8A00375EA4 /* glog.framework */; };
-		B3DA7E3A246CFD8A00375EA4 /* RCTAnimation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E25246CFD8A00375EA4 /* RCTAnimation.framework */; };
-		B3DA7E3B246CFD8A00375EA4 /* RCTText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E26246CFD8A00375EA4 /* RCTText.framework */; };
-		B3DA7E3C246CFD8A00375EA4 /* DoubleConversion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E27246CFD8A00375EA4 /* DoubleConversion.framework */; };
-		B3DA7E3D246CFD8A00375EA4 /* FBReactNativeSpec.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E28246CFD8A00375EA4 /* FBReactNativeSpec.framework */; };
-		B3DA7E3E246CFD8A00375EA4 /* RCTLinking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E29246CFD8A00375EA4 /* RCTLinking.framework */; };
-		B3DA7E3F246CFD8A00375EA4 /* cxxreact.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E2A246CFD8A00375EA4 /* cxxreact.framework */; };
-		B3DA7E40246CFD8A00375EA4 /* RCTImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E2B246CFD8A00375EA4 /* RCTImage.framework */; };
-		B3DA7E41246CFD9D00375EA4 /* CoreModules.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1D246CFD8A00375EA4 /* CoreModules.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E42246CFD9D00375EA4 /* cxxreact.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E2A246CFD8A00375EA4 /* cxxreact.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E43246CFD9D00375EA4 /* DoubleConversion.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E27246CFD8A00375EA4 /* DoubleConversion.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E44246CFD9D00375EA4 /* FBReactNativeSpec.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E28246CFD8A00375EA4 /* FBReactNativeSpec.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E45246CFD9D00375EA4 /* folly.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E23246CFD8A00375EA4 /* folly.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E46246CFD9D00375EA4 /* glog.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E24246CFD8A00375EA4 /* glog.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E47246CFD9D00375EA4 /* jsi.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E19246CFD8A00375EA4 /* jsi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E48246CFD9D00375EA4 /* jsinspector.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1A246CFD8A00375EA4 /* jsinspector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E49246CFD9D00375EA4 /* jsireact.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E20246CFD8A00375EA4 /* jsireact.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E4A246CFD9D00375EA4 /* RCTAnimation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E25246CFD8A00375EA4 /* RCTAnimation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E4B246CFD9D00375EA4 /* RCTBlob.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1F246CFD8A00375EA4 /* RCTBlob.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E4C246CFD9D00375EA4 /* RCTImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E2B246CFD8A00375EA4 /* RCTImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E4D246CFD9D00375EA4 /* RCTLinking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E29246CFD8A00375EA4 /* RCTLinking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E4E246CFD9D00375EA4 /* RCTNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E18246CFD8A00375EA4 /* RCTNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E4F246CFD9D00375EA4 /* RCTSettings.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1B246CFD8A00375EA4 /* RCTSettings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E50246CFD9D00375EA4 /* RCTText.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E26246CFD8A00375EA4 /* RCTText.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E51246CFD9D00375EA4 /* RCTTypeSafety.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E17246CFD8A00375EA4 /* RCTTypeSafety.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E52246CFD9D00375EA4 /* RCTVibration.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1E246CFD8A00375EA4 /* RCTVibration.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E53246CFD9D00375EA4 /* React.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E1C246CFD8A00375EA4 /* React.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E54246CFD9D00375EA4 /* ReactCommon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E21246CFD8A00375EA4 /* ReactCommon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7E55246CFD9D00375EA4 /* yoga.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E22246CFD8A00375EA4 /* yoga.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B3DA7E5A246E463A00375EA4 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = B3DA7E59246E463A00375EA4 /* main.jsbundle */; };
-		B3DA7EBD246E86BE00375EA4 /* RNGestureHandler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7EBC246E86BE00375EA4 /* RNGestureHandler.framework */; };
-		B3DA7EBE246E86D900375EA4 /* RNGestureHandler.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7EBC246E86BE00375EA4 /* RNGestureHandler.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B3DA7EC0246E8CF800375EA4 /* react_native_safe_area_context.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7EBF246E8CF800375EA4 /* react_native_safe_area_context.framework */; };
-		B3DA7EC1246E8D0700375EA4 /* react_native_safe_area_context.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7EBF246E8CF800375EA4 /* react_native_safe_area_context.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,29 +33,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B3DA7EC1246E8D0700375EA4 /* react_native_safe_area_context.framework in Embed Frameworks */,
-				B3DA7EBE246E86D900375EA4 /* RNGestureHandler.framework in Embed Frameworks */,
-				B3DA7E41246CFD9D00375EA4 /* CoreModules.framework in Embed Frameworks */,
-				B3DA7E42246CFD9D00375EA4 /* cxxreact.framework in Embed Frameworks */,
-				B3DA7E43246CFD9D00375EA4 /* DoubleConversion.framework in Embed Frameworks */,
-				B3DA7E44246CFD9D00375EA4 /* FBReactNativeSpec.framework in Embed Frameworks */,
-				B3DA7E45246CFD9D00375EA4 /* folly.framework in Embed Frameworks */,
-				B3DA7E46246CFD9D00375EA4 /* glog.framework in Embed Frameworks */,
-				B3DA7E47246CFD9D00375EA4 /* jsi.framework in Embed Frameworks */,
-				B3DA7E48246CFD9D00375EA4 /* jsinspector.framework in Embed Frameworks */,
-				B3DA7E49246CFD9D00375EA4 /* jsireact.framework in Embed Frameworks */,
-				B3DA7E4A246CFD9D00375EA4 /* RCTAnimation.framework in Embed Frameworks */,
-				B3DA7E4B246CFD9D00375EA4 /* RCTBlob.framework in Embed Frameworks */,
-				B3DA7E4C246CFD9D00375EA4 /* RCTImage.framework in Embed Frameworks */,
-				B3DA7E4D246CFD9D00375EA4 /* RCTLinking.framework in Embed Frameworks */,
-				B3DA7E4E246CFD9D00375EA4 /* RCTNetwork.framework in Embed Frameworks */,
-				B3DA7E4F246CFD9D00375EA4 /* RCTSettings.framework in Embed Frameworks */,
-				B3DA7E50246CFD9D00375EA4 /* RCTText.framework in Embed Frameworks */,
-				B3DA7E51246CFD9D00375EA4 /* RCTTypeSafety.framework in Embed Frameworks */,
-				B3DA7E52246CFD9D00375EA4 /* RCTVibration.framework in Embed Frameworks */,
-				B3DA7E53246CFD9D00375EA4 /* React.framework in Embed Frameworks */,
-				B3DA7E54246CFD9D00375EA4 /* ReactCommon.framework in Embed Frameworks */,
-				B3DA7E55246CFD9D00375EA4 /* yoga.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,30 +48,7 @@
 		B3DA7DBB246BCE7200375EA4 /* DropthoughtSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropthoughtSDK.h; sourceTree = "<group>"; };
 		B3DA7DBC246BCE7200375EA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3DA7DC3246BCEF500375EA4 /* Survey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
-		B3DA7E17246CFD8A00375EA4 /* RCTTypeSafety.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTTypeSafety.framework; path = Frameworks/RCTTypeSafety.framework; sourceTree = "<group>"; };
-		B3DA7E18246CFD8A00375EA4 /* RCTNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTNetwork.framework; path = Frameworks/RCTNetwork.framework; sourceTree = "<group>"; };
-		B3DA7E19246CFD8A00375EA4 /* jsi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = jsi.framework; path = Frameworks/jsi.framework; sourceTree = "<group>"; };
-		B3DA7E1A246CFD8A00375EA4 /* jsinspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = jsinspector.framework; path = Frameworks/jsinspector.framework; sourceTree = "<group>"; };
-		B3DA7E1B246CFD8A00375EA4 /* RCTSettings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTSettings.framework; path = Frameworks/RCTSettings.framework; sourceTree = "<group>"; };
-		B3DA7E1C246CFD8A00375EA4 /* React.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = React.framework; path = Frameworks/React.framework; sourceTree = "<group>"; };
-		B3DA7E1D246CFD8A00375EA4 /* CoreModules.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreModules.framework; path = Frameworks/CoreModules.framework; sourceTree = "<group>"; };
-		B3DA7E1E246CFD8A00375EA4 /* RCTVibration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTVibration.framework; path = Frameworks/RCTVibration.framework; sourceTree = "<group>"; };
-		B3DA7E1F246CFD8A00375EA4 /* RCTBlob.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTBlob.framework; path = Frameworks/RCTBlob.framework; sourceTree = "<group>"; };
-		B3DA7E20246CFD8A00375EA4 /* jsireact.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = jsireact.framework; path = Frameworks/jsireact.framework; sourceTree = "<group>"; };
-		B3DA7E21246CFD8A00375EA4 /* ReactCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactCommon.framework; path = Frameworks/ReactCommon.framework; sourceTree = "<group>"; };
-		B3DA7E22246CFD8A00375EA4 /* yoga.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = yoga.framework; path = Frameworks/yoga.framework; sourceTree = "<group>"; };
-		B3DA7E23246CFD8A00375EA4 /* folly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = folly.framework; path = Frameworks/folly.framework; sourceTree = "<group>"; };
-		B3DA7E24246CFD8A00375EA4 /* glog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = glog.framework; path = Frameworks/glog.framework; sourceTree = "<group>"; };
-		B3DA7E25246CFD8A00375EA4 /* RCTAnimation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTAnimation.framework; path = Frameworks/RCTAnimation.framework; sourceTree = "<group>"; };
-		B3DA7E26246CFD8A00375EA4 /* RCTText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTText.framework; path = Frameworks/RCTText.framework; sourceTree = "<group>"; };
-		B3DA7E27246CFD8A00375EA4 /* DoubleConversion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DoubleConversion.framework; path = Frameworks/DoubleConversion.framework; sourceTree = "<group>"; };
-		B3DA7E28246CFD8A00375EA4 /* FBReactNativeSpec.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBReactNativeSpec.framework; path = Frameworks/FBReactNativeSpec.framework; sourceTree = "<group>"; };
-		B3DA7E29246CFD8A00375EA4 /* RCTLinking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTLinking.framework; path = Frameworks/RCTLinking.framework; sourceTree = "<group>"; };
-		B3DA7E2A246CFD8A00375EA4 /* cxxreact.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = cxxreact.framework; path = Frameworks/cxxreact.framework; sourceTree = "<group>"; };
-		B3DA7E2B246CFD8A00375EA4 /* RCTImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RCTImage.framework; path = Frameworks/RCTImage.framework; sourceTree = "<group>"; };
 		B3DA7E59246E463A00375EA4 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		B3DA7EBC246E86BE00375EA4 /* RNGestureHandler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RNGestureHandler.framework; path = Frameworks/RNGestureHandler.framework; sourceTree = "<group>"; };
-		B3DA7EBF246E8CF800375EA4 /* react_native_safe_area_context.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = react_native_safe_area_context.framework; path = Frameworks/react_native_safe_area_context.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,29 +56,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3DA7E2C246CFD8A00375EA4 /* RCTTypeSafety.framework in Frameworks */,
-				B3DA7E39246CFD8A00375EA4 /* glog.framework in Frameworks */,
-				B3DA7E34246CFD8A00375EA4 /* RCTBlob.framework in Frameworks */,
-				B3DA7E37246CFD8A00375EA4 /* yoga.framework in Frameworks */,
-				B3DA7EBD246E86BE00375EA4 /* RNGestureHandler.framework in Frameworks */,
-				B3DA7E3D246CFD8A00375EA4 /* FBReactNativeSpec.framework in Frameworks */,
-				B3DA7E3F246CFD8A00375EA4 /* cxxreact.framework in Frameworks */,
-				B3DA7E2D246CFD8A00375EA4 /* RCTNetwork.framework in Frameworks */,
-				B3DA7E32246CFD8A00375EA4 /* CoreModules.framework in Frameworks */,
-				B3DA7E36246CFD8A00375EA4 /* ReactCommon.framework in Frameworks */,
-				B3DA7E2F246CFD8A00375EA4 /* jsinspector.framework in Frameworks */,
-				B3DA7E2E246CFD8A00375EA4 /* jsi.framework in Frameworks */,
-				B3DA7E33246CFD8A00375EA4 /* RCTVibration.framework in Frameworks */,
-				B3DA7E3C246CFD8A00375EA4 /* DoubleConversion.framework in Frameworks */,
-				B3DA7E3B246CFD8A00375EA4 /* RCTText.framework in Frameworks */,
-				B3DA7E3A246CFD8A00375EA4 /* RCTAnimation.framework in Frameworks */,
-				B3DA7E30246CFD8A00375EA4 /* RCTSettings.framework in Frameworks */,
-				B3DA7E31246CFD8A00375EA4 /* React.framework in Frameworks */,
-				B3DA7E3E246CFD8A00375EA4 /* RCTLinking.framework in Frameworks */,
-				B3DA7EC0246E8CF800375EA4 /* react_native_safe_area_context.framework in Frameworks */,
-				B3DA7E35246CFD8A00375EA4 /* jsireact.framework in Frameworks */,
-				B3DA7E40246CFD8A00375EA4 /* RCTImage.framework in Frameworks */,
-				B3DA7E38246CFD8A00375EA4 /* folly.framework in Frameworks */,
 				56EE8E935319C08005E33D64 /* Pods_DropthoughtSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,29 +113,6 @@
 		FCAB2E19D72A4C3FB8102DE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3DA7E1D246CFD8A00375EA4 /* CoreModules.framework */,
-				B3DA7E2A246CFD8A00375EA4 /* cxxreact.framework */,
-				B3DA7E27246CFD8A00375EA4 /* DoubleConversion.framework */,
-				B3DA7E28246CFD8A00375EA4 /* FBReactNativeSpec.framework */,
-				B3DA7E23246CFD8A00375EA4 /* folly.framework */,
-				B3DA7E24246CFD8A00375EA4 /* glog.framework */,
-				B3DA7E19246CFD8A00375EA4 /* jsi.framework */,
-				B3DA7E1A246CFD8A00375EA4 /* jsinspector.framework */,
-				B3DA7E20246CFD8A00375EA4 /* jsireact.framework */,
-				B3DA7E25246CFD8A00375EA4 /* RCTAnimation.framework */,
-				B3DA7E1F246CFD8A00375EA4 /* RCTBlob.framework */,
-				B3DA7E2B246CFD8A00375EA4 /* RCTImage.framework */,
-				B3DA7E29246CFD8A00375EA4 /* RCTLinking.framework */,
-				B3DA7E18246CFD8A00375EA4 /* RCTNetwork.framework */,
-				B3DA7E1B246CFD8A00375EA4 /* RCTSettings.framework */,
-				B3DA7E26246CFD8A00375EA4 /* RCTText.framework */,
-				B3DA7E17246CFD8A00375EA4 /* RCTTypeSafety.framework */,
-				B3DA7E1E246CFD8A00375EA4 /* RCTVibration.framework */,
-				B3DA7E1C246CFD8A00375EA4 /* React.framework */,
-				B3DA7E21246CFD8A00375EA4 /* ReactCommon.framework */,
-				B3DA7E22246CFD8A00375EA4 /* yoga.framework */,
-				B3DA7EBC246E86BE00375EA4 /* RNGestureHandler.framework */,
-				B3DA7EBF246E8CF800375EA4 /* react_native_safe_area_context.framework */,
 				80EF651968F2C28EC730DB44 /* Pods_DropthoughtSDK.framework */,
 			);
 			name = Frameworks;
@@ -274,7 +136,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3DA7DC0246BCE7200375EA4 /* Build configuration list for PBXNativeTarget "DropthoughtSDK" */;
 			buildPhases = (
-				B3E7CFF524724B4300C1CF9D /* Setup Frameworks By Configuration */,
 				3755C909EA91831AC36F4053 /* [CP] Check Pods Manifest.lock */,
 				B3DA7EBB246E855B00375EA4 /* Start Packager */,
 				B3DA7E0B246C42C800375EA4 /* Run Script - Rebuild React Native App */,
@@ -284,7 +145,6 @@
 				B3DA7DB6246BCE7200375EA4 /* Resources */,
 				B3DA7E14246CF02600375EA4 /* Embed Frameworks */,
 				B3DA7E5C246E7C9200375EA4 /* Bundle React Native code and images */,
-				B3E7CFF624726A5800C1CF9D /* Remove Frameworks for Next Build */,
 			);
 			buildRules = (
 			);
@@ -419,42 +279,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
-		};
-		B3E7CFF524724B4300C1CF9D /* Setup Frameworks By Configuration */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Setup Frameworks By Configuration";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"Setup CoreModules.framework\"\n#rm -R \"${SRCROOT}/Frameworks/CoreModules.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-CoreModules/CoreModules.framework\" \"${SRCROOT}/Frameworks/CoreModules.framework\"\n\necho \"Setup cxxreact.framework\"\n#rm -R \"${SRCROOT}/Frameworks/cxxreact.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-cxxreact/cxxreact.framework\" \"${SRCROOT}/Frameworks/cxxreact.framework\"\n\necho \"Setup DoubleConversion.framework\"\n#rm -R \"${SRCROOT}/Frameworks/DoubleConversion.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/DoubleConversion/DoubleConversion.framework\" \"${SRCROOT}/Frameworks/DoubleConversion.framework\"\n\necho \"Setup FBReactNativeSpec.framework\"\n#rm -R \"${SRCROOT}/Frameworks/FBReactNativeSpec.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/FBReactNativeSpec/FBReactNativeSpec.framework\" \"${SRCROOT}/Frameworks/FBReactNativeSpec.framework\"\n\necho \"Setup folly.framework\"\n#rm -R \"${SRCROOT}/Frameworks/folly.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/folly/folly.framework\" \"${SRCROOT}/Frameworks/folly.framework\"\n\necho \"Setup glog.framework\"\n#rm -R \"${SRCROOT}/Frameworks/glog.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/glog/glog.framework\" \"${SRCROOT}/Frameworks/glog.framework\"\n\necho \"Setup jsi.framework\"\n#rm -R \"${SRCROOT}/Frameworks/jsi.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-jsi/jsi.framework\" \"${SRCROOT}/Frameworks/jsi.framework\"\n\necho \"Setup jsinspector.framework\"\n#rm -R \"${SRCROOT}/Frameworks/jsinspector.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-jsinspector/jsinspector.framework\" \"${SRCROOT}/Frameworks/jsinspector.framework\"\n\necho \"Setup jsireact.framework\"\n#rm -R \"${SRCROOT}/Frameworks/jsireact.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-jsiexecutor/jsireact.framework\" \"${SRCROOT}/Frameworks/jsireact.framework\"\n\necho \"Setup RCTAnimation.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTAnimation.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTAnimation/RCTAnimation.framework\" \"${SRCROOT}/Frameworks/RCTAnimation.framework\"\n\necho \"Setup RCTBlob.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTBlob.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTBlob/RCTBlob.framework\" \"${SRCROOT}/Frameworks/RCTBlob.framework\"\n\necho \"Setup RCTImage.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTImage.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTImage/RCTImage.framework\" \"${SRCROOT}/Frameworks/RCTImage.framework\"\n\necho \"Setup RCTLinking.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTLinking.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTLinking/RCTLinking.framework\" \"${SRCROOT}/Frameworks/RCTLinking.framework\"\n\necho \"Setup RCTNetwork.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTNetwork.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTNetwork/RCTNetwork.framework\" \"${SRCROOT}/Frameworks/RCTNetwork.framework\"\n\necho \"Setup RCTSettings.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTSettings.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTSettings/RCTSettings.framework\" \"${SRCROOT}/Frameworks/RCTSettings.framework\"\n\necho \"Setup RCTText.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTText.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTText/RCTText.framework\" \"${SRCROOT}/Frameworks/RCTText.framework\"\n\necho \"Setup RCTTypeSafety.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTTypeSafety.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/RCTTypeSafety/RCTTypeSafety.framework\" \"${SRCROOT}/Frameworks/RCTTypeSafety.framework\"\n\necho \"Setup RCTVibration.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RCTVibration.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-RCTVibration/RCTVibration.framework\" \"${SRCROOT}/Frameworks/RCTVibration.framework\"\n\necho \"Setup React.framework\"\n#rm -R \"${SRCROOT}/Frameworks/React.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/React-Core/React.framework\" \"${SRCROOT}/Frameworks/React.framework\"\n\necho \"Setup ReactCommon.framework\"\n#rm -R \"${SRCROOT}/Frameworks/ReactCommon.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/ReactCommon/ReactCommon.framework\" \"${SRCROOT}/Frameworks/ReactCommon.framework\"\n\necho \"Setup yoga.framework\"\n#rm -R \"${SRCROOT}/Frameworks/yoga.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/Yoga/yoga.framework\" \"${SRCROOT}/Frameworks/yoga.framework\"\n\necho \"Setup RNGestureHandler.framework\"\n#rm -R \"${SRCROOT}/Frameworks/RNGestureHandler.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/RNGestureHandler/RNGestureHandler.framework\" \"${SRCROOT}/Frameworks/RNGestureHandler.framework\"\n\necho \"Setup react-native-safe-area-context.framework\"\n#rm -R \"${SRCROOT}/Frameworks/react_native_safe_area_context.framework\"\ncp -R \"${CONFIGURATION_BUILD_DIR}/react-native-safe-area-context/react_native_safe_area_context.framework\" \"${SRCROOT}/Frameworks/react_native_safe_area_context.framework\"\n";
-		};
-		B3E7CFF624726A5800C1CF9D /* Remove Frameworks for Next Build */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Remove Frameworks for Next Build";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "echo \"Remove All Frameworks\"\nrm -R \"${SRCROOT}/Frameworks/CoreModules.framework\"\nrm -R \"${SRCROOT}/Frameworks/cxxreact.framework\"\nrm -R \"${SRCROOT}/Frameworks/DoubleConversion.framework\"\nrm -R \"${SRCROOT}/Frameworks/FBReactNativeSpec.framework\"\nrm -R \"${SRCROOT}/Frameworks/folly.framework\"\nrm -R \"${SRCROOT}/Frameworks/glog.framework\"\nrm -R \"${SRCROOT}/Frameworks/jsi.framework\"\nrm -R \"${SRCROOT}/Frameworks/jsinspector.framework\"\nrm -R \"${SRCROOT}/Frameworks/jsireact.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTAnimation.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTBlob.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTImage.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTLinking.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTNetwork.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTSettings.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTText.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTTypeSafety.framework\"\nrm -R \"${SRCROOT}/Frameworks/RCTVibration.framework\"\nrm -R \"${SRCROOT}/Frameworks/React.framework\"\nrm -R \"${SRCROOT}/Frameworks/ReactCommon.framework\"\nrm -R \"${SRCROOT}/Frameworks/yoga.framework\"\nrm -R \"${SRCROOT}/Frameworks/RNGestureHandler.framework\"\nrm -R \"${SRCROOT}/Frameworks/react_native_safe_area_context.framework\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
