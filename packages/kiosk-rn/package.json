@@ -1,0 +1,19 @@
+{
+  "name": "@dropthought/kiosk-rn",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3",
+    "react-native": "^0.59.3",
+    "react-native-elements": "^1.1.0",
+    "react-native-vector-icons": "^6.4.2",
+    "@dropthought/dropthought-data": "*"
+  },
+  "dependencies": {
+    "@react-native-community/hooks": "^2.5.1",
+    "i18next": "^19.4.4",
+    "ramda": "^0.27.0"
+  }
+}

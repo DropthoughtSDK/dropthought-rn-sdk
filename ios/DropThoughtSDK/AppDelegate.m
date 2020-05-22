@@ -32,10 +32,9 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
-  RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:[[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"]  moduleName:@"dropthought-sdk" initialProperties:nil launchOptions:nil];
-
-//  let rootView = RCTRootView(bundleURL: jsBundleLocation, moduleName: "dropthought-sdk", initialProperties: nil, launchOptions: nil)
-
+  RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                                   moduleName:@"dropthought-sdk"
+                                            initialProperties:nil];
 
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
@@ -49,11 +48,11 @@ static void InitializeFlipper(UIApplication *application) {
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
-//#if DEBUG
-//  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
-//#else
+#if DEBUG
+  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+#else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
-//#endif
+#endif
 }
 
 @end

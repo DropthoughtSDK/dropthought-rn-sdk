@@ -5,11 +5,11 @@ import {SafeAreaProvider} from 'react-native-safe-area-context'
 import SurveyStack from './navigation/SurveyStack'
 
 export default function App() {
-  return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <SurveyStack />
-      </NavigationContainer>
-    </SafeAreaProvider>
-  )
+    return (
+        <SafeAreaProvider>
+            <NavigationContainer>
+                <SurveyStack />
+            </NavigationContainer>
+        </SafeAreaProvider>
+    )
 }

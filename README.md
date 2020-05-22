@@ -2,14 +2,7 @@
 
 ## Development workflow
 
-### Android
-
-```
- /android
-    /app
-    /dt-sdk
- /androidDemo
-```
+### React-Native UI/Elements
 
 When developing react-native elements, just use the normal process as in other react-native project:
 
@@ -23,12 +16,24 @@ Start a dev application to view the result while developing:
 
 ```shell
 $ yarn android
+$ yarn ios
 ```
 
-When ready to test the result with SDK, run
+### Build SDK
+
+When ready to test the result with SDK
+
+#### Android
 
 ```shell
 $ yarn build:android-sdk
+```
+
+this script would build a sdk of this sub project:
+
+```
+ /android
+    /dt-sdk
 ```
 
 This will build the `dt-sdk` library, and save to local maven (it should be under the `~/.m2` directory)
@@ -37,7 +42,7 @@ The version number will be equal to the version property of `package.json`
 
 Open `androidDemo` to see if the result is correct
 
-#### other notes
+##### other notes
 
 In order to build 3rd party RN libraries which has native module into dt-sdk, we copy `native_modules.gradle` from `node_modules/@react-native-community/cli-platform-android` (it is used to set up the dependencies of these libraries) and modify some places to fit our needs:
 
