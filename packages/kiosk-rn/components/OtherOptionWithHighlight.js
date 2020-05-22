@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
     otherText: {
         color: Colors.surveyContent,
         fontWeight: 'normal',
-        marginRight: 10,
+        marginHorizontal: 12,
     },
     textInput: {
         color: Colors.surveyContent,
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
         textAlignVertical: 'center',
         ...Platform.select({
             ios: {
-                paddingVertical: 15,
+                paddingVertical: 13,
             },
         }),
     },

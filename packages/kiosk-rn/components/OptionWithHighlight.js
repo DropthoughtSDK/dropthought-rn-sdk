@@ -142,16 +142,16 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         marginBottom: 2,
         marginTop: 2,
-        paddingBottom: 12,
-        paddingTop: 12,
+        paddingBottom: 10,
+        paddingTop: 10,
         paddingHorizontal: 15,
     },
     text: {
         color: Colors.surveyContent,
         fontWeight: 'normal',
+        marginHorizontal: 12,
     },
     checkboxIconContainer: {
-        marginRight: 15,
         marginVertical: 3,
     },
     checkboxIcon: {
