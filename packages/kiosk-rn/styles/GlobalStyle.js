@@ -11,15 +11,6 @@ export const QuestionContentTextSize = StyleSheet.create({
     },
 })
 
-export const QuestionTitleSize = StyleSheet.create({
-    [DimensionWidthType.phone]: {
-        fontSize: 16,
-    },
-    [DimensionWidthType.tablet]: {
-        fontSize: 18,
-    },
-})
-
 export const GlobalStyle = StyleSheet.create({
     container: {
         alignItems: 'center',
