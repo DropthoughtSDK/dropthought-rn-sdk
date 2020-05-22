@@ -32,7 +32,7 @@ const renderTitle = (title, dimensionWidthType) => {
  */
 /**
  * @param {MandatoryTitleProps} props
- * @returns {FunctionComponent<MandatoryTitleProps>}
+ * @returns {React.FunctionComponent<MandatoryTitleProps>}
  */
 const MandatoryTitle = (props) => {
     const rtl = i18n.dir() === 'rtl'

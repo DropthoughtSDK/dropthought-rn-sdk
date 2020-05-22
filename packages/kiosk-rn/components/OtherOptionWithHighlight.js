@@ -44,10 +44,9 @@ const useFocus = (onBlur, onFocus) => {
  */
 /** @typedef {import('./OptionWithHighlight').OptionWithHighlightProps} OptionWithHighlightProps */
 
-/** @typedef {import('react').FunctionComponent} FunctionComponent */
 /**
  * @param {OtherOptionWithHighlightProps & OptionWithHighlightProps} props
- * @returns {FunctionComponent<OtherOptionWithHighlightProps & OptionWithHighlightProps>}
+ * @returns {React.FunctionComponent<OtherOptionWithHighlightProps & OptionWithHighlightProps>}
  */
 function OtherOptionWithHighlightProps(props) {
     const {id, checked, textValue, onChangeValue, checkedColor} = props
@@ -164,7 +163,7 @@ const styles = StyleSheet.create({
     otherText: {
         color: Colors.surveyContent,
         fontWeight: 'normal',
-        marginHorizontal: 10,
+        marginRight: 10,
     },
     textInput: {
         color: Colors.surveyContent,

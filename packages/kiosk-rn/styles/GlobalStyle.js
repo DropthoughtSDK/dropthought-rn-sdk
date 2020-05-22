@@ -85,4 +85,8 @@ export const GlobalStyle = StyleSheet.create({
     textAlignRight: {
         textAlign: 'right',
     },
+    row: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
 })

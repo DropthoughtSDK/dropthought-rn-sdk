@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dropthought.app.sdk">
     <application>
-        <activity android:name=".SurveyModuleActivity" />
+        <activity
+            android:name=".SurveyModuleActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        />
     </application>
 </manifest>

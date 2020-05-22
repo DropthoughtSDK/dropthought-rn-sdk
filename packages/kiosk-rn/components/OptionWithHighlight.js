@@ -1,16 +1,45 @@
 import * as React from 'react'
-import {StyleSheet} from 'react-native'
+import {StyleSheet, Image, View, Text, TouchableOpacity} from 'react-native'
 import PropTypes from 'prop-types'
-import {CheckBox} from 'react-native-elements'
 
-import {
-    useDimensionWidthType,
-    DimensionWidthType,
-} from '../hooks/useWindowDimensions'
-import {Colors, QuestionContentTextSize} from '../styles'
+import {useDimensionWidthType} from '../hooks/useWindowDimensions'
+import GlobalStyle, {Colors, QuestionContentTextSize} from '../styles'
 import i18n from '../translation'
 
 const noop = () => undefined
+
+const iconSource = {
+    radio: {
+        true: require('../assets/radio-on.png'),
+        false: require('../assets/radio-off.png'),
+    },
+    checkbox: {
+        true: require('../assets/checkbox-on.png'),
+        false: require('../assets/checkbox-off.png'),
+    },
+}
+
+/**
+ * @typedef {Object} CheckBoxIconProps
+ * @property {"radio" | "checkbox" } type - the type of option: "radio" or "checkbox"
+ * @property {string} checkedColor - use hex color string
+ * @property {string} uncheckedColor - use hex color string
+ */
+/**
+ * @param {CheckBoxIconProps} props
+ * @returns {React.FunctionComponent<CheckBoxIconProps>}
+ */
+const CheckBoxIcon = ({type, checkedColor, checked}) => {
+    const checkedStyle = {
+        tintColor: checkedColor,
+    }
+    return (
+        <Image
+            style={[styles.checkboxIcon, checked && checkedStyle]}
+            source={iconSource[type][checked]}
+        />
+    )
+}
 
 /**
  * define OptionWithHighlightProps
@@ -25,25 +54,12 @@ const noop = () => undefined
  * @property {(id: any) => any} onPress - callback function when option is pressed
  */
 
-const icons = {
-    radio: {
-        checked: 'ios-radio-button-on',
-        unchecked: 'ios-radio-button-off',
-    },
-    checkbox: {
-        checked: 'md-checkbox',
-        unchecked: 'md-square-outline',
-    },
-}
-/** @typedef {import('react').FunctionComponent} FunctionComponent */
 /**
  * @param {OptionWithHighlightProps} props
- * @returns {FunctionComponent<OptionWithHighlightProps>}
+ * @returns {React.FunctionComponent<OptionWithHighlightProps>}
  */
 function OptionWithHighlight(props) {
-    // const dimension = useWindowDimensions()
     const dimensionWidthType = useDimensionWidthType()
-    // console.log('option dimension', dimension)
 
     const {
         checked,
@@ -58,7 +74,10 @@ function OptionWithHighlight(props) {
         onPress && onPress(value)
     }
 
+    const rtl = i18n.dir() === 'rtl'
+
     const containerStyle = [
+        GlobalStyle.row,
         styles.container,
         {
             // if checked, background color add opacity
@@ -66,28 +85,35 @@ function OptionWithHighlight(props) {
             backgroundColor: checked ? `${checkedColor}26` : Colors.white,
         },
         containerStyleFromProps,
+        rtl && GlobalStyle.flexRowReverse,
     ]
 
-    const rtl = i18n.dir() === 'rtl'
+    let content
+    if (typeof title === 'string') {
+        content = (
+            <Text
+                style={[
+                    styles.text,
+                    QuestionContentTextSize[dimensionWidthType],
+                ]}>
+                {title}
+            </Text>
+        )
+    } else {
+        content = title
+    }
 
     return (
-        <CheckBox
-            onPress={onPressHandler}
-            iconType="ionicon"
-            title={title}
-            checkedIcon={icons[type].checked}
-            uncheckedIcon={icons[type].unchecked}
-            checked={checked}
-            iconRight={rtl}
-            right={rtl}
-            containerStyle={containerStyle}
-            textStyle={[
-                styles.text,
-                QuestionContentTextSize[dimensionWidthType],
-            ]}
-            checkedColor={checkedColor}
-            uncheckedColor={Colors.questionGrey}
-        />
+        <TouchableOpacity style={containerStyle} onPress={onPressHandler}>
+            <View style={styles.checkboxIconContainer}>
+                <CheckBoxIcon
+                    type={type}
+                    checkedColor={checkedColor}
+                    checked={checked}
+                />
+            </View>
+            {content}
+        </TouchableOpacity>
     )
 }
 
@@ -118,10 +144,19 @@ const styles = StyleSheet.create({
         marginTop: 2,
         paddingBottom: 12,
         paddingTop: 12,
+        paddingHorizontal: 15,
     },
     text: {
         color: Colors.surveyContent,
         fontWeight: 'normal',
+    },
+    checkboxIconContainer: {
+        marginRight: 15,
+        marginVertical: 3,
+    },
+    checkboxIcon: {
+        width: 20,
+        aspectRatio: 1,
     },
 })
 
