@@ -3,15 +3,29 @@
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
+  "scripts": {
+    "test": "jest"
+  },
   "peerDependencies": {
+    "@dropthought/dropthought-data": "*",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
-    "react-native": "^0.59.3",
-    "@dropthought/dropthought-data": "*"
+    "react-native": "^0.59.3"
   },
   "dependencies": {
     "@react-native-community/hooks": "^2.5.1",
     "i18next": "^19.4.4",
     "ramda": "^0.27.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-native": "^3.1.0",
+    "@testing-library/react-native": "^5.0.3"
+  },
+  "jest": {
+    "preset": "@testing-library/react-native",
+    "transformIgnorePatterns": [],
+    "setupFilesAfterEnv": [
+      "../../scripts/jestSetup.js"
+    ]
   }
 }
