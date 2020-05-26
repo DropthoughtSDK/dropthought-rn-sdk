@@ -28,4 +28,10 @@ export const Colors = {
     versionGrey: '#8c8c8c',
     startSurveyActionTitle: '#939393',
     inputPlaceholder: '#a5a5a5',
+    progressBarText: '#5f626a',
 }
+
+// https://css-tricks.com/8-digit-hex-codes/
+export const opacity10 = (color) => `${color}1a`
+export const opacity15 = (color) => `${color}26`
+export const opacity30 = (color) => `${color}4d`

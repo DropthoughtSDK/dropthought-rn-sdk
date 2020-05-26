@@ -3,7 +3,11 @@ import {StyleSheet, Image, View, Text, TouchableOpacity} from 'react-native'
 import PropTypes from 'prop-types'
 
 import {useDimensionWidthType} from '../hooks/useWindowDimensions'
-import GlobalStyle, {Colors, QuestionContentTextSize} from '../styles'
+import GlobalStyle, {
+    Colors,
+    QuestionContentTextSize,
+    opacity15,
+} from '../styles'
 import i18n from '../translation'
 
 const noop = () => undefined
@@ -82,7 +86,7 @@ function OptionWithHighlight(props) {
         {
             // if checked, background color add opacity
             // https://css-tricks.com/8-digit-hex-codes/
-            backgroundColor: checked ? `${checkedColor}26` : Colors.white,
+            backgroundColor: checked ? opacity15(checkedColor) : Colors.white,
         },
         containerStyleFromProps,
         rtl && GlobalStyle.flexRowReverse,
