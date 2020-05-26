@@ -10,6 +10,7 @@ import {useLayout} from '@react-native-community/hooks'
 
 import {useWindowDimensions} from '../hooks/useWindowDimensions'
 import QuestionContainer from './QuestionContainer'
+import SurveyProgressBar from './SurveyProgressBar'
 import GlobalStyle, {Colors} from '../styles'
 
 /** @type {import('@dropthought/dropthought-data').Survey} */
@@ -227,6 +228,7 @@ const SurveyScreenLayout = () => {
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
+            <SurveyProgressBar survey={surveyMockData} />
         </View>
     )
 }
@@ -240,12 +242,13 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         flex: 1,
-        paddingHorizontal: '8%',
+        paddingHorizontal: 30,
         backgroundColor: Colors.white,
     },
     scrollViewContentContainer: {
         flexGrow: 1,
         alignItems: 'center',
+        paddingBottom: 30,
     },
 
     // where the questions and submit/page buttons go

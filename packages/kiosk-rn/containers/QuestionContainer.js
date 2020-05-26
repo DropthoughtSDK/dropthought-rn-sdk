@@ -1,6 +1,11 @@
-import React from 'react'
+import * as React from 'react'
 import {View} from 'react-native'
 
+import {
+    useFeedbackByQid,
+    useFeedbackDispatch,
+    updateFeedback,
+} from '../contexts/feedback'
 import SingleChoiceQuestion from '../components/SingleChoiceQuestion'
 import MultiChoiceQuestion from '../components/MultiChoiceQuestion'
 import SmileyRatingQuestion from '../components/SmileyRatingQuestion'
@@ -23,7 +28,6 @@ const TempComponent = ({question}) => {
 /**
  * @typedef {Object} QuestionContainerProps
  * @property {Question} question
- * @property {Feedback} feedback
  * @property {(feedback: Feedback) => void} onFeedback
  * @property {boolean} forgot
  * @property {string} themeColor - use hex color string
@@ -31,10 +35,24 @@ const TempComponent = ({question}) => {
  */
 
 /**
+ * @type {React.FunctionComponent<QuestionContainerProps>}
  * @param {QuestionContainerProps} props
  */
 const QuestionContainer = (props) => {
+    const {onFeedback: propsOnFeedback} = props
+
     let QuestionComponent = TempComponent
+
+    // get/update feedback to context
+    const feedback = useFeedbackByQid(props.question.questionId)
+    const feedbackDispatch = useFeedbackDispatch()
+    const onFeedbackHandler = React.useCallback(
+        (updatedFeedback) => {
+            updateFeedback(feedbackDispatch, updatedFeedback)
+            propsOnFeedback && propsOnFeedback(updateFeedback)
+        },
+        [feedbackDispatch, propsOnFeedback],
+    )
 
     switch (props.question.type) {
         case 'singleChoice':
@@ -57,8 +75,8 @@ const QuestionContainer = (props) => {
     return (
         <QuestionComponent
             {...props}
-            feedback={undefined}
-            onFeedback={() => undefined}
+            feedback={feedback}
+            onFeedback={onFeedbackHandler}
         />
     )
 }
