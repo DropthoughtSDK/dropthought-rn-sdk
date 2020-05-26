@@ -15,33 +15,32 @@ const fakeSmiley = (
     <SmileyIcon selected={false} onPress={noop} source={null} label="" />
 )
 
+const getInitialSelectedValue = (feedback, question) => {
+    let prevAnswer
+    if (feedback && feedback.answers && feedback.answers[0]) {
+        prevAnswer = parseInt(feedback.answers[0], 10)
+    }
+    return question.options.map((_option, index) => prevAnswer === index)
+}
+
 const SmileyRatingQuestion = ({question, onFeedback, feedback, forgot}) => {
-    const [selected, setSelected] = React.useState([])
+    const [selected, setSelected] = React.useState(
+        getInitialSelectedValue(feedback, question),
+    )
 
-    React.useEffect(() => {
-        setSelected(getInitialSelectedValue())
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    const getInitialSelectedValue = () => {
-        let prevAnswer
-        if (feedback && feedback.answers && feedback.answers[0]) {
-            // eslint-disable-next-line radix
-            prevAnswer = parseInt(feedback.answers[0])
-        }
-        return question.options.map((_option, index) => prevAnswer === index)
-    }
-
-    const setSelectedAndFeedback = (index) => {
-        let selectedMap = question.options.map(() => false)
-        selectedMap[index] = true
-        setSelected(selectedMap)
-        onFeedback({
-            questionId: question.questionId,
-            answers: [index],
-            type: 'rating',
-        })
-    }
+    const setSelectedAndFeedback = React.useCallback(
+        (index) => {
+            let selectedMap = question.options.map(() => false)
+            selectedMap[index] = true
+            setSelected(selectedMap)
+            onFeedback({
+                questionId: question.questionId,
+                answers: [index],
+                type: 'rating',
+            })
+        },
+        [onFeedback, question.options, question.questionId],
+    )
 
     const rtl = i18n.dir() === 'rtl'
     const dimensionWidthType = useDimensionWidthType()
@@ -239,7 +238,7 @@ const SmileyRatingQuestion = ({question, onFeedback, feedback, forgot}) => {
     )
 }
 
-export default SmileyRatingQuestion
+export default React.memo(SmileyRatingQuestion)
 
 SmileyRatingQuestion.propTypes = {
     question: PropTypes.object,
