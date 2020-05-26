@@ -3,6 +3,7 @@ import {View} from 'react-native'
 
 import SingleChoiceQuestion from '../components/SingleChoiceQuestion'
 import MultiChoiceQuestion from '../components/MultiChoiceQuestion'
+import SmileyRatingQuestion from '../components/SmileyRatingQuestion'
 import MandatoryTitle from '../components/MandatoryTitle'
 import GlobalStyle from '../styles'
 
@@ -41,6 +42,13 @@ const QuestionContainer = (props) => {
             break
         case 'multiChoice':
             QuestionComponent = MultiChoiceQuestion
+            break
+        case 'rating':
+            if (props.question.subType === 'smiley') {
+                QuestionComponent = SmileyRatingQuestion
+            } else {
+                QuestionComponent = TempComponent
+            }
             break
         default:
             QuestionComponent = TempComponent
