@@ -9,6 +9,7 @@ import {
 import SingleChoiceQuestion from '../components/SingleChoiceQuestion'
 import MultiChoiceQuestion from '../components/MultiChoiceQuestion'
 import SmileyRatingQuestion from '../components/SmileyRatingQuestion'
+import SliderRatingQuestion from '../components/SliderRatingQuestion'
 import MandatoryTitle from '../components/MandatoryTitle'
 import GlobalStyle from '../styles'
 
@@ -65,7 +66,7 @@ const QuestionContainer = (props) => {
             if (props.question.subType === 'smiley') {
                 QuestionComponent = SmileyRatingQuestion
             } else {
-                QuestionComponent = TempComponent
+                QuestionComponent = SliderRatingQuestion
             }
             break
         default:
