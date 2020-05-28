@@ -11,17 +11,25 @@ const SurveyScreen = (props) => {
     const {navigation, route} = props
     const pageIndex = route.params.pageIndex || 0
 
-    const onNextPageHandler = React.useCallback(() => {
-        navigation.push('Survey', {
-            pageIndex: pageIndex + 1,
-        })
-    }, [navigation, pageIndex])
+    const onNextPageHandler = React.useCallback(
+        (nextPageIndex) => {
+            navigation.push('Survey', {
+                pageIndex: nextPageIndex,
+            })
+        },
+        [navigation],
+    )
+
+    const onSubmitHandler = React.useCallback(() => {
+        console.log('submit')
+    }, [])
 
     return (
         <SurveyScreenLayout
             pageIndex={pageIndex}
             onNextPage={onNextPageHandler}
             onPrevPage={navigation.pop}
+            onSubmit={onSubmitHandler}
         />
     )
 }

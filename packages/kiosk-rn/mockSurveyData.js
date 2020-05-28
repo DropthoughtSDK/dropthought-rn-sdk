@@ -349,7 +349,7 @@ export const multiPagesLogicSurvey = {
                 id: '4bb2851f-d21b-46d7-ab17-b4ba08c34c07',
                 toPageId: 'a915fe8d-e462-4509-be4f-0c4d187a4cd3',
                 condition:
-                    'e77e0660-5f5d-4929-a37d-25a9bffe9cde.answ.0&&8d3ed940-6549-4a0d-a79b-f13312f458b6.answ.0&&ec6c98ba-1de0-4197-a2a1-d3db38bcf920.answ.0',
+                    'e77e0660-5f5d-4929-a37d-25a9bffe9cde.answ.0||8d3ed940-6549-4a0d-a79b-f13312f458b6.answ.0||ec6c98ba-1de0-4197-a2a1-d3db38bcf920.answ.0',
                 ruleIndex: 0,
                 mode: 'noChange',
             },

@@ -1,7 +1,10 @@
 import * as React from 'react'
 import {StyleSheet, View} from 'react-native'
 
-import {questionFeedbackValidator} from '@dropthought/dropthought-data'
+import {
+    questionFeedbackValidator,
+    nextPage,
+} from '@dropthought/dropthought-data'
 
 import {
     DimensionWidthType,
@@ -16,7 +19,6 @@ const DummyButton = ({width}) => <View style={{width}} />
 
 /** @typedef {import('../contexts/feedback').FeedbackReducerState} FeedbackReducerState*/
 /** @typedef {import('@dropthought/dropthought-data').Page} Page*/
-/** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
 /**
  * @typedef {import('./SurveyScreenLayout').SurveyScreenLayoutProps} SurveyActionButtonsProps
  */
@@ -41,7 +43,7 @@ const SurveyActionButtons = (props) => {
     const feedbackState = useFeedbackState()
     const dimensionWidthType = useDimensionWidthType()
     const rtl = i18n.dir() === 'rtl'
-    const {survey, pageIndex = 0, onPrevPage, onNextPage} = props
+    const {survey, pageIndex = 0, onPrevPage, onNextPage, onSubmit} = props
 
     const lastPage = pageIndex === survey.pageOrder.length - 1
     const currentPage = survey.pages[pageIndex]
@@ -50,35 +52,49 @@ const SurveyActionButtons = (props) => {
         onPrevPage()
     }, [onPrevPage])
 
+    // check if feedbacks are valid, apply the skip-logic rule, only call onNextPage when valid
     const onNextPressHandler = React.useCallback(() => {
-        // check if feedbacks are valid, only call onNextPage when valid
         const isValid = validatePageFeedbacks(currentPage, feedbackState)
         if (isValid) {
-            onNextPage()
+            const nextPageIndex = nextPage(
+                pageIndex,
+                currentPage.pageId,
+                feedbackState.feedbacksMap,
+                survey,
+            )
+            if (nextPageIndex === -1) {
+                onSubmit()
+            } else {
+                onNextPage(nextPageIndex)
+            }
         }
-    }, [currentPage, feedbackState, onNextPage])
+    }, [currentPage, feedbackState, onNextPage, onSubmit, pageIndex, survey])
 
     const onSubmitPressHandler = React.useCallback(() => {}, [])
 
-    let PrevButton = Button
+    let LeftButtonComponent = Button
     if (!pageIndex || pageIndex <= 0) {
-        PrevButton = DummyButton
+        // why use a dummy button? we use 'space-between' to layout the buttons
+        LeftButtonComponent = DummyButton
     }
+
     const themeColor = props.survey.surveyProperty.hexCode
     const btnWidth = dimensionWidthType === DimensionWidthType.phone ? 76 : 100
     return (
         <View style={[styles.container, rtl && GlobalStyle.flexRowReverse]}>
-            <PrevButton
+            <LeftButtonComponent
                 width={btnWidth}
                 title="Back"
                 color={themeColor}
                 onPress={onBackPressHandler}
+                containerStyle={styles.leftBtnContainer}
             />
             <Button
                 width={btnWidth}
                 title={lastPage ? 'Submit' : 'Next'}
                 color={themeColor}
                 onPress={lastPage ? onSubmitPressHandler : onNextPressHandler}
+                containerStyle={styles.rightBtnContainer}
             />
         </View>
     )

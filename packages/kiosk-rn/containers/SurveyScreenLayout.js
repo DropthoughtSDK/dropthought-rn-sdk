@@ -24,14 +24,14 @@ import {singlePageSurvey, multiPagesLogicSurvey} from '../mockSurveyData'
  * @property {number} pageIndex - current page index (start from 0)
  * @property {Survey} survey
  * @property {()=>void} onSubmit
- * @property {()=>void} onNextPage
+ * @property {(nextPageIndex: number)=>void} onNextPage
  * @property {()=>void} onPrevPage
  * @property {()=>void} onPageEnter
  * @property {()=>void} onPageLeave
  * @property {()=>void} onFeedback
  */
 
-const surveyMockData = singlePageSurvey
+const surveyMockData = multiPagesLogicSurvey
 
 const DEFAULT_KEYBOARD_VERTICAl_OffSET = 64
 
@@ -90,6 +90,7 @@ export default SurveyScreenLayout
 const noop = () => undefined
 SurveyScreenLayout.defaultProps = {
     pageIndex: 0,
+    onSubmit: noop,
     onNextPage: noop,
     onPrevPage: noop,
 }
