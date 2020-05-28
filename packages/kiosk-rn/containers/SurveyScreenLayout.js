@@ -12,6 +12,7 @@ import {useWindowDimensions} from '../hooks/useWindowDimensions'
 import QuestionContainer from './QuestionContainer'
 import SurveyProgressBar from './SurveyProgressBar'
 import SurveyFooter from './SurveyFooter'
+import SurveyPageIndicator from '../components/SurveyPageIndicator'
 import GlobalStyle, {Colors} from '../styles'
 
 import {singlePageSurvey, multiPagesLogicSurvey} from '../mockSurveyData'
@@ -63,6 +64,10 @@ const SurveyScreenLayout = (props) => {
 
     return (
         <View onLayout={onLayout} style={GlobalStyle.flex1}>
+            <SurveyPageIndicator
+                pageIndex={pageIndex}
+                survey={surveyMockData}
+            />
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : null}
                 keyboardVerticalOffset={keyboardVerticalOffset}
