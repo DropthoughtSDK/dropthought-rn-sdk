@@ -3,6 +3,8 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'RNDemoApp' do
+  pod 'DropthoughtSDK', :path => '../iosSDK'
+
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"

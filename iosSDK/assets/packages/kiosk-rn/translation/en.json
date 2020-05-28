@@ -20,7 +20,7 @@
         "survey-next": "Continue",
         "survey-submit": "Submit",
         "mandatory": "You forgot to answer this question.",
-        "progress-bar": "{{percentage}}% of 100% completed",
+        "progress-bar": "{{percentage}}% Completed",
         "char-left": "Characters left: {{left}}",
         "idle-warning": "Do you want to continue the survey?",
         "other-option": "Other:",

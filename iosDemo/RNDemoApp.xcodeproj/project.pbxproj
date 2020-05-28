@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,8 +14,6 @@
 		B3DA79C1246A557000375EA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DA79BF246A557000375EA4 /* Main.storyboard */; };
 		B3DA79C3246A557100375EA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3DA79C2246A557100375EA4 /* Assets.xcassets */; };
 		B3DA79C6246A557100375EA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3DA79C4246A557100375EA4 /* LaunchScreen.storyboard */; };
-		B3DA7E57246CFE0D00375EA4 /* DropthoughtSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E56246CFE0D00375EA4 /* DropthoughtSDK.framework */; };
-		B3DA7E58246CFE1300375EA4 /* DropthoughtSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B3DA7E56246CFE0D00375EA4 /* DropthoughtSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,7 +23,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B3DA7E58246CFE1300375EA4 /* DropthoughtSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -44,7 +41,6 @@
 		B3DA79C2246A557100375EA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3DA79C5246A557100375EA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3DA79C7246A557100375EA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3DA7E56246CFE0D00375EA4 /* DropthoughtSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DropthoughtSDK.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +48,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3DA7E57246CFE0D00375EA4 /* DropthoughtSDK.framework in Frameworks */,
 				02AC2B997B127C98E676677B /* Pods_RNDemoApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,7 +69,6 @@
 				1BC0E63215138BE7813232E7 /* Pods-RNDemoApp.debug.xcconfig */,
 				25CBDD8CA2B1D154ED5B64EA /* Pods-RNDemoApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -99,7 +93,6 @@
 		B3DA79B8246A557000375EA4 /* RNDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				B3DA7E56246CFE0D00375EA4 /* DropthoughtSDK.framework */,
 				B3DA79B9246A557000375EA4 /* AppDelegate.swift */,
 				B3DA79BB246A557000375EA4 /* SceneDelegate.swift */,
 				B3DA79BD246A557000375EA4 /* ViewController.swift */,
@@ -124,6 +117,8 @@
 				B3DA79B4246A557000375EA4 /* Resources */,
 				B3DA7A0D246A93B800375EA4 /* Embed Frameworks */,
 				6F514580912FDAD2D2A68F37 /* [CP] Embed Pods Frameworks */,
+				B398DD23247E2887004AEEF7 /* ShellScript */,
+				3320E24487F27E3DF94B0C70 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -181,6 +176,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3320E24487F27E3DF94B0C70 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNDemoApp/Pods-RNDemoApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNDemoApp/Pods-RNDemoApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNDemoApp/Pods-RNDemoApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4486DBE1EEC8655F479ED719 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -219,6 +231,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNDemoApp/Pods-RNDemoApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		B398DD23247E2887004AEEF7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -376,6 +405,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KFP6944LXB;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RNDemoApp",
@@ -401,6 +431,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KFP6944LXB;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/RNDemoApp",
