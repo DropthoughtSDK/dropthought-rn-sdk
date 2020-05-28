@@ -27,7 +27,7 @@ const SliderRatingQuestion = ({
     forgot,
     themeColor,
 }) => {
-    const [value, setValue] = React.useState(getInitialSelectedValue())
+    const [value, setValue] = React.useState(getInitialSelectedValue(feedback))
     const minimumValue = MIN_VALUE
     const maximumValue = parseInt(question.scale)
 
