@@ -5,9 +5,11 @@ import {
     KeyboardAvoidingView,
     Platform,
     View,
+    findNodeHandle,
 } from 'react-native'
 import {useLayout} from '@react-native-community/hooks'
 
+import {SurveyPageProvider} from '../contexts/survey-page'
 import {useWindowDimensions} from '../hooks/useWindowDimensions'
 import QuestionContainer from './QuestionContainer'
 import SurveyProgressBar from './SurveyProgressBar'
@@ -32,7 +34,7 @@ import {singlePageSurvey, multiPagesLogicSurvey} from '../mockSurveyData'
  * @property {()=>void} onFeedback
  */
 
-const surveyMockData = singlePageSurvey
+const surveyMockData = multiPagesLogicSurvey
 
 const DEFAULT_KEYBOARD_VERTICAl_OffSET = 64
 
@@ -44,6 +46,29 @@ const SurveyScreenLayout = (props) => {
     const {pageIndex = 0} = props
     const {onLayout, ...layout} = useLayout()
     const {height} = useWindowDimensions()
+    const scrollViewRef = React.useRef()
+
+    // when validation start, set the state
+    const [validationStarted, setValidationStarted] = React.useState(false)
+    const onValidationStartHandler = React.useCallback(() => {
+        setValidationStarted(true)
+    }, [])
+
+    // when validation failed, scroll to the ref
+    const onValidationFailedHandler = React.useCallback((_, targetReg) => {
+        if (targetReg && scrollViewRef.current) {
+            targetReg.measureLayout(
+                findNodeHandle(scrollViewRef.current),
+                (_x, y) => {
+                    scrollViewRef.current.scrollTo({
+                        x: 0,
+                        y: y,
+                        animated: true,
+                    })
+                },
+            )
+        }
+    }, [])
 
     const questions = surveyMockData.pages[pageIndex].questions.map(
         (question) => {
@@ -51,7 +76,7 @@ const SurveyScreenLayout = (props) => {
                 <QuestionContainer
                     key={question.questionId}
                     question={question}
-                    forgot={false}
+                    validationStarted={validationStarted}
                     themeColor={surveyMockData.surveyProperty.hexCode}
                 />
             )
@@ -73,12 +98,18 @@ const SurveyScreenLayout = (props) => {
                 keyboardVerticalOffset={keyboardVerticalOffset}
                 style={styles.keyboardAvoidingViewStyle}>
                 <ScrollView
+                    ref={scrollViewRef}
                     style={styles.scrollView}
                     contentContainerStyle={styles.scrollViewContentContainer}>
                     {/* man body content: questions and buttons */}
                     <View style={styles.bodyContent}>
                         {questions}
-                        <SurveyFooter {...props} survey={surveyMockData} />
+                        <SurveyFooter
+                            {...props}
+                            survey={surveyMockData}
+                            onValidationFailed={onValidationFailedHandler}
+                            onValidationStart={onValidationStartHandler}
+                        />
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
@@ -87,7 +118,17 @@ const SurveyScreenLayout = (props) => {
     )
 }
 
-export default SurveyScreenLayout
+// export default SurveyScreenLayout
+
+const SurveyScreenLayoutWrapper = (props) => {
+    return (
+        <SurveyPageProvider>
+            <SurveyScreenLayout {...props} />
+        </SurveyPageProvider>
+    )
+}
+
+export default SurveyScreenLayoutWrapper
 
 const noop = () => undefined
 SurveyScreenLayout.defaultProps = {

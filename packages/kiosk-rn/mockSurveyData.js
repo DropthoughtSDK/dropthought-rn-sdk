@@ -195,7 +195,7 @@ export const multiPagesLogicSurvey = {
             pageTitle: 'Mandatory Questions',
             questions: [
                 {
-                    mandatory: false,
+                    mandatory: true,
                     metaDataType: '',
                     options: ['Strongly Disagree', 'Strongly Agree'],
                     questionBrand: '',
@@ -286,7 +286,7 @@ export const multiPagesLogicSurvey = {
                     type: 'singleChoice',
                 },
                 {
-                    mandatory: false,
+                    mandatory: true,
                     metaDataType: '',
                     options: [
                         'Rock music ',

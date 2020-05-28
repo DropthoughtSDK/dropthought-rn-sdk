@@ -1,5 +1,6 @@
 import * as React from 'react'
 import {View} from 'react-native'
+import {mandatoryQuestionValidator} from '@dropthought/dropthought-data'
 
 import {
     useFeedbackByQid,
@@ -16,10 +17,10 @@ import GlobalStyle from '../styles'
 /**
  * @param {QuestionContainerProps} props
  */
-const TempComponent = ({question}) => {
+const TempComponent = ({question, forgot}) => {
     return (
         <View style={GlobalStyle.questionContainer}>
-            <MandatoryTitle question={question} />
+            <MandatoryTitle question={question} forgot={forgot} />
         </View>
     )
 }
@@ -29,10 +30,8 @@ const TempComponent = ({question}) => {
 /**
  * @typedef {Object} QuestionContainerProps
  * @property {Question} question
- * @property {(feedback: Feedback) => void} onFeedback
- * @property {boolean} forgot
+ * @property {boolean} validationStarted
  * @property {string} themeColor - use hex color string
- * @property {() => void=} onChange
  */
 
 /**
@@ -40,7 +39,7 @@ const TempComponent = ({question}) => {
  * @param {QuestionContainerProps} props
  */
 const QuestionContainer = (props) => {
-    const {onFeedback: propsOnFeedback} = props
+    const {onFeedback: propsOnFeedback, validationStarted} = props
 
     let QuestionComponent = TempComponent
 
@@ -54,6 +53,11 @@ const QuestionContainer = (props) => {
         },
         [feedbackDispatch, propsOnFeedback],
     )
+
+    // whether to display the forgot warning message
+    const forgot =
+        validationStarted &&
+        !mandatoryQuestionValidator(props.question, feedback)
 
     switch (props.question.type) {
         case 'singleChoice':
@@ -78,6 +82,7 @@ const QuestionContainer = (props) => {
             {...props}
             feedback={feedback}
             onFeedback={onFeedbackHandler}
+            forgot={forgot}
         />
     )
 }
