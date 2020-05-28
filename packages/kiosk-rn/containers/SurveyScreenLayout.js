@@ -11,7 +11,7 @@ import {useLayout} from '@react-native-community/hooks'
 import {useWindowDimensions} from '../hooks/useWindowDimensions'
 import QuestionContainer from './QuestionContainer'
 import SurveyProgressBar from './SurveyProgressBar'
-import SurveyActionButtons from './SurveyActionButtons'
+import SurveyFooter from './SurveyFooter'
 import GlobalStyle, {Colors} from '../styles'
 
 import {singlePageSurvey, multiPagesLogicSurvey} from '../mockSurveyData'
@@ -31,7 +31,7 @@ import {singlePageSurvey, multiPagesLogicSurvey} from '../mockSurveyData'
  * @property {()=>void} onFeedback
  */
 
-const surveyMockData = multiPagesLogicSurvey
+const surveyMockData = singlePageSurvey
 
 const DEFAULT_KEYBOARD_VERTICAl_OffSET = 64
 
@@ -73,10 +73,7 @@ const SurveyScreenLayout = (props) => {
                     {/* man body content: questions and buttons */}
                     <View style={styles.bodyContent}>
                         {questions}
-                        <SurveyActionButtons
-                            {...props}
-                            survey={surveyMockData}
-                        />
+                        <SurveyFooter {...props} survey={surveyMockData} />
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
