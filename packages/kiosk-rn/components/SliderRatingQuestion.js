@@ -232,6 +232,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         width: '100%',
+    ...Platform.select({
+            android: {
+                paddingHorizontal: 7,
+            },
+        }),
     },
     label: {
         color: Colors.black,
