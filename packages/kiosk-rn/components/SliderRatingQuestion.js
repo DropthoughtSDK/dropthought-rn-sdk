@@ -41,75 +41,69 @@ const SliderRatingQuestion = ({
     }
 
     const getSliderIndicator = () => {
-        return [...Array(maximumValue).keys()].map((valueData, index) => (
-            <>
-                {dimensionWidthType === DimensionWidthType.phone ? (
-                    <TouchableHighlight
-                        underlayColor={Colors.white}
-                        key={index.toString()}
-                        onPress={() => {
-                            onFeedback({
-                                questionId: question.questionId,
-                                answers: [index],
-                                type: 'rating',
-                            })
-                            setValue(index)
-                        }}>
-                        <View
+        return [...Array(maximumValue).keys()].map((valueData, index) =>
+            dimensionWidthType === DimensionWidthType.phone ? (
+                <TouchableHighlight
+                    underlayColor={Colors.white}
+                    key={index.toString()}
+                    onPress={() => {
+                        onFeedback({
+                            questionId: question.questionId,
+                            answers: [index],
+                            type: 'rating',
+                        })
+                        setValue(index)
+                    }}>
+                    <View
+                        style={[
+                            styles.backgroundPhone,
+                            index === value ? getBackgroundColorStyle() : {},
+                        ]}>
+                        <Text
                             style={[
-                                styles.backgroundPhone,
                                 index === value
-                                    ? getBackgroundColorStyle()
-                                    : {},
+                                    ? styles.selected_label
+                                    : styles.label,
                             ]}>
-                            <Text
-                                style={[
-                                    index === value
-                                        ? styles.selected_label
-                                        : styles.label,
-                                ]}>
-                                {valueData + minimumValue}
-                                {valueData === 0 && ' - ' + question.options[0]}
-                                {valueData + minimumValue === maximumValue &&
-                                    ' - ' +
-                                        question.options[
-                                            question.options.length - 1
-                                        ]}
-                            </Text>
-                        </View>
-                    </TouchableHighlight>
-                ) : (
-                    <TouchableHighlight
-                        underlayColor={Colors.white}
-                        key={index.toString()}
-                        onPress={() => {
-                            onFeedback({
-                                questionId: question.questionId,
-                                answers: [index],
-                                type: 'rating',
-                            })
-                            setValue(index)
-                        }}>
-                        <View
+                            {valueData + minimumValue}
+                            {valueData === 0 && ' - ' + question.options[0]}
+                            {valueData + minimumValue === maximumValue &&
+                                ' - ' +
+                                    question.options[
+                                        question.options.length - 1
+                                    ]}
+                        </Text>
+                    </View>
+                </TouchableHighlight>
+            ) : (
+                <TouchableHighlight
+                    underlayColor={Colors.white}
+                    key={index.toString()}
+                    onPress={() => {
+                        onFeedback({
+                            questionId: question.questionId,
+                            answers: [index],
+                            type: 'rating',
+                        })
+                        setValue(index)
+                    }}>
+                    <View
+                        style={[
+                            styles.backgroundTablet,
+                            index === value ? getBackgroundColorStyle() : {},
+                        ]}>
+                        <Text
                             style={[
-                                styles.backgroundTablet,
                                 index === value
-                                    ? getBackgroundColorStyle()
-                                    : {},
+                                    ? styles.selected_label
+                                    : styles.label,
                             ]}>
-                            <Text
-                                style={[
-                                    index === value
-                                        ? styles.selected_label
-                                        : styles.label,
-                                ]}>
-                                {valueData + minimumValue}
-                            </Text>
-                        </View>
-                    </TouchableHighlight>
-                )}
-            </>
-        ))
+                            {valueData + minimumValue}
+                        </Text>
+                    </View>
+                </TouchableHighlight>
+            ),
+        )
     }
 
     const getWidthStyle = (rtl = false) => {
@@ -232,7 +226,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         width: '100%',
-    ...Platform.select({
+        ...Platform.select({
             android: {
                 paddingHorizontal: 7,
             },
