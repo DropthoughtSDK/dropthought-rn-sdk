@@ -76,7 +76,7 @@ export const metaDataTypeQuestionValidator = (question, value) => {
  * @param {Feedback} feedback
  * @returns {boolean}
  */
-export const mandatoryQuestionValidator = (question, feedback) => {
+export const mandatoryQuestionValidator = (question, feedback = {}) => {
     if (!question.mandatory) return true
 
     // check if feedback has answer

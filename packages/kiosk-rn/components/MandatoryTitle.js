@@ -1,6 +1,8 @@
 import {View, Text, StyleSheet} from 'react-native'
 import * as React from 'react'
 import PropTypes from 'prop-types'
+
+import {useAddMandatoryRef} from '../contexts/survey-page'
 import GlobalStyle, {Colors} from '../styles'
 import QuestionWarningMessage from './QuestionWarningMessage'
 import i18n from '../translation'
@@ -38,8 +40,18 @@ const MandatoryTitle = (props) => {
     const rtl = i18n.dir() === 'rtl'
     const dimensionWidthType = useDimensionWidthType()
 
+    const ref = React.useRef()
+    const addMandatoryRef = useAddMandatoryRef()
+
+    React.useEffect(() => {
+        if (ref.current && props.question.mandatory) {
+            addMandatoryRef(props.question.questionId, ref.current)
+        }
+    }, [addMandatoryRef, props.question.mandatory, props.question.questionId])
+
     return (
         <View
+            ref={ref}
             style={[
                 styles.horizontal,
                 props.style,
@@ -60,61 +72,6 @@ const MandatoryTitle = (props) => {
 }
 
 export default MandatoryTitle
-
-/*
-class MandatoryTitle extends React.Component {
-    state = {ref: undefined}
-    constructor(props) {
-        super(props)
-        this.setRef = this.setRef.bind(this)
-    }
-
-    _renderTitle(title) {
-        return title.split(' ').map((text, index) => (
-            <Text key={index} style={styles.questionTitle}>
-                {text + ' '}
-            </Text>
-        ))
-    }
-
-    setRef(ref) {
-        this.setState({ref})
-    }
-
-    render() {
-        // let context = this.context
-        const rtl = i18n.dir() === 'rtl'
-
-        // if (this.props.forgot || this.props.invalidMessage) {
-        //   context.unAnsweredRefs[this.props.question.questionId] = this.state.ref
-        // }
-
-        return (
-            <View
-                ref={this.setRef}
-                style={[
-                    styles.horizontal,
-                    this.props.style,
-                    rtl && GlobalStyle.flexRowReverse,
-                ]}>
-                {this._renderTitle(this.props.question.questionTitle)}
-                {this.props.question.mandatory && (
-                    <Text style={styles.hint}>*</Text>
-                )}
-                <QuestionWarningMessage
-                    // forgot message has higher priority than custom invalid message
-                    message={
-                        this.props.forgot
-                            ? i18n.t('survey:mandatory')
-                            : this.props.invalidMessage
-                    }
-                />
-            </View>
-        )
-    }
-}
-// MandatoryTitle.contextType = SurveyContext
-*/
 
 MandatoryTitle.propTypes = {
     forgot: PropTypes.bool,
