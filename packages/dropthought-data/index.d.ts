@@ -85,3 +85,4 @@ export interface Feedback {
 }
 
 export * from './Question'
+export * from './SkipLogic'
