@@ -44,16 +44,18 @@ const SurveyScreenLayout = (props) => {
     const {onLayout, ...layout} = useLayout()
     const {height} = useWindowDimensions()
 
-    const questions = surveyMockData.pages[0].questions.map((question) => {
-        return (
-            <QuestionContainer
-                key={question.questionId}
-                question={question}
-                forgot={false}
-                themeColor={surveyMockData.surveyProperty.hexCode}
-            />
-        )
-    })
+    const questions = surveyMockData.pages[pageIndex].questions.map(
+        (question) => {
+            return (
+                <QuestionContainer
+                    key={question.questionId}
+                    question={question}
+                    forgot={false}
+                    themeColor={surveyMockData.surveyProperty.hexCode}
+                />
+            )
+        },
+    )
 
     const keyboardVerticalOffset = layout.height
         ? height - layout.height
