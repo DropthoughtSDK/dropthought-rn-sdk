@@ -11,6 +11,23 @@ import React
 
 public class Survey: NSObject {
     public static func present(_ from: UIViewController, programId: String, surveyId: String) {
+        printBundles()
+
+        guard let bundleURL = Bundle(for: Survey.self).url(forResource: "main", withExtension: "bundle"),
+            let jsBundleLocation = Bundle(url: bundleURL)?.url(forResource: "main", withExtension: "jsbundle") else {
+            return
+        }
+        let data = ["programId": programId, "surveyId": surveyId]
+        let rootView = RCTRootView(bundleURL: jsBundleLocation, moduleName: "dropthought-sdk", initialProperties: data, launchOptions: nil)
+        
+        let viewController = UIViewController()
+        rootView.frame = UIScreen.main.bounds
+        viewController.view.addSubview(rootView)
+        viewController.modalPresentationStyle = .fullScreen
+        from.present(viewController, animated: true, completion: nil)
+    }
+
+    static func printBundles() {
         let docsPath = Bundle(for: Survey.self).resourcePath!
         let fileManager = FileManager.default
 
@@ -20,20 +37,5 @@ public class Survey: NSObject {
         } catch {
             print(error)
         }
-
-        guard let bundleURL = Bundle(for: Survey.self).url(forResource: "main", withExtension: "bundle"),
-            let jsBundleLocation = Bundle(url: bundleURL)?.url(forResource: "main", withExtension: "jsbundle") else {
-            return
-        }
-
-//        let bundle = Bundle(identifier: "com.bct.tpe.DropthoughtSDK")!
-//        let jsBundleLocation = bundle.url(forResource: "main", withExtension: "jsbundle", subdirectory: nil)!
-        let data = ["programId": programId, "surveyId": surveyId]
-        let rootView = RCTRootView(bundleURL: jsBundleLocation, moduleName: "dropthought-sdk", initialProperties: nil, launchOptions: nil)
-        
-        let viewController = UIViewController()
-        rootView.frame = UIScreen.main.bounds
-        viewController.view.addSubview(rootView)
-        from.present(viewController, animated: true, completion: nil)
     }
 }
