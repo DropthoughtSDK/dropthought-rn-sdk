@@ -77,7 +77,7 @@ export const GlobalStyle = StyleSheet.create({
     // used in OpenQuestion, SliderRatingQuestion, ...the survey question component
     questionContainer: {
         fontSize: 18,
-        marginTop: 48,
+        marginTop: 45,
     },
     textAlignLeft: {
         textAlign: 'left',

@@ -75,6 +75,7 @@ const SurveyScreenLayout = (props) => {
             return (
                 <QuestionContainer
                     key={question.questionId}
+                    anonymous={surveyMockData.anonymous}
                     question={question}
                     validationStarted={validationStarted}
                     themeColor={surveyMockData.surveyProperty.hexCode}

@@ -91,7 +91,7 @@ const questionTitleSize = StyleSheet.create({
 
 const styles = StyleSheet.create({
     hint: {
-        color: Colors.red,
+        color: Colors.mandatoryRed,
         fontSize: 18,
     },
     horizontal: {

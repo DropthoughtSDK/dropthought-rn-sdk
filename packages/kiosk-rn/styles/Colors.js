@@ -29,6 +29,7 @@ export const Colors = {
     startSurveyActionTitle: '#939393',
     inputPlaceholder: '#a5a5a5',
     progressBarText: '#5f626a',
+    mandatoryRed: '#e64119',
 }
 
 // https://css-tricks.com/8-digit-hex-codes/

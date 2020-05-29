@@ -11,6 +11,7 @@ import SingleChoiceQuestion from '../components/SingleChoiceQuestion'
 import MultiChoiceQuestion from '../components/MultiChoiceQuestion'
 import SmileyRatingQuestion from '../components/SmileyRatingQuestion'
 import SliderRatingQuestion from '../components/SliderRatingQuestion'
+import OpenQuestion from '../components/OpenQuestion'
 import MandatoryTitle from '../components/MandatoryTitle'
 import GlobalStyle from '../styles'
 
@@ -29,6 +30,7 @@ const TempComponent = ({question, forgot}) => {
 /** @typedef {import('@dropthought/dropthought-data').Feedback} Feedback */
 /**
  * @typedef {Object} QuestionContainerProps
+ * @property {boolean} anonymous
  * @property {Question} question
  * @property {boolean} validationStarted
  * @property {string} themeColor - use hex color string
@@ -72,6 +74,12 @@ const QuestionContainer = (props) => {
             } else {
                 QuestionComponent = SliderRatingQuestion
             }
+            break
+        case 'nps':
+            QuestionComponent = SliderRatingQuestion
+            break
+        case 'open':
+            QuestionComponent = OpenQuestion
             break
         default:
             QuestionComponent = TempComponent

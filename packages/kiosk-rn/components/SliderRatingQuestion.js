@@ -10,6 +10,7 @@ import {
 } from '../hooks/useWindowDimensions'
 
 const MIN_VALUE = 1
+const NPS_MIN_VALUE = 0
 
 const getInitialSelectedValue = (feedback) => {
     if (feedback && feedback.answers && feedback.answers[0]) {
@@ -28,7 +29,7 @@ const SliderRatingQuestion = ({
     themeColor,
 }) => {
     const [value, setValue] = React.useState(getInitialSelectedValue(feedback))
-    const minimumValue = MIN_VALUE
+    const minimumValue = question.type === 'nps' ? NPS_MIN_VALUE : MIN_VALUE
     const maximumValue = parseInt(question.scale)
 
     const dimensionWidthType = useDimensionWidthType()
