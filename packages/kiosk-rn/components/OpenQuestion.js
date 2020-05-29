@@ -4,7 +4,7 @@ import {
     QuestionMetaDataType,
     metaDataTypeQuestionValidator,
     mandatoryQuestionValidator,
-} from '../lib/Question'
+} from '@dropthought/dropthought-data'
 import GlobalStyle, {Colors} from '../styles'
 import PropTypes from 'prop-types'
 import MandatoryTitle from './MandatoryTitle'
