@@ -158,14 +158,18 @@ const SurveyFooter = (props) => {
         <View style={[styles.container, rtl && GlobalStyle.flexRowReverse]}>
             <LeftButtonComponent
                 width={btnWidth}
-                title="Back"
+                title={i18n.t('survey:survey-back')}
                 color={themeColor}
                 onPress={onBackPressHandler}
                 containerStyle={styles.leftBtnContainer}
             />
             <Button
                 width={btnWidth}
-                title={lastPage ? 'Submit' : 'Next'}
+                title={
+                    lastPage
+                        ? i18n.t('survey:survey-submit')
+                        : i18n.t('survey:survey-next')
+                }
                 color={themeColor}
                 onPress={lastPage ? onSubmitPressHandler : onNextPressHandler}
                 containerStyle={styles.rightBtnContainer}

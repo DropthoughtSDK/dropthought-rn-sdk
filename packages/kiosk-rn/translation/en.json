@@ -17,7 +17,7 @@
     },
     "survey": {
         "survey-back": "Back",
-        "survey-next": "Continue",
+        "survey-next": "Next",
         "survey-submit": "Submit",
         "mandatory": "You forgot to answer this question.",
         "progress-bar": "{{percentage}}% Completed",
@@ -28,12 +28,12 @@
         "metadata-anonymous-warning": "Personal information will not be shared."
     },
     "metadata-question-desc": {
-        "Name": "e.g. John Doe.",
-        "Email": "e.g. john.d@gmail.com.",
-        "Phone": "Please enter country code followed by subscriber number, e.g. +16175551212.",
-        "Number": "Please enter numbers only.",
-        "Date": "Please enter in the format of yyyy/mm/dd, e.g. 2020/03/19.",
-        "String": "Please enter text only."
+        "Name": "e.g. John Doe / Please type Name only",
+        "Email": "e.g. test@test.com / Please type Email only",
+        "Phone": "e.g. +15555555555 / Please type Phone only",
+        "Number": "e.g. 1001 / Please type Number only",
+        "Date": "e.g. 2020/03/19 or 2020-03-19 / Please type Date only",
+        "String": "e.g. Hello123! / Please type Text only"
     },
     "metadata-invalid-message": {
         "Email": "Please respond with email.",
