@@ -85,9 +85,9 @@ MetadataDesc.propTypes = {
  * @property {Question} question
  * @property {Feedback} feedback
  * @property {(feedback: Feedback) => void} onFeedback
- * @property {() => void} onValueChange
+ * @property {() => void} onValueChange // Keep it for Kiosk usage
  * @property {boolean} forgot
- * @property {string} color - use hex color string
+ * @property {string} themeColor - use hex color string
  */
 /**
  * @typedef {Object} OpenQuestionState
@@ -107,10 +107,9 @@ const OpenQuestion = ({
     anonymous,
     question,
     onFeedback,
-    // onValueChange,
+    // onValueChange, // Keep it for Kiosk usage
     feedback,
     forgot,
-    color,
     themeColor,
 }) => {
     const [text, setText] = React.useState(feedback?.answers[0] || '')
@@ -158,20 +157,8 @@ const OpenQuestion = ({
     const hasForgot =
         forgot && !mandatoryQuestionValidator(question, tempFeedback)
 
-    const bottomView = (
-        <View style={[styles.subTextRow, rtl && GlobalStyle.flexRowReverse]}>
-            <Text style={styles.descText}>
-                {showAnonymousWarning &&
-                    i18n.t('survey:metadata-anonymous-warning')}
-            </Text>
-            <Text style={styles.descText}>
-                {characterLeft} / {maxCharacterLength}
-            </Text>
-        </View>
-    )
-
-    return (
-        <View style={GlobalStyle.questionContainer}>
+    const upperView = (
+        <>
             <MandatoryTitle
                 forgot={hasForgot}
                 invalidMessage={
@@ -187,36 +174,58 @@ const OpenQuestion = ({
                 style={styles.title}
             />
             <MetadataDesc question={question} rtl={rtl} />
-            <View
-                style={[
-                    styles.inputBG,
-                    focus && getBackgroundColorStyle(),
-                    question.metaDataType && styles.metaDataTypeInput,
-                    !question.metaDataType && styles.paddingVertical15,
-                ]}>
-                <TextInput
-                    style={[styles.input, rtl && GlobalStyle.textAlignRight]}
-                    multiline={!question.metaDataType}
-                    onChangeText={(t) => {
-                        setText(t)
-                        // onValueChange(text)
-                    }}
-                    placeholder={question.questionBrand}
-                    onEndEditing={onEndEditingHandler}
-                    value={text}
-                    onFocus={() => {
-                        setFocus(true)
-                    }}
-                    onBlur={() => {
-                        setFocus(false)
-                    }}
-                    maxLength={maxCharacterLength}
-                    keyboardType={metadataTypeKeyboard(question.metaDataType)}
-                    autoCapitalize={metadataTypeAutoCapitalize(
-                        question.metaDataType,
-                    )}
-                />
-            </View>
+        </>
+    )
+
+    const inputView = (
+        <View
+            style={[
+                styles.inputBG,
+                focus && getBackgroundColorStyle(),
+                question.metaDataType && styles.metaDataTypeInput,
+                !question.metaDataType && styles.paddingVertical15,
+            ]}>
+            <TextInput
+                style={[styles.input, rtl && GlobalStyle.textAlignRight]}
+                multiline={!question.metaDataType}
+                onChangeText={(t) => {
+                    setText(t)
+                    // onValueChange(text) // Keep it for Kiosk usage
+                }}
+                placeholder={question.questionBrand}
+                onEndEditing={onEndEditingHandler}
+                value={text}
+                onFocus={() => {
+                    setFocus(true)
+                }}
+                onBlur={() => {
+                    setFocus(false)
+                }}
+                maxLength={maxCharacterLength}
+                keyboardType={metadataTypeKeyboard(question.metaDataType)}
+                autoCapitalize={metadataTypeAutoCapitalize(
+                    question.metaDataType,
+                )}
+            />
+        </View>
+    )
+
+    const bottomView = (
+        <View style={[styles.subTextRow, rtl && GlobalStyle.flexRowReverse]}>
+            <Text style={styles.descText}>
+                {showAnonymousWarning &&
+                    i18n.t('survey:metadata-anonymous-warning')}
+            </Text>
+            <Text style={styles.descText}>
+                {characterLeft} / {maxCharacterLength}
+            </Text>
+        </View>
+    )
+
+    return (
+        <View style={GlobalStyle.questionContainer}>
+            {upperView}
+            {inputView}
             {bottomView}
         </View>
     )
@@ -228,13 +237,13 @@ OpenQuestion.propTypes = {
     anonymous: PropTypes.bool,
     question: PropTypes.object,
     onFeedback: PropTypes.func,
-    onValueChange: PropTypes.func,
+    // onValueChange: PropTypes.func,  // Keep it for Kiosk usage
     feedback: PropTypes.shape({
         answers: PropTypes.array,
         questionId: PropTypes.string,
     }),
     forgot: PropTypes.bool,
-    color: PropTypes.string,
+    themeColor: PropTypes.string,
 }
 
 const phoneStyles = StyleSheet.create({
