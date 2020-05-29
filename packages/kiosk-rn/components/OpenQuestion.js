@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, StyleSheet, Text, TextInput} from 'react-native'
+import {View, StyleSheet, Text, TextInput, Platform} from 'react-native'
 import {
     QuestionMetaDataType,
     metaDataTypeQuestionValidator,
@@ -265,9 +265,20 @@ const phoneStyles = StyleSheet.create({
     },
     input: {
         flex: 1,
+
+        // when multi=true, it is important to note that this aligns the text to the top on iOS,
+        // and centers it on Android. Use with textAlignVertical set to top for the same behavior in both platforms.
+        textAlignVertical: 'top', // this is an android only props, won't affect ios
     },
     paddingVertical15: {
-        paddingVertical: 15,
+        ...Platform.select({
+            ios: {
+                paddingVertical: 15,
+            },
+            android: {
+                paddingVertical: 5,
+            },
+        }),
     },
     metaDataTypeInput: {
         fontSize: 14,
