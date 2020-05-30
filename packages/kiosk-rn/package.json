@@ -11,7 +11,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
     "react-native": "^0.59.3",
-    "react-native-safe-area-context": "^1.0.0"
+    "react-native-safe-area-context": "^3.0.2"
   },
   "dependencies": {
     "@react-native-community/hooks": "^2.5.1",
