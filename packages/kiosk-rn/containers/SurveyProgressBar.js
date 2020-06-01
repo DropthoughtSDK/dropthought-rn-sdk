@@ -1,8 +1,10 @@
 import * as React from 'react'
-import {StyleSheet, View} from 'react-native'
+import {StyleSheet, View, Platform} from 'react-native'
 import {sum} from 'ramda'
-import {useSafeAreaInsets} from 'react-native-safe-area-context'
-import {useKeyboard} from '@react-native-community/hooks'
+import {
+    useSafeAreaInsets,
+    initialWindowMetrics,
+} from 'react-native-safe-area-context'
 
 import ProgressBar from '../components/ProgressBar'
 import {useFeedbackState} from '../contexts/feedback'
@@ -56,18 +58,22 @@ const SurveyProgressBar = (props) => {
     const themeColor = props.survey.surveyProperty.hexCode
     const insets = useSafeAreaInsets()
 
-    // somehow, this line would fix an ui issue of a Samsung device
-    const {keyboardShown} = useKeyboard()
+    const insetsBottom =
+        // if it is android, and the insets bottom is not normal,
+        // maybe it is because the keyboard is showed, don't use this insets
+        Platform.OS === 'android' && insets.bottom >= 100
+            ? initialWindowMetrics.insets.bottom
+            : insets.bottom
 
     const containerStyle = React.useMemo(
         () => [
             styles.container,
             {
                 backgroundColor: opacity10(themeColor),
-                paddingBottom: insets.bottom || 15,
+                paddingBottom: insetsBottom || 15,
             },
         ],
-        [insets.bottom, themeColor],
+        [insetsBottom, themeColor],
     )
 
     return (
