@@ -72,7 +72,7 @@ const StartScreen = ({onLanguageSelect, onStart}) => {
                 <Text
                     style={[
                         styles.language_label,
-                        index !== selectedLanguageIndex && {
+                        language !== surveyMockData.language && {
                             color: surveyMockData.surveyProperty.hexCode,
                         },
                     ]}>
