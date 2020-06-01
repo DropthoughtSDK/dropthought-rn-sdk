@@ -27,8 +27,9 @@ export default SurveyStack
 
 /**
  * @typedef {Object} SurveyStackParamList
- * @property {undefined} SurveyStart
+ * @property {undefined} Start
  * @property {SurveyScreenParams} Survey
+ * @property {undefined} End
  */
 /**
  * @typedef {Object} SurveyScreenParams

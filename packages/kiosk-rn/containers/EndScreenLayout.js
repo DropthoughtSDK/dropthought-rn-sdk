@@ -1,18 +1,19 @@
 import React from 'react'
 import {View, Text, Image, StyleSheet} from 'react-native'
-import {Colors} from '@dropthought/kiosk-rn'
+
+import {Colors} from '../styles'
 import {
     useWindowDimensions,
     DimensionWidthType,
     useDimensionWidthType,
     OrientationType,
     useOrientationType,
-} from '@dropthought/kiosk-rn/hooks/useWindowDimensions'
-import {multiPagesLogicSurvey} from '@dropthought/kiosk-rn/mockSurveyData'
-import i18n from '@dropthought/kiosk-rn/translation'
+} from '..//hooks/useWindowDimensions'
+import {multiPagesLogicSurvey} from '../mockSurveyData'
+import i18n from '../translation'
 
-const iconSource = require('@dropthought/kiosk-rn/assets/rating.png')
-const logoSource = require('@dropthought/kiosk-rn/assets/ic_dtlogo.png')
+const iconSource = require('../assets/rating.png')
+const logoSource = require('../assets/ic_dtlogo.png')
 
 const EndScreen = () => {
     const dimensionWidthType = useDimensionWidthType()
