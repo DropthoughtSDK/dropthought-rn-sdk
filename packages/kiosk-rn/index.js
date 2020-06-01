@@ -1,6 +1,7 @@
 import QuestionContainer from './containers/QuestionContainer'
 import SurveyScreenLayout from './containers/SurveyScreenLayout'
 import EndScreenLayout from './containers/EndScreenLayout'
+import StartScreenLayout from './containers/StartScreenLayout'
 import {KioskProvider} from './KioskProvider'
 import {Colors} from './styles'
 
@@ -9,5 +10,6 @@ export {
     Colors,
     SurveyScreenLayout,
     EndScreenLayout,
+    StartScreenLayout,
     KioskProvider,
 }
