@@ -2,11 +2,8 @@ import React from 'react'
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native'
 import {Colors} from '../styles'
 import {
-    useWindowDimensions,
     DimensionWidthType,
     useDimensionWidthType,
-    OrientationType,
-    useOrientationType,
 } from '../hooks/useWindowDimensions'
 import {multiPagesLogicSurvey} from '../mockSurveyData'
 import Button from '../components/Button'
@@ -34,14 +31,10 @@ const LANG_TITLE = {
  */
 const StartScreen = ({onLanguageSelect, onStart}) => {
     const dimensionWidthType = useDimensionWidthType()
-    const orientationType = useOrientationType()
-    const {height} = useWindowDimensions()
 
     const isPhone = dimensionWidthType === DimensionWidthType.phone
-    const isPortrait = orientationType === OrientationType.portrait
     const styles = isPhone ? phoneStyles : tabletStyles
-    const ratio = isPhone ? 0.24 : isPortrait ? 0.28 : 0.2
-    const iconStyle = [styles.icon, {marginTop: ratio * height}]
+    const iconStyle = styles.icon
 
     const surveyMockData = multiPagesLogicSurvey
     const {surveyProperty, surveyName, welcomeText} = surveyMockData
@@ -119,6 +112,7 @@ const phoneStyles = StyleSheet.create({
     main: {
         flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
         paddingHorizontal: 38,
         width: '100%',
     },
@@ -167,6 +161,7 @@ const tabletStyles = StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: 70,
         width: '100%',
+        justifyContent: 'center',
     },
     icon: {
         height: 72,

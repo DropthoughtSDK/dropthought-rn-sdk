@@ -3,11 +3,8 @@ import {View, Text, Image, StyleSheet} from 'react-native'
 
 import {Colors} from '../styles'
 import {
-    useWindowDimensions,
     DimensionWidthType,
     useDimensionWidthType,
-    OrientationType,
-    useOrientationType,
 } from '..//hooks/useWindowDimensions'
 import {multiPagesLogicSurvey} from '../mockSurveyData'
 import i18n from '../translation'
@@ -17,14 +14,10 @@ const logoSource = require('../assets/ic_dtlogo.png')
 
 const EndScreen = () => {
     const dimensionWidthType = useDimensionWidthType()
-    const orientationType = useOrientationType()
-    const {height} = useWindowDimensions()
 
     const isPhone = dimensionWidthType === DimensionWidthType.phone
-    const isPortrait = orientationType === OrientationType.portrait
     const styles = isPhone ? phoneStyles : tabletStyles
-    const ratio = isPhone ? 0.22 : isPortrait ? 0.32 : 0.24
-    const iconStyle = [styles.icon, {marginTop: ratio * height}]
+    const iconStyle = styles.icon
 
     const surveyMockData = multiPagesLogicSurvey
     const {surveyProperty, thankYouText} = surveyMockData
@@ -70,6 +63,7 @@ const phoneStyles = StyleSheet.create({
     main: {
         flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
         paddingHorizontal: 38,
     },
     icon: {
@@ -120,6 +114,7 @@ const tabletStyles = StyleSheet.create({
     main: {
         flex: 1,
         alignItems: 'center',
+        justifyContent: 'center',
         width: '100%',
         paddingHorizontal: 70,
     },
