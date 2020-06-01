@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "private": true,
-  "peerDependencies": {
-  },
+  "peerDependencies": {},
   "dependencies": {
+    "axios": "^0.19.2",
     "ramda": "^0.27.0"
   }
 }

@@ -74,6 +74,6 @@ export function nextPage(pageIndex, pageId, feedbacksMap, survey) {
     return getPageIndexFromPageId(nextPageId, survey)
 }
 
-/** @typedef {import('.').Survey} Survey */
+/** @typedef {import('./data').Survey} Survey */
 /** @typedef {import('./dt-common-lib/IfcRule').IQAData} IQAData */
-/** @typedef {import('.').Feedback} Feedback */
+/** @typedef {import('./data').Feedback} Feedback */

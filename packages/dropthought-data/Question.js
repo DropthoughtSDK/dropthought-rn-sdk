@@ -140,6 +140,6 @@ export const getInvalidQuestionIds = (questions = [], feedbacks = []) => {
         .map(prop('questionId'))
 }
 
-/** @typedef {import('.').Question} Question */
-/** @typedef {import('.').Feedback} Feedback */
-/** @typedef {import('.').Option} Option */
+/** @typedef {import('./data').Question} Question */
+/** @typedef {import('./data').Feedback} Feedback */
+/** @typedef {import('./data').Option} Option */
