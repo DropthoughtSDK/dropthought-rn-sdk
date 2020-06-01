@@ -22,7 +22,8 @@ const SurveyScreen = (props) => {
 
     const onSubmitHandler = React.useCallback(() => {
         console.log('submit')
-    }, [])
+        navigation.push('End')
+    }, [navigation])
 
     return (
         <SurveyScreenLayout

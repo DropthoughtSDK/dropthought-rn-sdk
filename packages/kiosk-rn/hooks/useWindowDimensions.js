@@ -7,6 +7,12 @@ export const DimensionWidthType = {
     tablet: 'tablet',
 }
 
+/** @enum {'portrait' | 'landscape'} */
+export const OrientationType = {
+    portrait: 'portrait',
+    landscape: 'landscape',
+}
+
 /** @typedef {import('react-native').ScaledSize} ScaledSize */
 /**
  * @typedef {object} DimensionType
@@ -43,4 +49,16 @@ export const useWindowDimensions = () => {
 export const useDimensionWidthType = () => {
     const windowDimensions = useWindowDimensions()
     return windowDimensions.widthType
+}
+
+/**
+ * @returns {OrientationType}
+ */
+export const useOrientationType = () => {
+    const scaledSize = useRNDimensions()
+    if (scaledSize.width > scaledSize.height) {
+        return OrientationType.landscape
+    } else {
+        return OrientationType.portrait
+    }
 }

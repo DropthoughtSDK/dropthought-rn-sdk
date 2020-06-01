@@ -2,21 +2,15 @@ import * as React from 'react'
 import {View, Text} from 'react-native'
 import {createStackNavigator} from '@react-navigation/stack'
 
+import StartScreen from '../screens/StartScreen'
 import SurveyScreen from '../screens/SurveyScreen'
+import EndScreen from '../screens/EndScreen'
 const Stack = createStackNavigator()
-
-function SurveyStartScreen() {
-    return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Survey Start Screen</Text>
-        </View>
-    )
-}
 
 const SurveyStack = () => {
     return (
-        <Stack.Navigator initialRouteName="Survey">
-            <Stack.Screen name="SurveyStart" component={SurveyStartScreen} />
+        <Stack.Navigator initialRouteName="Start">
+            <Stack.Screen name="Start" component={StartScreen} />
             <Stack.Screen
                 name="Survey"
                 component={SurveyScreen}
@@ -24,6 +18,7 @@ const SurveyStack = () => {
                     pageIndex: 0,
                 }}
             />
+            <Stack.Screen name="End" component={EndScreen} />
         </Stack.Navigator>
     )
 }
