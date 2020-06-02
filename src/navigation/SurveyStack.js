@@ -1,6 +1,6 @@
 import * as React from 'react'
-import {View, Text} from 'react-native'
 import {createStackNavigator} from '@react-navigation/stack'
+import {Colors} from '@dropthought/kiosk-rn'
 
 import StartScreen from '../screens/StartScreen'
 import SurveyScreen from '../screens/SurveyScreen'
@@ -16,11 +16,19 @@ const SurveyStack = () => {
             screenOptions={{
                 headerStyle: {
                     backgroundColor: survey.surveyProperty.hexCode,
+                    elevation: 0,
+                    borderBottomWidth: 0,
+                },
+                headerTintColor: Colors.white,
+                headerTitleStyle: {
+                    fontSize: 16,
+                    fontWeight: '600',
                 },
                 headerTitleAlign: 'left',
                 headerBackTitleVisible: false,
                 headerLeft: null,
                 headerRight: null,
+                title: '',
             }}>
             <Stack.Screen name="Start" component={StartScreen} />
             <Stack.Screen

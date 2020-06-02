@@ -5,6 +5,7 @@ import StartScreenLayout from './containers/StartScreenLayout'
 import {KioskProvider} from './KioskProvider'
 import i18n from './translation'
 import {Colors} from './styles'
+export * from './hooks/useWindowDimensions'
 
 export {
     QuestionContainer,
