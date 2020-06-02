@@ -17,8 +17,6 @@ import SurveyFooter from './SurveyFooter'
 import SurveyPageIndicator from '../components/SurveyPageIndicator'
 import GlobalStyle, {Colors} from '../styles'
 
-import {singlePageSurvey, multiPagesLogicSurvey} from '../mockSurveyData'
-
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
 /**
  * define props for SurveyScreenLayout
@@ -34,8 +32,6 @@ import {singlePageSurvey, multiPagesLogicSurvey} from '../mockSurveyData'
  * @property {()=>void} onFeedback
  */
 
-const surveyMockData = multiPagesLogicSurvey
-
 const DEFAULT_KEYBOARD_VERTICAl_OffSET = 64
 
 /**
@@ -43,7 +39,7 @@ const DEFAULT_KEYBOARD_VERTICAl_OffSET = 64
  * @param {SurveyScreenLayoutProps} props
  */
 const SurveyScreenLayout = (props) => {
-    const {pageIndex = 0} = props
+    const {pageIndex = 0, survey} = props
     const {onLayout, ...layout} = useLayout()
     const {height} = useWindowDimensions()
     const scrollViewRef = React.useRef()
@@ -70,19 +66,17 @@ const SurveyScreenLayout = (props) => {
         }
     }, [])
 
-    const questions = surveyMockData.pages[pageIndex].questions.map(
-        (question) => {
-            return (
-                <QuestionContainer
-                    key={question.questionId}
-                    anonymous={surveyMockData.anonymous}
-                    question={question}
-                    validationStarted={validationStarted}
-                    themeColor={surveyMockData.surveyProperty.hexCode}
-                />
-            )
-        },
-    )
+    const questions = survey.pages[pageIndex].questions.map((question) => {
+        return (
+            <QuestionContainer
+                key={question.questionId}
+                anonymous={survey.anonymous}
+                question={question}
+                validationStarted={validationStarted}
+                themeColor={survey.surveyProperty.hexCode}
+            />
+        )
+    })
 
     const keyboardVerticalOffset = layout.height
         ? height - layout.height
@@ -90,10 +84,7 @@ const SurveyScreenLayout = (props) => {
 
     return (
         <View onLayout={onLayout} style={GlobalStyle.flex1}>
-            <SurveyPageIndicator
-                pageIndex={pageIndex}
-                survey={surveyMockData}
-            />
+            <SurveyPageIndicator pageIndex={pageIndex} survey={survey} />
             <KeyboardAvoidingView
                 behavior={Platform.OS === 'ios' ? 'padding' : null}
                 keyboardVerticalOffset={keyboardVerticalOffset}
@@ -107,19 +98,17 @@ const SurveyScreenLayout = (props) => {
                         {questions}
                         <SurveyFooter
                             {...props}
-                            survey={surveyMockData}
+                            survey={survey}
                             onValidationFailed={onValidationFailedHandler}
                             onValidationStart={onValidationStartHandler}
                         />
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>
-            <SurveyProgressBar survey={surveyMockData} />
+            <SurveyProgressBar survey={survey} />
         </View>
     )
 }
-
-// export default SurveyScreenLayout
 
 const SurveyScreenLayoutWrapper = (props) => {
     return (

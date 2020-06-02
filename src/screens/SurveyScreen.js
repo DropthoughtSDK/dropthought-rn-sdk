@@ -3,6 +3,8 @@ import {Text, ScrollView, StyleSheet} from 'react-native'
 
 import {Colors, SurveyScreenLayout} from '@dropthought/kiosk-rn'
 
+import {useSurvey} from '../contexts/survey'
+
 /**
  * @type {React.FunctionComponent<ScreenProps>}
  * @param {ScreenProps} props
@@ -10,6 +12,7 @@ import {Colors, SurveyScreenLayout} from '@dropthought/kiosk-rn'
 const SurveyScreen = (props) => {
     const {navigation, route} = props
     const pageIndex = route.params.pageIndex || 0
+    const survey = useSurvey()
 
     const onNextPageHandler = React.useCallback(
         (nextPageIndex) => {
@@ -27,6 +30,7 @@ const SurveyScreen = (props) => {
 
     return (
         <SurveyScreenLayout
+            survey={survey}
             pageIndex={pageIndex}
             onNextPage={onNextPageHandler}
             onPrevPage={navigation.pop}

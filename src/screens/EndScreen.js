@@ -2,12 +2,15 @@ import React from 'react'
 
 import {EndScreenLayout} from '@dropthought/kiosk-rn'
 
+import {useSurvey} from '../contexts/survey'
+
 /**
  * @type {React.FunctionComponent<ScreenProps>}
  * @param {ScreenProps} props
  */
 const EndScreen = (props) => {
-    return <EndScreenLayout />
+    const survey = useSurvey()
+    return <EndScreenLayout survey={survey} />
 }
 
 export default EndScreen

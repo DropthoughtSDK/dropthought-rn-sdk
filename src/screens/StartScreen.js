@@ -2,12 +2,15 @@ import React from 'react'
 
 import {StartScreenLayout} from '@dropthought/kiosk-rn'
 
+import {useSurveyContext} from '../contexts/survey'
+
 /**
  * @type {React.FunctionComponent<ScreenProps>}
  * @param {ScreenProps} props
  */
 const SurveyScreen = (props) => {
     const {navigation} = props
+    const {survey, changeLanguage} = useSurveyContext()
 
     const onStartHandler = React.useCallback(() => {
         navigation.push('Survey', {
@@ -15,12 +18,16 @@ const SurveyScreen = (props) => {
         })
     }, [navigation])
 
-    const onLanguageSelectHandler = React.useCallback((language) => {
-        console.log('change language', language)
-    }, [])
+    const onLanguageSelectHandler = React.useCallback(
+        (language) => {
+            changeLanguage(language)
+        },
+        [changeLanguage],
+    )
 
     return (
         <StartScreenLayout
+            survey={survey}
             onStart={onStartHandler}
             onLanguageSelect={onLanguageSelectHandler}
         />

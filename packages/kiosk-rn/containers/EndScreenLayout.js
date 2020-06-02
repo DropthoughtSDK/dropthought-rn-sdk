@@ -6,21 +6,31 @@ import {
     DimensionWidthType,
     useDimensionWidthType,
 } from '..//hooks/useWindowDimensions'
-import {multiPagesLogicSurvey} from '../mockSurveyData'
 import i18n from '../translation'
 
 const iconSource = require('../assets/rating.png')
 const logoSource = require('../assets/ic_dtlogo.png')
 
-const EndScreen = () => {
+/** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
+/**
+ * define props for EndScreenLayout
+ *
+ * @typedef {Object} EndScreenLayoutProps
+ * @property {Survey} survey
+ */
+
+/**
+ * @type {React.FunctionComponent<EndScreenLayoutProps>}
+ * @param {EndScreenLayoutProps} props
+ */
+const EndScreen = ({survey}) => {
     const dimensionWidthType = useDimensionWidthType()
 
     const isPhone = dimensionWidthType === DimensionWidthType.phone
     const styles = isPhone ? phoneStyles : tabletStyles
     const iconStyle = styles.icon
 
-    const surveyMockData = multiPagesLogicSurvey
-    const {surveyProperty, thankYouText} = surveyMockData
+    const {surveyProperty, thankYouText} = survey
 
     const iconView = () => {
         const {image} = surveyProperty

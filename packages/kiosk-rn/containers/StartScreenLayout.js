@@ -5,8 +5,8 @@ import {
     DimensionWidthType,
     useDimensionWidthType,
 } from '../hooks/useWindowDimensions'
-import {multiPagesLogicSurvey} from '../mockSurveyData'
 import Button from '../components/Button'
+import i18n from '../translation'
 
 const iconSource = require('../assets/rating.png')
 
@@ -29,15 +29,14 @@ const LANG_TITLE = {
  * @type {React.FunctionComponent<StartScreenLayoutProps>}
  * @param {StartScreenLayoutProps} props
  */
-const StartScreen = ({onLanguageSelect, onStart}) => {
+const StartScreen = ({onLanguageSelect, onStart, survey}) => {
     const dimensionWidthType = useDimensionWidthType()
 
     const isPhone = dimensionWidthType === DimensionWidthType.phone
     const styles = isPhone ? phoneStyles : tabletStyles
     const iconStyle = styles.icon
 
-    const surveyMockData = multiPagesLogicSurvey
-    const {surveyProperty, surveyName, welcomeText} = surveyMockData
+    const {surveyProperty, surveyName, welcomeText} = survey
     const {image, hexCode} = surveyProperty
 
     const iconView =
@@ -50,7 +49,7 @@ const StartScreen = ({onLanguageSelect, onStart}) => {
     const buttonWidth = isPhone ? 143 : 160
 
     const languagesView = () => {
-        const {languages} = surveyMockData
+        const {languages} = survey
 
         // if there's only one language or no languages, no need to display
         if (!languages || !languages.length || languages.length <= 1)
@@ -65,8 +64,8 @@ const StartScreen = ({onLanguageSelect, onStart}) => {
                 <Text
                     style={[
                         styles.language_label,
-                        language !== surveyMockData.language && {
-                            color: surveyMockData.surveyProperty.hexCode,
+                        language !== survey.language && {
+                            color: survey.surveyProperty.hexCode,
                         },
                     ]}>
                     {LANG_TITLE[language]}
@@ -85,7 +84,7 @@ const StartScreen = ({onLanguageSelect, onStart}) => {
                 <View style={styles.divider} />
                 <Button
                     width={buttonWidth}
-                    title="Take Survey"
+                    title={i18n.t('start-survey:start-btn')}
                     color={hexCode}
                     onPress={() => {
                         onStart()
