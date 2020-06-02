@@ -31,10 +31,14 @@ static void InitializeFlipper(UIApplication *application) {
   InitializeFlipper(application);
 #endif
 
+  NSDictionary * initialProperties = @{
+    @"apiKey" : @"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW5nLmNoZW5AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyMjU5OTEzMywiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.le13ity-FDDT7Nm8nk4wmWnQ2PrdGZNzmG4pFT4pz0gwl8IwWms_8yRRPL0ClQsa8a59E2oFiCdt2vpns1G7-A",
+    @"surveyId": @"ac684093-359f-4932-b032-5e3949d52f89"
+  };
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
                                                    moduleName:@"dropthought-sdk"
-                                            initialProperties:nil];
+                                            initialProperties:initialProperties];
 
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
