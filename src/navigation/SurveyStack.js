@@ -5,11 +5,23 @@ import {createStackNavigator} from '@react-navigation/stack'
 import StartScreen from '../screens/StartScreen'
 import SurveyScreen from '../screens/SurveyScreen'
 import EndScreen from '../screens/EndScreen'
+import {useSurvey} from '../contexts/survey'
 const Stack = createStackNavigator()
 
 const SurveyStack = () => {
+    const survey = useSurvey()
     return (
-        <Stack.Navigator initialRouteName="Start">
+        <Stack.Navigator
+            initialRouteName="Start"
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: survey.surveyProperty.hexCode,
+                },
+                headerTitleAlign: 'left',
+                headerBackTitleVisible: false,
+                headerLeft: null,
+                headerRight: null,
+            }}>
             <Stack.Screen name="Start" component={StartScreen} />
             <Stack.Screen
                 name="Survey"

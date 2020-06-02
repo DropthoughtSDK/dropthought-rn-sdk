@@ -3,6 +3,7 @@ import React from 'react'
 import {StartScreenLayout} from '@dropthought/kiosk-rn'
 
 import {useSurveyContext} from '../contexts/survey'
+import {useSurveyHeader} from './useSurveyHeader'
 
 /**
  * @type {React.FunctionComponent<ScreenProps>}
@@ -11,6 +12,7 @@ import {useSurveyContext} from '../contexts/survey'
 const SurveyScreen = (props) => {
     const {navigation} = props
     const {survey, changeLanguage} = useSurveyContext()
+    useSurveyHeader(navigation)
 
     const onStartHandler = React.useCallback(() => {
         navigation.push('Survey', {
