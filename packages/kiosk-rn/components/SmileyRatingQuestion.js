@@ -11,10 +11,6 @@ import {
     useDimensionWidthType,
 } from '../hooks/useWindowDimensions'
 
-const fakeSmiley = (
-    <SmileyIcon selected={false} onPress={noop} source={null} label="" />
-)
-
 const getInitialSelectedValue = (feedback, question) => {
     let prevAnswer
     if (feedback && feedback.answers && feedback.answers[0]) {
@@ -44,18 +40,18 @@ const SmileyRatingQuestion = ({question, onFeedback, feedback, forgot}) => {
 
     const rtl = i18n.dir() === 'rtl'
     const dimensionWidthType = useDimensionWidthType()
-    const styles =
-        dimensionWidthType === DimensionWidthType.phone
-            ? phoneStyles
-            : tabletStyles
+    const isPhone = dimensionWidthType === DimensionWidthType.phone
+    const styles = isPhone ? phoneStyles : tabletStyles
+
+    const fakeSmiley = !isPhone && (
+        <SmileyIcon selected={false} onPress={noop} source={null} label="" />
+    )
 
     const renderSmiley = () => {
-        const viewStyle = [
-            dimensionWidthType === DimensionWidthType.phone
-                ? styles.vertical
-                : styles.horizontal,
-            rtl && GlobalStyle.flexRowReverse,
-        ]
+        const viewStyle = isPhone
+            ? styles.containter
+            : [styles.containter, rtl && GlobalStyle.flexRowReverse]
+
         const {options} = question
         switch (options.length) {
             case 2:
@@ -232,7 +228,7 @@ const SmileyRatingQuestion = ({question, onFeedback, feedback, forgot}) => {
             <MandatoryTitle forgot={forgot} question={question} />
             <View
                 style={[styles.smileyRowContainer, rtl && GlobalStyle.flexEnd]}>
-                {renderSmiley(rtl)}
+                {renderSmiley()}
             </View>
         </View>
     )
@@ -251,10 +247,10 @@ SmileyRatingQuestion.propTypes = {
 }
 
 const phoneStyles = StyleSheet.create({
-    horizontal: {
+    containter: {
         flex: 1,
-        flexDirection: 'column',
         paddingLeft: 10,
+        paddingRight: 10,
         justifyContent: 'space-between',
     },
     smileyRowContainer: {
@@ -265,16 +261,9 @@ const phoneStyles = StyleSheet.create({
 })
 
 const tabletStyles = StyleSheet.create({
-    horizontal: {
+    containter: {
         flex: 1,
         flexDirection: 'row',
-        maxWidth: 560,
-        paddingLeft: 10,
-        justifyContent: 'space-between',
-    },
-    vertical: {
-        flex: 1,
-        flexDirection: 'column',
         maxWidth: 560,
         paddingLeft: 10,
         justifyContent: 'space-between',

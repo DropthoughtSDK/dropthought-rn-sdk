@@ -107,10 +107,12 @@ const styles = StyleSheet.create({
 const titleSize = StyleSheet.create({
     [DimensionWidthType.phone]: {
         marginLeft: 10,
+        marginRight: 10,
         fontSize: 12,
     },
     [DimensionWidthType.tablet]: {
         marginLeft: 15,
+        marginRight: 15,
         fontSize: 14,
     },
 })

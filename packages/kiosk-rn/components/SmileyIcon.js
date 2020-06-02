@@ -11,16 +11,20 @@ import {
     DimensionWidthType,
     useDimensionWidthType,
 } from '../hooks/useWindowDimensions'
+import GlobalStyle from '../styles'
+import i18n from '../translation'
 
 const SmileyIcon = (props) => {
     const dimensionWidthType = useDimensionWidthType()
-    const styles =
-        dimensionWidthType === DimensionWidthType.phone
-            ? phoneStyles
-            : tabletStyles
+    const isPhone = dimensionWidthType === DimensionWidthType.phone
+    const styles = isPhone ? phoneStyles : tabletStyles
+    const rtl = i18n.dir() === 'rtl'
+    const containerStyle = isPhone
+        ? [styles.container, rtl && GlobalStyle.flexRowReverse]
+        : styles.container
 
     return (
-        <View style={styles.container}>
+        <View style={containerStyle}>
             {props.source !== undefined && (
                 <>
                     <TouchableWithoutFeedback onPress={props.onPress}>
@@ -60,6 +64,7 @@ const phoneStyles = StyleSheet.create({
     label: {
         marginLeft: 20,
         fontSize: 17,
+        marginRight: 20,
     },
 })
 

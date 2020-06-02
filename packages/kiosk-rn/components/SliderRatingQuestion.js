@@ -1,5 +1,11 @@
 import React from 'react'
-import {View, StyleSheet, Text, TouchableHighlight} from 'react-native'
+import {
+    View,
+    StyleSheet,
+    Text,
+    TouchableHighlight,
+    Platform,
+} from 'react-native'
 import MandatoryTitle from './MandatoryTitle'
 import GlobalStyle, {Colors} from '../styles'
 import PropTypes from 'prop-types'
@@ -33,6 +39,7 @@ const SliderRatingQuestion = ({
     const maximumValue = parseInt(question.scale)
 
     const dimensionWidthType = useDimensionWidthType()
+    const isPhone = dimensionWidthType === DimensionWidthType.phone
 
     const getBackgroundColorStyle = () => {
         return {
@@ -43,7 +50,7 @@ const SliderRatingQuestion = ({
 
     const getSliderIndicator = () => {
         return [...Array(maximumValue).keys()].map((valueData, index) =>
-            dimensionWidthType === DimensionWidthType.phone ? (
+            isPhone ? (
                 <TouchableHighlight
                     underlayColor={Colors.white}
                     key={index.toString()}
@@ -114,7 +121,6 @@ const SliderRatingQuestion = ({
                 : (maximumValue / 10.0) * 100
         return {
             maxWidth: width + '%',
-            alignSelf: rtl ? 'flex-end' : 'auto',
             marginTop: 22,
             paddingHorizontal: 10,
         }
@@ -128,39 +134,37 @@ const SliderRatingQuestion = ({
                 style={styles.marginBottom25}
                 question={question}
             />
-            {dimensionWidthType === DimensionWidthType.phone ? (
-                <View
-                    style={[
-                        styles.vertical,
-                        rtl && GlobalStyle.flexRowReverse,
-                    ]}>
-                    {getSliderIndicator()}
-                </View>
+            {isPhone ? (
+                <View style={[styles.vertical]}>{getSliderIndicator()}</View>
             ) : (
                 <>
-                    <View style={getWidthStyle(rtl)}>
-                        <View style={styles.line} />
+                    <View style={rtl && GlobalStyle.flexRowReverse}>
+                        <View style={getWidthStyle(rtl)}>
+                            <View style={styles.line} />
+                            <View
+                                style={[
+                                    styles.horizontal,
+                                    rtl && GlobalStyle.flexRowReverse,
+                                ]}>
+                                {getSliderIndicator()}
+                            </View>
+                        </View>
+                    </View>
+                    <View style={rtl && GlobalStyle.flexRowReverse}>
                         <View
                             style={[
                                 styles.horizontal,
+                                styles.marginTop10,
+                                getWidthStyle(rtl),
                                 rtl && GlobalStyle.flexRowReverse,
                             ]}>
-                            {getSliderIndicator()}
+                            <Text style={styles.options}>
+                                {question.options[0]}
+                            </Text>
+                            <Text style={styles.options}>
+                                {question.options[question.options.length - 1]}
+                            </Text>
                         </View>
-                    </View>
-                    <View
-                        style={[
-                            styles.horizontal,
-                            styles.marginTop10,
-                            getWidthStyle(rtl),
-                            rtl && GlobalStyle.flexRowReverse,
-                        ]}>
-                        <Text style={styles.options}>
-                            {question.options[0]}
-                        </Text>
-                        <Text style={styles.options}>
-                            {question.options[question.options.length - 1]}
-                        </Text>
                     </View>
                 </>
             )}
