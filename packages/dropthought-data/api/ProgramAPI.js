@@ -44,11 +44,11 @@ export async function apiGetProgramsById({programId}) {
 
     /** @type {Promise<Survey>[]} */
     const queries = program.languages
-        .filter((l) => l !== program.language)
-        .map((l) =>
+        .filter((lang) => lang !== program.language)
+        .map((lang) =>
             apiGetProgramById({
                 programId,
-                language: l,
+                language: lang,
             }),
         )
 
