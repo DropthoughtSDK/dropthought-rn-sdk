@@ -21,13 +21,17 @@ public class Dropthought {
         reactView.startReactApplication(reactInstanceManager, "dropthought-sdk");
     }
 
-    public static void startSurveyActivity(Context context, String surveyId) {
+    public static void startSurveyActivity(Context context, String apiKey, String surveyId) {
         Intent intent = new Intent(context, SurveyModuleActivity.class);
         Bundle b = new Bundle();
         b.putString("surveyId", surveyId);
-        b.putString("apiKey", mAPIKey);
+        b.putString("apiKey", apiKey);
         intent.putExtras(b);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    public static void startSurveyActivity(Context context, String surveyId) {
+        startSurveyActivity(context, mAPIKey, surveyId);
     }
 }
