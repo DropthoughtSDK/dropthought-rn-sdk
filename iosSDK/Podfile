@@ -89,7 +89,6 @@ end
 use_frameworks!
 
 target 'DropthoughtSDK' do
-  # Pods for DropthoughtSDK
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -120,11 +119,6 @@ target 'DropthoughtSDK' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
 
-#  use_native_modules!
-
-#  add_flipper_pods!
-#  post_install do |installer|
-#    flipper_post_install(installer)
-#  end
 end

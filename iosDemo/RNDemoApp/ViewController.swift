@@ -17,7 +17,10 @@ class ViewController: UIViewController {
     }
 
     @IBAction func openSurveyClick(_ sender: Any) {
-        Survey.present(self, programId: "9876-5432-0000", surveyId: "1234-5678-0000")
+        let apiKey = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW5nLmNoZW5AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyMjYyMDQ1MCwiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.Ol9kxpzakhaYAssDnZvfR2Zxj_ei2ewnldcIr4zh4dXXT9Xp3qY_VES0lvqOM2IXxyI0sz06hMQ6N1QeCRXsVg"
+        let surveyId = "23856ed5-5805-4146-b67e-5ff9aace0362"
+        Survey.present(self, apiKey: apiKey, surveyId: surveyId)
+
     }
 
 }

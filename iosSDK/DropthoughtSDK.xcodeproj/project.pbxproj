@@ -123,8 +123,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3DA7DC0246BCE7200375EA4 /* Build configuration list for PBXNativeTarget "DropthoughtSDK" */;
 			buildPhases = (
-				B3DA7E0B246C42C800375EA4 /* Run Script - Rebuild React Native App */,
 				3755C909EA91831AC36F4053 /* [CP] Check Pods Manifest.lock */,
+				B3DA7E0B246C42C800375EA4 /* Run Script - Rebuild React Native App */,
 				B3DA7EBB246E855B00375EA4 /* Start Packager */,
 				B3DA7DB3246BCE7200375EA4 /* Headers */,
 				B3DA7DB4246BCE7200375EA4 /* Sources */,

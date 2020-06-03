@@ -10,14 +10,14 @@ import UIKit
 import React
 
 public class Survey: NSObject {
-    public static func present(_ from: UIViewController, programId: String, surveyId: String) {
+    public static func present(_ from: UIViewController, apiKey: String, surveyId: String) {
         printBundles()
 
         guard let bundleURL = Bundle(for: Survey.self).url(forResource: "main", withExtension: "bundle"),
             let jsBundleLocation = Bundle(url: bundleURL)?.url(forResource: "main", withExtension: "jsbundle") else {
             return
         }
-        let data = ["programId": programId, "surveyId": surveyId]
+        let data = ["apiKey": apiKey, "surveyId": surveyId]
         let rootView = RCTRootView(bundleURL: jsBundleLocation, moduleName: "dropthought-sdk", initialProperties: data, launchOptions: nil)
         
         let viewController = UIViewController()
