@@ -91,3 +91,8 @@ export interface Feedback {
     type: QuestionType
     otherFlag?: boolean
 }
+
+export interface SurveyFeedback {
+    surveyId: string
+    feedbacks: Feedback[]
+}
