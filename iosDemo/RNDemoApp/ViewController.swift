@@ -11,17 +11,20 @@ import DropthoughtSDK
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var apikeyTF: UITextField!
+    @IBOutlet weak var surveyIdTF: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
     @IBAction func openSurveyClick(_ sender: Any) {
-        let apiKey = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW5nLmNoZW5AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyMjYyMDQ1MCwiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.Ol9kxpzakhaYAssDnZvfR2Zxj_ei2ewnldcIr4zh4dXXT9Xp3qY_VES0lvqOM2IXxyI0sz06hMQ6N1QeCRXsVg"
-        let surveyId = "23856ed5-5805-4146-b67e-5ff9aace0362"
+        guard let apiKey = apikeyTF.text,
+            let surveyId = surveyIdTF.text else {
+                return
+        }
         Survey.present(self, apiKey: apiKey, surveyId: surveyId)
-
     }
-
 }
 

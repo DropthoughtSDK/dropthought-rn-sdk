@@ -36,15 +36,23 @@ export default QuestionWarningMessage
 const styles = StyleSheet.create({
     hint: {
         color: Colors.black,
-        fontSize: 16,
+        fontSize: 13,
         marginRight: 15,
         position: 'absolute',
-        textAlign: 'center',
         width: '100%',
+        paddingLeft: 26,
     },
     hintImage: {
         height: 34,
         justifyContent: 'center',
         width: 300,
+        marginTop: 12,
+        shadowColor: Colors.black,
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.16,
+        shadowRadius: 3,
     },
 })
