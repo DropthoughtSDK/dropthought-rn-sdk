@@ -18,13 +18,14 @@ import SurveyPageIndicator from '../components/SurveyPageIndicator'
 import GlobalStyle, {Colors} from '../styles'
 
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
+/** @typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback*/
 /**
  * define props for SurveyScreenLayout
  *
  * @typedef {Object} SurveyScreenLayoutProps
  * @property {number} pageIndex - current page index (start from 0)
  * @property {Survey} survey
- * @property {()=>void} onSubmit
+ * @property {(surveyFeedback: SurveyFeedback)=>void} onSubmit
  * @property {(nextPageIndex: number)=>void} onNextPage
  * @property {()=>void} onPrevPage
  * @property {()=>void} onPageEnter
@@ -110,6 +111,10 @@ const SurveyScreenLayout = (props) => {
     )
 }
 
+/**
+ * @type {React.FunctionComponent<SurveyScreenLayoutProps>}
+ * @param {SurveyScreenLayoutProps} props
+ */
 const SurveyScreenLayoutWrapper = (props) => {
     return (
         <SurveyPageProvider>

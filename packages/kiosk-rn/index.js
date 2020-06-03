@@ -4,15 +4,17 @@ import EndScreenLayout from './containers/EndScreenLayout'
 import StartScreenLayout from './containers/StartScreenLayout'
 import {KioskProvider} from './KioskProvider'
 import i18n from './translation'
-import {Colors} from './styles'
+export {Colors, GlobalStyle} from './styles'
 export * from './hooks/useWindowDimensions'
+
+import ActivityIndicatorMask from './components/ActivityIndicatorMask'
 
 export {
     QuestionContainer,
-    Colors,
     SurveyScreenLayout,
     EndScreenLayout,
     StartScreenLayout,
     KioskProvider,
+    ActivityIndicatorMask,
     i18n,
 }

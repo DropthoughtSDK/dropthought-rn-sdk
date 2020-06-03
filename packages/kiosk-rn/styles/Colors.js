@@ -31,6 +31,7 @@ export const Colors = {
     progressBarText: '#5f626a',
     mandatoryRed: '#e64119',
     endSurveySubTitleGrey: '#212121',
+    loadingMaskBG: '#FFFFFF9C',
 }
 
 // https://css-tricks.com/8-digit-hex-codes/

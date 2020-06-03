@@ -66,6 +66,17 @@ const firstInvalidQuestionId = (page, feedbackState) => {
 }
 
 /**
+ * get feedbacks array from feedback state
+ * @param {FeedbackReducerState} feedbackState
+ * @returns {import('@dropthought/dropthought-data').Feedback[]}
+ */
+const getFeedbacks = (feedbackState) => {
+    return feedbackState.answeredQuestionIds.map(
+        (qid) => feedbackState.feedbacksMap[qid],
+    )
+}
+
+/**
  * @type {React.FunctionComponent<SurveyFooterProps>}
  * @param {SurveyFooterProps} props
  */
@@ -86,6 +97,7 @@ const SurveyFooter = (props) => {
 
     const lastPage = pageIndex === survey.pageOrder.length - 1
     const currentPage = survey.pages[pageIndex]
+    const surveyId = survey.surveyId
 
     // check if feedbacks are valid
     const validatePageFeedbacks = React.useCallback(() => {
@@ -120,7 +132,10 @@ const SurveyFooter = (props) => {
                 survey,
             )
             if (nextPageIndex === -1) {
-                onSubmit()
+                onSubmit({
+                    surveyId,
+                    feedbacks: getFeedbacks(feedbackState),
+                })
             } else {
                 onNextPage(nextPageIndex)
             }
@@ -129,18 +144,22 @@ const SurveyFooter = (props) => {
         validatePageFeedbacks,
         pageIndex,
         currentPage.pageId,
-        feedbackState.feedbacksMap,
+        feedbackState,
         survey,
         onSubmit,
         onNextPage,
+        surveyId,
     ])
 
     const onSubmitPressHandler = React.useCallback(() => {
         const isValid = validatePageFeedbacks()
         if (isValid) {
-            onSubmit()
+            onSubmit({
+                surveyId,
+                feedbacks: getFeedbacks(feedbackState),
+            })
         }
-    }, [onSubmit, validatePageFeedbacks])
+    }, [onSubmit, validatePageFeedbacks, feedbackState, surveyId])
 
     const onBackPressHandler = React.useCallback(() => {
         onPrevPage()

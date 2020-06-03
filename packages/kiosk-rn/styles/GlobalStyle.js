@@ -89,4 +89,21 @@ export const GlobalStyle = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
+    fullCenter: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    loadingMask: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: Colors.loadingMaskBG,
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        left: 0,
+        width: '100%',
+        height: '100%',
+    },
 })
