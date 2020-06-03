@@ -1,18 +1,14 @@
 package com.dropthought.app.sdk;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 
-import com.facebook.react.PackageList;
 import com.facebook.react.ReactInstanceManager;
-import com.facebook.react.ReactPackage;
 import com.facebook.react.ReactRootView;
-import com.facebook.react.common.LifecycleState;
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
-import com.facebook.react.shell.MainReactPackage;
-
-import java.util.List;
 
 public class SurveyModuleActivity extends Activity implements DefaultHardwareBackBtnHandler {
     private ReactRootView mReactRootView;
@@ -22,18 +18,12 @@ public class SurveyModuleActivity extends Activity implements DefaultHardwareBac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        List<ReactPackage> packages = new PackageList(getApplication()).getPackages();
         mReactRootView = new ReactRootView(this);
-        mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setCurrentActivity(this)
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModulePath("index")
-                .addPackages(packages)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
 
-        // The string here (e.g. "MyReactNativeApp") has to match
+        // get react instance manager from singleton
+        mReactInstanceManager = ReactInstanceSingleton.getReactInstanceManager(getApplication());
+
+        // The string here (e.g. "dropthought-sdk") has to match
         // the string in AppRegistry.registerComponent() in index.js
         mReactRootView.startReactApplication(mReactInstanceManager, "dropthought-sdk", getIntent().getExtras());
 
@@ -81,6 +71,13 @@ public class SurveyModuleActivity extends Activity implements DefaultHardwareBac
             mReactInstanceManager.onBackPressed();
         } else {
             super.onBackPressed();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (mReactInstanceManager != null) {
+            mReactInstanceManager.onActivityResult(this, requestCode, resultCode, data);
         }
     }
 
