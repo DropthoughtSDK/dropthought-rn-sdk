@@ -5,7 +5,6 @@ import {apiPostEvent} from '@dropthought/dropthought-data'
  * @param {[SurveyFeedback]} surveyFeedback
  */
 export const submitFeedback = async ([surveyFeedback]) => {
-    console.log('submit feedback is called')
     return apiPostEvent({
         programId: surveyFeedback.surveyId,
         feedbacks: surveyFeedback.feedbacks,

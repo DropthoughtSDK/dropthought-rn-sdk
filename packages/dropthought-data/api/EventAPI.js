@@ -8,7 +8,7 @@ import {axiosRequestWrapper as apiRequest} from './APIClient'
 const EVENT_PATH = '/api/event'
 
 /**
- * get single language version of a program by id
+ * post event (feedback)
  * @param {{
  *   programId: string,
  *   feedbacks: Feedback[],
