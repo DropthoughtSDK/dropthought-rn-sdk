@@ -5,15 +5,15 @@
  * therefore, the children would always be sure to have "survey" in context
  */
 import * as React from 'react'
-import {StyleSheet, View, Text, ActivityIndicator, Image} from 'react-native'
+import {View, Text, ActivityIndicator, Image} from 'react-native'
 import {useAsync} from 'react-async'
 import {
     apiGetProgramById,
     initializeWithAPIKey,
 } from '@dropthought/dropthought-data'
-import {i18n} from '@dropthought/kiosk-rn'
+import {i18n, ActivityIndicatorMask, GlobalStyle} from '@dropthought/kiosk-rn'
 
-import {saveCache, loadCache} from './Storage'
+import {saveCache, loadCache} from '../../lib/Storage'
 
 const DT_ERR_MISSING_PARAMS = 'dt-missing-parameters'
 
@@ -137,46 +137,15 @@ export const SurveyContextProvider = ({
                 content = <Text>Unable to fetch survey</Text>
             }
         }
-        return <View style={styles.fullCenter}>{content}</View>
+        return <View style={GlobalStyle.fullCenter}>{content}</View>
     }
 
     return (
         <SurveyContext.Provider value={contextValue}>
-            <View style={styles.flex1}>
+            <View style={GlobalStyle.flex1}>
                 {children}
-                {isPending && (
-                    <View style={styles.loadingMask}>
-                        <ActivityIndicator />
-                    </View>
-                )}
+                <ActivityIndicatorMask loading={isPending} />
             </View>
         </SurveyContext.Provider>
     )
 }
-
-const loadingMaskBG = '#FFFFFF9C'
-const styles = StyleSheet.create({
-    flex1: {
-        flex: 1,
-    },
-    flexGrow: {
-        flexGrow: 1,
-    },
-    fullCenter: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    loadingMask: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: loadingMaskBG,
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-    },
-})

@@ -1,10 +1,22 @@
 import React from 'react'
-import {Text, ScrollView, StyleSheet} from 'react-native'
+import {useAsync} from 'react-async'
 
-import {Colors, SurveyScreenLayout} from '@dropthought/kiosk-rn'
+import {SurveyScreenLayout, ActivityIndicatorMask} from '@dropthought/kiosk-rn'
 
 import {useSurvey} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'
+import {submitFeedback} from '../lib/Feedback'
+
+const useSubmitFeedback = (navigation) => {
+    const onResolveHandler = React.useCallback(() => {
+        navigation.push('End')
+    }, [navigation])
+
+    return useAsync({
+        deferFn: submitFeedback,
+        onResolve: onResolveHandler,
+    })
+}
 
 /**
  * @type {React.FunctionComponent<ScreenProps>}
@@ -16,6 +28,8 @@ const SurveyScreen = (props) => {
     const survey = useSurvey()
     useSurveyHeader(navigation)
 
+    const {run, isPending} = useSubmitFeedback(navigation)
+
     const onNextPageHandler = React.useCallback(
         (nextPageIndex) => {
             navigation.push('Survey', {
@@ -25,12 +39,15 @@ const SurveyScreen = (props) => {
         [navigation],
     )
 
-    const onSubmitHandler = React.useCallback(() => {
-        console.log('submit')
-        navigation.push('End')
-    }, [navigation])
+    /** @type {(surveyFeedback: SurveyFeedback) => void} */
+    const onSubmitHandler = React.useCallback(
+        (surveyFeedback) => {
+            run(surveyFeedback)
+        },
+        [run],
+    )
 
-    return (
+    const surveyScreenLayout = (
         <SurveyScreenLayout
             survey={survey}
             pageIndex={pageIndex}
@@ -39,17 +56,18 @@ const SurveyScreen = (props) => {
             onSubmit={onSubmitHandler}
         />
     )
+
+    return (
+        <>
+            {surveyScreenLayout}
+            <ActivityIndicatorMask loading={isPending} />
+        </>
+    )
 }
 
 export default SurveyScreen
 
-const styles = StyleSheet.create({
-    container: {
-        paddingHorizontal: '8%',
-        backgroundColor: Colors.white,
-    },
-})
-
+/**@typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback */
 /**@typedef {import('../navigation/SurveyStack').SurveyStackNavigationProps<"Survey">} ScreenNavigationProp */
 /**@typedef {import('../navigation/SurveyStack').SurveyStackRouteProp<"Survey">} ScreenRouteProp */
 /**
