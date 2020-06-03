@@ -5,7 +5,7 @@
  * therefore, the children would always be sure to have "survey" in context
  */
 import * as React from 'react'
-import {StyleSheet, View, Text, ActivityIndicator} from 'react-native'
+import {StyleSheet, View, Text, ActivityIndicator, Image} from 'react-native'
 import {useAsync} from 'react-async'
 import {
     apiGetProgramById,
@@ -40,6 +40,33 @@ export const useSurvey = () => {
 }
 
 /**
+ * @param {string} uri
+ * @return {Promise<{width: number, height: number}>}
+ */
+const preFetchImage = (uri) =>
+    new Promise((resolve) => {
+        if (!uri || typeof uri !== 'string') resolve({})
+
+        // pre-fetch the uri if it is not base64
+        const base64Reg = /^data:image\/.+;base64/
+        if (!uri.match(base64Reg)) {
+            Image.prefetch(uri)
+        }
+        Image.getSize(
+            uri,
+            (width, height) => {
+                resolve({
+                    width,
+                    height,
+                })
+            },
+            () => {
+                resolve({})
+            },
+        )
+    })
+
+/**
  * load the program data from cache or api
  * @param {{surveyId: string, language: string, apiKey: string}} param0
  */
@@ -64,6 +91,9 @@ const getProgram = async ({surveyId, apiKey, language}) => {
 
     // change the i18n language
     i18n.changeLanguage(survey.language)
+
+    // pre-fetch image
+    await preFetchImage(survey?.surveyProperty.image)
 
     return survey
 }
