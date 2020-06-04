@@ -10,15 +10,35 @@ import com.facebook.react.ReactRootView;
 
 public class Dropthought {
     private static String mAPIKey;
+    private static String mSurveyId;
 
-    public static void init(Application application, String apiKey) {
+    private static void init(Application application) {
         ReactInstanceManager reactInstanceManager = ReactInstanceSingleton.getReactInstanceManager(application);
-        mAPIKey = apiKey;
+
+        // set up initial props
+        Bundle initialProps = new Bundle();
+        if (mAPIKey != null) {
+            initialProps.putString("apiKey", mAPIKey);
+        }
+        if(mSurveyId != null) {
+            initialProps.putString("surveyId", mSurveyId);
+        }
 
         // create a dummy react root view,
         // so later activity would be started faster
         ReactRootView reactView = new ReactRootView(application.getApplicationContext());
-        reactView.startReactApplication(reactInstanceManager, "dropthought-sdk");
+        reactView.startReactApplication(reactInstanceManager, "dropthought-sdk", initialProps);
+    }
+
+    public static void init(Application application, String apiKey) {
+        mAPIKey = apiKey;
+        init(application);
+    }
+
+    public static void init(Application application, String apiKey, String surveyId) {
+        mAPIKey = apiKey;
+        mSurveyId = surveyId;
+        init(application);
     }
 
     public static void startSurveyActivity(Context context, String apiKey, String surveyId) {
@@ -33,5 +53,9 @@ public class Dropthought {
 
     public static void startSurveyActivity(Context context, String surveyId) {
         startSurveyActivity(context, mAPIKey, surveyId);
+    }
+
+    public static void startSurveyActivity(Context context) {
+        startSurveyActivity(context, mAPIKey, mSurveyId);
     }
 }

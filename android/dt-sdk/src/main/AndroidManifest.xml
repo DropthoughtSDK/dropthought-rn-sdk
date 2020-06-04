@@ -7,6 +7,7 @@
         <activity
             android:name=".SurveyModuleActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
         />
     </application>
 </manifest>
