@@ -12,7 +12,7 @@ public class Dropthought {
     private static String mAPIKey;
     private static String mSurveyId;
 
-    private static void init(Application application) {
+    public static void init(Application application) {
         ReactInstanceManager reactInstanceManager = ReactInstanceSingleton.getReactInstanceManager(application);
 
         // set up initial props
@@ -43,10 +43,10 @@ public class Dropthought {
 
     public static void startSurveyActivity(Context context, String apiKey, String surveyId) {
         Intent intent = new Intent(context, SurveyModuleActivity.class);
-        Bundle b = new Bundle();
-        b.putString("surveyId", surveyId);
-        b.putString("apiKey", apiKey);
-        intent.putExtras(b);
+        Bundle initialProps = new Bundle();
+        initialProps.putString("surveyId", surveyId);
+        initialProps.putString("apiKey", apiKey);
+        intent.putExtras(initialProps);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
