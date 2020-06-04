@@ -9,4 +9,7 @@
 
     <string name="hello_first_fragment">Hello World!</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="edit_apikey">Enter the api key</string>
+    <string name="button_open">Open</string>
+    <string name="edit_surveyid">Enter the survey id</string>
 </resources>

@@ -1,19 +1,15 @@
 package com.king.usingrn;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
-//import com.dropthought.app.sdk.RNModuleActivity;
-//import com.king.rnsdk.RNModuleActivity;
-
-import com.dropthought.app.sdk.SurveyModuleActivity;
+import com.dropthought.app.sdk.Dropthought;
 
 public class FirstFragment extends Fragment {
 
@@ -31,16 +27,16 @@ public class FirstFragment extends Fragment {
 
         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View btnView) {
                 System.out.println("Button Clicked");
-                Intent intent = new Intent(getActivity().getApplicationContext(), SurveyModuleActivity.class);
-                Bundle b = new Bundle();
-                b.putString("surveyId", "some-id-1");
-                b.putString("surveyName", "Survey name");
-                intent.putExtras(b);
-                startActivity(intent);
-//                NavHostFragment.findNavController(FirstFragment.this)
-//                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+                EditText apiKeyText = (EditText) getView().findViewById(R.id.apiKey);
+                EditText surveyIdText = (EditText) getView().findViewById(R.id.surveyId);
+
+                Dropthought.startSurveyActivity(
+                        getActivity().getApplicationContext(),
+                        apiKeyText.getText().toString(),
+                        surveyIdText.getText().toString()
+                );
             }
         });
     }
