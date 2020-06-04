@@ -1,5 +1,5 @@
 import React from 'react'
-import {useAsync} from 'react-async'
+import {useAsync, Alert} from 'react-async'
 
 import {SurveyScreenLayout, ActivityIndicatorMask} from '@dropthought/kiosk-rn'
 
@@ -8,6 +8,14 @@ import {useSurveyHeader} from './useSurveyHeader'
 import {submitFeedback} from '../lib/Feedback'
 
 const useSubmitFeedback = (navigation) => {
+    const onRejectHandler = React.useCallback(() => {
+        Alert.alert(
+            'Feedback submit failed',
+            'Unable to submit',
+            [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+            {cancelable: false},
+        )
+    }, [])
     const onResolveHandler = React.useCallback(() => {
         navigation.push('End')
     }, [navigation])
@@ -15,6 +23,7 @@ const useSubmitFeedback = (navigation) => {
     return useAsync({
         deferFn: submitFeedback,
         onResolve: onResolveHandler,
+        onReject: onRejectHandler,
     })
 }
 
