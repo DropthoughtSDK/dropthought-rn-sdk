@@ -1,10 +1,7 @@
 import * as React from 'react'
 import {StyleSheet, View, Platform} from 'react-native'
 import {sum} from 'ramda'
-import {
-    useSafeAreaInsets,
-    initialWindowMetrics,
-} from 'react-native-safe-area-context'
+import {useSafeAreaInsets} from 'react-native-safe-area-context'
 
 import ProgressBar from '../components/ProgressBar'
 import {useFeedbackState} from '../contexts/feedback'
@@ -61,9 +58,7 @@ const SurveyProgressBar = (props) => {
     const insetsBottom =
         // if it is android, and the insets bottom is not normal,
         // maybe it is because the keyboard is showed, don't use this insets
-        Platform.OS === 'android' && insets.bottom >= 100
-            ? initialWindowMetrics.insets.bottom
-            : insets.bottom
+        Platform.OS === 'android' && insets.bottom >= 100 ? 0 : insets.bottom
 
     const containerStyle = React.useMemo(
         () => [
