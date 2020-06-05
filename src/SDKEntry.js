@@ -4,7 +4,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context'
 import {KioskProvider} from '@dropthought/kiosk-rn'
 
 import {SurveyContextProvider} from './contexts/survey'
-import SurveyStack from './navigation/SurveyStack'
+import SurveyStackContainer from './SurveyStackContainer'
 
 export default function App(props) {
     return (
@@ -12,7 +12,7 @@ export default function App(props) {
             <SurveyContextProvider {...props}>
                 <NavigationContainer>
                     <KioskProvider>
-                        <SurveyStack />
+                        <SurveyStackContainer />
                     </KioskProvider>
                 </NavigationContainer>
             </SurveyContextProvider>
