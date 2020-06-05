@@ -6,6 +6,7 @@
  */
 import * as React from 'react'
 import {View, Text, ActivityIndicator, Image} from 'react-native'
+import {evolve, merge} from 'ramda'
 import {useAsync} from 'react-async'
 import {
     apiGetProgramById,
@@ -93,9 +94,12 @@ const getProgram = async ({surveyId, apiKey, language}) => {
     i18n.changeLanguage(survey.language)
 
     // pre-fetch image
-    await preFetchImage(survey?.surveyProperty.image)
+    const imgSize = await preFetchImage(survey?.surveyProperty.image)
 
-    return survey
+    // update surveyProperty with imgSize {width, height}
+    return evolve({
+        surveyProperty: merge(imgSize),
+    })(survey)
 }
 
 export const SurveyContextProvider = ({

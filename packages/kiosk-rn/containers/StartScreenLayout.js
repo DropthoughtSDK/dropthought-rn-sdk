@@ -8,7 +8,11 @@ import {
 import Button from '../components/Button'
 import i18n from '../translation'
 
-const iconSource = require('../assets/rating.png')
+const defaultIconSource = require('../assets/rating.png')
+const defaultIconSize = {
+    [DimensionWidthType.phone]: 65,
+    [DimensionWidthType.tablet]: 72,
+}
 
 const LANG_TITLE = {
     en: 'English',
@@ -34,17 +38,23 @@ const StartScreen = ({onLanguageSelect, onStart, survey}) => {
 
     const isPhone = dimensionWidthType === DimensionWidthType.phone
     const styles = isPhone ? phoneStyles : tabletStyles
-    const iconStyle = styles.icon
 
     const {surveyProperty, surveyName, welcomeText} = survey
-    const {image, hexCode} = surveyProperty
+    const {
+        image,
+        hexCode,
+        width = defaultIconSize[dimensionWidthType],
+        height = defaultIconSize[dimensionWidthType],
+    } = surveyProperty
+    const iconStyle = {
+        width,
+        height,
+    }
+    const iconSource = image === undefined ? defaultIconSource : {uri: image}
 
-    const iconView =
-        image === undefined ? (
-            <Image style={iconStyle} source={iconSource} />
-        ) : (
-            <Image style={iconStyle} source={{uri: image}} />
-        )
+    const iconView = (
+        <Image resizeMode="cover" style={iconStyle} source={iconSource} />
+    )
 
     const buttonWidth = isPhone ? 143 : 160
 
@@ -115,10 +125,6 @@ const phoneStyles = StyleSheet.create({
         paddingHorizontal: 38,
         width: '100%',
     },
-    icon: {
-        height: 65,
-        width: 65,
-    },
     title: {
         textAlign: 'center',
         marginTop: 14,
@@ -161,10 +167,6 @@ const tabletStyles = StyleSheet.create({
         paddingHorizontal: 70,
         width: '100%',
         justifyContent: 'center',
-    },
-    icon: {
-        height: 72,
-        width: 72,
     },
     title: {
         textAlign: 'center',
