@@ -1,5 +1,4 @@
 import * as React from 'react'
-import {StatusBar} from 'react-native'
 import {createStackNavigator} from '@react-navigation/stack'
 import {Colors} from '@dropthought/kiosk-rn'
 
@@ -13,7 +12,7 @@ const SurveyStack = () => {
     const survey = useSurvey()
     const themeColor = survey.surveyProperty.hexCode
 
-    const surveyStackNavigator = (
+    return (
         <Stack.Navigator
             initialRouteName="Start"
             screenOptions={{
@@ -43,13 +42,6 @@ const SurveyStack = () => {
             />
             <Stack.Screen name="End" component={EndScreen} />
         </Stack.Navigator>
-    )
-
-    return (
-        <>
-            <StatusBar backgroundColor={themeColor} />
-            {surveyStackNavigator}
-        </>
     )
 }
 
