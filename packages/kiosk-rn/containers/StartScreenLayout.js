@@ -90,7 +90,9 @@ const StartScreen = ({onLanguageSelect, onStart, survey}) => {
             <View style={styles.main}>
                 {iconView}
                 <Text style={styles.title}>{surveyName}</Text>
-                <Text style={styles.subtitle}>{welcomeText}</Text>
+                {!!welcomeText && (
+                    <Text style={styles.subtitle}>{welcomeText}</Text>
+                )}
                 <View style={styles.divider} />
                 <Button
                     width={buttonWidth}
@@ -156,7 +158,8 @@ const phoneStyles = StyleSheet.create({
     languages: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginBottom: 83,
+        height: '12%',
+        maxHeight: 90,
     },
 })
 
@@ -199,6 +202,7 @@ const tabletStyles = StyleSheet.create({
     languages: {
         flexDirection: 'row',
         justifyContent: 'center',
-        marginBottom: 67,
+        height: '10%',
+        maxHeight: 80,
     },
 })
