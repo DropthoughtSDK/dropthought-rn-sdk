@@ -10,6 +10,11 @@ export const submitFeedback = async ([surveyFeedback]) => {
     return apiPostEvent({
         programId: surveyFeedback.surveyId,
         feedbacks: surveyFeedback.feedbacks,
+    }).catch((error) => {
+        // save result when there's error
+        // TODO: maybe there're some errors no need to be handled?
+        saveFeedback(surveyFeedback)
+        throw error
     })
 }
 

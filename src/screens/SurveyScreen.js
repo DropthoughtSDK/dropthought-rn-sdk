@@ -5,7 +5,7 @@ import {SurveyScreenLayout, ActivityIndicatorMask} from '@dropthought/kiosk-rn'
 
 import {useSurvey} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'
-import {submitFeedback, saveFeedback} from '../lib/Feedback'
+import {submitFeedback} from '../lib/Feedback'
 
 /**
  * @param {ScreenNavigationProp} navigation
@@ -15,8 +15,6 @@ const useSubmitFeedback = (navigation) => {
 
     const onRejectHandler = React.useCallback(
         (error) => {
-            if (surveyFeedbackRef.current)
-                saveFeedback(surveyFeedbackRef.current)
             navigation.push('End', {
                 surveyFeedback: surveyFeedbackRef.current,
                 // TODO: define more error code
