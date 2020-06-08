@@ -1,5 +1,6 @@
 import * as React from 'react'
-import {StyleSheet, TouchableOpacity, Image, NativeModules} from 'react-native'
+import {StyleSheet, TouchableOpacity, Image} from 'react-native'
+import SurveyNativeBridge from '../native/SurveyBridge'
 
 import {
     i18n,
@@ -26,8 +27,7 @@ const CloseButton = ({...props}) => {
             hitSlop={hitSlop}
             onPress={() => {
                 console.log('close')
-                var Survey = NativeModules.Survey
-                Survey.dismiss()
+                SurveyNativeBridge.dismiss()
             }}>
             <Image source={closeIconSource} style={[styles.iconImage]} />
         </TouchableOpacity>
