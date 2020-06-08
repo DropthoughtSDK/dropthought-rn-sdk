@@ -40,7 +40,14 @@ const SurveyStack = () => {
                     pageIndex: 0,
                 }}
             />
-            <Stack.Screen name="End" component={EndScreen} />
+            <Stack.Screen
+                name="End"
+                component={EndScreen}
+                initialParams={{
+                    error: undefined,
+                    surveyFeedback: undefined,
+                }}
+            />
         </Stack.Navigator>
     )
 }
@@ -51,11 +58,16 @@ export default SurveyStack
  * @typedef {Object} SurveyStackParamList
  * @property {undefined} Start
  * @property {SurveyScreenParams} Survey
- * @property {undefined} End
+ * @property {EndScreenParams} End
  */
 /**
  * @typedef {Object} SurveyScreenParams
  * @property {number} pageIndex
+ */
+/**
+ * @typedef {Object} EndScreenParams
+ * @property {Error=} error
+ * @property {import('@dropthought/dropthought-data').SurveyFeedback=} surveyFeedback
  */
 
 /**

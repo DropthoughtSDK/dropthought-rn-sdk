@@ -1,5 +1,5 @@
 import React from 'react'
-import {useAsync, Alert} from 'react-async'
+import {useAsync} from 'react-async'
 
 import {SurveyScreenLayout, ActivityIndicatorMask} from '@dropthought/kiosk-rn'
 
@@ -7,17 +7,29 @@ import {useSurvey} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'
 import {submitFeedback, saveFeedback} from '../lib/Feedback'
 
+/**
+ * @param {ScreenNavigationProp} navigation
+ */
 const useSubmitFeedback = (navigation) => {
     const surveyFeedbackRef = React.useRef()
 
-    const onRejectHandler = React.useCallback(() => {
-        // TODO: call a native callback
-        if (surveyFeedbackRef.current) saveFeedback(surveyFeedbackRef.current)
-        navigation.push('End')
-    }, [navigation])
+    const onRejectHandler = React.useCallback(
+        (error) => {
+            if (surveyFeedbackRef.current)
+                saveFeedback(surveyFeedbackRef.current)
+            navigation.push('End', {
+                surveyFeedback: surveyFeedbackRef.current,
+                // TODO: define more error code
+                error: -1,
+            })
+        },
+        [navigation],
+    )
     const onResolveHandler = React.useCallback(() => {
-        // TODO: call a native callback
-        navigation.push('End')
+        navigation.push('End', {
+            surveyFeedback: surveyFeedbackRef.current,
+            error: undefined,
+        })
     }, [navigation])
 
     const {run, isPending} = useAsync({
