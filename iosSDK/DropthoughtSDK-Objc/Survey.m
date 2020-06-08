@@ -12,38 +12,49 @@
 #import <React/RCTRootView.h>
 
 #import "Survey.h"
+#import "SurveyApplication.h"
+
+@interface Survey()
+@property (nonatomic, strong) UIViewController *from;
+@property (nonatomic, strong) SurveyApplication *app;
+@end
 
 @implementation Survey
 
 RCT_EXPORT_MODULE();
 
-static UIViewController *fromVC;
++ (instancetype)sharedInstance {
+    static Survey *instance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[Survey alloc] init];
+    });
+    return instance;
+}
 
-+ (void)present:(UIViewController *)from apiKey:(NSString *)apiKey surveyId:(NSString *)surveyId {
-    fromVC = from;
+- (void)initSurvey:(NSDictionary *)launchOptions {
+    self.app = [[SurveyApplication alloc] init];
+    [self.app setupBridge:launchOptions];
+}
 
-    NSBundle *bundle = [NSBundle bundleForClass:[Survey class]];
-    NSURL *bundleURL = [bundle URLForResource:@"main" withExtension:@"bundle"];
-    NSURL *jsbundleLocation = [[NSBundle bundleWithURL:bundleURL] URLForResource:@"main" withExtension:@"jsbundle"];
+- (void)present:(UIViewController *)from apiKey:(NSString *)apiKey surveyId:(NSString *)surveyId {
+    self.from = from;
 
-    NSDictionary *initialProperties = @{
-      @"apiKey" : apiKey,
-      @"surveyId": surveyId
-    };
-
-    RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsbundleLocation moduleName:@"dropthought-sdk" initialProperties:initialProperties launchOptions:nil];
-
+    NSDictionary *initialProperties = @{ @"apiKey" : apiKey, @"surveyId": surveyId };
+    RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:self.app.bridge moduleName:@"dropthought-sdk" initialProperties:initialProperties];
     rootView.frame = [UIScreen mainScreen].bounds;
+
     UIViewController *vc = [[UIViewController alloc] init];
-    [vc.view addSubview:rootView];
+    vc.view = rootView;
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
-    [from presentViewController:vc animated:YES completion:nil];
+
+    [self.from presentViewController:vc animated:YES completion:nil];
 }
 
 RCT_EXPORT_METHOD(dismiss)
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [fromVC dismissViewControllerAnimated:YES completion:nil];
+        [self.from dismissViewControllerAnimated:YES completion:nil];
     });
 }
 @end

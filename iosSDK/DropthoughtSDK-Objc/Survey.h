@@ -9,10 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface Survey : NSObject <RCTBridgeModule>
-+ (void)present:(UIViewController *)from apiKey:(NSString *)apiKey surveyId:(NSString *)surveyId;
++ (instancetype) sharedInstance;
+- (void)initSurvey:(NSDictionary *)launchOptions;
+- (void)present:(UIViewController *)from apiKey:(NSString *)apiKey surveyId:(NSString *)surveyId;
 @end
-
-NS_ASSUME_NONNULL_END

@@ -11,6 +11,8 @@
 		B3746AC92488DE5400C381AB /* DropthoughtSDK_Objc.h in Headers */ = {isa = PBXBuildFile; fileRef = B3746AC72488DE5400C381AB /* DropthoughtSDK_Objc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3746AD12488DF1000C381AB /* Survey.h in Headers */ = {isa = PBXBuildFile; fileRef = B3746ACF2488DF1000C381AB /* Survey.h */; };
 		B3746AD22488DF1000C381AB /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = B3746AD02488DF1000C381AB /* Survey.m */; };
+		B3E13C6F248A42D100873A28 /* SurveyApplication.h in Headers */ = {isa = PBXBuildFile; fileRef = B3E13C6D248A42D100873A28 /* SurveyApplication.h */; };
+		B3E13C70248A42D100873A28 /* SurveyApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E13C6E248A42D100873A28 /* SurveyApplication.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		B3746AC82488DE5400C381AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3746ACF2488DF1000C381AB /* Survey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
 		B3746AD02488DF1000C381AB /* Survey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
+		B3E13C6D248A42D100873A28 /* SurveyApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SurveyApplication.h; sourceTree = "<group>"; };
+		B3E13C6E248A42D100873A28 /* SurveyApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SurveyApplication.m; sourceTree = "<group>"; };
 		FEE63DC601B42755D6FA5EB8 /* Pods_DropthoughtSDK_Objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DropthoughtSDK_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,6 +73,8 @@
 				B3746AC82488DE5400C381AB /* Info.plist */,
 				B3746ACF2488DF1000C381AB /* Survey.h */,
 				B3746AD02488DF1000C381AB /* Survey.m */,
+				B3E13C6D248A42D100873A28 /* SurveyApplication.h */,
+				B3E13C6E248A42D100873A28 /* SurveyApplication.m */,
 			);
 			path = "DropthoughtSDK-Objc";
 			sourceTree = "<group>";
@@ -91,6 +97,7 @@
 			files = (
 				B3746AD12488DF1000C381AB /* Survey.h in Headers */,
 				B3746AC92488DE5400C381AB /* DropthoughtSDK_Objc.h in Headers */,
+				B3E13C6F248A42D100873A28 /* SurveyApplication.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +205,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Rebuild React Native App\"\ncd ../\nyarn run build:ios\necho \"Done\"\n";
+			shellScript = "echo \"Rebuild React Native App\"\nrm './assets/main.jsbundle'\ncd ../\nyarn run build:ios\necho \"Done\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -207,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3E13C70248A42D100873A28 /* SurveyApplication.m in Sources */,
 				B3746AD22488DF1000C381AB /* Survey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

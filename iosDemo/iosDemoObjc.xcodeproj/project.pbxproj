@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B3746AE12488E36900C381AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3746AE02488E36900C381AB /* AppDelegate.m */; };
-		B3746AE42488E36900C381AB /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3746AE32488E36900C381AB /* SceneDelegate.m */; };
 		B3746AE72488E36900C381AB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3746AE62488E36900C381AB /* ViewController.m */; };
 		B3746AEA2488E36900C381AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3746AE82488E36900C381AB /* Main.storyboard */; };
 		B3746AEC2488E36C00C381AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3746AEB2488E36C00C381AB /* Assets.xcassets */; };
@@ -24,8 +23,6 @@
 		B3746ADC2488E36900C381AB /* SDK Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SDK Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3746ADF2488E36900C381AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B3746AE02488E36900C381AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B3746AE22488E36900C381AB /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		B3746AE32488E36900C381AB /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		B3746AE52488E36900C381AB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B3746AE62488E36900C381AB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B3746AE92488E36900C381AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,8 +84,6 @@
 			children = (
 				B3746ADF2488E36900C381AB /* AppDelegate.h */,
 				B3746AE02488E36900C381AB /* AppDelegate.m */,
-				B3746AE22488E36900C381AB /* SceneDelegate.h */,
-				B3746AE32488E36900C381AB /* SceneDelegate.m */,
 				B3746AE52488E36900C381AB /* ViewController.h */,
 				B3746AE62488E36900C381AB /* ViewController.m */,
 				B3746AE82488E36900C381AB /* Main.storyboard */,
@@ -235,7 +230,6 @@
 				B3746AE72488E36900C381AB /* ViewController.m in Sources */,
 				B3746AE12488E36900C381AB /* AppDelegate.m in Sources */,
 				B3746AF22488E36C00C381AB /* main.m in Sources */,
-				B3746AE42488E36900C381AB /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,6 +374,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = KFP6944LXB;
 				INFOPLIST_FILE = iosDemoObjc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -400,6 +395,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = KFP6944LXB;
 				INFOPLIST_FILE = iosDemoObjc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
