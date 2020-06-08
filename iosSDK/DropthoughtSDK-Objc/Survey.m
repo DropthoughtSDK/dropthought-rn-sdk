@@ -54,7 +54,7 @@ RCT_EXPORT_MODULE();
 RCT_EXPORT_METHOD(dismiss)
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.from dismissViewControllerAnimated:YES completion:nil];
+        [[[Survey sharedInstance] from] dismissViewControllerAnimated:YES completion:nil];
     });
 }
 @end
