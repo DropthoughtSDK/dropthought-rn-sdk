@@ -22,6 +22,7 @@ class ReactInstanceSingleton {
                     .setBundleAssetName("index.android.bundle")
                     .setJSMainModulePath("index")
                     .addPackages(packages)
+                    .addPackage(new SurveyBridgePackage())
                     .setInitialLifecycleState(LifecycleState.BEFORE_RESUME)
                     .build();
         }
