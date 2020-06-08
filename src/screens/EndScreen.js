@@ -4,6 +4,7 @@ import {EndScreenLayout} from '@dropthought/kiosk-rn'
 
 import {useSurvey} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'
+import SurveyNativeBridge from '../native/SurveyBridge'
 
 /**
  * @type {React.FunctionComponent<ScreenProps>}
@@ -12,6 +13,15 @@ import {useSurveyHeader} from './useSurveyHeader'
 const EndScreen = (props) => {
     const survey = useSurvey()
     useSurveyHeader(props.navigation)
+
+    const {error, surveyFeedback} = props.route.params
+
+    React.useEffect(() => {
+        // passing data to native, if error is undefined, null, 0, it means success
+        console.log('TODO: native onFeedbackResult')
+        // if (surveyFeedback)
+        //     SurveyNativeBridge.onFeedbackResult(surveyFeedback, error || 0)
+    }, [error, surveyFeedback])
 
     return <EndScreenLayout survey={survey} />
 }

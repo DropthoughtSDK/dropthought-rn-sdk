@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {StyleSheet, TouchableOpacity, Image} from 'react-native'
-import SurveyNativeBridge from '../native/SurveyBridge'
 
+import SurveyNativeBridge from '../native/SurveyBridge'
 import {
     i18n,
     useDimensionWidthType,
