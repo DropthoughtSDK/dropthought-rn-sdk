@@ -19,7 +19,6 @@ export default SurveyBridge || {
 
     // error is a return code number
     // 0 means success
-    // TODO: define the error code
     onFeedbackResult: (surveyFeedback, errorCode) => {
         console.log('dev onFeedback Result', errorCode)
     },
