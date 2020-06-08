@@ -19,8 +19,8 @@ const EndScreen = (props) => {
     React.useEffect(() => {
         // passing data to native, if error is undefined, null, 0, it means success
         console.log('TODO: native onFeedbackResult')
-        if (surveyFeedback)
-            SurveyNativeBridge.onFeedbackResult(surveyFeedback, error || 0)
+        // if (surveyFeedback)
+        //     SurveyNativeBridge.onFeedbackResult(surveyFeedback, error || 0)
     }, [error, surveyFeedback])
 
     return <EndScreenLayout survey={survey} />
