@@ -5,26 +5,43 @@ import {SurveyScreenLayout, ActivityIndicatorMask} from '@dropthought/kiosk-rn'
 
 import {useSurvey} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'
-import {submitFeedback} from '../lib/Feedback'
+import {submitFeedback, saveFeedback} from '../lib/Feedback'
 
 const useSubmitFeedback = (navigation) => {
+    const surveyFeedbackRef = React.useRef()
+
     const onRejectHandler = React.useCallback(() => {
-        Alert.alert(
-            'Feedback submit failed',
-            'Unable to submit',
-            [{text: 'OK', onPress: () => console.log('OK Pressed')}],
-            {cancelable: false},
-        )
-    }, [])
+        // TODO: call a native callback
+        if (surveyFeedbackRef.current) saveFeedback(surveyFeedbackRef.current)
+        navigation.push('End')
+    }, [navigation])
     const onResolveHandler = React.useCallback(() => {
+        // TODO: call a native callback
         navigation.push('End')
     }, [navigation])
 
-    return useAsync({
+    const {run, isPending} = useAsync({
         deferFn: submitFeedback,
         onResolve: onResolveHandler,
         onReject: onRejectHandler,
     })
+
+    /** @type {(surveyFeedback: SurveyFeedback) => void} */
+    const onSubmitHandler = React.useCallback(
+        (surveyFeedback) => {
+            surveyFeedbackRef.current = surveyFeedback
+            run(surveyFeedback)
+        },
+        [run],
+    )
+
+    return React.useMemo(
+        () => ({
+            onSubmit: onSubmitHandler,
+            isPending,
+        }),
+        [onSubmitHandler, isPending],
+    )
 }
 
 /**
@@ -37,7 +54,7 @@ const SurveyScreen = (props) => {
     const survey = useSurvey()
     useSurveyHeader(navigation)
 
-    const {run, isPending} = useSubmitFeedback(navigation)
+    const {onSubmit, isPending} = useSubmitFeedback(navigation)
 
     const onNextPageHandler = React.useCallback(
         (nextPageIndex) => {
@@ -48,21 +65,13 @@ const SurveyScreen = (props) => {
         [navigation],
     )
 
-    /** @type {(surveyFeedback: SurveyFeedback) => void} */
-    const onSubmitHandler = React.useCallback(
-        (surveyFeedback) => {
-            run(surveyFeedback)
-        },
-        [run],
-    )
-
     const surveyScreenLayout = (
         <SurveyScreenLayout
             survey={survey}
             pageIndex={pageIndex}
             onNextPage={onNextPageHandler}
             onPrevPage={navigation.pop}
-            onSubmit={onSubmitHandler}
+            onSubmit={onSubmit}
         />
     )
 
