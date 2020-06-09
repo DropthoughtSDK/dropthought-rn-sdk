@@ -26,7 +26,10 @@ const metadataTypeKeyboard = (metadataType) => {
         case QuestionMetaDataType.Phone:
             return 'phone-pad'
         case QuestionMetaDataType.Number:
-            return 'numeric'
+            return Platform.select({
+                ios: 'numbers-and-punctuation',
+                default: 'numeric',
+            })
         case QuestionMetaDataType.Date:
         default:
             return 'default'
