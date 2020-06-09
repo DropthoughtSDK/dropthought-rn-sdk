@@ -56,13 +56,13 @@ export const metaDataTypeQuestionValidator = (question, value) => {
         case QuestionMetaDataType.Number:
             return !isNaN(value)
         case QuestionMetaDataType.Date:
-            reg = /^((?:\d{4}-\d{2}-\d{2})|(?:\d{4}\/\d{2}\/\d{2}))?( )?(\d{2}:\d{2}:\d{2})?$/
+            reg = /^((?:\d{4}-\d{2}-\d{2})|(?:\d{4}\/\d{2}\/\d{2})|(?:\d{4}:\d{2}:\d{2}))?( )?(\d{2}:\d{2}:\d{2})?$/
             return reg.test(value)
         case QuestionMetaDataType.Phone:
             reg = /^\+[1-9]\d{1,14}$/
             return reg.test(value)
         case QuestionMetaDataType.Email:
-            reg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+            reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             return reg.test(value)
         default:
             // no need to check the value
