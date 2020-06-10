@@ -47,6 +47,9 @@ const SurveyStack = () => {
                     error: undefined,
                     surveyFeedback: undefined,
                 }}
+                options={{
+                    gestureEnabled: false,
+                }}
             />
         </Stack.Navigator>
     )
