@@ -32,8 +32,9 @@ public class FirstFragment extends Fragment {
                 EditText apiKeyText = (EditText) getView().findViewById(R.id.apiKey);
                 EditText surveyIdText = (EditText) getView().findViewById(R.id.surveyId);
 
-                Dropthought.startSurveyActivity(
-                        getActivity().getApplicationContext(),
+                Dropthought.startSurveyActivityForResult(
+                        getActivity(),
+                        MainActivity.SM_REQUEST_CODE,
                         apiKeyText.getText().toString(),
                         surveyIdText.getText().toString()
                 );

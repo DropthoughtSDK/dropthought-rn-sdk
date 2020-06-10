@@ -1,6 +1,7 @@
 package com.dropthought.app.sdk;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,29 @@ import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 public class SurveyModuleActivity extends Activity implements DefaultHardwareBackBtnHandler {
     private ReactRootView mReactRootView;
     private ReactInstanceManager mReactInstanceManager;
+
+    private static Intent getIntent(Context context, String apiKey, String surveyId) {
+        Intent intent = new Intent(context, SurveyModuleActivity.class);
+        Bundle initialProps = new Bundle();
+        initialProps.putString("surveyId", surveyId);
+        initialProps.putString("apiKey", apiKey);
+        intent.putExtras(initialProps);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        return intent;
+    }
+
+    public static void startSurveyActivityForResult(Activity context, int requestCode, String apiKey, String surveyId) {
+        Intent intent = getIntent(context, apiKey, surveyId);
+        context.startActivityForResult(intent, requestCode);
+    }
+
+//    public static void startSurveyActivityForResult(Activity context, int requestCode, String surveyId) {
+//        startSurveyActivityForResult(context, requestCode, mAPIKey, surveyId);
+//    }
+//
+//    public static void startSurveyActivityForResult(Activity context, int requestCode) {
+//        startSurveyActivityForResult(context, requestCode, mAPIKey, mSurveyId);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +100,14 @@ public class SurveyModuleActivity extends Activity implements DefaultHardwareBac
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("SurveyModuleActivity", "onActivityResult: " + resultCode + " " + requestCode);
         if (mReactInstanceManager != null) {
             mReactInstanceManager.onActivityResult(this, requestCode, resultCode, data);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
