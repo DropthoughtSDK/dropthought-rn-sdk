@@ -19,7 +19,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-    [[Survey sharedInstance] initSurvey:launchOptions];
+    [[Survey sharedInstance] initSurvey:launchOptions apiKey:@""];
 
     return YES;
 }

@@ -11,6 +11,13 @@
 
 @interface Survey : NSObject <RCTBridgeModule>
 + (instancetype) sharedInstance;
-- (void)initSurvey:(NSDictionary *)launchOptions;
-- (void)present:(UIViewController *)from apiKey:(NSString *)apiKey surveyId:(NSString *)surveyId;
+
+- (void)initSurvey:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey;
+
+// NOTE: For Demo App scenario. Remove before release
+- (void)setupAPIKey:(NSString *)apiKey;
+
+
+- (void)present:(UIViewController *)from surveyId:(NSString *)surveyId;
+- (void)sendUploadOfflineFeedbacksEvent;
 @end

@@ -3,7 +3,12 @@
  */
 import 'react-native-gesture-handler'
 
-import {AppRegistry, DeviceEventEmitter} from 'react-native'
+import {
+    AppRegistry,
+    DeviceEventEmitter,
+    NativeModules,
+    NativeEventEmitter,
+} from 'react-native'
 import SDKEntry from './src/SDKEntry'
 import {name as appName} from './app.json'
 
@@ -47,3 +52,7 @@ const onSessionConnect = (params) => {
 }
 
 DeviceEventEmitter.addListener('onSessionConnect', onSessionConnect)
+
+const {SurveyEmitter} = NativeModules
+const eventEmitter = new NativeEventEmitter(SurveyEmitter)
+eventEmitter.addListener('onSessionConnect', onSessionConnect)
