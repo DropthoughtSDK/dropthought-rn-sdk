@@ -1,10 +1,20 @@
 import React from 'react'
+import {useBackHandler} from '@react-native-community/hooks'
 
 import {EndScreenLayout} from '@dropthought/kiosk-rn'
 
 import {useSurvey} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'
 import SurveyNativeBridge from '../native/SurveyBridge'
+
+const useBackForDismiss = () => {
+    const backHandler = React.useCallback(() => {
+        SurveyNativeBridge.dismiss()
+        return true
+    }, [])
+
+    useBackHandler(backHandler)
+}
 
 /**
  * @type {React.FunctionComponent<ScreenProps>}
@@ -23,6 +33,7 @@ const EndScreen = (props) => {
         //     SurveyNativeBridge.onFeedbackResult(surveyFeedback, error || 0)
     }, [error, surveyFeedback])
 
+    useBackForDismiss()
     return <EndScreenLayout survey={survey} />
 }
 
