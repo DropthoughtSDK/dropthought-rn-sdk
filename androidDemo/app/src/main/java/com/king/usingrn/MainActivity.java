@@ -1,22 +1,19 @@
 package com.king.usingrn;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import com.dropthought.app.sdk.Dropthought;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 takeSurvey();
             }
         });
+
+        Button button = findViewById(R.id.upload);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                uploadFeedbacks();
+            }
+        });
     }
 
     public void takeSurvey() {
@@ -43,10 +48,13 @@ public class MainActivity extends AppCompatActivity {
         // Remember: you must supply the activity (e.g. this), your own request code (to differentiate from other activities),
         Dropthought.startSurveyActivityForResult(
                 this,
-                SM_REQUEST_CODE,
-                "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW5nLmNoZW5AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyMjYyMDQ1MCwiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.Ol9kxpzakhaYAssDnZvfR2Zxj_ei2ewnldcIr4zh4dXXT9Xp3qY_VES0lvqOM2IXxyI0sz06hMQ6N1QeCRXsVg",
-                "23856ed5-5805-4146-b67e-5ff9aace0362"
+                SM_REQUEST_CODE
         );
+
+    }
+
+    public void uploadFeedbacks() {
+        Dropthought.uploadQueuedFeedback();
     }
 
     @Override
