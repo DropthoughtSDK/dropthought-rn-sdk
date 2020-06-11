@@ -1,6 +1,5 @@
 import {apiPostEvent} from '@dropthought/dropthought-data'
-import {saveData, loadData} from './Storage'
-const SURVEY_FEEDBACKS_STORAGE_KEY = `survey-feedbacks`
+import {FeedbacksQueue} from './FeedbacksUploader'
 
 /**
  * the format is to fit in the react-async deferFn
@@ -19,13 +18,10 @@ export const submitFeedback = async ([surveyFeedback]) => {
 }
 
 /**
- *
  * @param {SurveyFeedback} surveyFeedback
  */
 export const saveFeedback = async (surveyFeedback) => {
-    const surveyFeedbacks = await loadData(SURVEY_FEEDBACKS_STORAGE_KEY, [])
-    surveyFeedbacks.push(surveyFeedback)
-    await saveData(SURVEY_FEEDBACKS_STORAGE_KEY, surveyFeedbacks)
+    return FeedbacksQueue.enqueue(surveyFeedback)
 }
 
 /**@typedef {import('@dropthought/dropthought-data').Feedback} Feedback */

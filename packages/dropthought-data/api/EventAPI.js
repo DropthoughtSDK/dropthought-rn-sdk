@@ -13,9 +13,13 @@ const EVENT_PATH = '/api/event'
  *   programId: string,
  *   feedbacks: Feedback[],
  * }} param0
+ * @param {AxiosRequestConfig} axiosConfig
  * @returns {Promise<Survey>}
  */
-export async function apiPostEvent({programId, feedbacks = []}) {
+export async function apiPostEvent(
+    {programId, feedbacks = []},
+    axiosConfig = {},
+) {
     /** @type {AxiosRequestConfig} */
     const params = {
         method: 'POST',
@@ -33,9 +37,18 @@ export async function apiPostEvent({programId, feedbacks = []}) {
             },
         },
         timeout: 10000,
+        ...axiosConfig,
     }
 
     return apiRequest(EVENT_PATH, params).then((response) => {
+        const {success, error} = response.data
+        if (success === false) {
+            throw {
+                response,
+                request: response.request,
+                message: error || response.status,
+            }
+        }
         return response.data
     })
 }
