@@ -13,7 +13,7 @@
 RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents {
-    return @[@"onSessionConnect"];
+    return @[@"UploadQueuedFeedback"];
 }
 
 @end

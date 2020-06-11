@@ -13,11 +13,11 @@
 RCT_EXPORT_MODULE();
 
 - (NSArray<NSString *> *)supportedEvents {
-    return @[@"onSessionConnect"];
+    return @[@"UploadQueuedFeedback"];
 }
 
 - (void)sendSelectItem:(NSDictionary *)obj {
-    [self sendEventWithName:@"onSessionConnect" body:obj];
+    [self sendEventWithName:@"UploadQueuedFeedback" body:obj];
 }
 
 + (instancetype)sharedInstance {

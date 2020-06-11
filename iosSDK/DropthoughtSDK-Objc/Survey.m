@@ -59,7 +59,7 @@ RCT_EXPORT_MODULE();
 }
 
 - (void)sendUploadOfflineFeedbacksEvent {
-    [self.app.bridge enqueueJSCall:@"RCTDeviceEventEmitter" method:@"emit" args:@[@"onSessionConnect", @{@"apiKey": self.apiKey}] completion:NULL];
+    [self.app.bridge enqueueJSCall:@"RCTDeviceEventEmitter" method:@"emit" args:@[@"UploadQueuedFeedback", @{@"apiKey": self.apiKey}] completion:NULL];
 }
 
 
