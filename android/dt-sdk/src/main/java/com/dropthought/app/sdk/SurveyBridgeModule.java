@@ -26,17 +26,14 @@ public class SurveyBridgeModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void dismiss() {
         // close current activity
-        reactContext.getCurrentActivity().setResult(123, new Intent());
         reactContext.getCurrentActivity().finish();
     }
 
     @ReactMethod
     public void onFeedbackResult(ReadableMap surveyFeedback, int errorCode ) {
-        Log.d("SurveyBridgeModule", "onFeedbackResult: " + errorCode + " " + " "
-                + reactContext.getCurrentActivity().getLocalClassName() + " " + surveyFeedback.getString("surveyId"));
+//        Log.d("SurveyBridgeModule", "onFeedbackResult: " + errorCode + " " + " "
+//                + reactContext.getCurrentActivity().getLocalClassName() + " " + surveyFeedback.getString("surveyId"));
         Intent intent = new Intent();
         reactContext.getCurrentActivity().setResult(errorCode, intent);
-        // close current activity
-//        reactContext.getCurrentActivity().setResult();
     }
 }

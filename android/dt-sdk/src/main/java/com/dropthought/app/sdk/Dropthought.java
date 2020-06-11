@@ -37,9 +37,6 @@ public class Dropthought {
         // so later activity would be started faster
         ReactRootView reactView = new ReactRootView(application.getApplicationContext());
         reactView.startReactApplication(reactInstanceManager, "dropthought-sdk", initialProps);
-
-//        ReactRootView reactView2 = new ReactRootView(application.getApplicationContext());
-//        reactView2.startReactApplication(reactInstanceManager, "function-test", initialProps);
     }
 
     public static void init(Application application, String apiKey) {
@@ -86,5 +83,9 @@ public class Dropthought {
 
     public static void startSurveyActivity(Activity context) {
         startSurveyActivity(context, mAPIKey, mSurveyId);
+    }
+
+    public static void uploadQueuedFeedback() {
+        ReactInstanceSingleton.uploadQueuedFeedback();
     }
 }

@@ -34,17 +34,35 @@ class ReactInstanceSingleton {
 
             mReactInstanceManager.addReactInstanceEventListener(new ReactInstanceManager.ReactInstanceEventListener(){
                 public void onReactContextInitialized(ReactContext reactContext){
-                    //Use valid Context here
-                    Log.d("ReactInstanceSingleton","onReactContextInitialized");
-                    WritableMap params = Arguments.createMap();
-                    params.putString("apiKey", Dropthought.getAPIKey());
-
-                    reactContext
-                            .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
-                            .emit("onSessionConnect", params);
+                    uploadQueuedFeedback(reactContext);
                 }
             });
         }
         return mReactInstanceManager;
+    }
+
+    public static ReactInstanceManager getReactInstanceManager() {
+        return mReactInstanceManager;
+    }
+
+    private static void uploadQueuedFeedback(ReactContext reactContext) {
+        if(reactContext == null) {
+            return;
+        }
+        Log.d("ReactInstanceSingleton","uploadQueuedFeedback");
+        WritableMap params = Arguments.createMap();
+        params.putString("apiKey", Dropthought.getAPIKey());
+
+        reactContext
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit("UploadQueuedFeedback", params);
+    }
+
+    public static void uploadQueuedFeedback() {
+        if(mReactInstanceManager == null) {
+            return;
+        }
+        ReactContext reactContext = mReactInstanceManager.getCurrentReactContext();
+        uploadQueuedFeedback(reactContext);
     }
 }
