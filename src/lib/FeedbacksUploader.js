@@ -26,16 +26,11 @@ export const FailedReasonsQueue = new QueueStorage({
  * @param {SurveyFeedback} surveyFeedback
  * @param {*} cancelSource
  */
-async function sendFeedback(surveyFeedback, cancelSource = undefined) {
-    return apiPostEvent(
-        {
-            programId: surveyFeedback.surveyId,
-            feedbacks: surveyFeedback.feedbacks,
-        },
-        {
-            customCancelTokenSource: cancelSource,
-        },
-    )
+async function sendFeedback(surveyFeedback) {
+    return apiPostEvent({
+        programId: surveyFeedback.surveyId,
+        feedbacks: surveyFeedback.feedbacks,
+    })
 }
 
 /** @enum {'idle' | 'processing' } */
@@ -66,7 +61,6 @@ function CreateFeedbacksUploader() {
     let state = UploaderStates.Idle
     let numOfProcessed = 0
     let userCanceled = false
-    let id = uuidv4()
 
     /** @type {FeedbackUploaderSubscription[]} */
     let subscriptions = []
@@ -90,7 +84,6 @@ function CreateFeedbacksUploader() {
                 typeof subscription.subscriber === 'function'
             ) {
                 subscription.subscriber({
-                    id,
                     uploadStatus: state,
                     numOfFeedbacksProcessed: numOfProcessed,
                     queuedFeedbacks,

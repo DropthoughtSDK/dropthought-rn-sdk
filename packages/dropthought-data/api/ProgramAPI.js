@@ -1,4 +1,4 @@
-import {axiosRequestWrapper as apiRequest} from './APIClient'
+import {apiRequest} from './APIClient'
 
 const PROGRAMS_PATH = '/api/programs'
 
@@ -11,7 +11,7 @@ const PROGRAMS_PATH = '/api/programs'
  * @returns {Promise<Survey>}
  */
 export async function apiGetProgramById({programId, language = 'en'}) {
-    /** @type {AxiosRequestConfig} */
+    /** @type {RequestConfig} */
     const params = {
         method: 'GET',
         authRequired: true,
@@ -61,7 +61,7 @@ export async function apiGetProgramsById({programId}) {
 }
 
 /**
- * @typedef {import('./APIClient').RequestConfig} AxiosRequestConfig
+ * @typedef {import('./APIClient').RequestConfig} RequestConfig
  * @typedef {import('../data').Survey} Survey
  * @typedef {import('../data').SurveyLangMaps} SurveyLangMaps
  */

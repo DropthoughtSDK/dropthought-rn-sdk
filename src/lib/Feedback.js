@@ -6,12 +6,18 @@ import {FeedbacksQueue} from './FeedbacksUploader'
  * @param {[SurveyFeedback]} surveyFeedback
  */
 export const submitFeedback = async ([surveyFeedback]) => {
-    return apiPostEvent({
-        programId: surveyFeedback.surveyId,
-        feedbacks: surveyFeedback.feedbacks,
-    }).catch((error) => {
+    return apiPostEvent(
+        {
+            programId: surveyFeedback.surveyId,
+            feedbacks: surveyFeedback.feedbacks,
+        },
+        {
+            // use shorter timeout here,
+            timeout: 8000,
+        },
+    ).catch((error) => {
         // save result when there's error
-        // TODO: maybe there're some errors no need to be handled?
+        // TODO: maybe there're some errors no need to be saved?
         saveFeedback(surveyFeedback)
         throw error
     })

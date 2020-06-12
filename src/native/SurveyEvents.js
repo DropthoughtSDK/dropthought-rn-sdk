@@ -9,6 +9,12 @@ import {feedbackUploader} from '../lib/FeedbacksUploader'
 
 const uploadQueuedFeedbacksHandler = (params) => {
     initializeWithAPIKey(params.apiKey)
+
+    // un-comment the following codes to debug the feedback uploader
+    // const unsubscribe = feedbackUploader.subscribe(async (state) => {
+    //     console.log('feedback uploader state changed', state)
+    // })
+
     feedbackUploader
         .upload()
         .then(() => {
@@ -17,10 +23,9 @@ const uploadQueuedFeedbacksHandler = (params) => {
         .catch((err) => {
             console.log('failed when upload', err)
         })
-
     // un-comment the following codes to debug the feedback uploader
-    // feedbackUploader.subscribe((state) => {
-    //     console.log('feedback uploader state changed', state)
+    // .finally(() => {
+    //     unsubscribe()
     // })
 }
 

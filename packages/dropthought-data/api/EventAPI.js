@@ -3,7 +3,7 @@
  * https://docs.dropthought.com/docs/2_0/api.html#event
  * submit feedback
  */
-import {axiosRequestWrapper as apiRequest} from './APIClient'
+import {apiRequest} from './APIClient'
 
 const EVENT_PATH = '/api/event'
 
@@ -36,19 +36,10 @@ export async function apiPostEvent(
                 source: 'qr',
             },
         },
-        timeout: 10000,
         ...axiosConfig,
     }
 
     return apiRequest(EVENT_PATH, params).then((response) => {
-        const {success, error} = response.data
-        if (success === false) {
-            throw {
-                response,
-                request: response.request,
-                message: error || response.status,
-            }
-        }
         return response.data
     })
 }
