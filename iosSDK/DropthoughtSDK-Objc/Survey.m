@@ -14,6 +14,8 @@
 #import "Survey.h"
 #import "SurveyApplication.h"
 #import "SurveyEmitter.h"
+#import "SurveyViewController.h"
+
 
 @interface Survey()
 @property (nonatomic, strong) UIViewController *from;
@@ -51,7 +53,7 @@ RCT_EXPORT_MODULE();
     RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:self.app.bridge moduleName:@"dropthought-sdk" initialProperties:initialProperties];
     rootView.frame = [UIScreen mainScreen].bounds;
 
-    UIViewController *vc = [[UIViewController alloc] init];
+    SurveyViewController *vc = [[SurveyViewController alloc] init];
     vc.view = rootView;
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
 
