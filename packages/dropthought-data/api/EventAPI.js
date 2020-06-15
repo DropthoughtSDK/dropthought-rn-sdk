@@ -3,7 +3,7 @@
  * https://docs.dropthought.com/docs/2_0/api.html#event
  * submit feedback
  */
-import {axiosRequestWrapper as apiRequest} from './APIClient'
+import {apiRequest} from './APIClient'
 
 const EVENT_PATH = '/api/event'
 
@@ -13,9 +13,13 @@ const EVENT_PATH = '/api/event'
  *   programId: string,
  *   feedbacks: Feedback[],
  * }} param0
+ * @param {AxiosRequestConfig} axiosConfig
  * @returns {Promise<Survey>}
  */
-export async function apiPostEvent({programId, feedbacks = []}) {
+export async function apiPostEvent(
+    {programId, feedbacks = []},
+    axiosConfig = {},
+) {
     /** @type {AxiosRequestConfig} */
     const params = {
         method: 'POST',
@@ -32,7 +36,7 @@ export async function apiPostEvent({programId, feedbacks = []}) {
                 source: 'qr',
             },
         },
-        timeout: 10000,
+        ...axiosConfig,
     }
 
     return apiRequest(EVENT_PATH, params).then((response) => {

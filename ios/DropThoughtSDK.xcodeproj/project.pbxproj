@@ -16,6 +16,7 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* DropThoughtSDKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* DropThoughtSDKTests.m */; };
+		B38B36DB2490BDC0009E884C /* SurveyEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B36DA2490BDC0009E884C /* SurveyEmitter.m */; };
 		E7C34717B6703F372B8CB463 /* libPods-DropThoughtSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E99F90F5B46492CC8353EE /* libPods-DropThoughtSDK.a */; };
 		FDE67670F966AA0284595792 /* libPods-DropThoughtSDK-DropThoughtSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D3BA2DFFC8F837B4B1783B8 /* libPods-DropThoughtSDK-DropThoughtSDKTests.a */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,8 @@
 		2D02E4901E0B4A5D006451C7 /* DropThoughtSDK-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "DropThoughtSDK-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D3BA2DFFC8F837B4B1783B8 /* libPods-DropThoughtSDK-DropThoughtSDKTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DropThoughtSDK-DropThoughtSDKTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD77D880A0213CD29F730A67 /* Pods-DropThoughtSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DropThoughtSDK.debug.xcconfig"; path = "Target Support Files/Pods-DropThoughtSDK/Pods-DropThoughtSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		B38B36D92490BDC0009E884C /* SurveyEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SurveyEmitter.h; path = DropThoughtSDK/SurveyEmitter.h; sourceTree = "<group>"; };
+		B38B36DA2490BDC0009E884C /* SurveyEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SurveyEmitter.m; path = DropThoughtSDK/SurveyEmitter.m; sourceTree = "<group>"; };
 		D17A7BF02AA18A1FDDAAEFB2 /* Pods-DropThoughtSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DropThoughtSDK.release.xcconfig"; path = "Target Support Files/Pods-DropThoughtSDK/Pods-DropThoughtSDK.release.xcconfig"; sourceTree = "<group>"; };
 		E2E99F90F5B46492CC8353EE /* libPods-DropThoughtSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DropThoughtSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -118,6 +121,8 @@
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				B38B36D92490BDC0009E884C /* SurveyEmitter.h */,
+				B38B36DA2490BDC0009E884C /* SurveyEmitter.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
@@ -469,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				B38B36DB2490BDC0009E884C /* SurveyEmitter.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

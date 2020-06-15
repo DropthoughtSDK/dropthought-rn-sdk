@@ -1,6 +1,7 @@
 package com.dropthought.app.sdk;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -78,8 +79,11 @@ public class SurveyModuleActivity extends Activity implements DefaultHardwareBac
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (mReactInstanceManager != null) {
             mReactInstanceManager.onActivityResult(this, requestCode, resultCode, data);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {

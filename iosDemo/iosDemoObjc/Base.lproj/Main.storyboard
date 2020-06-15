@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -64,22 +65,44 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MiC-Kf-V0c">
+                                <rect key="frame" x="30" y="367" width="354" height="45"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="b6V-Fq-TOA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="UPLOAD OFFINE SURVEYS (IF NEEDED)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="uploadClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eTR-0W-Z48"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.87461005582422169" green="0.87461005582422169" blue="0.87461005582422169" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="kJM-cr-tZY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="02b-tW-6Ko"/>
                             <constraint firstItem="Jqg-sy-hBn" firstAttribute="top" secondItem="baj-bA-SOi" secondAttribute="bottom" constant="30" id="0zj-HG-Fke"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="baj-bA-SOi" secondAttribute="trailing" constant="30" id="10G-gr-sNE"/>
+                            <constraint firstItem="MiC-Kf-V0c" firstAttribute="top" secondItem="Jqg-sy-hBn" secondAttribute="bottom" constant="30" id="4iK-aN-nNO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jqg-sy-hBn" secondAttribute="trailing" constant="30" id="4pn-Q0-MFw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kJM-cr-tZY" secondAttribute="trailing" constant="30" id="5Ly-YE-Up8"/>
                             <constraint firstItem="kJM-cr-tZY" firstAttribute="top" secondItem="c8w-ex-C2Q" secondAttribute="bottom" constant="10" id="C6C-KV-K6f"/>
                             <constraint firstItem="Jqg-sy-hBn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Jbo-p3-blu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MiC-Kf-V0c" secondAttribute="trailing" constant="30" id="KF2-3i-ZnG"/>
                             <constraint firstItem="c8w-ex-C2Q" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Px5-dt-hV9"/>
                             <constraint firstItem="baj-bA-SOi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="XM5-WR-7Cx"/>
                             <constraint firstItem="c8w-ex-C2Q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="dqy-Yj-Reg"/>
                             <constraint firstItem="2oA-PJ-rU0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="hcG-Gr-N1q"/>
                             <constraint firstItem="2oA-PJ-rU0" firstAttribute="top" secondItem="kJM-cr-tZY" secondAttribute="bottom" constant="20" id="o5b-62-ihz"/>
                             <constraint firstItem="baj-bA-SOi" firstAttribute="top" secondItem="2oA-PJ-rU0" secondAttribute="bottom" constant="20" id="tBN-1H-rr0"/>
+                            <constraint firstItem="MiC-Kf-V0c" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="xQm-5f-bH5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

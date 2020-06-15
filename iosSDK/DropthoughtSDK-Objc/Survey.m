@@ -13,10 +13,12 @@
 
 #import "Survey.h"
 #import "SurveyApplication.h"
+#import "SurveyEmitter.h"
 
 @interface Survey()
 @property (nonatomic, strong) UIViewController *from;
 @property (nonatomic, strong) SurveyApplication *app;
+@property (nonatomic, strong) NSString *apiKey;
 @end
 
 @implementation Survey
@@ -32,15 +34,20 @@ RCT_EXPORT_MODULE();
     return instance;
 }
 
-- (void)initSurvey:(NSDictionary *)launchOptions {
+- (void)initSurvey:(NSDictionary *)launchOptions apiKey:(NSString *)apiKey {
     self.app = [[SurveyApplication alloc] init];
     [self.app setupBridge:launchOptions];
+    self.apiKey = apiKey;
 }
 
-- (void)present:(UIViewController *)from apiKey:(NSString *)apiKey surveyId:(NSString *)surveyId {
+- (void)setupAPIKey:(NSString *)apiKey {
+    self.apiKey = apiKey;
+}
+
+- (void)present:(UIViewController *)from surveyId:(NSString *)surveyId {
     self.from = from;
 
-    NSDictionary *initialProperties = @{ @"apiKey" : apiKey, @"surveyId": surveyId };
+    NSDictionary *initialProperties = @{ @"apiKey" : self.apiKey, @"surveyId": surveyId };
     RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:self.app.bridge moduleName:@"dropthought-sdk" initialProperties:initialProperties];
     rootView.frame = [UIScreen mainScreen].bounds;
 
@@ -48,8 +55,13 @@ RCT_EXPORT_MODULE();
     vc.view = rootView;
     vc.modalPresentationStyle = UIModalPresentationFullScreen;
 
-    [self.from presentViewController:vc animated:YES completion:nil];
+    [self.from presentViewController:vc animated:YES completion:NULL];
 }
+
+- (void)sendUploadOfflineFeedbacksEvent {
+    [self.app.bridge enqueueJSCall:@"RCTDeviceEventEmitter" method:@"emit" args:@[@"UploadQueuedFeedback", @{@"apiKey": self.apiKey}] completion:NULL];
+}
+
 
 RCT_EXPORT_METHOD(dismiss)
 {

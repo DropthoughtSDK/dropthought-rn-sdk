@@ -12,4 +12,5 @@
     <string name="edit_apikey">Enter the api key</string>
     <string name="button_open">Open</string>
     <string name="edit_surveyid">Enter the survey id</string>
+    <string name="button_upload">Upload Offline</string>
 </resources>

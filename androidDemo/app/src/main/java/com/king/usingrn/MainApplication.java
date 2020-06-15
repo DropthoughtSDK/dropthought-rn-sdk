@@ -12,7 +12,9 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Dropthought.init(
-                this
+                this,
+                "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYXJvbC5rdW9AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyMzM5NTI0MywiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.pNGSqCuWdO6d3l7nuX66vkzZ8CupaljIaz97zbL93BnyzKN_JBJ3WLRrMsS8kNpuDEmIBlxqKppzTnnktI4Z0A",
+                "e5573da3-aacf-4f1c-b9a5-bef854131d49"
         );
     }
 }

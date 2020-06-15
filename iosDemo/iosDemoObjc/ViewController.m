@@ -24,11 +24,16 @@
 }
 
 - (IBAction)openSurvey:(id)sender {
-    NSString *apiKey = self.apiKeyTF.text;
+    [[Survey sharedInstance] setupAPIKey:self.apiKeyTF.text];
     NSString *surveyId = self.surveyIdTF.text;
-    [[Survey sharedInstance] present:self apiKey:apiKey surveyId:surveyId];
+    [[Survey sharedInstance] present:self surveyId:surveyId];
+
 }
 
+- (IBAction)uploadClicked:(id)sender {
+    [[Survey sharedInstance] setupAPIKey:self.apiKeyTF.text];
+    [[Survey sharedInstance] sendUploadOfflineFeedbacksEvent];
+}
 
 
 @end
