@@ -13,7 +13,7 @@ export const submitFeedback = async ([surveyFeedback]) => {
         },
         {
             // use shorter timeout here,
-            timeout: 8000,
+            timeout: 10000,
         },
     ).catch((error) => {
         // save result when there's error
