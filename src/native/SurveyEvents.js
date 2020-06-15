@@ -15,14 +15,7 @@ const uploadQueuedFeedbacksHandler = (params) => {
     //     console.log('feedback uploader state changed', state)
     // })
 
-    feedbackUploader
-        .upload()
-        .then(() => {
-            console.log('all finished')
-        })
-        .catch((err) => {
-            console.log('failed when upload', err)
-        })
+    feedbackUploader.upload()
     // un-comment the following codes to debug the feedback uploader
     // .finally(() => {
     //     unsubscribe()
