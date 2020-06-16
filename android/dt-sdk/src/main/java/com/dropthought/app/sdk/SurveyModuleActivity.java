@@ -1,8 +1,8 @@
 package com.dropthought.app.sdk;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -18,6 +18,10 @@ public class SurveyModuleActivity extends Activity implements DefaultHardwareBac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if(getResources().getBoolean(R.bool.portrait_only)) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         mReactRootView = new ReactRootView(this);
 
