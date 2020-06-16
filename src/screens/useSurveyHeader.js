@@ -19,16 +19,17 @@ const hitSlop = {
     right: 10,
     left: 10,
 }
-const CloseButton = ({...props}) => {
+
+export const CloseButton = ({...props}) => {
+    const onClosePressHandler = React.useCallback(() => {
+        SurveyNativeBridge.dismiss()
+    }, [])
     return (
         <TouchableOpacity
             style={styles.icon}
             {...props}
             hitSlop={hitSlop}
-            onPress={() => {
-                console.log('close')
-                SurveyNativeBridge.dismiss()
-            }}>
+            onPress={onClosePressHandler}>
             <Image source={closeIconSource} style={[styles.iconImage]} />
         </TouchableOpacity>
     )

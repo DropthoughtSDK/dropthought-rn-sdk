@@ -1,7 +1,9 @@
 import * as React from 'react'
-import {createStackNavigator} from '@react-navigation/stack'
+import {Platform} from 'react-native'
+import {createStackNavigator, TransitionPresets} from '@react-navigation/stack'
 import {Colors} from '@dropthought/kiosk-rn'
 
+import {CloseButton} from '../screens/useSurveyHeader'
 import StartScreen from '../screens/StartScreen'
 import SurveyScreen from '../screens/SurveyScreen'
 import EndScreen from '../screens/EndScreen'
@@ -15,6 +17,7 @@ const SurveyStack = () => {
     return (
         <Stack.Navigator
             initialRouteName="Start"
+            headerMode="float"
             screenOptions={{
                 headerStyle: {
                     backgroundColor: themeColor,
@@ -28,9 +31,12 @@ const SurveyStack = () => {
                 },
                 headerTitleAlign: 'left',
                 headerBackTitleVisible: false,
-                headerLeft: null,
-                headerRight: null,
-                title: '',
+                headerLeft: () => <CloseButton />,
+                headerRight: () => <CloseButton />,
+                title: survey.surveyName,
+                ...Platform.select({
+                    android: TransitionPresets.FadeFromBottomAndroid,
+                }),
             }}>
             <Stack.Screen name="Start" component={StartScreen} />
             <Stack.Screen
