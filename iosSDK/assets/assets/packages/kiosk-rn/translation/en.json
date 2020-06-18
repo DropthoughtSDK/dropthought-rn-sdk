@@ -13,7 +13,8 @@
         "start-btn": "Take Survey",
         "start-btn-desc": "Press on this button",
         "qrcode-desc": "Scan this QR",
-        "or": "OR"
+        "or": "OR",
+        "placeholder-message": "Sorry for the inconvenience.\nPlease come back and check later on."
     },
     "survey": {
         "survey-back": "Back",
