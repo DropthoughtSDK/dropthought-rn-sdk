@@ -32,6 +32,8 @@ export const Colors = {
     mandatoryRed: '#e64119',
     endSurveySubTitleGrey: '#212121',
     loadingMaskBG: '#FFFFFF9C',
+    placeholderText: '#443f57',
+    defaultThemeColor: '#5e9ae2',
 }
 
 // https://css-tricks.com/8-digit-hex-codes/
