@@ -17,6 +17,8 @@ export type QuestionMetaDataType =
     | 'Date'
     | 'String'
 
+export type ProgramStateType = 'expired' | 'drafts' | 'active' | 'scheduled'
+
 export interface Option {
     isOther: boolean
     title: string
@@ -58,6 +60,7 @@ export interface SurveyProperty {
 }
 
 export interface Survey {
+    state: ProgramStateType
     anonymous: boolean
     surveyId: string
     surveyName: string
@@ -71,6 +74,7 @@ export interface Survey {
     thankYouText?: string
     welcomeText?: string
     surveyEndDate: string
+    surveyStartDate: string
     timezone: string
 }
 

@@ -185,12 +185,12 @@ const OpenQuestion = ({
             style={[
                 styles.inputBG,
                 focus && getBackgroundColorStyle(),
-                question.metaDataType && styles.metaDataTypeInput,
-                !question.metaDataType && styles.paddingVertical15,
+                // question.metaDataType && styles.metaDataTypeInput,
+                // !question.metaDataType && styles.paddingVertical15,
             ]}>
             <TextInput
                 style={[styles.input, rtl && GlobalStyle.textAlignRight]}
-                multiline={!question.metaDataType}
+                multiline={true}
                 onChangeText={(t) => {
                     setText(t)
                     // onValueChange(text) // Keep it for Kiosk usage

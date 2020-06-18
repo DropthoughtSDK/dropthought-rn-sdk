@@ -35,5 +35,6 @@ target 'DropthoughtSDK-Objc' do
   pod 'react-native-safe-area-context', :path => '../node_modules/react-native-safe-area-context'
   pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+  pod 'RNLocalize', :path => '../node_modules/react-native-localize'
 
 end

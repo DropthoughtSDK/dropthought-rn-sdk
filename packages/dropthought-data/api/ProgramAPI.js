@@ -7,17 +7,24 @@ const PROGRAMS_PATH = '/api/programs'
  * @param {{
  *   programId: string,
  *   language?: string,
+ *   timezone?: string,
  * }} param0
+ * @param {RequestConfig} requestConfig
  * @returns {Promise<Survey>}
  */
-export async function apiGetProgramById({programId, language = 'en'}) {
+export async function apiGetProgramById(
+    {programId, language = 'en', timezone},
+    requestConfig = {},
+) {
     /** @type {RequestConfig} */
     const params = {
         method: 'GET',
         authRequired: true,
         params: {
             language,
+            timezone,
         },
+        ...requestConfig,
     }
 
     const url = `${PROGRAMS_PATH}/${programId}`
