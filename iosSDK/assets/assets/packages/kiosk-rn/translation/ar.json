@@ -1,5 +1,13 @@
 {
     "common": {},
+    "placeholder-title": {
+        "NoInternet": "No Internet Connection",
+        "ProgramScheduled": "هذا البرنامج لم يبدأ بعد",
+        "ProgramExpired": "انتهت صلاحية هذا البرنامج",
+        "ProgramDeleted": "تم حذف هذا البرنامج",
+        "ProgramDeactivated": "تم تعطيل هذا البرنامج",
+        "ProgramUnavailable": "هذا البرنامج غير متاح"
+    },
     "start-survey": {
         "start-btn": "بدأ الاستبيان",
         "start-btn-desc": "اضغط على هذا الزر",

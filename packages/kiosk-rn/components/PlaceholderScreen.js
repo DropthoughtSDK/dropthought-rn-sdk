@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {View, Image, StyleSheet, Text} from 'react-native'
 
 import {Colors, GlobalStyle} from '../styles'
+import i18n from '../translation'
 
 /** @enum {'NoInternet' | 'ProgramScheduled' | 'ProgramExpired' | 'ProgramDeleted' | 'ProgramDeactivated' | 'ProgramUnavailable'} */
 export const PlaceholderImageTypes = {
@@ -24,21 +25,13 @@ const imageTypeSources = {
     [ImageTypes.ProgramUnavailable]: require('../assets/placeholder-program-unavailable.png'),
 }
 
-const titles = {
-    [ImageTypes.NoInternet]: 'No Internet Connection',
-    [ImageTypes.ProgramScheduled]: 'This program has not started yet',
-    [ImageTypes.ProgramExpired]: 'This program has expired.',
-    [ImageTypes.ProgramDeleted]: 'This program has been deleted',
-    [ImageTypes.ProgramDeactivated]: 'This program has been deactivated',
-    [ImageTypes.ProgramUnavailable]: 'This program is not available',
-}
-
 /**
  * @type {React.FunctionComponent<PlaceholderScreenProps>}
  * @param {PlaceholderScreenProps} params
  */
 const PlaceholderScreen = ({message, imageSource, imageType, children}) => {
     // const imgStyle = {marginTop: 134}
+    const title = i18n.t(`placeholder-title:${imageType}`, undefined)
 
     return (
         <View style={styles.container}>
@@ -48,9 +41,7 @@ const PlaceholderScreen = ({message, imageSource, imageType, children}) => {
             />
 
             <View style={styles.body}>
-                {titles[imageType] && (
-                    <Text style={styles.title}>{titles[imageType]}</Text>
-                )}
+                {title && <Text style={styles.title}>{title}</Text>}
 
                 {message && <Text style={styles.message}>{message}</Text>}
                 {children}
