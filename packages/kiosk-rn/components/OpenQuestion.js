@@ -28,7 +28,7 @@ const metadataTypeKeyboard = (metadataType) => {
         case QuestionMetaDataType.Number:
             return Platform.select({
                 ios: 'numbers-and-punctuation',
-                default: 'numeric',
+                default: 'default',
             })
         case QuestionMetaDataType.Date:
         default:
