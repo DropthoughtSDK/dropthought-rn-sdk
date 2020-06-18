@@ -111,7 +111,7 @@ const getProgram = async ({surveyId, language}) => {
                 timezone: getTimeZone(),
             },
             {
-                timeout: 8000,
+                timeout: 10000,
             },
         )
     }
