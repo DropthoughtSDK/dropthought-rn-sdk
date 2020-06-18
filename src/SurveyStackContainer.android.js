@@ -13,7 +13,7 @@ const SurveyStackContainer = () => {
 
     return (
         <>
-            <StatusBar backgroundColor={themeColor} />
+            <StatusBar backgroundColor={themeColor} barStyle="light-content" />
             <SurveyStackNavigator />
         </>
     )

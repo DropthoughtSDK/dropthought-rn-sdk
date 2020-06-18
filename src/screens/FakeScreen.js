@@ -13,7 +13,10 @@ const FakeScreen = ({children}) => {
     return (
         <>
             {Platform.OS === 'android' && (
-                <StatusBar backgroundColor={Colors.white} />
+                <StatusBar
+                    backgroundColor={Colors.white}
+                    barStyle="dark-content"
+                />
             )}
             <SafeAreaView style={styles.container}>
                 <CloseButton tintColor={Colors.purple} />
