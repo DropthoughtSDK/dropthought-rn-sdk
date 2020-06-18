@@ -17,13 +17,16 @@ import i18n from '../translation'
 const QuestionWarningMessage = ({message}) => {
     if (!message) return null
     const rtl = i18n.dir() === 'rtl'
+
     return (
         <View>
             <ImageBackground
                 imageStyle={rtl && GlobalStyle.horizontalFlip}
                 style={styles.hintImage}
                 source={require('../assets/hint.png')}>
-                <Text style={styles.hint}>{message}</Text>
+                <Text style={[styles.hint, rtl && GlobalStyle.horizontalFlip]}>
+                    {message}
+                </Text>
             </ImageBackground>
         </View>
     )
