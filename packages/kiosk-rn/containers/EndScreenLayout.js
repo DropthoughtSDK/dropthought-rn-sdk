@@ -29,22 +29,12 @@ const EndScreen = ({survey}) => {
     const isPhone = dimensionWidthType === DimensionWidthType.phone
     const styles = isPhone ? phoneStyles : tabletStyles
     const iconStyle = styles.icon
-
-    const {surveyProperty, thankYouText} = survey
-
-    const iconView = () => {
-        const {image} = surveyProperty
-        return image === undefined ? (
-            <Image style={iconStyle} source={iconSource} />
-        ) : (
-            <Image style={iconStyle} source={{uri: image}} />
-        )
-    }
+    const {thankYouText} = survey
 
     return (
         <View style={shareStyles.container}>
             <View style={styles.main}>
-                {iconView()}
+                <Image style={iconStyle} source={iconSource} />
                 <Text style={styles.title}>{i18n.t('end-survey:thank')}</Text>
                 <Text style={styles.subtitle}>{thankYouText}</Text>
             </View>
