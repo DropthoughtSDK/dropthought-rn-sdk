@@ -1,9 +1,48 @@
 import React from 'react'
 
-import {StartScreenLayout} from '@dropthought/kiosk-rn'
+import {fromAPIDateStrToJS} from '@dropthought/dropthought-data'
+import {
+    StartScreenLayout,
+    PlaceholderImageTypes,
+    PlaceholderScreen,
+    i18n,
+} from '@dropthought/kiosk-rn'
 
 import {useSurveyContext} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'
+
+/**
+ *
+ * @param {import('@dropthought/dropthought-data/data').ProgramStateType} surveyState
+ * @param {Date} surveyStartDate
+ * @param {Date} surveyEndDate
+ */
+const checkSurveyStatus = (surveyState, surveyStartDate, surveyEndDate) => {
+    let imageType
+    switch (surveyState) {
+        case 'drafts':
+            imageType = PlaceholderImageTypes.ProgramUnavailable
+            break
+        case 'expired':
+            imageType = PlaceholderImageTypes.ProgramExpired
+            break
+        case 'scheduled':
+            imageType = PlaceholderImageTypes.ProgramScheduled
+            break
+        default:
+            imageType = null
+    }
+    // still need to check the start-end time
+    if (!imageType) {
+        const now = new Date()
+        if (now < surveyStartDate) {
+            imageType = PlaceholderImageTypes.ProgramScheduled
+        } else if (now > surveyEndDate) {
+            imageType = PlaceholderImageTypes.ProgramExpired
+        }
+    }
+    return imageType
+}
 
 /**
  * @type {React.FunctionComponent<ScreenProps>}
@@ -12,6 +51,14 @@ import {useSurveyHeader} from './useSurveyHeader'
 const SurveyScreen = (props) => {
     const {navigation} = props
     const {survey, changeLanguage} = useSurveyContext()
+    const {
+        state: surveyState,
+        surveyEndDate: surveyEndDateStr,
+        surveyStartDate: surveyStartDateStr,
+    } = survey
+    const surveyStartDate = fromAPIDateStrToJS(surveyStartDateStr)
+    const surveyEndDate = fromAPIDateStrToJS(surveyEndDateStr)
+
     useSurveyHeader(navigation)
 
     const onStartHandler = React.useCallback(() => {
@@ -26,6 +73,22 @@ const SurveyScreen = (props) => {
         },
         [changeLanguage],
     )
+
+    // render placeholder
+    const imageType = checkSurveyStatus(
+        surveyState,
+        surveyStartDate,
+        surveyEndDate,
+    )
+    if (imageType) {
+        // need to render placeholder
+        return (
+            <PlaceholderScreen
+                imageType={imageType}
+                message={i18n.t('start-survey:placeholder-message')}
+            />
+        )
+    }
 
     return (
         <StartScreenLayout

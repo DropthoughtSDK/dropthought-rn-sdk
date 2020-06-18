@@ -1,39 +1,16 @@
 import * as React from 'react'
-import {StyleSheet, TouchableOpacity, Image} from 'react-native'
+import {StyleSheet} from 'react-native'
 
-import SurveyNativeBridge from '../native/SurveyBridge'
 import {
     i18n,
     useDimensionWidthType,
     DimensionWidthType,
 } from '@dropthought/kiosk-rn'
 
+import CloseButton from '../components/CloseButton'
 import {useSurvey} from '../contexts/survey'
 
 /**@typedef {import('../navigation/SurveyStack').SurveyStackNavigationProps<"Survey">} ScreenNavigationProp */
-
-const closeIconSource = require('../assets/ic-close.png')
-const hitSlop = {
-    top: 10,
-    bottom: 10,
-    right: 10,
-    left: 10,
-}
-
-export const CloseButton = ({...props}) => {
-    const onClosePressHandler = React.useCallback(() => {
-        SurveyNativeBridge.dismiss()
-    }, [])
-    return (
-        <TouchableOpacity
-            style={styles.icon}
-            {...props}
-            hitSlop={hitSlop}
-            onPress={onClosePressHandler}>
-            <Image source={closeIconSource} style={[styles.iconImage]} />
-        </TouchableOpacity>
-    )
-}
 
 /**
  * @param {ScreenNavigationProp} navigation
@@ -59,13 +36,4 @@ const styles = StyleSheet.create({
         flexDirection: 'row-reverse',
     },
     ltr: {},
-    icon: {
-        width: 52,
-        height: 52,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    iconImage: {
-        resizeMode: 'contain',
-    },
 })

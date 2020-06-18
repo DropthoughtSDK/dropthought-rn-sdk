@@ -6,11 +6,19 @@
  */
 import * as React from 'react'
 import {View, Text, ActivityIndicator, Image} from 'react-native'
+import {getTimeZone} from 'react-native-localize'
 import {evolve, merge} from 'ramda'
 import {useAsync} from 'react-async'
 import {apiGetProgramById} from '@dropthought/dropthought-data'
-import {i18n, ActivityIndicatorMask, GlobalStyle} from '@dropthought/kiosk-rn'
+import {
+    i18n,
+    ActivityIndicatorMask,
+    GlobalStyle,
+    PlaceholderScreen,
+    PlaceholderImageTypes,
+} from '@dropthought/kiosk-rn'
 
+import FakeScreen from '../../screens/FakeScreen'
 import {saveCache, loadCache} from '../../lib/Storage'
 
 const DT_ERR_MISSING_PARAMS = 'dt-missing-parameters'
@@ -96,16 +104,24 @@ const getProgram = async ({surveyId, language}) => {
     let survey = await loadCache(programCacheKey)
 
     if (!survey) {
-        survey = await apiGetProgramById({
-            programId: surveyId,
-            language,
-        })
+        survey = await apiGetProgramById(
+            {
+                programId: surveyId,
+                language,
+                timezone: getTimeZone(),
+            },
+            {
+                timeout: 8000,
+            },
+        )
     }
     // pre-fetch image
     survey = await preFetchImage(survey)
 
-    // save to cache
-    await saveCache(programCacheKey, survey)
+    // only save to cache when state is active
+    if (survey.state === 'active') {
+        await saveCache(programCacheKey, survey)
+    }
 
     // change the i18n language
     i18n.changeLanguage(survey.language)
@@ -142,15 +158,28 @@ export const SurveyContextProvider = ({
 
     // initial loading data view
     if (!data) {
-        let content = <ActivityIndicator size="large" />
+        // loading
+        let content = (
+            <View style={GlobalStyle.fullCenter}>
+                <ActivityIndicator size="large" />
+            </View>
+        )
         if (error) {
-            if (error.message === DT_ERR_MISSING_PARAMS) {
-                content = <Text>Missing surveyId</Text>
-            } else {
-                content = <Text>Unable to fetch survey</Text>
+            let placeholderProps = {
+                imageType: PlaceholderImageTypes.ProgramUnavailable,
+                message:
+                    'Sorry for the inconvenience.\nPlease come back and check later on.',
             }
+            if (error.name === 'RequestTimeout') {
+                placeholderProps = {
+                    imageType: PlaceholderImageTypes.NoInternet,
+                    message:
+                        'Please check if you are connected to the internet',
+                }
+            }
+            content = <PlaceholderScreen {...placeholderProps} />
         }
-        return <View style={GlobalStyle.fullCenter}>{content}</View>
+        return <FakeScreen>{content}</FakeScreen>
     }
 
     return (

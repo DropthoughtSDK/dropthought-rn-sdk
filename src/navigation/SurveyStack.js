@@ -1,9 +1,13 @@
 import * as React from 'react'
 import {Platform} from 'react-native'
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack'
-import {Colors} from '@dropthought/kiosk-rn'
+import {
+    Colors,
+    useDimensionWidthType,
+    DimensionWidthType,
+} from '@dropthought/kiosk-rn'
 
-import {CloseButton} from '../screens/useSurveyHeader'
+import CloseButton from '../components/CloseButton'
 import StartScreen from '../screens/StartScreen'
 import SurveyScreen from '../screens/SurveyScreen'
 import EndScreen from '../screens/EndScreen'
@@ -12,6 +16,7 @@ const Stack = createStackNavigator()
 
 const SurveyStack = () => {
     const survey = useSurvey()
+    const isPhone = useDimensionWidthType() === DimensionWidthType.phone
     const themeColor = survey.surveyProperty.hexCode
 
     return (
@@ -29,7 +34,7 @@ const SurveyStack = () => {
                     fontSize: 16,
                     fontWeight: '600',
                 },
-                headerTitleAlign: 'left',
+                headerTitleAlign: isPhone ? 'left' : 'center',
                 headerBackTitleVisible: false,
                 headerLeft: () => <CloseButton />,
                 headerRight: () => <CloseButton />,
