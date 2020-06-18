@@ -170,7 +170,10 @@ export const SurveyContextProvider = ({
                 message:
                     'Sorry for the inconvenience.\nPlease come back and check later on.',
             }
-            if (error.name === 'RequestTimeout') {
+            if (
+                error.name === 'RequestTimeout' ||
+                error.message === 'Network request failed'
+            ) {
                 placeholderProps = {
                     imageType: PlaceholderImageTypes.NoInternet,
                     message:
