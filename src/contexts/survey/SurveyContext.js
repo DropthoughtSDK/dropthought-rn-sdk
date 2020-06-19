@@ -149,6 +149,7 @@ const useSelectedLanguageState = (defaultLanguage) => {
         selectedLanguage,
         prevSelectedLanguage.current,
         setSelectedLanguageWithBackup,
+        setSelectedLanguage,
     ]
 }
 
@@ -160,16 +161,17 @@ export const SurveyContextProvider = ({
     const [
         selectedLanguage,
         prevSelectedLanguage,
+        setSelectedLanguageWithBackup,
         setSelectedLanguage,
     ] = useSelectedLanguageState(defaultLanguage)
 
     // handler the rejection when switching language
-    // fallback to previous language
     const onRejectHandler = React.useCallback(() => {
         if (
             !isNil(prevSelectedLanguage) &&
             prevSelectedLanguage !== selectedLanguage
         ) {
+            // fallback to previous language directly
             setSelectedLanguage(prevSelectedLanguage)
             Alert.alert(
                 'Unable to fetch data',
@@ -195,9 +197,9 @@ export const SurveyContextProvider = ({
     const contextValue = React.useMemo(
         () => ({
             survey: data,
-            changeLanguage: setSelectedLanguage,
+            changeLanguage: setSelectedLanguageWithBackup,
         }),
-        [data, setSelectedLanguage],
+        [data, setSelectedLanguageWithBackup],
     )
 
     // initial loading data view
