@@ -12,12 +12,13 @@ const EVENT_PATH = '/api/event'
  * @param {{
  *   programId: string,
  *   feedbacks: Feedback[],
+ *   source?: EventAPISourceType,
  * }} param0
  * @param {AxiosRequestConfig} axiosConfig
  * @returns {Promise<Survey>}
  */
 export async function apiPostEvent(
-    {programId, feedbacks = []},
+    {programId, feedbacks = [], source = 'api'},
     axiosConfig = {},
 ) {
     /** @type {AxiosRequestConfig} */
@@ -33,7 +34,7 @@ export async function apiPostEvent(
                 otherFlag: feedback.otherFlag,
             })),
             metaData: {
-                source: 'qr',
+                source,
             },
         },
         ...axiosConfig,
@@ -48,4 +49,5 @@ export async function apiPostEvent(
  * @typedef {import('./APIClient').RequestConfig} AxiosRequestConfig
  * @typedef {import('../data').Feedback} Feedback
  * @typedef {import('../data').SurveyFeedback} SurveyFeedback
+ * @typedef {import('../data').EventAPISourceType} EventAPISourceType
  */

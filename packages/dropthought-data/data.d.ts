@@ -19,6 +19,8 @@ export type QuestionMetaDataType =
 
 export type ProgramStateType = 'expired' | 'drafts' | 'active' | 'scheduled'
 
+export type EventAPISourceType = 'api' | 'kiosk' | 'qr' | 'email' | 'sms'
+
 export interface Option {
     isOther: boolean
     title: string
