@@ -5,9 +5,9 @@
  * therefore, the children would always be sure to have "survey" in context
  */
 import * as React from 'react'
-import {View, Text, ActivityIndicator, Image} from 'react-native'
+import {View, ActivityIndicator, Image, Alert} from 'react-native'
 import {getTimeZone} from 'react-native-localize'
-import {evolve, merge} from 'ramda'
+import {evolve, merge, isNil} from 'ramda'
 import {useAsync} from 'react-async'
 import {apiGetProgramById} from '@dropthought/dropthought-data'
 import {
@@ -129,31 +129,77 @@ const getProgram = async ({surveyId, language}) => {
     return survey
 }
 
+// we want to "remember" the previous selected language
+// so that, later when there's error, we could fallback to the previous selected language
+const useSelectedLanguageState = (defaultLanguage) => {
+    const [selectedLanguage, setSelectedLanguage] = React.useState(
+        defaultLanguage,
+    )
+    const prevSelectedLanguage = React.useRef()
+
+    // backup the previous selected language
+    const setSelectedLanguageWithBackup = React.useCallback(
+        (languageToSet) => {
+            prevSelectedLanguage.current = selectedLanguage
+            setSelectedLanguage(languageToSet)
+        },
+        [selectedLanguage],
+    )
+    return [
+        selectedLanguage,
+        prevSelectedLanguage.current,
+        setSelectedLanguageWithBackup,
+        setSelectedLanguage,
+    ]
+}
+
 export const SurveyContextProvider = ({
     surveyId,
     children,
     defaultLanguage = 'en',
 }) => {
-    const [selectedLanguage, setSelectedLanguage] = React.useState(
-        defaultLanguage,
-    )
+    const [
+        selectedLanguage,
+        prevSelectedLanguage,
+        setSelectedLanguageWithBackup,
+        setSelectedLanguage,
+    ] = useSelectedLanguageState(defaultLanguage)
+
+    // handler the rejection when switching language
+    const onRejectHandler = React.useCallback(() => {
+        if (
+            !isNil(prevSelectedLanguage) &&
+            prevSelectedLanguage !== selectedLanguage
+        ) {
+            // fallback to previous language directly
+            setSelectedLanguage(prevSelectedLanguage)
+            Alert.alert(
+                'Unable to fetch data',
+                'Please check if you are connected to the internet',
+            )
+        }
+    }, [selectedLanguage, prevSelectedLanguage, setSelectedLanguage])
 
     const {data, error, isPending} = useAsync({
         promiseFn: getProgram,
+        onReject: onRejectHandler,
 
         surveyId,
         language: selectedLanguage,
 
-        watch: selectedLanguage,
+        // watch, only re-run the promise, when language is changed
+        watchFn: (props, prevProps) =>
+            props.language !== prevProps.language &&
+            props.language !== prevSelectedLanguage,
     })
 
     /** @type {SurveyContextValue} */
     const contextValue = React.useMemo(
         () => ({
             survey: data,
-            changeLanguage: setSelectedLanguage,
+            changeLanguage: setSelectedLanguageWithBackup,
         }),
-        [data],
+        [data, setSelectedLanguageWithBackup],
     )
 
     // initial loading data view
