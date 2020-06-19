@@ -20,6 +20,7 @@ import {
 
 import FakeScreen from '../../screens/FakeScreen'
 import {saveCache, loadCache} from '../../lib/Storage'
+import SurveyNativeBridge from '../../native/SurveyBridge'
 
 const DT_ERR_MISSING_PARAMS = 'dt-missing-parameters'
 
@@ -153,6 +154,20 @@ const useSelectedLanguageState = (defaultLanguage) => {
     ]
 }
 
+const showAlert = () => {
+    const title = 'Unable to fetch data'
+    const message = 'Please check if you are connected to the internet'
+    if (SurveyNativeBridge.toast && SurveyNativeBridge.toast.call) {
+        SurveyNativeBridge.toast(`${title}\n${message}`, 3000)
+    } else {
+        Alert.alert(title, message, [
+            {
+                text: 'OK',
+            },
+        ])
+    }
+}
+
 export const SurveyContextProvider = ({
     surveyId,
     children,
@@ -173,10 +188,7 @@ export const SurveyContextProvider = ({
         ) {
             // fallback to previous language directly
             setSelectedLanguage(prevSelectedLanguage)
-            Alert.alert(
-                'Unable to fetch data',
-                'Please check if you are connected to the internet',
-            )
+            showAlert()
         }
     }, [selectedLanguage, prevSelectedLanguage, setSelectedLanguage])
 

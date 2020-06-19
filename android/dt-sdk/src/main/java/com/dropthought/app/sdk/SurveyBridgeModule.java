@@ -2,6 +2,7 @@ package com.dropthought.app.sdk;
 
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -27,6 +28,11 @@ public class SurveyBridgeModule extends ReactContextBaseJavaModule {
     public void dismiss() {
         // close current activity
         reactContext.getCurrentActivity().finish();
+    }
+
+    @ReactMethod
+    public void toast(String message, int duration) {
+        Toast.makeText(getReactApplicationContext(), message, duration).show();
     }
 
     @ReactMethod
