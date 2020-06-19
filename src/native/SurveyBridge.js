@@ -8,6 +8,7 @@ const {Survey} = NativeModules
  * @typedef {object} SurveyBridgeInterface
  * @property {()=>void} dismiss
  * @property {(surveyFeedback: SurveyFeedback, errorCode?: number)=>void} onFeedbackResult
+ * @property {(message: string, duration?: number)=>void=} toast
  */
 /** @type {SurveyBridgeInterface} */
 const SurveyBridge = Survey
