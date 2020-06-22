@@ -1,20 +1,18 @@
 import React from 'react'
 import {
-    ScrollView,
+    ScrollView as RNScrollView,
     StyleSheet,
-    KeyboardAvoidingView,
     Platform,
     View,
     findNodeHandle,
 } from 'react-native'
-import {useLayout} from '@react-native-community/hooks'
 
 import {SurveyPageProvider} from '../contexts/survey-page'
-import {useWindowDimensions} from '../hooks/useWindowDimensions'
 import QuestionContainer from './QuestionContainer'
 import SurveyProgressBar from './SurveyProgressBar'
 import SurveyFooter from './SurveyFooter'
 import SurveyPageIndicator from '../components/SurveyPageIndicator'
+import {KeyboardAvoidingScrollView} from '../components/KeyboardAvoidingView'
 import GlobalStyle, {Colors} from '../styles'
 
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
@@ -33,7 +31,8 @@ import GlobalStyle, {Colors} from '../styles'
  * @property {()=>void} onFeedback
  */
 
-const DEFAULT_KEYBOARD_VERTICAl_OffSET = 64
+const ScrollView =
+    Platform.OS === 'ios' ? KeyboardAvoidingScrollView : RNScrollView
 
 /**
  * @type {React.FunctionComponent<SurveyScreenLayoutProps>}
@@ -41,8 +40,6 @@ const DEFAULT_KEYBOARD_VERTICAl_OffSET = 64
  */
 const SurveyScreenLayout = (props) => {
     const {pageIndex = 0, survey} = props
-    const {onLayout, ...layout} = useLayout()
-    const {height} = useWindowDimensions()
     const scrollViewRef = React.useRef()
 
     // when validation start, set the state
@@ -79,33 +76,24 @@ const SurveyScreenLayout = (props) => {
         )
     })
 
-    const keyboardVerticalOffset = layout.height
-        ? height - layout.height
-        : DEFAULT_KEYBOARD_VERTICAl_OffSET
-
     return (
-        <View onLayout={onLayout} style={GlobalStyle.flex1}>
+        <View style={GlobalStyle.flex1}>
             <SurveyPageIndicator pageIndex={pageIndex} survey={survey} />
-            <KeyboardAvoidingView
-                behavior={Platform.OS === 'ios' ? 'padding' : null}
-                keyboardVerticalOffset={keyboardVerticalOffset}
-                style={styles.keyboardAvoidingViewStyle}>
-                <ScrollView
-                    ref={scrollViewRef}
-                    style={styles.scrollView}
-                    contentContainerStyle={styles.scrollViewContentContainer}>
-                    {/* man body content: questions and buttons */}
-                    <View style={styles.bodyContent}>
-                        {questions}
-                        <SurveyFooter
-                            {...props}
-                            survey={survey}
-                            onValidationFailed={onValidationFailedHandler}
-                            onValidationStart={onValidationStartHandler}
-                        />
-                    </View>
-                </ScrollView>
-            </KeyboardAvoidingView>
+            <ScrollView
+                ref={scrollViewRef}
+                style={styles.scrollView}
+                contentContainerStyle={styles.scrollViewContentContainer}>
+                {/* man body content: questions and buttons */}
+                <View style={styles.bodyContent}>
+                    {questions}
+                    <SurveyFooter
+                        {...props}
+                        survey={survey}
+                        onValidationFailed={onValidationFailedHandler}
+                        onValidationStart={onValidationStartHandler}
+                    />
+                </View>
+            </ScrollView>
             <SurveyProgressBar survey={survey} />
         </View>
     )
