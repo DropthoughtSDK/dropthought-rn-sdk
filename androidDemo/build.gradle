@@ -18,6 +18,9 @@ buildscript {
 
 allprojects {
     repositories {
+        // maven {
+        //     url "https://dt-maven-demo.s3-us-west-2.amazonaws.com/releases"
+        // }
         mavenLocal()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
@@ -27,14 +30,7 @@ allprojects {
             // Android JSC is installed from npm
             url("$rootDir/../node_modules/jsc-android/dist")
         }
-        // maven {
-        //     // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        //     url("s3://maven-repo.king.dropthought.com/releases")
-        //     credentials(AwsCredentials) {
-        //         accessKey ""
-        //         secretKey ""
-        //     }
-        // }
+
         google()
         jcenter()
 

@@ -29,13 +29,11 @@ public class FirstFragment extends Fragment {
             @Override
             public void onClick(View btnView) {
                 System.out.println("Button Clicked");
-                EditText apiKeyText = (EditText) getView().findViewById(R.id.apiKey);
                 EditText surveyIdText = (EditText) getView().findViewById(R.id.surveyId);
 
                 Dropthought.startSurveyActivityForResult(
                         getActivity(),
                         MainActivity.SM_REQUEST_CODE,
-                        apiKeyText.getText().toString(),
                         surveyIdText.getText().toString()
                 );
             }

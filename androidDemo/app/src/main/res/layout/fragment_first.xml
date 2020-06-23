@@ -18,22 +18,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/apiKey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="300dp"
-        android:height="100dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/edit_apikey"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/surveyId"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.632" />
-
-    <EditText
         android:id="@+id/surveyId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
