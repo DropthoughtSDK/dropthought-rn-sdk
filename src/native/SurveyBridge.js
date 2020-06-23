@@ -1,6 +1,6 @@
 import {NativeModules} from 'react-native'
 
-const {Survey} = NativeModules
+const {Dropthought} = NativeModules
 
 /** @typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback */
 
@@ -11,7 +11,7 @@ const {Survey} = NativeModules
  * @property {(message: string, duration?: number)=>void=} toast
  */
 /** @type {SurveyBridgeInterface} */
-const SurveyBridge = Survey
+const SurveyBridge = Dropthought
 
 export default SurveyBridge || {
     dismiss: () => {

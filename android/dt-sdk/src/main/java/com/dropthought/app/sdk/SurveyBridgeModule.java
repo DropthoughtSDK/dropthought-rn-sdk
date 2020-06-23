@@ -21,7 +21,7 @@ public class SurveyBridgeModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "Survey";
+        return "Dropthought";
     }
 
     @ReactMethod
