@@ -7,6 +7,22 @@ def isReleaseBuild() {
     return packageJson.version.contains("SNAPSHOT") == false
 }
 
+def getOutputDir() {
+    if (isReleaseBuild()) {
+        return "${project.buildDir}/releases"
+    } else {
+        return "${project.buildDir}/snapshots"
+    }
+}
+
+def getDestUrl() {
+    if (isReleaseBuild()) {
+        return "s3://dt-maven-demo/releases"
+    } else {
+        return "s3://dt-maven-demo/snapshots"
+    }
+}
+
 def getArtifactFilePath() {
     if (isReleaseBuild()) {
         return "$buildDir/outputs/aar/${project.name}-release.aar"
@@ -30,9 +46,9 @@ publishing {
             // Self-explanatory metadata for the most part
             pom {
                 name = project.name
-                description = 'Dropthought SDK'
+                description = 'Dropthought Android SDK'
                 // If your project has a dedicated site, use its URL here
-                url = 'https://app.dropthought.com'
+                url = 'https://github.com/DropthoughtSDK/dropthought-android-sdk'
                 licenses {
 //                    license {
 //                        name = 'The Apache License, Version 2.0'
@@ -60,4 +76,27 @@ publishing {
             }
         }
     }
+    repositories {
+        maven {
+            url getDestUrl()
+            credentials(AwsCredentials) {
+                // accessKey = ""
+                // secretKey = ""
+            }
+        }
+    }
 }
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file:///" + getOutputDir())
+        }
+    }
+}
+
+task copyToS3(type: Exec) {
+    commandLine 'aws', 's3', 'cp', '--recursive', getOutputDir(), getDestUrl()
+}
+
+copyToS3.dependsOn uploadArchives
