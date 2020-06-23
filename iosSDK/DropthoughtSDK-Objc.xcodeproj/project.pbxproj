@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		10AA98FBF53D1B2A46097ED3 /* Pods_DropthoughtSDK_Objc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEE63DC601B42755D6FA5EB8 /* Pods_DropthoughtSDK_Objc.framework */; };
-		B3746AC92488DE5400C381AB /* DropthoughtSDK_Objc.h in Headers */ = {isa = PBXBuildFile; fileRef = B3746AC72488DE5400C381AB /* DropthoughtSDK_Objc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B3746AD12488DF1000C381AB /* Survey.h in Headers */ = {isa = PBXBuildFile; fileRef = B3746ACF2488DF1000C381AB /* Survey.h */; };
-		B3746AD22488DF1000C381AB /* Survey.m in Sources */ = {isa = PBXBuildFile; fileRef = B3746AD02488DF1000C381AB /* Survey.m */; };
+		B3746AD12488DF1000C381AB /* Dropthought.h in Headers */ = {isa = PBXBuildFile; fileRef = B3746ACF2488DF1000C381AB /* Dropthought.h */; };
+		B3746AD22488DF1000C381AB /* Dropthought.m in Sources */ = {isa = PBXBuildFile; fileRef = B3746AD02488DF1000C381AB /* Dropthought.m */; };
 		B38B36D72490BA62009E884C /* SurveyEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = B38B36D52490BA62009E884C /* SurveyEmitter.h */; };
 		B38B36D82490BA62009E884C /* SurveyEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = B38B36D62490BA62009E884C /* SurveyEmitter.m */; };
 		B38B373624974CDD009E884C /* SurveyViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = B38B373424974CDD009E884C /* SurveyViewController.h */; };
@@ -23,10 +22,9 @@
 		1B36B08752B3085F7F138D68 /* Pods-DropthoughtSDK-Objc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DropthoughtSDK-Objc.debug.xcconfig"; path = "Target Support Files/Pods-DropthoughtSDK-Objc/Pods-DropthoughtSDK-Objc.debug.xcconfig"; sourceTree = "<group>"; };
 		5CC3B6BBE136FC651A32BA3E /* Pods-DropthoughtSDK-Objc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DropthoughtSDK-Objc.release.xcconfig"; path = "Target Support Files/Pods-DropthoughtSDK-Objc/Pods-DropthoughtSDK-Objc.release.xcconfig"; sourceTree = "<group>"; };
 		B3746AC42488DE5400C381AB /* DropthoughtSDK_Objc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DropthoughtSDK_Objc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3746AC72488DE5400C381AB /* DropthoughtSDK_Objc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DropthoughtSDK_Objc.h; sourceTree = "<group>"; };
 		B3746AC82488DE5400C381AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3746ACF2488DF1000C381AB /* Survey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Survey.h; sourceTree = "<group>"; };
-		B3746AD02488DF1000C381AB /* Survey.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Survey.m; sourceTree = "<group>"; };
+		B3746ACF2488DF1000C381AB /* Dropthought.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dropthought.h; sourceTree = "<group>"; };
+		B3746AD02488DF1000C381AB /* Dropthought.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dropthought.m; sourceTree = "<group>"; };
 		B38B36D52490BA62009E884C /* SurveyEmitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SurveyEmitter.h; sourceTree = "<group>"; };
 		B38B36D62490BA62009E884C /* SurveyEmitter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SurveyEmitter.m; sourceTree = "<group>"; };
 		B38B373424974CDD009E884C /* SurveyViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SurveyViewController.h; sourceTree = "<group>"; };
@@ -77,10 +75,9 @@
 		B3746AC62488DE5400C381AB /* DropthoughtSDK-Objc */ = {
 			isa = PBXGroup;
 			children = (
-				B3746AC72488DE5400C381AB /* DropthoughtSDK_Objc.h */,
 				B3746AC82488DE5400C381AB /* Info.plist */,
-				B3746ACF2488DF1000C381AB /* Survey.h */,
-				B3746AD02488DF1000C381AB /* Survey.m */,
+				B3746ACF2488DF1000C381AB /* Dropthought.h */,
+				B3746AD02488DF1000C381AB /* Dropthought.m */,
 				B3E13C6D248A42D100873A28 /* SurveyApplication.h */,
 				B3E13C6E248A42D100873A28 /* SurveyApplication.m */,
 				B38B36D52490BA62009E884C /* SurveyEmitter.h */,
@@ -107,9 +104,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3746AD12488DF1000C381AB /* Survey.h in Headers */,
+				B3746AD12488DF1000C381AB /* Dropthought.h in Headers */,
 				B38B36D72490BA62009E884C /* SurveyEmitter.h in Headers */,
-				B3746AC92488DE5400C381AB /* DropthoughtSDK_Objc.h in Headers */,
 				B3E13C6F248A42D100873A28 /* SurveyApplication.h in Headers */,
 				B38B373624974CDD009E884C /* SurveyViewController.h in Headers */,
 			);
@@ -231,7 +227,7 @@
 				B3E13C70248A42D100873A28 /* SurveyApplication.m in Sources */,
 				B38B36D82490BA62009E884C /* SurveyEmitter.m in Sources */,
 				B38B373724974CDD009E884C /* SurveyViewController.m in Sources */,
-				B3746AD22488DF1000C381AB /* Survey.m in Sources */,
+				B3746AD22488DF1000C381AB /* Dropthought.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,11 @@
 //
 
 #import "ViewController.h"
-#import <Survey.h>
+#import <Dropthought.h>
 #import "AppDelegate.h"
 #import <React/RCTRootView.h>
 
 @interface ViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *apiKeyTF;
 @property (weak, nonatomic) IBOutlet UITextField *surveyIdTF;
 @end
 
@@ -24,15 +23,13 @@
 }
 
 - (IBAction)openSurvey:(id)sender {
-    [[Survey sharedInstance] setupAPIKey:self.apiKeyTF.text];
     NSString *surveyId = self.surveyIdTF.text;
-    [[Survey sharedInstance] present:self surveyId:surveyId];
+    [[Dropthought instance] present:self surveyId:surveyId];
 
 }
 
 - (IBAction)uploadClicked:(id)sender {
-    [[Survey sharedInstance] setupAPIKey:self.apiKeyTF.text];
-    [[Survey sharedInstance] sendUploadOfflineFeedbacksEvent];
+    [[Dropthought instance] uploadOfflineFeedbacks];
 }
 
 
