@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void uploadFeedbacks() {
-        Dropthought.uploadQueuedFeedback();
+        Dropthought.uploadOfflineFeedbacks();
     }
 
     @Override
