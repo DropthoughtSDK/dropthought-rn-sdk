@@ -21,8 +21,8 @@ public class Dropthought {
         return mSurveyId;
     }
 
-    public static void init(Application application) {
-        ReactInstanceManager reactInstanceManager = ReactInstanceSingleton.getReactInstanceManager(application);
+    public static void init(Activity activity) {
+        ReactInstanceManager reactInstanceManager = ReactInstanceSingleton.getReactInstanceManager(activity);
 
         // set up initial props
         Bundle initialProps = new Bundle();
@@ -35,19 +35,19 @@ public class Dropthought {
 
         // create a dummy react root view,
         // so later activity would be started faster
-        ReactRootView reactView = new ReactRootView(application.getApplicationContext());
+        ReactRootView reactView = new ReactRootView(activity);
         reactView.startReactApplication(reactInstanceManager, "dropthought-sdk", initialProps);
     }
 
-    public static void init(Application application, String apiKey) {
+    public static void init(Activity activity, String apiKey) {
         mAPIKey = apiKey;
-        init(application);
+        init(activity);
     }
 
-    public static void init(Application application, String apiKey, String surveyId) {
+    public static void init(Activity activity, String apiKey, String surveyId) {
         mAPIKey = apiKey;
         mSurveyId = surveyId;
-        init(application);
+        init(activity);
     }
 
     private static Intent getIntent(Context context, String apiKey, String surveyId) {

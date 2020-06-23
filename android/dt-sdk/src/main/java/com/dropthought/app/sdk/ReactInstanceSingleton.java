@@ -1,5 +1,6 @@
 package com.dropthought.app.sdk;
 
+import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 
@@ -20,11 +21,13 @@ class ReactInstanceSingleton {
     private static volatile ReactInstanceManager mReactInstanceManager;
 
     public static synchronized ReactInstanceManager getReactInstanceManager(
-            Application application) {
+            Activity activity) {
         if (mReactInstanceManager == null) {
+            Application application = activity.getApplication();
             List<ReactPackage> packages = new PackageList(application).getPackages();
             mReactInstanceManager = ReactInstanceManager.builder()
                     .setApplication(application)
+                    .setCurrentActivity(activity)
                     .setBundleAssetName("index.android.bundle")
                     .setJSMainModulePath("index")
                     .addPackages(packages)
