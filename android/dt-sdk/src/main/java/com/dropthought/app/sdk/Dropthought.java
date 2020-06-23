@@ -85,7 +85,7 @@ public class Dropthought {
         startSurveyActivity(context, mAPIKey, mSurveyId);
     }
 
-    public static void uploadQueuedFeedback() {
+    public static void uploadOfflineFeedbacks() {
         ReactInstanceSingleton.uploadQueuedFeedback();
     }
 }
