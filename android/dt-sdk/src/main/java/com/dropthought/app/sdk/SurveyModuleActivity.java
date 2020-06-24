@@ -26,7 +26,7 @@ public class SurveyModuleActivity extends Activity implements DefaultHardwareBac
         mReactRootView = new ReactRootView(this);
 
         // get react instance manager from singleton
-        mReactInstanceManager = ReactInstanceSingleton.getReactInstanceManager(getApplication());
+        mReactInstanceManager = ReactInstanceSingleton.getReactInstanceManager(this);
 
         // The string here (e.g. "dropthought-sdk") has to match
         // the string in AppRegistry.registerComponent() in index.js

@@ -23,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Dropthought.init(
+                this,
+                "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYXJvbC5rdW9AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyMzM5NTI0MywiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.pNGSqCuWdO6d3l7nuX66vkzZ8CupaljIaz97zbL93BnyzKN_JBJ3WLRrMsS8kNpuDEmIBlxqKppzTnnktI4Z0A",
+                "e5573da3-aacf-4f1c-b9a5-bef854131d49"
+        );
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
