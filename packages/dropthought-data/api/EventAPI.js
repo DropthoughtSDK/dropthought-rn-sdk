@@ -3,7 +3,7 @@
  * https://docs.dropthought.com/docs/2_0/api.html#event
  * submit feedback
  */
-import {apiRequest} from './APIClient'
+import {apiRequest, throwRequestError} from './APIClient'
 
 const EVENT_PATH = '/api/event'
 
@@ -41,6 +41,10 @@ export async function apiPostEvent(
     }
 
     return apiRequest(EVENT_PATH, params).then((response) => {
+        if (response.data.success === false) {
+            throwRequestError(response)
+            return
+        }
         return response.data
     })
 }
