@@ -9,7 +9,11 @@ import {View, ActivityIndicator, Image, Alert} from 'react-native'
 import {getTimeZone} from 'react-native-localize'
 import {evolve, merge, isNil} from 'ramda'
 import {useAsync} from 'react-async'
-import {apiGetProgramById} from '@dropthought/dropthought-data'
+import {
+    apiGetProgramById,
+    isRequestTimeoutError,
+    isNoInternetError,
+} from '@dropthought/dropthought-data'
 import {
     i18n,
     ActivityIndicatorMask,
@@ -228,10 +232,7 @@ export const SurveyContextProvider = ({
                 message:
                     'Sorry for the inconvenience.\nPlease come back and check later on.',
             }
-            if (
-                error.name === 'RequestTimeout' ||
-                error.message === 'Network request failed'
-            ) {
+            if (isRequestTimeoutError(error) || isNoInternetError(error)) {
                 placeholderProps = {
                     imageType: PlaceholderImageTypes.NoInternet,
                     message:

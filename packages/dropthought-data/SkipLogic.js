@@ -1,15 +1,15 @@
-import R from 'ramda'
+import {pipe, prop, findIndex, equals, curry, nth, map, isEmpty} from 'ramda'
 import {EvaluateRuleSet} from './dt-common-lib'
 
 /**
  * return -1 if not existed
  * @type {(pageId: string, survey: Survey) => number}
  */
-export const getPageIndexFromPageId = R.curry((pageId, survey) =>
-    R.pipe(
+export const getPageIndexFromPageId = curry((pageId, survey) =>
+    pipe(
         //
-        R.prop('pageOrder'),
-        R.findIndex(R.equals(pageId)),
+        prop('pageOrder'),
+        findIndex(equals(pageId)),
     )(survey),
 )
 
@@ -23,11 +23,11 @@ export const getPageIndexFromPageId = R.curry((pageId, survey) =>
 const transformFeedbacks = (pageIndex, survey, feedbacksMap) => {
     // get the default page IQAData
     /** @type {IQAData[]} */
-    const defaultPageIQAData = R.pipe(
-        R.prop('pages'),
-        R.nth(pageIndex),
-        R.prop('questions'),
-        R.map((question) => ({
+    const defaultPageIQAData = pipe(
+        prop('pages'),
+        nth(pageIndex),
+        prop('questions'),
+        map((question) => ({
             questionId: question.questionId,
             textOrIndexArr: [''],
         })),
@@ -36,7 +36,7 @@ const transformFeedbacks = (pageIndex, survey, feedbacksMap) => {
     // if feedback has answers, use it to replace the default
     return defaultPageIQAData.map((defaultIQAData) => {
         const feedback = feedbacksMap[defaultIQAData.questionId]
-        if (feedback && !R.isEmpty(feedback.answers)) {
+        if (feedback && !isEmpty(feedback.answers)) {
             return {
                 questionId: defaultIQAData.questionId,
                 textOrIndexArr: feedback.answers,
@@ -59,7 +59,7 @@ export function nextPage(pageIndex, pageId, feedbacksMap, survey) {
 
     // if there's no rule, go to default next page
     const pageRuleSet = survey.rules[pageId]
-    if (!pageRuleSet || R.isEmpty(pageRuleSet)) {
+    if (!pageRuleSet || isEmpty(pageRuleSet)) {
         return defaultNextPage()
     }
 
