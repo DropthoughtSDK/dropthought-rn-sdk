@@ -20,7 +20,7 @@ import {
     GlobalStyle,
     PlaceholderScreen,
     PlaceholderImageTypes,
-} from '@dropthought/kiosk-rn'
+} from '@dropthought/kiosk-rn-ui'
 
 import FakeScreen from '../../screens/FakeScreen'
 import {saveCache, loadCache} from '../../lib/Storage'

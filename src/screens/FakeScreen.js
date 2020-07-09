@@ -6,7 +6,7 @@ import React from 'react'
 import {View, StatusBar, Platform, StyleSheet} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 
-import {GlobalStyle, Colors} from '@dropthought/kiosk-rn'
+import {GlobalStyle, Colors} from '@dropthought/kiosk-rn-ui'
 import CloseButton from '../components/CloseButton'
 
 const FakeScreen = ({children}) => {

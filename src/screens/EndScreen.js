@@ -1,7 +1,7 @@
 import React from 'react'
 import {useBackHandler} from '@react-native-community/hooks'
 
-import {EndScreenLayout} from '@dropthought/kiosk-rn'
+import {EndScreenLayout} from '@dropthought/kiosk-rn-ui'
 
 import {useSurvey} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'

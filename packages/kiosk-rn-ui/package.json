@@ -1,6 +1,6 @@
 {
-  "name": "@dropthought/kiosk-rn",
-  "version": "1.0.0",
+  "name": "@dropthought/kiosk-rn-ui",
+  "version": "1.0.0-rc.0",
   "main": "index.js",
   "private": true,
   "scripts": {
