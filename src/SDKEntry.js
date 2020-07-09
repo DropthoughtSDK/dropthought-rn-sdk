@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {SafeAreaProvider} from 'react-native-safe-area-context'
-import {KioskProvider} from '@dropthought/kiosk-rn'
+import {KioskProvider} from '@dropthought/kiosk-rn-ui'
 import {initializeWithAPIKey} from '@dropthought/dropthought-data'
 
 import {SurveyContextProvider} from './contexts/survey'

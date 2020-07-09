@@ -5,7 +5,7 @@ import {
     Colors,
     useDimensionWidthType,
     DimensionWidthType,
-} from '@dropthought/kiosk-rn'
+} from '@dropthought/kiosk-rn-ui'
 
 import CloseButton from '../components/CloseButton'
 import StartScreen from '../screens/StartScreen'

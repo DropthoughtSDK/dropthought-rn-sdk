@@ -6,7 +6,7 @@ import {
     PlaceholderImageTypes,
     PlaceholderScreen,
     i18n,
-} from '@dropthought/kiosk-rn'
+} from '@dropthought/kiosk-rn-ui'
 
 import {useSurveyContext} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'

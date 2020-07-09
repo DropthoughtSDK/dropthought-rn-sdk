@@ -1,7 +1,10 @@
 import React from 'react'
 import {useAsync} from 'react-async'
 
-import {SurveyScreenLayout, ActivityIndicatorMask} from '@dropthought/kiosk-rn'
+import {
+    SurveyScreenLayout,
+    ActivityIndicatorMask,
+} from '@dropthought/kiosk-rn-ui'
 
 import {useSurvey} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'

@@ -5,7 +5,7 @@ import {
     i18n,
     useDimensionWidthType,
     DimensionWidthType,
-} from '@dropthought/kiosk-rn'
+} from '@dropthought/kiosk-rn-ui'
 
 import CloseButton from '../components/CloseButton'
 import {useSurvey} from '../contexts/survey'

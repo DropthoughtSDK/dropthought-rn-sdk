@@ -61,8 +61,7 @@ export interface SurveyProperty {
     height?: number
 }
 
-export interface Survey {
-    state: ProgramStateType
+export interface ProgramInterface {
     anonymous: boolean
     surveyId: string
     surveyName: string
@@ -71,13 +70,17 @@ export interface Survey {
     pageOrder: string[]
     pages: Page[]
     rules: {[questionId: string]: Rule[]}
-    qrCode: string
     surveyProperty: SurveyProperty
     thankYouText?: string
     welcomeText?: string
+    timezone: string
+}
+
+export interface Survey extends ProgramInterface {
+    state: ProgramStateType
+    qrCode: string
     surveyEndDate: string
     surveyStartDate: string
-    timezone: string
 }
 
 export interface SurveyWithQRCode extends Survey {
