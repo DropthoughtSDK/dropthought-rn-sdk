@@ -3,7 +3,8 @@
  * https://docs.dropthought.com/docs/2_0/api.html#event
  * submit feedback
  */
-import {apiRequest, throwRequestError} from './APIClient'
+import {apiRequest} from './APIClient'
+import {throwRequestError} from './Fetcher'
 
 const EVENT_PATH = '/api/event'
 
