@@ -1,10 +1,6 @@
 import * as React from 'react'
 import {StyleSheet, TouchableOpacity, Image} from 'react-native'
 
-import SurveyNativeBridge from '../native/SurveyBridge'
-
-/**@typedef {import('../navigation/SurveyStack').SurveyStackNavigationProps<"Survey">} ScreenNavigationProp */
-
 const closeIconSource = require('../assets/ic-close.png')
 const hitSlop = {
     top: 10,
@@ -14,15 +10,8 @@ const hitSlop = {
 }
 
 export const CloseButton = ({tintColor = undefined, ...props}) => {
-    const onClosePressHandler = React.useCallback(() => {
-        SurveyNativeBridge.dismiss()
-    }, [])
     return (
-        <TouchableOpacity
-            style={styles.icon}
-            {...props}
-            hitSlop={hitSlop}
-            onPress={onClosePressHandler}>
+        <TouchableOpacity style={styles.icon} {...props} hitSlop={hitSlop}>
             <Image
                 source={closeIconSource}
                 style={[styles.iconImage, {tintColor}]}

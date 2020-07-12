@@ -32,6 +32,7 @@ const DT_ERR_MISSING_PARAMS = 'dt-missing-parameters'
  * @typedef {object} SurveyContextValue
  * @property {Survey} survey
  * @property {(language: string) => void} changeLanguage
+ * @property {() => void} onClose
  */
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey */
 
@@ -172,10 +173,18 @@ const showAlert = () => {
     }
 }
 
+const defaultOnCloseHandler = () => {
+    console.log('please provide your own onClose function when using SDKEntry')
+}
+
+/**
+ * @param {Props} param0
+ */
 export const SurveyContextProvider = ({
     surveyId,
     children,
     defaultLanguage = 'en',
+    onClose = defaultOnCloseHandler,
 }) => {
     const [
         selectedLanguage,
@@ -212,10 +221,11 @@ export const SurveyContextProvider = ({
     /** @type {SurveyContextValue} */
     const contextValue = React.useMemo(
         () => ({
+            onClose,
             survey: data,
             changeLanguage: setSelectedLanguageWithBackup,
         }),
-        [data, setSelectedLanguageWithBackup],
+        [data, onClose, setSelectedLanguageWithBackup],
     )
 
     // initial loading data view
@@ -253,3 +263,5 @@ export const SurveyContextProvider = ({
         </SurveyContext.Provider>
     )
 }
+
+/** @typedef {import('../../SDKEntry').SDKEntryProps} Props */

@@ -3,15 +3,15 @@ import {useBackHandler} from '@react-native-community/hooks'
 
 import {EndScreenLayout} from '@dropthought/kiosk-rn-ui'
 
-import {useSurvey} from '../contexts/survey'
+import {useSurvey, useSurveyContext} from '../contexts/survey'
 import {useSurveyHeader} from './useSurveyHeader'
-import SurveyNativeBridge from '../native/SurveyBridge'
 
 const useBackForDismiss = () => {
+    const {onClose} = useSurveyContext()
     const backHandler = React.useCallback(() => {
-        SurveyNativeBridge.dismiss()
+        onClose()
         return true
-    }, [])
+    }, [onClose])
 
     useBackHandler(backHandler)
 }

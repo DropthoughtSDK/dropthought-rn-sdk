@@ -4,8 +4,8 @@ import {
     NativeEventEmitter,
     Platform,
 } from 'react-native'
-import {initializeWithAPIKey} from '../lib/API'
-import {feedbackUploader} from '../lib/FeedbacksUploader'
+
+import {initializeWithAPIKey, feedbackUploader} from '@dropthought/kiosk-rn-sdk'
 
 const uploadQueuedFeedbacksHandler = (params) => {
     initializeWithAPIKey({

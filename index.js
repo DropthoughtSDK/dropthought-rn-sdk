@@ -2,10 +2,10 @@
  * @format
  */
 import {AppRegistry} from 'react-native'
-import {SDKEntry} from '@dropthought/kiosk-rn-sdk'
+import SDKEntry from './src/NativeSDKEntry'
 import {name as appName} from './app.json'
 
 // register events
-// import './src/native/SurveyEvents'
+import './src/native/SurveyEvents'
 
 AppRegistry.registerComponent(appName, () => SDKEntry)

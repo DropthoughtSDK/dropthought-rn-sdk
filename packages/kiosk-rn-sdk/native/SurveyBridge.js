@@ -1,19 +1,5 @@
-import {NativeModules} from 'react-native'
-
-const {Dropthought} = NativeModules
-
-/** @typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback */
-
-/**
- * @typedef {object} SurveyBridgeInterface
- * @property {()=>void} dismiss
- * @property {(surveyFeedback: SurveyFeedback, errorCode?: number)=>void} onFeedbackResult
- * @property {(message: string, duration?: number)=>void=} toast
- */
-/** @type {SurveyBridgeInterface} */
-const SurveyBridge = Dropthought
-
-export default SurveyBridge || {
+// dummy bridge, native sdk needs implement the real code
+export default {
     dismiss: () => {
         console.log('dev dismiss')
     },

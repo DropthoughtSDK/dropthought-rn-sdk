@@ -9,15 +9,13 @@ import {initializeWithAPIKey} from './lib/API'
 import {SurveyContextProvider} from './contexts/survey'
 import SurveyStackContainer from './SurveyStackContainer'
 
-// register events
-import './native/SurveyEvents'
-
 /**
  * @typedef {object} SDKEntryProps
  * @property {string} apiKey
  * @property {string} surveyId
  * @property {string=} defaultLanguage if not provided, default is "en"
  * @property {string=} baseURL if not provided, default is ...
+ * @property {()=>void=} onClose when the close icon is pressed in the header
  */
 
 /**
