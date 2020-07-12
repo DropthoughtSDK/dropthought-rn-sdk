@@ -1,4 +1,4 @@
-import {apiPostEvent} from '@dropthought/dropthought-data'
+import {apiPostEvent} from './API'
 import {FeedbacksQueue} from './FeedbacksUploader'
 
 /**

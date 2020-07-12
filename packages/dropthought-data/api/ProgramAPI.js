@@ -1,4 +1,4 @@
-import {apiRequest} from './APIClient'
+import {fetcherInstance} from './APIClient'
 
 const PROGRAMS_PATH = '/api/programs'
 
@@ -10,11 +10,13 @@ const PROGRAMS_PATH = '/api/programs'
  *   timezone?: string,
  * }} param0
  * @param {RequestConfig} requestConfig
+ * @param {Fetcher=} fetcher
  * @returns {Promise<Survey>}
  */
 export async function apiGetProgramById(
     {programId, language = 'en', timezone},
     requestConfig = {},
+    fetcher = fetcherInstance,
 ) {
     /** @type {RequestConfig} */
     const params = {
@@ -28,7 +30,7 @@ export async function apiGetProgramById(
     }
 
     const url = `${PROGRAMS_PATH}/${programId}`
-    return apiRequest(url, params).then((response) => {
+    return fetcher.request(url, params).then((response) => {
         return response.data.result
     })
 }
@@ -68,7 +70,8 @@ export async function apiGetProgramsById({programId}) {
 }
 
 /**
- * @typedef {import('./APIClient').RequestConfig} RequestConfig
+ * @typedef {import('./Fetcher').RequestConfig} RequestConfig
+ * @typedef {import('./Fetcher').Fetcher} Fetcher
  * @typedef {import('../data').Survey} Survey
  * @typedef {import('../data').SurveyLangMaps} SurveyLangMaps
  */

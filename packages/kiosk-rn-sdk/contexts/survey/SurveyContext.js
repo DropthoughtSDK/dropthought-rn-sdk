@@ -10,7 +10,6 @@ import {getTimeZone} from 'react-native-localize'
 import {evolve, merge, isNil} from 'ramda'
 import {useAsync} from 'react-async'
 import {
-    apiGetProgramById,
     isRequestTimeoutError,
     isNoInternetError,
 } from '@dropthought/dropthought-data'
@@ -24,6 +23,7 @@ import {
 
 import FakeScreen from '../../screens/FakeScreen'
 import {saveCache, loadCache} from '../../lib/Storage'
+import {apiGetProgramById} from '../../lib/API'
 import SurveyNativeBridge from '../../native/SurveyBridge'
 
 const DT_ERR_MISSING_PARAMS = 'dt-missing-parameters'

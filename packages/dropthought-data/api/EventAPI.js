@@ -3,7 +3,7 @@
  * https://docs.dropthought.com/docs/2_0/api.html#event
  * submit feedback
  */
-import {apiRequest} from './APIClient'
+import {fetcherInstance} from './APIClient'
 import {throwRequestError} from './Fetcher'
 
 const EVENT_PATH = '/api/event'
@@ -16,11 +16,13 @@ const EVENT_PATH = '/api/event'
  *   source?: EventAPISourceType,
  * }} param0
  * @param {AxiosRequestConfig} axiosConfig
+ * @param {Fetcher=} fetcher
  * @returns {Promise<Survey>}
  */
 export async function apiPostEvent(
     {programId, feedbacks = [], source = 'api'},
     axiosConfig = {},
+    fetcher = fetcherInstance,
 ) {
     /** @type {AxiosRequestConfig} */
     const params = {
@@ -41,7 +43,7 @@ export async function apiPostEvent(
         ...axiosConfig,
     }
 
-    return apiRequest(EVENT_PATH, params).then((response) => {
+    return fetcher.request(EVENT_PATH, params).then((response) => {
         if (response.data.success === false) {
             throwRequestError(response)
             return
@@ -51,7 +53,8 @@ export async function apiPostEvent(
 }
 
 /**
- * @typedef {import('./APIClient').RequestConfig} AxiosRequestConfig
+ * @typedef {import('./Fetcher').RequestConfig} RequestConfig
+ * @typedef {import('./Fetcher').Fetcher} Fetcher
  * @typedef {import('../data').Feedback} Feedback
  * @typedef {import('../data').SurveyFeedback} SurveyFeedback
  * @typedef {import('../data').EventAPISourceType} EventAPISourceType

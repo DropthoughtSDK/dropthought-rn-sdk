@@ -1,7 +1,7 @@
 import {isEmpty} from 'ramda'
 import uuidv4 from 'uuid/v4'
 
-import {apiPostEvent} from '@dropthought/dropthought-data'
+import {apiPostEvent} from './API'
 
 import QueueStorage from './QueueStorage'
 

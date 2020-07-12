@@ -4,11 +4,13 @@ import {
     NativeEventEmitter,
     Platform,
 } from 'react-native'
-import {initializeWithAPIKey} from '@dropthought/dropthought-data'
+import {initializeWithAPIKey} from '../lib/API'
 import {feedbackUploader} from '../lib/FeedbacksUploader'
 
 const uploadQueuedFeedbacksHandler = (params) => {
-    initializeWithAPIKey(params.apiKey)
+    initializeWithAPIKey({
+        apiKey: params.apiKey,
+    })
 
     // un-comment the following codes to debug the feedback uploader
     // const unsubscribe = feedbackUploader.subscribe(async (state) => {

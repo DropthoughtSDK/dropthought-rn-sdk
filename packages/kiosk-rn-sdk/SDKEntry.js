@@ -1,17 +1,23 @@
+import 'react-native-gesture-handler'
+
 import * as React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {SafeAreaProvider} from 'react-native-safe-area-context'
 import {KioskProvider} from '@dropthought/kiosk-rn-ui'
-import {initializeWithAPIKey} from '@dropthought/dropthought-data'
+import {initializeWithAPIKey} from './lib/API'
 
 import {SurveyContextProvider} from './contexts/survey'
 import SurveyStackContainer from './SurveyStackContainer'
+
+// register events
+import './native/SurveyEvents'
 
 /**
  * @typedef {object} SDKEntryProps
  * @property {string} apiKey
  * @property {string} surveyId
  * @property {string=} defaultLanguage if not provided, default is "en"
+ * @property {string=} baseURL if not provided, default is ...
  */
 
 /**
@@ -19,8 +25,12 @@ import SurveyStackContainer from './SurveyStackContainer'
  */
 export default function App(props) {
     React.useEffect(() => {
-        initializeWithAPIKey(props.apiKey)
-    }, [props.apiKey])
+        initializeWithAPIKey({
+            apiKey: props.apiKey,
+            baseURL: props.baseURL,
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <SafeAreaProvider>
