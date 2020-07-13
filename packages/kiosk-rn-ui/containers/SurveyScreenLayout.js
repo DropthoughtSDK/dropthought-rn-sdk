@@ -11,12 +11,14 @@ import {SurveyPageProvider} from '../contexts/survey-page'
 import QuestionContainer from './QuestionContainer'
 import SurveyProgressBar from './SurveyProgressBar'
 import SurveyFooter from './SurveyFooter'
-import SurveyPageIndicator from '../components/SurveyPageIndicator'
+import DefaultSurveyPageIndicator from '../components/SurveyPageIndicator'
 import {KeyboardAvoidingScrollView} from '../components/KeyboardAvoidingView'
 import GlobalStyle, {Colors} from '../styles'
 
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
 /** @typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback*/
+/** @typedef {import('./SurveyProgressBar').ProgressBarComponent} ProgressBarComponent*/
+/** @typedef {import('React').ComponentType<import('../components/SurveyPageIndicator').SurveyPageIndicatorProps>} SurveyPageIndicatorComponent*/
 /**
  * define props for SurveyScreenLayout
  *
@@ -29,6 +31,8 @@ import GlobalStyle, {Colors} from '../styles'
  * @property {()=>void} onPageEnter
  * @property {()=>void} onPageLeave
  * @property {()=>void} onFeedback
+ * @property {ProgressBarComponent} ProgressBar
+ * @property {SurveyPageIndicatorComponent} SurveyPageIndicator
  */
 
 const ScrollView =
@@ -39,7 +43,12 @@ const ScrollView =
  * @param {SurveyScreenLayoutProps} props
  */
 const SurveyScreenLayout = (props) => {
-    const {pageIndex = 0, survey} = props
+    const {
+        pageIndex = 0,
+        survey,
+        ProgressBar,
+        SurveyPageIndicator = DefaultSurveyPageIndicator,
+    } = props
     const scrollViewRef = React.useRef()
 
     // when validation start, set the state
@@ -94,7 +103,11 @@ const SurveyScreenLayout = (props) => {
                     />
                 </View>
             </ScrollView>
-            <SurveyProgressBar survey={survey} />
+            <SurveyProgressBar
+                survey={survey}
+                ProgressBar={ProgressBar}
+                pageIndex={pageIndex}
+            />
         </View>
     )
 }
