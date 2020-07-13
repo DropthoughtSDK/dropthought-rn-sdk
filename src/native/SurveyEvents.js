@@ -10,6 +10,7 @@ import {initializeWithAPIKey, feedbackUploader} from '@dropthought/kiosk-rn-sdk'
 const uploadQueuedFeedbacksHandler = (params) => {
     initializeWithAPIKey({
         apiKey: params.apiKey,
+        baseURL: params.baseURL,
     })
 
     // un-comment the following codes to debug the feedback uploader

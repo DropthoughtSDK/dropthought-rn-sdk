@@ -18,8 +18,8 @@ export default function ModalEntry(props) {
             </View>
             <SurveyModal
                 visible={visible}
-                apiKey="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW5nLmNoZW5AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyNjA3MzE4NSwiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.0yADsK6-C8UFd5QvND6UAlrgggFnPiXOVsk15QAcCg0lqOweWRCYxe0qyTFEld6O3wV1mpBgFM48tVflvmvPtA"
-                surveyId="fe34fc81-416d-4cfe-9105-59a213f4a9d7"
+                apiKey="paste api key here"
+                surveyId="paste survey id here"
                 onClose={() => setVisible(false)}
             />
         </>
