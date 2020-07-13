@@ -251,7 +251,7 @@ export const SurveyContextProvider = ({
             }
             content = <PlaceholderScreen {...placeholderProps} />
         }
-        return <FakeScreen>{content}</FakeScreen>
+        return <FakeScreen onClose={onClose}>{content}</FakeScreen>
     }
 
     return (
