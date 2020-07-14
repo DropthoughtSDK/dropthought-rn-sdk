@@ -1,0 +1,41 @@
+{
+  "name": "@dropthought/kiosk-rn-sdk",
+  "version": "1.0.1",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "@dropthought/dropthought-data": "*",
+    "@dropthought/kiosk-rn-ui": "*",
+    "prop-types": "^15.7.2",
+    "react": ">16.8.3",
+    "react-native": ">0.59.3"
+  },
+  "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.6.1",
+    "@react-navigation/stack": "^5.6.2",
+    "ramda": "^0.27.0",
+    "react-async": "^10.0.1",
+    "react-native-gesture-handler": "^1.6.1",
+    "react-native-localize": "^1.4.0",
+    "react-native-reanimated": "^1.9.0",
+    "react-native-safe-area-context": "^3.0.7",
+    "react-native-screens": "^2.9.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-native": "^3.1.0",
+    "@testing-library/react-native": "^5.0.3"
+  },
+  "jest": {
+    "preset": "@testing-library/react-native",
+    "transformIgnorePatterns": [],
+    "setupFilesAfterEnv": [
+      "../../scripts/jestSetup.js"
+    ]
+  }
+}

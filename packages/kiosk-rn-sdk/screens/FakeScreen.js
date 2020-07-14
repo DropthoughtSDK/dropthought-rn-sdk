@@ -9,7 +9,7 @@ import {SafeAreaView} from 'react-native-safe-area-context'
 import {GlobalStyle, Colors} from '@dropthought/kiosk-rn-ui'
 import CloseButton from '../components/CloseButton'
 
-const FakeScreen = ({children}) => {
+const FakeScreen = ({onClose, children}) => {
     return (
         <>
             {Platform.OS === 'android' && (
@@ -19,7 +19,7 @@ const FakeScreen = ({children}) => {
                 />
             )}
             <SafeAreaView style={styles.container}>
-                <CloseButton tintColor={Colors.purple} />
+                <CloseButton tintColor={Colors.purple} onPress={onClose} />
                 <View style={GlobalStyle.flex1}>{children}</View>
             </SafeAreaView>
         </>

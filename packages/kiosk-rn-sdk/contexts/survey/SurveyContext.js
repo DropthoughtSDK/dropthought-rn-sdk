@@ -10,7 +10,6 @@ import {getTimeZone} from 'react-native-localize'
 import {evolve, merge, isNil} from 'ramda'
 import {useAsync} from 'react-async'
 import {
-    apiGetProgramById,
     isRequestTimeoutError,
     isNoInternetError,
 } from '@dropthought/dropthought-data'
@@ -24,6 +23,7 @@ import {
 
 import FakeScreen from '../../screens/FakeScreen'
 import {saveCache, loadCache} from '../../lib/Storage'
+import {apiGetProgramById} from '../../lib/API'
 import SurveyNativeBridge from '../../native/SurveyBridge'
 
 const DT_ERR_MISSING_PARAMS = 'dt-missing-parameters'
@@ -32,6 +32,7 @@ const DT_ERR_MISSING_PARAMS = 'dt-missing-parameters'
  * @typedef {object} SurveyContextValue
  * @property {Survey} survey
  * @property {(language: string) => void} changeLanguage
+ * @property {() => void} onClose
  */
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey */
 
@@ -172,10 +173,18 @@ const showAlert = () => {
     }
 }
 
+const defaultOnCloseHandler = () => {
+    console.log('please provide your own onClose function when using SDKEntry')
+}
+
+/**
+ * @param {Props} param0
+ */
 export const SurveyContextProvider = ({
     surveyId,
     children,
     defaultLanguage = 'en',
+    onClose = defaultOnCloseHandler,
 }) => {
     const [
         selectedLanguage,
@@ -212,10 +221,11 @@ export const SurveyContextProvider = ({
     /** @type {SurveyContextValue} */
     const contextValue = React.useMemo(
         () => ({
+            onClose,
             survey: data,
             changeLanguage: setSelectedLanguageWithBackup,
         }),
-        [data, setSelectedLanguageWithBackup],
+        [data, onClose, setSelectedLanguageWithBackup],
     )
 
     // initial loading data view
@@ -241,7 +251,7 @@ export const SurveyContextProvider = ({
             }
             content = <PlaceholderScreen {...placeholderProps} />
         }
-        return <FakeScreen>{content}</FakeScreen>
+        return <FakeScreen onClose={onClose}>{content}</FakeScreen>
     }
 
     return (
@@ -253,3 +263,5 @@ export const SurveyContextProvider = ({
         </SurveyContext.Provider>
     )
 }
+
+/** @typedef {import('../../SDKEntry').SDKEntryProps} Props */

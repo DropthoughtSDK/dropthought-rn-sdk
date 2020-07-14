@@ -11,11 +11,11 @@ import CloseButton from '../components/CloseButton'
 import StartScreen from '../screens/StartScreen'
 import SurveyScreen from '../screens/SurveyScreen'
 import EndScreen from '../screens/EndScreen'
-import {useSurvey} from '../contexts/survey'
+import {useSurveyContext} from '../contexts/survey'
 const Stack = createStackNavigator()
 
 const SurveyStack = () => {
-    const survey = useSurvey()
+    const {survey, onClose} = useSurveyContext()
     const isPhone = useDimensionWidthType() === DimensionWidthType.phone
     const themeColor = survey.surveyProperty.hexCode
 
@@ -36,8 +36,8 @@ const SurveyStack = () => {
                 },
                 headerTitleAlign: isPhone ? 'left' : 'center',
                 headerBackTitleVisible: false,
-                headerLeft: () => <CloseButton />,
-                headerRight: () => <CloseButton />,
+                headerLeft: () => <CloseButton onPress={onClose} />,
+                headerRight: () => <CloseButton onPress={onClose} />,
                 title: survey.surveyName,
                 ...Platform.select({
                     android: TransitionPresets.FadeFromBottomAndroid,

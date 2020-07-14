@@ -7,7 +7,7 @@ export const BASE_URL = `${HOST}/dtapp`
 
 export const DEFAULT_TIMEOUT = 30000 // default timeout: 30 seconds
 
-const fetcherInstance = new Fetcher({
+export const fetcherInstance = new Fetcher({
     baseURL: BASE_URL,
     timeout: DEFAULT_TIMEOUT,
 })
