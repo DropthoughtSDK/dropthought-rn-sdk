@@ -16,6 +16,7 @@ import i18n from '../translation'
  * @property {number} value - the current value
  * @property {number} maxValue - the max
  * @property {string} themeColor - the bar color
+ * @property {boolean} rtl
  */
 
 /**
@@ -26,10 +27,8 @@ import i18n from '../translation'
  * @param {ProgressBarProps} props
  */
 const ProgressBar = (props) => {
-    const {value, maxValue, themeColor} = props
+    const {value, maxValue, themeColor, rtl} = props
     const dimensionWidthType = useDimensionWidthType()
-
-    const rtl = i18n.dir() === 'rtl'
 
     // compute the percentage value: (value/maxValue)*100
     const percentage = Math.round((value * 100) / maxValue)

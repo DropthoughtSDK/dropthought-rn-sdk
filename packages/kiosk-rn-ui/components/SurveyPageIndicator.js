@@ -7,13 +7,12 @@ import {
 } from '../hooks/useWindowDimensions'
 import {opacity10, Colors} from '../styles'
 
-import i18n from '../translation'
-
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
 /**
  * @typedef {object} SurveyPageIndicatorProps
  * @property {number} pageIndex
  * @property {Survey} survey
+ * @property {boolean} rtl
  */
 
 /**
@@ -21,11 +20,10 @@ import i18n from '../translation'
  * @param {SurveyPageIndicatorProps} props
  */
 const SurveyPageIndicator = (props) => {
-    const {survey, pageIndex = 0} = props
+    const {survey, pageIndex = 0, rtl} = props
 
     const themeColor = survey.surveyProperty.hexCode
 
-    const rtl = i18n.dir() === 'rtl'
     const dimensionWidthType = useDimensionWidthType()
     const dimensionStyles =
         dimensionWidthType === DimensionWidthType.phone

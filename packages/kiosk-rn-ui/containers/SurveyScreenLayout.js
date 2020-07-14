@@ -9,15 +9,22 @@ import {
 
 import {SurveyPageProvider} from '../contexts/survey-page'
 import QuestionContainer from './QuestionContainer'
-import SurveyProgressBar from './SurveyProgressBar'
+import DefaultSurveyProgressBar from './SurveyProgressBar'
 import SurveyFooter from './SurveyFooter'
 import DefaultSurveyPageIndicator from '../components/SurveyPageIndicator'
 import {KeyboardAvoidingScrollView} from '../components/KeyboardAvoidingView'
 import GlobalStyle, {Colors} from '../styles'
+import i18n from '../translation'
+
+/** @enum {0|1} */
+export const SurveyProgressBarPosition = {
+    FixedBottom: 0,
+    BelowBody: 1,
+}
 
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
 /** @typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback*/
-/** @typedef {import('./SurveyProgressBar').ProgressBarComponent} ProgressBarComponent*/
+/** @typedef {import('./SurveyProgressBar').SurveyProgressBarComponent} SurveyProgressBarComponent*/
 /** @typedef {import('React').ComponentType<import('../components/SurveyPageIndicator').SurveyPageIndicatorProps>} SurveyPageIndicatorComponent*/
 /**
  * define props for SurveyScreenLayout
@@ -31,7 +38,8 @@ import GlobalStyle, {Colors} from '../styles'
  * @property {()=>void} onPageEnter
  * @property {()=>void} onPageLeave
  * @property {()=>void} onFeedback
- * @property {ProgressBarComponent} ProgressBar
+ * @property {SurveyProgressBarComponent} SurveyProgressBar
+ * @property {SurveyProgressBarPosition} surveyProgressBarPosition
  * @property {SurveyPageIndicatorComponent} SurveyPageIndicator
  */
 
@@ -46,8 +54,9 @@ const SurveyScreenLayout = (props) => {
     const {
         pageIndex = 0,
         survey,
-        ProgressBar,
         SurveyPageIndicator = DefaultSurveyPageIndicator,
+        SurveyProgressBar = DefaultSurveyProgressBar,
+        surveyProgressBarPosition = SurveyProgressBarPosition.FixedBottom,
     } = props
     const scrollViewRef = React.useRef()
 
@@ -85,9 +94,21 @@ const SurveyScreenLayout = (props) => {
         )
     })
 
+    const surveyProgressBar = (
+        <SurveyProgressBar
+            survey={survey}
+            pageIndex={pageIndex}
+            rtl={i18n.dir() === 'rtl'}
+        />
+    )
+
     return (
         <View style={GlobalStyle.flex1}>
-            <SurveyPageIndicator pageIndex={pageIndex} survey={survey} />
+            <SurveyPageIndicator
+                pageIndex={pageIndex}
+                survey={survey}
+                rtl={i18n.dir() === 'rtl'}
+            />
             <ScrollView
                 ref={scrollViewRef}
                 style={styles.scrollView}
@@ -101,13 +122,13 @@ const SurveyScreenLayout = (props) => {
                         onValidationFailed={onValidationFailedHandler}
                         onValidationStart={onValidationStartHandler}
                     />
+                    {surveyProgressBarPosition ===
+                        SurveyProgressBarPosition.BelowBody &&
+                        surveyProgressBar}
                 </View>
             </ScrollView>
-            <SurveyProgressBar
-                survey={survey}
-                ProgressBar={ProgressBar}
-                pageIndex={pageIndex}
-            />
+            {surveyProgressBarPosition ===
+                SurveyProgressBarPosition.FixedBottom && surveyProgressBar}
         </View>
     )
 }

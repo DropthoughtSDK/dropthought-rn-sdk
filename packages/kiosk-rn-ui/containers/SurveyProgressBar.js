@@ -3,20 +3,9 @@ import {StyleSheet, View, Platform} from 'react-native'
 import {sum} from 'ramda'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 
-import DefaultProgressBar_ from '../components/ProgressBar'
+import ProgressBar from '../components/ProgressBar'
 import {useFeedbackState} from '../contexts/feedback'
 import {opacity10} from '../styles'
-
-/**
- * @param {ProgressBarProps} param0
- */
-const DefaultProgressBar = ({numAnswered, numQuestions, themeColor}) => (
-    <DefaultProgressBar_
-        value={numAnswered}
-        maxValue={numQuestions}
-        themeColor={themeColor}
-    />
-)
 
 /**
  * @param {FeedbackReducerState} param0
@@ -48,38 +37,24 @@ const numTotalQuestions = (survey) => {
     return sum(questionNumOfPages)
 }
 
-/**
- * define props for Custom ProgressBar
- *
- * @typedef {object} ProgressBarProps
- * @property {number} pageIndex - current page index (start from 0)
- * @property {string} themeColor
- * @property {Survey} survey
- * @property {number} numAnswered
- * @property {number} numQuestions
- * @property {number} numPages
- */
-/** @typedef {import('React').ComponentType<ProgressBarProps>} ProgressBarComponent*/
+/** @typedef {import('React').ComponentType<SurveyProgressBarProps>} SurveyProgressBarComponent*/
 /** @typedef {import('../contexts/feedback').FeedbackReducerState} FeedbackReducerState*/
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
+
 /**
  * define props for SurveyProgressBar
  *
  * @typedef {Object} SurveyProgressBarProps
  * @property {Survey} survey - the current value
  * @property {number} pageIndex
- * @property {ProgressBarComponent} ProgressBar
+ * @property {boolean} rtl
  */
 
 /**
  * @type {React.FunctionComponent<SurveyProgressBarProps>}
  * @param {SurveyProgressBarProps} props
  */
-const SurveyProgressBar = ({
-    ProgressBar = DefaultProgressBar,
-    pageIndex = 0,
-    ...props
-}) => {
+const SurveyProgressBar = ({pageIndex = 0, rtl, ...props}) => {
     const feedbackState = useFeedbackState()
     const themeColor = props.survey.surveyProperty.hexCode
     const insets = useSafeAreaInsets()
@@ -103,12 +78,10 @@ const SurveyProgressBar = ({
     return (
         <View style={containerStyle}>
             <ProgressBar
-                pageIndex={pageIndex}
-                numPages={props.survey.pageOrder.length}
-                numAnswered={numValidFeedbacks(feedbackState)}
-                numQuestions={numTotalQuestions(props.survey)}
-                survey={props.survey}
+                value={numValidFeedbacks(feedbackState)}
+                maxValue={numTotalQuestions(props.survey)}
                 themeColor={themeColor}
+                rtl={rtl}
             />
         </View>
     )
