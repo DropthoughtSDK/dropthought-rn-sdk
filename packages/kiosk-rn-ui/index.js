@@ -1,5 +1,7 @@
 import QuestionContainer from './containers/QuestionContainer'
-import SurveyScreenLayout from './containers/SurveyScreenLayout'
+import SurveyScreenLayout, {
+    SurveyProgressBarPosition,
+} from './containers/SurveyScreenLayout'
 import EndScreenLayout from './containers/EndScreenLayout'
 import StartScreenLayout from './containers/StartScreenLayout'
 import PlaceholderScreen from './components/PlaceholderScreen'
@@ -20,4 +22,8 @@ export {
     KioskProvider,
     ActivityIndicatorMask,
     i18n,
+    SurveyProgressBarPosition,
 }
+
+/** @typedef {import('./components/SurveyPageIndicator').SurveyPageIndicatorProps} SurveyPageIndicatorProps*/
+/** @typedef {import('./containers/SurveyProgressBar').SurveyProgressBarProps} SurveyProgressBarProps*/

@@ -24,20 +24,20 @@ const SmileyIcon = (props) => {
         : styles.container
 
     return (
-        <View style={containerStyle}>
-            {props.source !== undefined && (
-                <>
-                    <TouchableWithoutFeedback onPress={props.onPress}>
+        <TouchableWithoutFeedback onPress={props.onPress}>
+            <View style={containerStyle}>
+                {props.source !== undefined && (
+                    <>
                         <Image
                             resizeMode="contain"
                             style={styles.emoji}
                             source={props.source}
                         />
-                    </TouchableWithoutFeedback>
-                    <Text style={styles.label}>{props.label}</Text>
-                </>
-            )}
-        </View>
+                        <Text style={styles.label}>{props.label}</Text>
+                    </>
+                )}
+            </View>
+        </TouchableWithoutFeedback>
     )
 }
 
