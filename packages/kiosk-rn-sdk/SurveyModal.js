@@ -5,6 +5,8 @@ import {pick, omit} from 'ramda'
 import {GlobalStyle} from '@dropthought/kiosk-rn-ui'
 
 import SDKEntry from './SDKEntry'
+import {initializeWithAPIKey} from './lib/API'
+import {feedbackUploader} from './lib/FeedbacksUploader'
 
 const sdkPropsKeys = [
     'apiKey',
@@ -62,6 +64,15 @@ export const SurveyModalContainer = ({
         onClose && onClose()
         setVisible(false)
     }, [onClose])
+
+    React.useEffect(() => {
+        initializeWithAPIKey({
+            apiKey: props.apiKey,
+            baseURL: props.baseURL,
+        })
+        feedbackUploader.upload()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <SurveyModalOpenSurveyContext.Provider value={openSurvey}>
