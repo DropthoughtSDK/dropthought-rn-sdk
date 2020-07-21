@@ -1,22 +1,49 @@
 import * as React from 'react'
 import {Platform} from 'react-native'
 import {createStackNavigator, TransitionPresets} from '@react-navigation/stack'
+import {isEmpty, isNil} from 'ramda'
+
 import {
     Colors,
     useDimensionWidthType,
     DimensionWidthType,
+    PlaceholderImageTypes,
+    PlaceholderScreen,
+    i18n,
 } from '@dropthought/kiosk-rn-ui'
 
 import CloseButton from '../components/CloseButton'
 import StartScreen from '../screens/StartScreen'
 import SurveyScreen from '../screens/SurveyScreen'
 import EndScreen from '../screens/EndScreen'
+import FakeScreen from '../screens/FakeScreen'
 import {useSurveyContext} from '../contexts/survey'
 const Stack = createStackNavigator()
+
+const noData = (a) => isNil(a) || isEmpty(a)
 
 const SurveyStack = () => {
     const {survey, onClose} = useSurveyContext()
     const isPhone = useDimensionWidthType() === DimensionWidthType.phone
+
+    // check if survey data is valid
+    if (
+        noData(survey.pages) ||
+        noData(survey.surveyProperty) ||
+        noData(survey.surveyStartDate) ||
+        noData(survey.surveyEndDate)
+    ) {
+        // need to render placeholder
+        return (
+            <FakeScreen onClose={onClose}>
+                <PlaceholderScreen
+                    imageType={PlaceholderImageTypes.ProgramUnavailable}
+                    message={i18n.t('start-survey:placeholder-message')}
+                />
+            </FakeScreen>
+        )
+    }
+
     const themeColor = survey.surveyProperty.hexCode
 
     return (
