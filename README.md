@@ -6,11 +6,11 @@
 
 #### install packages
 
-install peer dependency: `@react-native-community/async-storage` `@react-native-community/masked-view` `react-native-gesture-handler` `react-native-localize` `react-native-reanimated` `react-native-safe-area-context` `react-native-screens` (if you already have these packages installed, don't need this step)
+install peer dependency:
 
-```shell
-yarn add @react-native-community/async-storage @react-native-community/masked-view react-native-gesture-handler react-native-localize react-native-reanimated react-native-safe-area-context react-native-screens
-```
+-   `yarn add @react-native-community/async-storage`
+-   `yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view` (if you already have these packages installed when installing `react-navigation`, you don't need this step)
+-   `yarn add react-native-localize`
 
 install dropthought-rn-sdk
 
