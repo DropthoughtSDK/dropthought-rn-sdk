@@ -22,7 +22,7 @@ for iOS, remember to `pod install` again
 
 #### Example
 
-use `DropthoughtContainer` to initialize Dropthought with your apiKey and surveyId, put it to the parent of your component/screen that needs to open survey
+use `DropthoughtContainer` to initialize Dropthought with your apiKey and surveyId, put it to the parent of your component/screen that needs to open survey (or you can put it to one of your root providers)
 
 use `useOpenSurvey` hook to get the function that opens the dropthought survey
 
