@@ -1,5 +1,73 @@
 # Dropthought SDK
 
+## Integration
+
+### React Native Integration
+
+#### install packages
+
+install peer dependency: async-storage, masked-view, gesture-handler, localized ... (if you already have these packages installed, don't need this step)
+
+```shell
+yarn add @react-native-community/async-storage @react-native-community/masked-view react-native-gesture-handler react-native-localize react-native-reanimated react-native-safe-area-context react-native-screens
+```
+
+install dropthought-rn-sdk
+
+```shell
+yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.0.0-rc.5-gitpkg
+```
+
+for iOS, remember to `pod install` again
+
+#### Example
+
+use `DropthoughtContainer` to initialize Dropthought with your apiKey and surveyId, put it to the parent of your component/screen that needs to open survey
+
+use `useOpenSurvey` hook to get the function that opens the dropthought survey
+
+```jsx
+import React from 'react'
+import {SafeAreaView, StyleSheet, Button, StatusBar} from 'react-native'
+
+import {DropthoughtContainer, useOpenSurvey} from 'dropthought-rn-sdk'
+
+const App = () => {
+    const openSurvey = useOpenSurvey()
+    return (
+        <>
+            <StatusBar barStyle="dark-content" />
+            <SafeAreaView style={styles.container}>
+                <Button title="Open Survey" onPress={() => openSurvey()} />
+            </SafeAreaView>
+        </>
+    )
+}
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+})
+
+const AppRoot = () => (
+    <DropthoughtContainer
+        apiKey="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW5nLmNoZW5AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyNjg2NzcxNiwiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.eihfroHtnqhH-INiuAaYY2uLW28dENPvpqfU2RlQ3Far3G612atoUs5qfidtl74wW2P5yHLJ-e8jNLDaj5jFYg"
+        surveyId="8c472f20-b3b2-4260-83a3-8f1a3b32cd73">
+        <App />
+    </DropthoughtContainer>
+)
+
+export default AppRoot
+```
+
+### Native Project Integration
+
+-   iOS: https://github.com/DropthoughtSDK/dropthought-ios-sdk
+-   android: https://github.com/DropthoughtSDK/dropthought-android-sdk
+
 ## Development workflow
 
 ### React-Native UI/Elements
