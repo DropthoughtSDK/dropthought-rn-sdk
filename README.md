@@ -6,7 +6,7 @@
 
 #### install packages
 
-install peer dependency: async-storage, masked-view, gesture-handler, localized ... (if you already have these packages installed, don't need this step)
+install peer dependency: `@react-native-community/async-storage` `@react-native-community/masked-view` `react-native-gesture-handler` `react-native-localize` `react-native-reanimated` `react-native-safe-area-context` `react-native-screens` (if you already have these packages installed, don't need this step)
 
 ```shell
 yarn add @react-native-community/async-storage @react-native-community/masked-view react-native-gesture-handler react-native-localize react-native-reanimated react-native-safe-area-context react-native-screens
