@@ -20,8 +20,8 @@ import {useSurveyHeader} from './useSurveyHeader'
 const checkSurveyStatus = (surveyState, surveyStartDate, surveyEndDate) => {
     let imageType
     switch (surveyState) {
-        case 'drafts':
-            imageType = PlaceholderImageTypes.ProgramUnavailable
+        case 'active':
+            imageType = null
             break
         case 'expired':
             imageType = PlaceholderImageTypes.ProgramExpired
@@ -29,8 +29,9 @@ const checkSurveyStatus = (surveyState, surveyStartDate, surveyEndDate) => {
         case 'scheduled':
             imageType = PlaceholderImageTypes.ProgramScheduled
             break
+        case 'drafts':
         default:
-            imageType = null
+            imageType = PlaceholderImageTypes.ProgramUnavailable
     }
     // still need to check the start-end time
     if (!imageType) {
