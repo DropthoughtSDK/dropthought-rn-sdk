@@ -1,6 +1,6 @@
 import {fetcherInstance} from './APIClient'
 
-const PROGRAMS_PATH = '/api/programs'
+const PROGRAM_PATH = '/api/program'
 
 /**
  * get single language version of a program by id
@@ -29,7 +29,7 @@ export async function apiGetProgramById(
         ...requestConfig,
     }
 
-    const url = `${PROGRAMS_PATH}/${programId}`
+    const url = `${PROGRAM_PATH}/${programId}`
     return fetcher.request(url, params).then((response) => {
         return response.data.result
     })

@@ -58,7 +58,9 @@ export const useKeyboardAvoidingFocusedInputView = (parentViewRef) => {
 
     const keyboardChangeHandler = React.useCallback(
         (event, show) => {
-            const currentlyFocusedField = TextInput.State.currentlyFocusedField()
+            const currentlyFocusedField = TextInput.State.currentlyFocusedInput
+                ? findNodeHandle(TextInput.State.currentlyFocusedInput())
+                : TextInput.State.currentlyFocusedField()
 
             // if there's no focused input or keyboard is not show or view is not existed
             if (!currentlyFocusedField || !show || !parentViewRef.current) {
