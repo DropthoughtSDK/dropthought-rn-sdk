@@ -9,6 +9,7 @@ import {
 import MandatoryTitle from './MandatoryTitle'
 import GlobalStyle, {Colors} from '../styles'
 import PropTypes from 'prop-types'
+import {isNil} from 'ramda'
 import i18n from '../translation'
 import {
     DimensionWidthType,
@@ -19,8 +20,8 @@ const MIN_VALUE = 1
 const NPS_MIN_VALUE = 0
 
 const getInitialSelectedValue = (feedback) => {
-    if (feedback && feedback.answers && feedback.answers[0]) {
-        return parseInt(feedback.answers[0])
+    if (feedback && feedback.answers && !isNil(feedback.answers[0])) {
+        return parseInt(feedback.answers[0], 10)
     }
     return undefined
 }
@@ -36,7 +37,7 @@ const SliderRatingQuestion = ({
 }) => {
     const [value, setValue] = React.useState(getInitialSelectedValue(feedback))
     const minimumValue = question.type === 'nps' ? NPS_MIN_VALUE : MIN_VALUE
-    const maximumValue = parseInt(question.scale)
+    const maximumValue = parseInt(question.scale, 10)
 
     const dimensionWidthType = useDimensionWidthType()
     const isPhone = dimensionWidthType === DimensionWidthType.phone

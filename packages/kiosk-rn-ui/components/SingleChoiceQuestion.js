@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react'
 import {View, StyleSheet} from 'react-native'
 import PropTypes from 'prop-types'
+import {isNil} from 'ramda'
 
 import GlobalStyle from '../styles'
 import MandatoryTitle from './MandatoryTitle'
@@ -41,7 +42,7 @@ class SingleChoiceQuestion extends PureComponent {
             if (
                 props.feedback &&
                 props.feedback.answers &&
-                props.feedback.answers[0]
+                !isNil(props.feedback.answers[0])
             ) {
                 const answer = props.feedback.answers[0]
                 if (Number.isInteger(answer)) {

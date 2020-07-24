@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, StyleSheet} from 'react-native'
 import {noop} from 'lodash'
+import {isNil} from 'ramda'
 import SmileyIcon from './SmileyIcon'
 import PropTypes from 'prop-types'
 import MandatoryTitle from './MandatoryTitle'
@@ -13,7 +14,7 @@ import {
 
 const getInitialSelectedValue = (feedback, question) => {
     let prevAnswer
-    if (feedback && feedback.answers && feedback.answers[0]) {
+    if (feedback && feedback.answers && !isNil(feedback.answers[0])) {
         prevAnswer = parseInt(feedback.answers[0], 10)
     }
     return question.options.map((_option, index) => prevAnswer === index)
