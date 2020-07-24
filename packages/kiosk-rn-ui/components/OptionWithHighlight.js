@@ -1,5 +1,13 @@
 import * as React from 'react'
-import {StyleSheet, Image, View, Text, TouchableOpacity} from 'react-native'
+import {
+    StyleSheet,
+    Image,
+    View,
+    Text,
+    TouchableOpacity,
+    Pressable,
+    TouchableWithoutFeedback,
+} from 'react-native'
 import PropTypes from 'prop-types'
 
 import {useDimensionWidthType} from '../hooks/useWindowDimensions'
@@ -107,17 +115,23 @@ function OptionWithHighlight(props) {
         content = title
     }
 
+    const TouchableComponent = Pressable
+        ? TouchableWithoutFeedback
+        : TouchableOpacity
+
     return (
-        <TouchableOpacity style={containerStyle} onPress={onPressHandler}>
-            <View style={styles.checkboxIconContainer}>
-                <CheckBoxIcon
-                    type={type}
-                    checkedColor={checkedColor}
-                    checked={checked}
-                />
+        <TouchableComponent onPress={onPressHandler}>
+            <View style={containerStyle}>
+                <View style={styles.checkboxIconContainer}>
+                    <CheckBoxIcon
+                        type={type}
+                        checkedColor={checkedColor}
+                        checked={checked}
+                    />
+                </View>
+                {content}
             </View>
-            {content}
-        </TouchableOpacity>
+        </TouchableComponent>
     )
 }
 
