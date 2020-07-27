@@ -39,7 +39,7 @@ const transformFeedbacks = (pageIndex, survey, feedbacksMap) => {
         if (feedback && !isEmpty(feedback.answers)) {
             return {
                 questionId: defaultIQAData.questionId,
-                textOrIndexArr: feedback.answers,
+                textOrIndexArr: feedback.answers.map((s) => s.toString()),
             }
         }
         return defaultIQAData
