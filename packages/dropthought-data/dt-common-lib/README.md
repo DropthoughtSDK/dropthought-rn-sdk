@@ -1,2 +1,2 @@
 repository: https://bitbucket.org/dtengineering/dt-common-lib
-commit tag: 73b04af56ec0459bb1cfa7f92ef306c54e53717a
+commit tag: 5e785b9a3d50a3d623cc4cc4405fa221b455e21c

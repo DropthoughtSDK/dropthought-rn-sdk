@@ -20,7 +20,7 @@ exports.EvaluateRuleSet = (ruleSet, pageFeedback) => {
                 const filteredFeedback = filterFeedback(pageFeedback, conditionArr[0]);
                 if (filteredFeedback.length > 0) {
                     // logDetails(conditionArr, filteredFeedback);
-                    if (evaluateCondition(conditionArr, filteredFeedback[0].questionId, filteredFeedback[0].textOrIndexArr[0])) {
+                    if (evaluateCondition(conditionArr, filteredFeedback[0].questionId, filteredFeedback[0])) {
                         evalCond = evalCond.length > 0 ? evalCond + ' && ' + true : evalCond + true;
                     }
                     else {
@@ -39,7 +39,7 @@ exports.EvaluateRuleSet = (ruleSet, pageFeedback) => {
                 const filteredFeedback = filterFeedback(pageFeedback, conditionArr[0]);
                 if (filteredFeedback.length > 0) {
                     // logDetails(conditionArr, filteredFeedback);
-                    if (evaluateCondition(conditionArr, filteredFeedback[0].questionId, filteredFeedback[0].textOrIndexArr[0])) {
+                    if (evaluateCondition(conditionArr, filteredFeedback[0].questionId, filteredFeedback[0])) {
                         result = rule.toPageId;
                     }
                 }
@@ -50,7 +50,7 @@ exports.EvaluateRuleSet = (ruleSet, pageFeedback) => {
             const filteredFeedback = filterFeedback(pageFeedback, conditionArr[0]);
             if (filteredFeedback.length > 0) {
                 // logDetails(conditionArr, filteredFeedback);
-                if (evaluateCondition(conditionArr, filteredFeedback[0].questionId, filteredFeedback[0].textOrIndexArr[0])) {
+                if (evaluateCondition(conditionArr, filteredFeedback[0].questionId, filteredFeedback[0])) {
                     result = rule.toPageId;
                 }
             }
@@ -78,23 +78,44 @@ const logDetails = (conditionArr, filteredFeedback) => {
  *
  * @param condition
  * @param questionId
- * @param textOrIndex
+ * @param feedback
  */
-const evaluateCondition = (conditionArr, questionId, textOrIndex) => {
+const evaluateCondition = (conditionArr, questionId, feedback) => {
     let result = false;
+    let targetAnswer;
     if (questionId === conditionArr[0]) {
         switch (conditionArr[1]) {
             case 'ansr':
-                result = textOrIndex.trim().length > 0;
+                result = feedback.textOrIndexArr[0].trim().length > 0;
                 break;
             case 'nasr':
-                result = textOrIndex.trim().length === 0;
+                result = feedback.textOrIndexArr[0].trim().length === 0;
                 break;
             case 'answ':
-                result = parseInt(textOrIndex, 10) === parseInt(conditionArr[2], 10);
+                targetAnswer = parseInt(conditionArr[2], 10);
+                if (targetAnswer === -2) {
+                    // check "other" case
+                    result = feedback.otherFlag === true;
+                }
+                else {
+                    // check if any answer contains the target answer
+                    result = feedback.textOrIndexArr.map(text => parseInt(text, 10)).some(answer => answer === targetAnswer);
+                }
                 break;
             case 'nasw':
-                result = parseInt(textOrIndex, 10) !== parseInt(conditionArr[2], 10);
+                // skip target answer check, if user doesn't have any feedback (skip optional question)
+                if (feedback.textOrIndexArr[0].trim().length === 0) {
+                    break;
+                }
+                targetAnswer = parseInt(conditionArr[2], 10);
+                if (targetAnswer === -2) {
+                    // check "other" case
+                    result = feedback.otherFlag !== true;
+                }
+                else {
+                    // check if all answer doesn't contain the target answer
+                    result = feedback.textOrIndexArr.map(text => parseInt(text, 10)).every(answer => answer !== targetAnswer);
+                }
                 break;
         }
     }
