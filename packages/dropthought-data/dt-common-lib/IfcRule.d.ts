@@ -12,4 +12,5 @@ export interface IRuleResult {
 export interface IQAData {
     questionId: string;
     textOrIndexArr: string[];
+    otherFlag?: boolean;
 }

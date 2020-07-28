@@ -40,6 +40,7 @@ const transformFeedbacks = (pageIndex, survey, feedbacksMap) => {
             return {
                 questionId: defaultIQAData.questionId,
                 textOrIndexArr: feedback.answers.map((s) => s.toString()),
+                otherFlag: feedback.otherFlag,
             }
         }
         return defaultIQAData
