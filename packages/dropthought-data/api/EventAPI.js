@@ -3,6 +3,8 @@
  * https://docs.dropthought.com/docs/2_0/api.html#event
  * submit feedback
  */
+import {isNil, isEmpty} from 'ramda'
+
 import {fetcherInstance} from './APIClient'
 import {throwRequestError} from './Fetcher'
 
@@ -32,7 +34,12 @@ export async function apiPostEvent(
             refId: programId,
             data: feedbacks.map((feedback) => ({
                 dataId: feedback.questionId,
-                dataValue: feedback.answers,
+                dataValue:
+                    // for not answered question, server doesn't allow empty array for dataValue
+                    // it accept [''] for not answered question
+                    isNil(feedback.answers) || isEmpty(feedback.answers)
+                        ? ['']
+                        : feedback.answers,
                 dataType: feedback.type,
                 otherFlag: feedback.otherFlag,
             })),
