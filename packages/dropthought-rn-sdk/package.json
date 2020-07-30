@@ -1,0 +1,22 @@
+{
+  "name": "dropthought-rn-sdk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": ">16.8.3",
+    "react-native": ">0.59.3"
+  },
+  "dependencies": {
+    "@dropthought/dropthought-data": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-dropthought-data-v1.0.8-gitpkg",
+    "@dropthought/kiosk-rn-ui": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-ui-v1.0.4-gitpkg",
+    "@dropthought/kiosk-rn-sdk": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-sdk-v1.0.4-gitpkg"
+  },
+  "devDependencies": {
+  },
+  "jest": {}
+}
