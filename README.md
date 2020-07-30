@@ -15,7 +15,7 @@ install peer dependency:
 install dropthought-rn-sdk
 
 ```shell
-yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.0.0-rc.7-gitpkg
+yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.0.0-gitpkg
 ```
 
 for iOS, remember to `pod install` again
