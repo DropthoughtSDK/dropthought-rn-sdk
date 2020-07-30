@@ -7,7 +7,7 @@ import ar from './ar'
 
 // init i18n
 i18n.init({
-    debug: __DEV__ && !global.__TEST__,
+    debug: false,
     fallbackLng: 'en',
     lng: 'en',
 
