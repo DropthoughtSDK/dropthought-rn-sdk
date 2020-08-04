@@ -1,19 +1,6 @@
 stages:
 - build
 
-build_project:
-  stage: build
-  script:
-    - gem install bundler:1.16.6
-    - fastlane AppCenterLane
-
-after_script:
-  - git remote set-url origin git@gitlab.com:bct-taipei/dropthought-sdk.git
-  - git add .
-  - git commit -m "Update build number"
-  - git push origin HEAD:master
-
-
 build:ios:release:
   stage: build
   tags:
