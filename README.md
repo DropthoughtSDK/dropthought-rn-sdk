@@ -15,10 +15,22 @@ install peer dependency:
 install dropthought-rn-sdk
 
 ```shell
-yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.0.0-gitpkg
+yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.0.1-gitpkg
 ```
 
 for iOS, remember to `pod install` again
+
+#### additional settings for android
+
+If you have open-ended questions (text input) in your survey, in order to let android avoid the keyboard while editing, you might need to add `adjustResize` to `android:windowSoftInputMode` in your `AndroidManifest.xml`:
+
+```xml
+    <activity
+        android:name=".MainActivity"
+        android:windowSoftInputMode="adjustResize"
+    >
+    </activity>
+```
 
 #### Example
 
