@@ -1,0 +1,43 @@
+before_script:
+  - 
+
+stages:
+- build
+
+build_project:
+  stage: build
+  script:
+    - gem install bundler:1.16.6
+    - fastlane AppCenterLane
+
+after_script:
+  - git remote set-url origin git@gitlab.com:bct-taipei/dropthought-sdk.git
+  - git add .
+  - git commit -m "Update build number"
+  - git push origin HEAD:master
+
+
+build:ios:release:
+  stage: build
+  tags:
+    - ios
+  script:
+    - yarn install
+    - cd ./iosDemo
+    - ./update.sh
+    - fastlane IncreaseBuildNumberLane
+    - fastlane AppCenterLane
+  after_script:
+    - git remote set-url origin git@gitlab.com:bct-taipei/dropthought-sdk.git
+    - git add iosDemo/iosDemoObjc.xcodeproj/project.pbxproj
+    - git commit -m "[ci skip] Update build number"
+    - git checkout .
+    - git pull origin master --rebase
+    - git push origin HEAD:master
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}-ios
+    paths:
+      - ./node_modules/
+      - ./iosDemo/Pods/
+  only:
+    - master
