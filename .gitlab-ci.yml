@@ -1,5 +1,61 @@
 stages:
-- build
+  - build
+  - deploy
+
+image: kkooff2000/react_native_gitlab_runner
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+  - .gradle/
+
+build:android:demo:
+  stage: build
+  tags:
+    - docker
+  before_script:
+    - export GRADLE_USER_HOME=$(pwd)/.gradle
+    - chmod +x androidDemo/gradlew
+    - mkdir ~/.ssh
+    - cp /store/id_rsa* ~/.ssh/
+    - cp /store/config ~/.ssh/
+    - ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+  script:
+    - yarn install
+    - yarn build:android-sdk
+    - cd androidDemo
+    - cp /store/gradle.properties ./
+    - cp /store/dt_kiosk_release.key app/
+    - ./gradlew app:assembleRelease
+  after_script:
+    - git remote set-url origin git@gitlab.com:bct-taipei/dropthought-sdk.git
+    - git add androidDemo/app/version.properties
+    - git config --global user.email "taipei-bct@bahwancybertek.com"
+    - git config --global user.name "Taipei BCT"
+    - git commit -m "[ci skip] Update android demo build number"
+    - git checkout .
+    - test -e /builds/bct-taipei/dropthought-sdk/.git/rebase-apply && rm -rf /builds/bct-taipei/dropthought-sdk/.git/rebase-apply
+    - git pull origin ${CI_COMMIT_REF_NAME} --rebase
+    - git push origin HEAD:${CI_COMMIT_REF_NAME}
+  artifacts:
+    paths:
+    - androidDemo/app/build/outputs/apk/release/app-release.apk
+    - node_modules/
+  only:
+    - master
+
+upload:android:demo:
+  stage: deploy
+  dependencies:
+    - build:android:demo
+  when: always
+  cache: {}
+  tags:
+    - docker
+  script:
+    - python3 ./deployAppCenter.py
+  only:
+    - master
 
 build:ios:release:
   stage: build
