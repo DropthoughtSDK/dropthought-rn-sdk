@@ -1,13 +1,28 @@
 apply plugin: 'com.android.application'
 
+
+def getJSONVersion() {
+    def packageJson = new groovy.json.JsonSlurper().parseText(file('../../package.json').text)
+    return packageJson.version
+}
+
 android {
     compileSdkVersion 28
+
+    signingConfigs {
+        config {
+            keyAlias KEYALIAS
+            keyPassword KEYPASSWORD
+            storeFile file('dt_kiosk_release.key')
+            storePassword STOREPASSWORD
+        }
+    }
 
     defaultConfig {
         applicationId "com.king.usingrn"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 4
+        versionCode 0
         versionName "1.0.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -15,8 +30,24 @@ android {
 
     buildTypes {
         release {
+            // load version props
+            def versionPropsFile = file('version.properties')
+
+            if (versionPropsFile.canRead()) {
+                def Properties versionProps = new Properties()
+                versionProps.load(new FileInputStream(versionPropsFile))
+                def code = versionProps['VERSION_CODE'].toInteger() + 1
+                versionProps['VERSION_CODE']=code.toString()
+                versionProps.store(versionPropsFile.newWriter(), null)
+
+                defaultConfig {
+                    versionCode code
+                }
+            }
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 
