@@ -112,6 +112,7 @@ const SurveyScreenLayout = (props) => {
             <ScrollView
                 ref={scrollViewRef}
                 style={styles.scrollView}
+                extraAvoidingSpace={30}
                 contentContainerStyle={styles.scrollViewContentContainer}>
                 {/* man body content: questions and buttons */}
                 <View style={styles.bodyContent}>
