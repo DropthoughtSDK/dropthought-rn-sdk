@@ -11,6 +11,12 @@ import {
     ScrollView,
 } from 'react-native'
 
+if (Platform.OS === 'android') {
+    if (UIManager.setLayoutAnimationEnabledExperimental) {
+        UIManager.setLayoutAnimationEnabledExperimental(true)
+    }
+}
+
 /** @typedef {import('react-native').KeyboardEvent} KeyboardEvent */
 
 // compute the offsets from keyboard End coordinate to frame's bottom
@@ -40,20 +46,26 @@ const computeOffset = (keyboardEvent, frameBottomY = undefined, show) => {
  * @param {KeyboardEvent} keyboardEvent
  */
 const configureLayoutAnimation = (keyboardEvent) => {
-    const {duration, easing} = keyboardEvent
-    if (duration && easing) {
+    const {duration = 0, easing} = keyboardEvent
+    if (easing) {
         LayoutAnimation.configureNext({
             // We have to pass the duration equal to minimal accepted duration defined here: RCTLayoutAnimation.m
-            duration: duration > 10 ? duration : 10,
+            duration: Math.max(duration, 10),
             update: {
-                duration: duration > 10 ? duration : 10,
-                type: LayoutAnimation.Types[easing] || 'keyboard',
+                duration: Math.max(duration, 10),
+                type:
+                    Platform.OS === 'android'
+                        ? LayoutAnimation.Types.easeIn
+                        : LayoutAnimation.Types[easing],
             },
         })
     }
 }
 
-export const useKeyboardAvoidingFocusedInputView = (parentViewRef) => {
+export const useKeyboardAvoidingFocusedInputView = (
+    parentViewRef,
+    extraAvoidingSpace = 0,
+) => {
     const [bottomHeight, setBottomHeight] = React.useState(0)
 
     const keyboardChangeHandler = React.useCallback(
@@ -80,7 +92,8 @@ export const useKeyboardAvoidingFocusedInputView = (parentViewRef) => {
                         UIManager.measureInWindow(
                             currentlyFocusedField,
                             (x, y, width, height) => {
-                                const currentlyFocusedFieldBottomY = y + height
+                                const currentlyFocusedFieldBottomY =
+                                    y + height + extraAvoidingSpace
                                 const offset = computeOffset(
                                     event,
                                     currentlyFocusedFieldBottomY,
@@ -97,7 +110,7 @@ export const useKeyboardAvoidingFocusedInputView = (parentViewRef) => {
                 },
             )
         },
-        [parentViewRef],
+        [parentViewRef, extraAvoidingSpace],
     )
 
     // keyboard change effect
@@ -132,20 +145,28 @@ export const useKeyboardAvoidingFocusedInputView = (parentViewRef) => {
     }
 }
 
+/**
+ * @type {React.FunctionComponent<KeyboardAvoidingProps & ViewProps>}
+ * @param {KeyboardAvoidingProps & ViewProps} param0
+ */
 const KeyboardAvoidingView = ({
     children,
     style,
     contentContainerStyle,
+    extraAvoidingSpace = 0,
     ...props
 }) => {
     const viewRef = React.useRef()
-    const {bottomHeight} = useKeyboardAvoidingFocusedInputView(viewRef)
+    const {bottomHeight} = useKeyboardAvoidingFocusedInputView(
+        viewRef,
+        extraAvoidingSpace,
+    )
 
     if (Platform.OS === 'android') {
         return (
-            <ScrollView style={style} {...props}>
+            <View style={style} {...props}>
                 {children}
-            </ScrollView>
+            </View>
         )
     }
 
@@ -161,11 +182,18 @@ const KeyboardAvoidingView = ({
     )
 }
 
+/**
+ * @param {KeyboardAvoidingProps & ScrollViewProps} param0
+ * @param {*} ref
+ */
 const KeyboardAvoidingScrollViewForwardRef = (
-    {children, style, contentContainerStyle, ...props},
+    {children, style, contentContainerStyle, extraAvoidingSpace = 0, ...props},
     ref,
 ) => {
-    const {bottomHeight} = useKeyboardAvoidingFocusedInputView(ref)
+    const {bottomHeight} = useKeyboardAvoidingFocusedInputView(
+        ref,
+        extraAvoidingSpace,
+    )
 
     if (Platform.OS === 'android') {
         return (
@@ -192,6 +220,7 @@ const KeyboardAvoidingScrollViewForwardRef = (
     )
 }
 
+/** @type {React.FunctionComponent<KeyboardAvoidingProps & ScrollViewProps>} */
 export const KeyboardAvoidingScrollView = React.forwardRef(
     KeyboardAvoidingScrollViewForwardRef,
 )
@@ -203,3 +232,16 @@ const styles = StyleSheet.create({
 })
 
 export default KeyboardAvoidingView
+
+/**
+ * @typedef {object} KeyboardAvoidingProps
+ * @property {ViewStyle} contentContainerStyle
+ * @property {ViewStyle} style
+ * @property {number=} extraAvoidingSpace - optional, the default behavior of this keyboard avoiding is to avoid the whole input box, but if you wish to have extra space to avoid
+ */
+
+/**
+ * @typedef {import('react-native').StyleProp<import('react-native').ViewStyle>} ViewStyle
+ * @typedef {import('react-native').ViewProps} ViewProps
+ * @typedef {import('react-native').ScrollViewProps} ScrollViewProps
+ */

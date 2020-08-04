@@ -2,6 +2,7 @@ import * as React from 'react'
 import {StyleSheet, View, Platform} from 'react-native'
 import {sum} from 'ramda'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
+import {useKeyboard} from '@react-native-community/hooks'
 
 import ProgressBar from '../components/ProgressBar'
 import {useFeedbackState} from '../contexts/feedback'
@@ -37,6 +38,8 @@ const numTotalQuestions = (survey) => {
     return sum(questionNumOfPages)
 }
 
+const isAndroid = Platform.OS === 'android'
+
 /** @typedef {import('React').ComponentType<SurveyProgressBarProps>} SurveyProgressBarComponent*/
 /** @typedef {import('../contexts/feedback').FeedbackReducerState} FeedbackReducerState*/
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
@@ -58,11 +61,12 @@ const SurveyProgressBar = ({pageIndex = 0, rtl, ...props}) => {
     const feedbackState = useFeedbackState()
     const themeColor = props.survey.surveyProperty.hexCode
     const insets = useSafeAreaInsets()
+    const {keyboardShown} = useKeyboard()
 
     const insetsBottom =
         // if it is android, and the insets bottom is not normal,
         // maybe it is because the keyboard is showed, don't use this insets
-        Platform.OS === 'android' && insets.bottom >= 100 ? 0 : insets.bottom
+        isAndroid && insets.bottom >= 100 ? 0 : insets.bottom
 
     const containerStyle = React.useMemo(
         () => [
@@ -74,6 +78,9 @@ const SurveyProgressBar = ({pageIndex = 0, rtl, ...props}) => {
         ],
         [insetsBottom, themeColor],
     )
+
+    // hide this bar when it is android and keyboard is shown
+    if (isAndroid && keyboardShown) return null
 
     return (
         <View style={containerStyle}>
