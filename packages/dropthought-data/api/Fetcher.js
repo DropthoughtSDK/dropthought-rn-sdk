@@ -174,7 +174,7 @@ export class Fetcher {
                 ...this.defaultRequestConfig.headers,
                 ...requestConfig.headers,
             },
-            body: JSON.stringify(requestConfig.data),
+            body: requestConfig.body || JSON.stringify(requestConfig.data),
             signal: abortController.signal,
         })
             .then(async (r) => {
