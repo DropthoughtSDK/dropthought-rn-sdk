@@ -108,7 +108,7 @@ export default SurveyStack
 /**
  * @typedef {Object} EndScreenParams
  * @property {Error=} error
- * @property {import('@dropthought/dropthought-data').SurveyFeedback=} surveyFeedback
+ * @property {import('@dropthought/dropthought-data/data').SurveyFeedback=} surveyFeedback
  */
 
 /**

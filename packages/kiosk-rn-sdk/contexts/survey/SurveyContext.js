@@ -212,10 +212,11 @@ export const SurveyContextProvider = ({
         surveyId,
         language: selectedLanguage,
 
-        // watch, only re-run the promise, when language is changed
+        // watch, only re-run the promise, when language is changed or surveyId is changed
         watchFn: (props, prevProps) =>
-            props.language !== prevProps.language &&
-            props.language !== prevSelectedLanguage,
+            (props.language !== prevProps.language &&
+                props.language !== prevSelectedLanguage) ||
+            props.surveyId !== prevProps.surveyId,
     })
 
     /** @type {SurveyContextValue} */

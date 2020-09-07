@@ -7,14 +7,14 @@ import {StatusBar} from 'react-native'
 import SurveyStackNavigator from './navigation/SurveyStack'
 import {useSurvey} from './contexts/survey'
 
-const SurveyStackContainer = () => {
+const SurveyStackContainer = (props) => {
     const survey = useSurvey()
     const themeColor = survey.surveyProperty.hexCode
 
     return (
         <>
             <StatusBar backgroundColor={themeColor} barStyle="light-content" />
-            <SurveyStackNavigator />
+            <SurveyStackNavigator {...props} />
         </>
     )
 }

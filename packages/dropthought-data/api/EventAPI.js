@@ -16,13 +16,14 @@ const EVENT_PATH = '/api/event'
  *   programId: string,
  *   feedbacks: Feedback[],
  *   source?: EventAPISourceType,
+ *   metadata: any,
  * }} param0
  * @param {AxiosRequestConfig} axiosConfig
  * @param {Fetcher=} fetcher
  * @returns {Promise<Survey>}
  */
 export async function apiPostEvent(
-    {programId, feedbacks = [], source = 'api'},
+    {programId, feedbacks = [], source = 'api', metadata = {}},
     axiosConfig = {},
     fetcher = fetcherInstance,
 ) {
@@ -45,6 +46,7 @@ export async function apiPostEvent(
             })),
             metaData: {
                 source,
+                ...metadata,
             },
         },
         ...axiosConfig,
