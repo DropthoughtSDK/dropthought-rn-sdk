@@ -7,15 +7,20 @@ import {KioskProvider} from '@dropthought/kiosk-rn-ui'
 import {initializeWithAPIKey} from './lib/API'
 
 import {SurveyContextProvider} from './contexts/survey'
+import {CustomPropsContextProvider} from './contexts/custom-props'
 import SurveyStackContainer from './SurveyStackContainer'
 
 /**
- * @typedef {object} SDKEntryProps
+ * @typedef {object} SDKEntryOwnProps
  * @property {string} apiKey
  * @property {string} surveyId
  * @property {string=} defaultLanguage if not provided, default is "en"
  * @property {string=} baseURL if not provided, default is ...
  * @property {()=>void=} onClose when the close icon is pressed in the header
+ */
+
+/**
+ * @typedef {import('./contexts/custom-props').CustomProps & SDKEntryOwnProps} SDKEntryProps
  */
 
 /**
@@ -32,13 +37,15 @@ export default function App(props) {
 
     return (
         <SafeAreaProvider>
-            <SurveyContextProvider {...props}>
-                <NavigationContainer>
-                    <KioskProvider>
-                        <SurveyStackContainer />
-                    </KioskProvider>
-                </NavigationContainer>
-            </SurveyContextProvider>
+            <CustomPropsContextProvider {...props}>
+                <SurveyContextProvider {...props}>
+                    <NavigationContainer>
+                        <KioskProvider>
+                            <SurveyStackContainer />
+                        </KioskProvider>
+                    </NavigationContainer>
+                </SurveyContextProvider>
+            </CustomPropsContextProvider>
         </SafeAreaProvider>
     )
 }

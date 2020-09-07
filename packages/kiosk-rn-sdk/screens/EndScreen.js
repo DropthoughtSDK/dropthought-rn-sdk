@@ -4,6 +4,10 @@ import {useBackHandler} from '@react-native-community/hooks'
 import {EndScreenLayout} from '@dropthought/kiosk-rn-ui'
 
 import {useSurvey, useSurveyContext} from '../contexts/survey'
+import {
+    useOnSubmitSuccessCallback,
+    useOnSubmitCallback,
+} from '../contexts/custom-props'
 import {useSurveyHeader} from './useSurveyHeader'
 
 const useBackForDismiss = () => {
@@ -22,16 +26,25 @@ const useBackForDismiss = () => {
  */
 const EndScreen = (props) => {
     const survey = useSurvey()
+    const onSubmitSuccessCallback = useOnSubmitSuccessCallback()
+    const onSubmitCallback = useOnSubmitCallback()
     useSurveyHeader(props.navigation)
 
     const {error, surveyFeedback} = props.route.params
 
     React.useEffect(() => {
         // passing data to native, if error is undefined, null, 0, it means success
-        console.log('TODO: native onFeedbackResult')
+        if (onSubmitCallback) {
+            onSubmitCallback(surveyFeedback, error)
+            // deprecate later
+            if (!error && onSubmitSuccessCallback) {
+                onSubmitSuccessCallback(surveyFeedback)
+            }
+        }
         // if (surveyFeedback)
         //     SurveyNativeBridge.onFeedbackResult(surveyFeedback, error || 0)
-    }, [error, surveyFeedback])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useBackForDismiss()
     return <EndScreenLayout survey={survey} />

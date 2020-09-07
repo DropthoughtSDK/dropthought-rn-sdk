@@ -44,9 +44,10 @@ interface APIPostEventParam {
     programId: string
     feedbacks: Feedback[]
     source: EventAPISourceType
+    metadata: any
 }
 declare function apiPostEvent(
-    param: ApiGetProgramByIdParam,
+    param: APIPostEventParam,
     requestConfig?: RequestConfig,
     fetcher?: Fetcher,
 ): Promise<Survey>

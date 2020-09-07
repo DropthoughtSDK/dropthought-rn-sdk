@@ -8,20 +8,26 @@ import SDKEntry from './SDKEntry'
 import {initializeWithAPIKey} from './lib/API'
 import {feedbackUploader} from './lib/FeedbacksUploader'
 
-const sdkPropsKeys = [
-    'apiKey',
-    'surveyId',
-    'defaultLanguage',
-    'baseURL',
-    'onClose',
+const ModalProps = [
+    'animated',
+    'animationType',
+    'transparent',
+    'visible',
+    'onRequestClose',
+    'onShow',
+    'presentationStyle',
+    'supportedOrientations',
+    'onDismiss',
+    'onOrientationChange',
+    'hardwareAccelerated',
 ]
 
 /**
  * @param {SurveyModalProps & SDKEntryProps & ModalProps } props
  */
 export function SurveyModal(props) {
-    const sdkProps = pick(sdkPropsKeys, props)
-    const modalProps = omit(sdkPropsKeys, props)
+    const sdkProps = omit(ModalProps, props)
+    const modalProps = pick(ModalProps, props)
     return (
         <Modal presentationStyle="fullScreen" {...modalProps}>
             <View style={GlobalStyle.flex1}>
@@ -31,7 +37,7 @@ export function SurveyModal(props) {
     )
 }
 
-/** @type {React.Context<() => void>} */
+/** @type {React.Context<(param: OpenSurveyProps) => void>} */
 export const SurveyModalOpenSurveyContext = React.createContext(() => undefined)
 
 export const useOpenSurvey = () => {
@@ -56,7 +62,10 @@ export const SurveyModalContainer = ({
 }) => {
     const [visible, setVisible] = React.useState(false)
 
-    const openSurvey = React.useCallback(() => {
+    const customPropsRef = React.useRef({})
+
+    const openSurvey = React.useCallback((customProps) => {
+        customPropsRef.current = customProps
         setVisible(true)
     }, [])
 
@@ -77,11 +86,14 @@ export const SurveyModalContainer = ({
     return (
         <SurveyModalOpenSurveyContext.Provider value={openSurvey}>
             {children}
-            <SurveyModal
-                {...props}
-                visible={visible}
-                onClose={onCloseSurveyHandler}
-            />
+            {visible ? (
+                <SurveyModal
+                    {...props}
+                    {...customPropsRef.current}
+                    visible={visible}
+                    onClose={onCloseSurveyHandler}
+                />
+            ) : null}
         </SurveyModalOpenSurveyContext.Provider>
     )
 }
@@ -93,4 +105,7 @@ export const SurveyModalContainer = ({
 /**
  * @typedef {object} SurveyModalProps
  * @property {boolean} visible
+ */
+/**
+ * @typedef {SDKEntryProps & ModalProps} OpenSurveyProps
  */

@@ -4,12 +4,14 @@ import {FeedbacksQueue} from './FeedbacksUploader'
 /**
  * the format is to fit in the react-async deferFn
  * @param {[SurveyFeedback]} surveyFeedback
+ * @param {any} metadata
  */
-export const submitFeedback = async ([surveyFeedback]) => {
+export const submitFeedback = async ([surveyFeedback, metadata]) => {
     return apiPostEvent(
         {
             programId: surveyFeedback.surveyId,
             feedbacks: surveyFeedback.feedbacks,
+            metadata,
         },
         {
             // use shorter timeout here,

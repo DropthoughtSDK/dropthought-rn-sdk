@@ -7,6 +7,7 @@ import {
 } from '@dropthought/kiosk-rn-ui'
 
 import {useSurvey} from '../contexts/survey'
+import {useMetadata} from '../contexts/custom-props'
 import {useSurveyHeader} from './useSurveyHeader'
 import {submitFeedback} from '../lib/Feedback'
 
@@ -15,13 +16,13 @@ import {submitFeedback} from '../lib/Feedback'
  */
 const useSubmitFeedback = (navigation) => {
     const surveyFeedbackRef = React.useRef()
+    const metadata = useMetadata()
 
     const onRejectHandler = React.useCallback(
         (error) => {
             navigation.push('End', {
                 surveyFeedback: surveyFeedbackRef.current,
-                // TODO: define more error code
-                error: -1,
+                error,
             })
         },
         [navigation],
@@ -43,9 +44,9 @@ const useSubmitFeedback = (navigation) => {
     const onSubmitHandler = React.useCallback(
         (surveyFeedback) => {
             surveyFeedbackRef.current = surveyFeedback
-            run(surveyFeedback)
+            run(surveyFeedback, metadata)
         },
-        [run],
+        [run, metadata],
     )
 
     return React.useMemo(

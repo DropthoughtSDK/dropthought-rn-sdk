@@ -59,7 +59,7 @@ const SliderRatingQuestion = ({
                         onFeedback({
                             questionId: question.questionId,
                             answers: [index],
-                            type: 'rating',
+                            type: question.type,
                         })
                         setValue(index)
                     }}>
@@ -92,7 +92,7 @@ const SliderRatingQuestion = ({
                         onFeedback({
                             questionId: question.questionId,
                             answers: [index],
-                            type: 'rating',
+                            type: question.type,
                         })
                         setValue(index)
                     }}>
