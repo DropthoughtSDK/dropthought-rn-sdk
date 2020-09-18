@@ -23,7 +23,7 @@ export const SurveyProgressBarPosition = {
 }
 
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
-/** @typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback*/
+/** @typedef {import('@dropthought/dropthought-data/data').SurveyFeedback} SurveyFeedback*/
 /** @typedef {import('./SurveyProgressBar').SurveyProgressBarComponent} SurveyProgressBarComponent*/
 /** @typedef {import('React').ComponentType<import('../components/SurveyPageIndicator').SurveyPageIndicatorProps>} SurveyPageIndicatorComponent*/
 /**
