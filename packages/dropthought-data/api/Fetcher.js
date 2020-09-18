@@ -160,7 +160,10 @@ export class Fetcher {
         // compose fetch params
         const params = Object.keys(requestConfig.params || {})
             .filter((key) => !isNil(requestConfig.params[key]))
-            .map((key) => `${key}=${requestConfig.params[key]}`)
+            .map(
+                (key) =>
+                    `${key}=${encodeURIComponent(requestConfig.params[key])}`,
+            )
             .join('&')
         // compose fetch full URL
         const fetchURL =

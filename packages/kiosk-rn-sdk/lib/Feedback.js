@@ -4,14 +4,13 @@ import {FeedbacksQueue} from './FeedbacksUploader'
 /**
  * the format is to fit in the react-async deferFn
  * @param {[SurveyFeedback]} surveyFeedback
- * @param {any} metadata
  */
-export const submitFeedback = async ([surveyFeedback, metadata]) => {
+export const submitFeedback = async ([surveyFeedback]) => {
     return apiPostEvent(
         {
             programId: surveyFeedback.surveyId,
             feedbacks: surveyFeedback.feedbacks,
-            metadata,
+            metadata: surveyFeedback.metadata,
         },
         {
             // use shorter timeout here,
@@ -33,4 +32,4 @@ export const saveFeedback = async (surveyFeedback) => {
 }
 
 /**@typedef {import('@dropthought/dropthought-data').Feedback} Feedback */
-/**@typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback */
+/**@typedef {import('@dropthought/dropthought-data/data').SurveyFeedback} SurveyFeedback */
