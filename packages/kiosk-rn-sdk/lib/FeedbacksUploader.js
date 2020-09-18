@@ -30,6 +30,7 @@ async function sendFeedback(surveyFeedback) {
     return apiPostEvent({
         programId: surveyFeedback.surveyId,
         feedbacks: surveyFeedback.feedbacks,
+        metadata: surveyFeedback.metadata,
     })
 }
 
@@ -236,7 +237,7 @@ function CreateFeedbacksUploader() {
 export const feedbackUploader = CreateFeedbacksUploader()
 
 /**@typedef {import('@dropthought/dropthought-data').Feedback} Feedback */
-/**@typedef {import('@dropthought/dropthought-data').SurveyFeedback} SurveyFeedback */
+/**@typedef {import('@dropthought/dropthought-data/data').SurveyFeedback} SurveyFeedback */
 
 /**
  * @typedef {Object} FailedReason

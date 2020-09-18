@@ -44,7 +44,10 @@ const useSubmitFeedback = (navigation) => {
     const onSubmitHandler = React.useCallback(
         (surveyFeedback) => {
             surveyFeedbackRef.current = surveyFeedback
-            run(surveyFeedback, metadata)
+            run({
+                ...surveyFeedback,
+                metadata,
+            })
         },
         [run, metadata],
     )
