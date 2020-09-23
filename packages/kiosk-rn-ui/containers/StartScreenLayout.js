@@ -69,7 +69,7 @@ const StartScreen = ({onLanguageSelect, onStart, survey}) => {
             <TouchableOpacity
                 key={index}
                 onPress={() => {
-                    onLanguageSelect(language)
+                    onLanguageSelect && onLanguageSelect(language)
                 }}>
                 <Text
                     style={[
