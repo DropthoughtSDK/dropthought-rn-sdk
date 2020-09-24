@@ -1,6 +1,6 @@
 {
   "name": "dropthought-rn-sdk",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -13,8 +13,8 @@
   },
   "dependencies": {
     "@dropthought/dropthought-data": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-dropthought-data-v1.0.11-gitpkg",
-    "@dropthought/kiosk-rn-ui": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-ui-v1.0.6-gitpkg",
-    "@dropthought/kiosk-rn-sdk": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-sdk-v1.0.6-gitpkg"
+    "@dropthought/kiosk-rn-ui": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-ui-v1.0.7-gitpkg",
+    "@dropthought/kiosk-rn-sdk": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-sdk-v1.0.7-gitpkg"
   },
   "devDependencies": {
   },

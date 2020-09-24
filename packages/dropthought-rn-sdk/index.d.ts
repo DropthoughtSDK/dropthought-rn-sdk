@@ -1,6 +1,7 @@
 import {FunctionComponent} from 'react'
 import {ModalProps} from 'react-native'
 import {SurveyFeedback} from '@dropthought/dropthought-data/data'
+import {SDKEntryProps} from '@dropthought/kiosk-rn-sdk'
 
 export declare interface DropthoughtContainerProps extends ModalProps {
     /**
@@ -53,8 +54,26 @@ declare function DropthoughtContainer(
     props: DropthoughtContainerProps,
 ): React.FunctionComponent<DropthoughtContainerProps>
 
+export declare interface SurveyModalProps extends OpenSurveyParams, ModalProps {
+    /**
+     * callback, when the close is pressed in the header
+     */
+    onClose?: () => void
+}
+
+declare function SurveyModal(
+    props: SurveyModalProps,
+): React.FunctionComponent<SurveyModalProps>
+
 declare function useOpenSurvey(): (params: OpenSurveyParams) => void
 
 declare const feedbackUploader: {
     upload: () => Promise<void>
+    clear: () => Promise<void>
 }
+
+export declare interface InitializeParams {
+    apiKey: string
+}
+
+declare function initialize(params: InitializeParams): void
