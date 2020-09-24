@@ -11,7 +11,7 @@
 ### install dropthought-rn-sdk
 
 ```shell
-yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.0.2-gitpkg
+yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.1.0-gitpkg
 ```
 
 for iOS, remember to `pod install` again
@@ -32,7 +32,7 @@ If you have open-ended questions (text input) in your survey, in order to let an
 
 ### 1. Use DropthoughtContainer
 
-use `DropthoughtContainer` to initialize Dropthought with your apiKey and surveyId, put it to the parent of your component/screen that needs to open survey (or you can put it to one of your root providers)
+use `DropthoughtContainer` to initialize Dropthought with your apiKey and surveyId, put it to the parent of your component/screen that needs to open survey (or you can put it to one of your root providers).
 
 use `useOpenSurvey` hook to get the function that opens the dropthought survey
 
@@ -125,4 +125,127 @@ openSurvey({
         anythingId: 'anything you want',
     },
 })
+```
+
+### 2. Use low-level API to have more control
+
+`DropthoughtContainer` is a high-level API, it automatically do initialization and upload offline feedbacks (once) for you. However, if you wish to do the initialization at other place, for example, you load your API key from other file or from an API call, then you need low-level API to have more control of your app.
+
+#### `initialize` dropthought with api key
+
+before displaying any survey or uploading offline feedbacks, make sure you initialize with your api key. This is a normal function, could be called from anywhere
+
+```javascript
+import {initialize} from 'dropthought-rn-sdk'
+
+// call this after you get your api key
+initialize({
+    apiKey: 'your api key',
+})
+```
+
+#### use `SurveyModal` to display survey
+
+`SurveyModal` works like the React Native's Modal, you have to control the `visible` prop to determine whether survey modal is visible. You can also config the animationType.
+
+**NOTE: you must call `initialize` before you set `visible` prop to true**
+
+##### Functional component example
+
+A button that open a survey
+
+```javascript
+import {SurveyModal} from 'dropthought-rn-sdk'
+
+const OpenSurveyButton = () => {
+    const [visible, setVisible] = React.useState(false)
+
+    return (
+        <>
+            <Button
+                title="Open Survey"
+                onPress={() => {
+                    // NOTE: before you display the survey modal, make sure `initialize` is already being called
+                    setVisible(true)
+                }}
+            />
+            <SurveyModal
+                visible={visible}
+                animationType="slide"
+                // NOTE: you have to control the visible here to close modal
+                onClose={() => setVisible(false)}
+                // you can pass metadata here
+                metadata={{
+                    randomId: 'test123456',
+                }}
+                // you can pass survey id here
+                surveyId="bc0ce7c1-3ebc-4a34-8bc6-9c032b93566b"
+            />
+        </>
+    )
+}
+```
+
+##### classical component example
+
+A button that open a survey
+
+```javascript
+class OpenSurveyButton extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            visible: false,
+        }
+    }
+
+    render() {
+        return (
+            <>
+                <Button
+                    title="Open Survey"
+                    onPress={() => {
+                        this.setState({
+                            visible: true,
+                        })
+                    }}
+                />
+                <SurveyModal
+                    visible={this.state.visible}
+                    animationType="slide"
+                    onClose={() => this.setState({visible: false})}
+                    metadata={{
+                        randomId: 'test123456',
+                    }}
+                    surveyId="bc0ce7c1-3ebc-4a34-8bc6-9c032b93566b"
+                />
+            </>
+        )
+    }
+}
+```
+
+#### use `feedbackUploader` to upload the queued feedbacks
+
+when there's error submitting feedback to server, we would keep the feedbacks in storage. use `feedbackUploader.upload()` to upload feedbacks
+
+```javascript
+<Button
+    title="Upload feedbacks"
+    onPress={() => {
+        feedbackUploader.upload()
+    }}
+/>
+```
+
+If you want to clear all the queued feedbacks, use `feedbackUpload.clear()`
+
+```javascript
+<Button
+    title="Logout"
+    onPress={async () => {
+        await feedbackUploader.clear()
+        realLogoutAction()
+    }}
+/>
 ```

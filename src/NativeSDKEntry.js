@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import {SDKEntry} from '@dropthought/kiosk-rn-sdk'
+import {SDKEntry, initializeWithAPIKey} from '@dropthought/kiosk-rn-sdk'
 
 import SurveyNativeBridge from './native/SurveyBridge'
 
@@ -13,6 +13,12 @@ export default function NativeSDKEntry(props) {
     const onClosePressHandler = React.useCallback(() => {
         SurveyNativeBridge.dismiss()
     }, [])
+
+    React.useEffect(() => {
+        initializeWithAPIKey({
+            apiKey: props.apiKey,
+        })
+    }, [props.apiKey])
 
     return <SDKEntry {...props} onClose={onClosePressHandler} />
 }

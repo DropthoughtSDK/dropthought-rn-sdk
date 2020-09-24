@@ -170,6 +170,18 @@ function CreateFeedbacksUploader() {
     /**
      * @public
      */
+    async function clear() {
+        cancel()
+        await Promise.all([
+            FeedbacksQueue.clear(),
+            FailedFeedbacksQueue.clear(),
+            FailedReasonsQueue.clear(),
+        ])
+    }
+
+    /**
+     * @public
+     */
     async function upload() {
         // check queues are initialized
         if (!FeedbacksQueue.initialized) await FeedbacksQueue.initialize()
@@ -214,6 +226,7 @@ function CreateFeedbacksUploader() {
         upload,
         subscribe,
         cancel,
+        clear,
     }
 }
 
@@ -225,6 +238,9 @@ function CreateFeedbacksUploader() {
  *
  *     // to cancel
  *     feedbackUploader.cancel()
+ *
+ *     // to clear all the saved unsent feedbacks
+ *     feedbackUploader.clear()
  *
  *     // to subscribe state
  *     const unSubscribe = feedbackUploader.subscribe( state => {

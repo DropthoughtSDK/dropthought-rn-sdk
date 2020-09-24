@@ -50,9 +50,9 @@ export class QueueStorage {
         await this.syncToStorage()
     }
 
-    clear() {
+    async clear() {
         this.queue = []
-        this.syncToStorage()
+        await this.syncToStorage()
     }
 
     /**

@@ -4,7 +4,6 @@ import * as React from 'react'
 import {NavigationContainer} from '@react-navigation/native'
 import {SafeAreaProvider} from 'react-native-safe-area-context'
 import {KioskProvider} from '@dropthought/kiosk-rn-ui'
-import {initializeWithAPIKey} from './lib/API'
 
 import {SurveyContextProvider} from './contexts/survey'
 import {CustomPropsContextProvider} from './contexts/custom-props'
@@ -27,14 +26,6 @@ import SurveyStackContainer from './SurveyStackContainer'
  * @param {SDKEntryProps} props
  */
 export default function App(props) {
-    React.useEffect(() => {
-        initializeWithAPIKey({
-            apiKey: props.apiKey,
-            baseURL: props.baseURL,
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
     return (
         <SafeAreaProvider>
             <CustomPropsContextProvider {...props}>
