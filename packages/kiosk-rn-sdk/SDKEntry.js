@@ -11,6 +11,7 @@ import SurveyStackContainer from './SurveyStackContainer'
 
 /**
  * @typedef {object} SDKEntryOwnProps
+ * @property {boolean=} independent
  * @property {string} apiKey
  * @property {string} surveyId
  * @property {string=} defaultLanguage if not provided, default is "en"
@@ -25,12 +26,12 @@ import SurveyStackContainer from './SurveyStackContainer'
 /**
  * @param {SDKEntryProps} props
  */
-export default function App(props) {
+export default function App({independent = true, ...props}) {
     return (
         <SafeAreaProvider>
             <CustomPropsContextProvider {...props}>
                 <SurveyContextProvider {...props}>
-                    <NavigationContainer>
+                    <NavigationContainer independent={independent}>
                         <KioskProvider>
                             <SurveyStackContainer />
                         </KioskProvider>

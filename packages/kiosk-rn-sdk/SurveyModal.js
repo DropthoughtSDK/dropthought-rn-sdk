@@ -31,7 +31,7 @@ export function SurveyModal(props) {
     return (
         <Modal presentationStyle="fullScreen" {...modalProps}>
             <View style={GlobalStyle.flex1}>
-                <SDKEntry {...sdkProps} />
+                <SDKEntry independent {...sdkProps} />
             </View>
         </Modal>
     )
