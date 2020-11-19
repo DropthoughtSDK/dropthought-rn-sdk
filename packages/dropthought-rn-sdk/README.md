@@ -4,6 +4,8 @@
 
 ### install peer dependency:
 
+-   `yarn add @react-navigation/native`
+-   `yarn add @react-navigation/stack`
 -   `yarn add @react-native-community/async-storage`
 -   `yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view` (if you already have these packages installed when installing `react-navigation`, you don't need this step)
 -   `yarn add react-native-localize`

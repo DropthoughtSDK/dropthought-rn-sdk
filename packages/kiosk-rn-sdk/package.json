@@ -1,6 +1,6 @@
 {
   "name": "@dropthought/kiosk-rn-sdk",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -14,6 +14,8 @@
     "prop-types": "^15.7.2",
     "react": ">16.8.3",
     "react-native": ">0.59.3",
+    "@react-navigation/native": ">5.6.1",
+    "@react-navigation/stack": ">5.6.2",
     "react-native-gesture-handler": ">= 1.0.0",
     "react-native-localize": ">= 1.1.0",
     "react-native-reanimated": ">= 1.4.0",
@@ -21,8 +23,6 @@
     "react-native-screens": ">= 2.0.0-alpha.0 || >= 2.0.0-beta.0 || >= 2.0.0"
   },
   "dependencies": {
-    "@react-navigation/native": "^5.6.1",
-    "@react-navigation/stack": "^5.6.2",
     "ramda": "^0.27.0",
     "react-async": "^10.0.1",
     "uuid": "^3.3.2"
