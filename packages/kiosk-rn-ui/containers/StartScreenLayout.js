@@ -14,11 +14,6 @@ const defaultIconSize = {
     [DimensionWidthType.tablet]: 72,
 }
 
-const LANG_TITLE = {
-    en: 'English',
-    ar: 'العربي',
-}
-
 /** @typedef {import('@dropthought/dropthought-data').Survey} Survey*/
 /**
  * define props for SurveyScreenLayout
@@ -78,7 +73,7 @@ const StartScreen = ({onLanguageSelect, onStart, survey}) => {
                             color: survey.surveyProperty.hexCode,
                         },
                     ]}>
-                    {LANG_TITLE[language]}
+                    {language === 'en' ? 'English' : 'العربي'}
                 </Text>
             </TouchableOpacity>
         ))

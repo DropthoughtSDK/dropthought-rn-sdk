@@ -21,14 +21,8 @@ import i18n from '../translation'
 const noop = () => undefined
 
 const iconSource = {
-    radio: {
-        true: require('../assets/radio-on.png'),
-        false: require('../assets/radio-off.png'),
-    },
-    checkbox: {
-        true: require('../assets/checkbox-on.png'),
-        false: require('../assets/checkbox-off.png'),
-    },
+    radio: require('../assets/radio-on.png'),
+    checkbox: require('../assets/checkbox-on.png'),
 }
 
 /**
@@ -41,14 +35,14 @@ const iconSource = {
  * @param {CheckBoxIconProps} props
  * @returns {React.FunctionComponent<CheckBoxIconProps>}
  */
-const CheckBoxIcon = ({type, checkedColor, checked}) => {
+const CheckBoxIcon = ({type, checkedColor}) => {
     const checkedStyle = {
         tintColor: checkedColor,
     }
     return (
         <Image
-            style={[styles.checkboxIcon, checked && checkedStyle]}
-            source={iconSource[type][checked]}
+            style={[styles.checkboxIcon, checkedStyle]}
+            source={iconSource[type]}
         />
     )
 }
@@ -119,15 +113,20 @@ function OptionWithHighlight(props) {
         ? TouchableWithoutFeedback
         : TouchableOpacity
 
+    const checkboxPlaceholderStyle = [
+        styles.checkboxPlaceholder,
+        {borderRadius: type === 'radio' ? 10 : 3},
+    ]
+
     return (
         <TouchableComponent onPress={onPressHandler}>
             <View style={containerStyle}>
                 <View style={styles.checkboxIconContainer}>
-                    <CheckBoxIcon
-                        type={type}
-                        checkedColor={checkedColor}
-                        checked={checked}
-                    />
+                    {checked ? (
+                        <CheckBoxIcon type={type} checkedColor={checkedColor} />
+                    ) : (
+                        <View style={checkboxPlaceholderStyle} />
+                    )}
                 </View>
                 {content}
             </View>
@@ -175,6 +174,13 @@ const styles = StyleSheet.create({
     checkboxIcon: {
         width: 20,
         aspectRatio: 1,
+    },
+    checkboxPlaceholder: {
+        width: 20,
+        aspectRatio: 1,
+        borderWidth: 1.5,
+        borderColor: Colors.borderColor,
+        borderRadius: 10,
     },
 })
 
