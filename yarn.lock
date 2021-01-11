@@ -721,6 +721,30 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@dropthought/dropthought-data@git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-dropthought-data-v1.0.11-gitpkg":
+  version "1.0.11"
+  resolved "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#f0431e6418733daf657b8a2962251180e37f05dd"
+  dependencies:
+    jwt-decode "^2.2.0"
+    luxon "^1.24.1"
+    ramda "^0.27.0"
+
+"@dropthought/kiosk-rn-sdk@git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-sdk-v1.0.9-gitpkg":
+  version "1.0.9"
+  resolved "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#c1727a79d3db70369ea3bb08bea5f722dfa5575b"
+  dependencies:
+    ramda "^0.27.0"
+    react-async "^10.0.1"
+    uuid "^3.3.2"
+
+"@dropthought/kiosk-rn-ui@git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-ui-v1.0.8-gitpkg":
+  version "1.0.8"
+  resolved "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#987d6e360e9ead824ef36be526da496e94cbaf9d"
+  dependencies:
+    "@react-native-community/hooks" "^2.6.0"
+    i18next "^19.4.4"
+    ramda "^0.27.0"
+
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
   resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.17.tgz#5dc02af75a6a06e4c2db0202cae38c9263895124"
