@@ -13,7 +13,7 @@
 ### install dropthought-rn-sdk
 
 ```shell
-yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.1.0-gitpkg
+yarn add git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.1.4-gitpkg
 ```
 
 for iOS, remember to `pod install` again
