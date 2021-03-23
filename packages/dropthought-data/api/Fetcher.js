@@ -252,7 +252,7 @@ export class Fetcher {
             },
             timeout,
             headers: {
-                Authorization: `Bearer ${accessToken}`,
+                Authorization: accessToken,
             },
         }).then((response) => {
             return this.storeTokens(response.data)
