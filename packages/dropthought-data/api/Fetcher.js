@@ -242,7 +242,6 @@ export class Fetcher {
     /** @returns {Promise<any>} */
     async tokenRenew(timeout = DEFAULT_TIMEOUT) {
         const refreshToken = await this.refreshToken()
-        const accessToken = await this.authToken()
         if (!refreshToken) return
 
         return this.fetchWithTimeout(RENEW_ENDPOINT, {
@@ -251,9 +250,6 @@ export class Fetcher {
                 refreshToken,
             },
             timeout,
-            headers: {
-                Authorization: accessToken,
-            },
         }).then((response) => {
             return this.storeTokens(response.data)
         })
