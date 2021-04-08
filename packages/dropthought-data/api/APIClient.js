@@ -1,7 +1,7 @@
 import {Fetcher} from './Fetcher'
 
-const DEV_URL = 'https://stage.dropthought.com'
-const PROD_URL = 'https://app.dropthought.com'
+const DEV_URL = 'https://stage-api.dropthought.com'
+const PROD_URL = 'https://api.dropthought.com'
 const HOST = __DEV__ ? DEV_URL : PROD_URL
 export const BASE_URL = `${HOST}/dtapp`
 
