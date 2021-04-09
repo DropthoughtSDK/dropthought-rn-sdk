@@ -78,3 +78,8 @@ buck-out/
 
 # dev
 .vscode
+
+
+/iosDemo/Dropthought/*
+/iosDemo/react-native-modules/*
+/iosDemo/iosDemoObjc.app.dSYM.zip
