@@ -12,7 +12,7 @@
 
 ### install dropthought-rn-sdk
 
-- For existing users
+- For existing users (Please use existing API key. )
 
 Please find this line in package.json at project root
 
