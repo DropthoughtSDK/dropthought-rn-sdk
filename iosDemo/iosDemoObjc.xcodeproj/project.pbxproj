@@ -372,7 +372,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KFP6944LXB;
 				INFOPLIST_FILE = iosDemoObjc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -380,7 +380,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bct.tpe.DTSDKDemo;
 				PRODUCT_NAME = "SDK Demo";
 				PROVISIONING_PROFILE_SPECIFIER = "DTSDK-AdHoc";
@@ -396,7 +396,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KFP6944LXB;
 				INFOPLIST_FILE = iosDemoObjc/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -404,7 +404,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bct.tpe.DTSDKDemo;
 				PRODUCT_NAME = "SDK Demo";
 				PROVISIONING_PROFILE_SPECIFIER = "DTSDK-AdHoc";
