@@ -30,7 +30,7 @@ yarn install
 
 - For new users
 ```shell
-yarn add git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.8-gitpkg
+yarn add git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.9-gitpkg
 ```
 
 for iOS, remember to `pod install` again
