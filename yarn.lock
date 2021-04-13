@@ -721,25 +721,25 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@dropthought/dropthought-data@git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-dropthought-data-v1.0.15-gitpkg":
+"@dropthought/dropthought-data@git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-dropthought-data-v1.0.15-gitpkg":
   version "1.0.15"
-  resolved "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#12b07b0f04df66088677995008ed43e4610b26f3"
+  resolved "git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#7829d6b5f4a5dc193bc51288808aead81286fb76"
   dependencies:
     jwt-decode "^2.2.0"
     luxon "^1.24.1"
     ramda "^0.27.0"
 
-"@dropthought/kiosk-rn-sdk@git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-sdk-v1.0.9-gitpkg":
+"@dropthought/kiosk-rn-sdk@git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-kiosk-rn-sdk-v1.0.9-gitpkg":
   version "1.0.9"
-  resolved "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#c1727a79d3db70369ea3bb08bea5f722dfa5575b"
+  resolved "git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#3f003dd43e85e5073295be1bbdcc2db510ec570b"
   dependencies:
     ramda "^0.27.0"
     react-async "^10.0.1"
     uuid "^3.3.2"
 
-"@dropthought/kiosk-rn-ui@git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-kiosk-rn-ui-v1.0.9-gitpkg":
+"@dropthought/kiosk-rn-ui@git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-kiosk-rn-ui-v1.0.9-gitpkg":
   version "1.0.9"
-  resolved "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#97a46f0ed4a468a34599e15320c95238d8b01ca9"
+  resolved "git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#6e920bbe8fc5a5998057d4d82987e54f19e453cb"
   dependencies:
     "@react-native-community/hooks" "^2.6.0"
     i18next "^19.4.4"

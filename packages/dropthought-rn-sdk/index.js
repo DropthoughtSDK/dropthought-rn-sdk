@@ -8,7 +8,7 @@ import {
     SurveyModal,
 } from '@dropthought/kiosk-rn-sdk'
 
-const BASE_URL = 'https://app.dropthought.com/dtapp'
+const BASE_URL = 'https://api.dropthought.com/dtapp'
 /**
  * @type {React.FunctionComponent<DropthoughtContainerOwnProps & ModalProps>}
  * @param {DropthoughtContainerOwnProps & ModalProps} param0
