@@ -21,7 +21,7 @@ Please find this line in package.json at project root
 ```
 And replace with this line
 ```shell
-"dropthought-rn-sdk": "git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.8-gitpkg",
+"dropthought-rn-sdk": "git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.9-gitpkg",
 ```
 Then do 
 ```shell
