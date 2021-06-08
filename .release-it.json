@@ -1,0 +1,13 @@
+{
+    "git": {
+        "commitMessage": "[ci-skip]: dropthought-data release ${version}",
+        "tagName": "dropthought-data-v${version}"
+    },
+    "npm": {
+        "publish": false
+    },
+    "github": {
+        "release": false
+    },
+    "plugins": {}
+}
