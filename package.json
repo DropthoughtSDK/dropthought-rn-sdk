@@ -1,0 +1,15 @@
+{
+  "name": "@dropthought/dropthought-data",
+  "version": "1.1.1",
+  "main": "index.js",
+  "private": true,
+  "peerDependencies": {},
+  "dependencies": {
+    "jwt-decode": "^2.2.0",
+    "luxon": "^1.24.1",
+    "ramda": "^0.27.0"
+  },
+  "devDependencies": {
+    "axios": "^0.19.2"
+  }
+}
