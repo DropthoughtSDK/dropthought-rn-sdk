@@ -1,0 +1,13 @@
+{
+    "git": {
+        "commitMessage": "[ci-skip]: kiosk-rn-sdk release ${version}",
+        "tagName": "kiosk-rn-sdk-v${version}"
+    },
+    "npm": {
+        "publish": false
+    },
+    "github": {
+        "release": false
+    },
+    "plugins": {}
+}
