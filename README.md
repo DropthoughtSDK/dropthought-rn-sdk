@@ -1,36 +1,65 @@
 # Dropthought React Native SDK
 
+# Upgrade
+
+### Upgrade to 2.0.0
+
+**This version requires a new format of api key**, please contact Customer Support at cs@dropthought.com to get help.
+
+additional native packages are required:
+
+```shell
+yarn add react-native-aes-crypto@^1.3.0 react-native-secure-key-store@^2.0.0
+```
+
+upgrade dropthought-rn-sdk
+
+```shell
+yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v2.0.0-gitpkg
+```
+
+### Upgrade to 1.1.9 
+
+upgrade dropthought-rn-sdk to different path
+
+```shell
+yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.9-gitpkg
+```
+
 ## install packages
 
 ### install peer dependency:
 
--   `yarn add @react-navigation/native`
--   `yarn add @react-navigation/stack`
+-   `yarn add @react-navigation/native^5.0.0`
+-   `yarn add @react-navigation/stack^5.0.0`
 -   `yarn add @react-native-community/async-storage`
--   `yarn add react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view` (if you already have these packages installed when installing `react-navigation`, you don't need this step)
+-   `yarn add react-native-gesture-handler react-native-screens^2.0.0 react-native-safe-area-context @react-native-community/masked-view` (if you already have these packages installed when installing `react-navigation`, you don't need this step)
 -   `yarn add react-native-localize`
+-   `yarn add react-native-aes-crypto@^1.3.0 react-native-secure-key-store@^2.0.0`
 
 ### install dropthought-rn-sdk
 
-- For existing users (Please use existing API key. )
+#### For existing users (Please use existing API key. )
 
 Please find this line in package.json at project root
 
 ```shell
 "dropthought-rn-sdk": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.0.3-gitpkg",
 ```
+
 And replace with this line
 ```shell
-"dropthought-rn-sdk": "git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.9-gitpkg",
+"dropthought-rn-sdk": "git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v2.0.0-gitpkg",
 ```
+
 Then do 
 ```shell
 yarn install
 ```
 
-- For new users
+#### For new users
 ```shell
-yarn add git+ssh://git@github.com:DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.9-gitpkg
+yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v2.0.0-gitpkg
 ```
 
 for iOS, remember to `pod install` again
