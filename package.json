@@ -1,0 +1,22 @@
+{
+  "name": "dropthought-rn-sdk",
+  "version": "2.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "prop-types": "^15.7.2",
+    "react": ">16.8.3",
+    "react-native": ">0.59.3"
+  },
+  "dependencies": {
+    "@bct-taipei/dt-rn-encrypted-storage": "git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#bct-taipei-dt-rn-encrypted-storage-v1.0.3-gitpkg",
+    "@dropthought/dropthought-data": "git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-dropthought-data-v1.1.1-gitpkg",
+    "@dropthought/kiosk-rn-sdk": "git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-kiosk-rn-sdk-v1.1.0-gitpkg",
+    "@dropthought/kiosk-rn-ui": "git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-kiosk-rn-ui-v1.0.9-gitpkg"
+  },
+  "devDependencies": {},
+  "jest": {}
+}
