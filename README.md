@@ -78,7 +78,7 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     //.....
     
-    +// add the following config
++   // add the following config
     configurations.all {
         resolutionStrategy {
             dependencySubstitution {
