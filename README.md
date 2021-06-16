@@ -30,8 +30,8 @@ yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthough
 
 ### install peer dependency:
 
--   `yarn add @react-navigation/native^5.0.0`
--   `yarn add @react-navigation/stack^5.0.0`
+-   `yarn add @react-navigation/native`
+-   `yarn add @react-navigation/stack`
 -   `yarn add @react-native-community/async-storage`
 -   `yarn add react-native-gesture-handler react-native-screens^2.0.0 react-native-safe-area-context @react-native-community/masked-view` (if you already have these packages installed when installing `react-navigation`, you don't need this step)
 -   `yarn add react-native-localize`
