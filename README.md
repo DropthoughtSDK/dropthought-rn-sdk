@@ -26,6 +26,14 @@ upgrade dropthought-rn-sdk to different path
 yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.9-gitpkg
 ```
 
+### Upgrade to 1.1.8
+
+upgrade dropthought-rn-sdk to different path
+
+```shell
+yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.8-gitpkg
+```
+
 ## install packages
 
 ### install peer dependency:
@@ -39,25 +47,6 @@ yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthough
 
 ### install dropthought-rn-sdk
 
-#### For existing users (Please use existing API key. )
-
-Please find this line in package.json at project root
-
-```shell
-"dropthought-rn-sdk": "git+ssh://git@gitlab.com:bct-taipei/dropthought-sdk.git#dropthought-rn-sdk-v1.0.3-gitpkg",
-```
-
-And replace with this line
-```shell
-"dropthought-rn-sdk": "git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v2.0.0-gitpkg",
-```
-
-Then do 
-```shell
-yarn install
-```
-
-#### For new users
 ```shell
 yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v2.0.0-gitpkg
 ```
@@ -74,6 +63,30 @@ If you have open-ended questions (text input) in your survey, in order to let an
         android:windowSoftInputMode="adjustResize"
     >
     </activity>
+```
+
+## Troubleshooting
+
+### Duplicate class org.spongycastle.cert.AttributeCertificateHolder found in modules bcpkix-jdk15on-1.56.0.0.jar (com.madgag.spongycastle:bcpkix-jdk15on:1.56.0.0) and pkix-1.54.0.0.jar ...
+
+please add extra configuration to your app's build.gradle
+
+```diff
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    //noinspection GradleDynamicVersion
+    implementation "com.facebook.react:react-native:+"  // From node_modules
+    //.....
+}
+
++ // add the following config
+configurations.all {
+    resolutionStrategy {
+        dependencySubstitution {
+            substitute module('com.madgag.spongycastle:pkix:1.54.0.0') with module('com.madgag.spongycastle:bcpkix-jdk15on:1.56.0.0')
+        }
+    }
+}
 ```
 
 ## Integrate Dropthought to your RN project
