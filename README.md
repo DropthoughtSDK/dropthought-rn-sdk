@@ -77,16 +77,18 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
     //.....
-}
-
-+ // add the following config
-configurations.all {
-    resolutionStrategy {
-        dependencySubstitution {
-            substitute module('com.madgag.spongycastle:pkix:1.54.0.0') with module('com.madgag.spongycastle:bcpkix-jdk15on:1.56.0.0')
+    
+    + // add the following config
+    configurations.all {
+        resolutionStrategy {
+            dependencySubstitution {
+                substitute module('com.madgag.spongycastle:pkix:1.54.0.0') with module('com.madgag.spongycastle:bcpkix-jdk15on:1.56.0.0')
+            }
         }
     }
 }
+
+
 ```
 
 ## Integrate Dropthought to your RN project
