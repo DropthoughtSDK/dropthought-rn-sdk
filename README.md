@@ -125,8 +125,8 @@ const styles = StyleSheet.create({
 
 const AppRoot = () => (
     <DropthoughtContainer
-        apiKey="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJraW5nLmNoZW5AYmFod2FuY3liZXJ0ZWsuY29tIiwicm9sZSI6IlJPTEVfVVNFUiIsImV4cCI6MTYyNjg2NzcxNiwiaXNzIjoiRHJvcFRob3VnaHQsIEluYyJ9.eihfroHtnqhH-INiuAaYY2uLW28dENPvpqfU2RlQ3Far3G612atoUs5qfidtl74wW2P5yHLJ-e8jNLDaj5jFYg"
-        surveyId="8c472f20-b3b2-4260-83a3-8f1a3b32cd73">
+        apiKey="your-api-key"
+        surveyId="optional survey id">
         <App />
     </DropthoughtContainer>
 )
@@ -240,7 +240,7 @@ const OpenSurveyButton = () => {
                     randomId: 'test123456',
                 }}
                 // you can pass survey id here
-                surveyId="bc0ce7c1-3ebc-4a34-8bc6-9c032b93566b"
+                surveyId="survey-id"
             />
         </>
     )
@@ -278,7 +278,7 @@ class OpenSurveyButton extends React.Component {
                     metadata={{
                         randomId: 'test123456',
                     }}
-                    surveyId="bc0ce7c1-3ebc-4a34-8bc6-9c032b93566b"
+                    surveyId="survey-id"
                 />
             </>
         )
