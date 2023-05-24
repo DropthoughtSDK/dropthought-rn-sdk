@@ -1,69 +1,129 @@
-# Dropthought React Native SDK
+# react-native-dt-sdk
 
-# Upgrade
+dropthought sdk for react-native
 
-### Upgrade to 2.0.0
+## Installation
 
-**This version requires a new format of api key**, please contact Customer Support at cs@dropthought.com to get help.
+Using npm:
 
-additional native packages are required:
-
-```shell
-yarn add react-native-aes-crypto@^1.3.0 react-native-secure-key-store@^2.0.0
+```sh
+npm install @dropthought/react-native-dt-sdk
 ```
 
-upgrade dropthought-rn-sdk
+or using yarn:
 
-```shell
-yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v2.0.0-gitpkg
+```sh
+yarn add @dropthought/react-native-dt-sdk
 ```
 
-### Upgrade to 1.1.9 
+## Latest version
+4.0.40
 
-upgrade dropthought-rn-sdk to different path
+### Installing dependencies
 
-```shell
-yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.9-gitpkg
+- [react-native-aes-crypto](https://www.npmjs.com/package/react-native-aes-crypto)
+- [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context#getting-started)
+- [react-native-secure-key-store](https://www.npmjs.com/package/react-native-secure-key-store)
+- [lottie-react-native](https://github.com/lottie-react-native/lottie-react-native)
+- [ramda](https://github.com/ramda/ramda)
+
+## Usage
+
+```js
+import {
+  SurveyModalContainer,
+  useOpenSurvey,
+  initialize,
+  APPEARANCE,
+  THEME_OPTIONS,
+} from '@dropthought/react-native-dt-sdk';
+
+initialize({
+  apiKey: API_KEY,
+  storage: AsyncStorage,
+});
+
+<SurveyModalContainer>{/* ... */}</SurveyModalContainer>;
 ```
 
-### Upgrade to 1.1.8
+### initialize
 
-upgrade dropthought-rn-sdk to different path
+Used to initialize Dropthought with your apiKey & preferred storage
 
-```shell
-yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v1.1.8-gitpkg
+```js
+import { initialize } from '@dropthought/react-native-dt-sdk';
+import AsyncStorage from '@react-native-community/async-storage';
+
+initialize({
+  apiKey: 'your apiKey',
+  storage: AsyncStorage,
+});
 ```
 
-## install packages
+### SurveyModalContainer
 
-### install peer dependency:
+This component configures the survey settings.
 
--   `yarn add @react-navigation/native@^5.0.0`
--   `yarn add @react-navigation/stack@^5.0.0`
--   `yarn add @react-native-community/async-storage`
--   `yarn add react-native-gesture-handler react-native-screens@^2.0.0 react-native-safe-area-context @react-native-community/masked-view` (if you already have these packages installed when installing `react-navigation`, you don't need this step)
--   `yarn add react-native-localize`
--   `yarn add react-native-aes-crypto@^1.3.0 react-native-secure-key-store@^2.0.0`
+- Props:
+  - `surveyId`: survey id
+  - `themeOption`: THEME_OPTION.CLASSIC | THEME_OPTION.OPTION1 | THEME_OPTION.OPTION2 | ...
+  - `appearance`: APPEARANCE.SYSTEM | APPEARANCE.LIGHT | APPEARANCE.DARK
+  - `fontColor`: [React Native Color Reference](https://reactnative.dev/docs/colors)
+  - `backgroundColor`: [React Native Color Reference](https://reactnative.dev/docs/colors)
+  - `onClose`: The `onClose` prop allows passing a function that will be called once the modal has been closed.
 
-### install dropthought-rn-sdk
+```js
+import { SurveyModalContainer, THEME_OPTIONS } from 'react-native-dt-sdk';
 
-```shell
-yarn add git+https://github.com/DropthoughtSDK/dropthought-rn-sdk.git#dropthought-rn-sdk-v2.0.0-gitpkg
+<SurveyModalContainer
+  surveyId={surveyId}
+  themeOption={themeOption}
+  appearance={appearance}
+  fontColor={fontColor}
+  backgroundColor={backgroundColor}
+  onClose={() => {}}
+>
+  {/* ... */}
+</SurveyModalContainer>;
 ```
 
-for iOS, remember to `pod install` again
+It's not necessary to pass these props at `SurveyModalContainer`. You can pass them though `openSurvey`
 
-### additional settings for android
+```js
+const openSurvey = useOpenSurvey();
 
-If you have open-ended questions (text input) in your survey, in order to let android avoid the keyboard while editing, you might need to add `adjustResize` to `android:windowSoftInputMode` in your `AndroidManifest.xml`:
+// use visibility
+openSurvey({
+  visibilityId,
+});
 
-```xml
-    <activity
-        android:name=".MainActivity"
-        android:windowSoftInputMode="adjustResize"
-    >
-    </activity>
+// use surveyId
+openSurvey({
+  surveyId,
+  themeOption,
+  appearance,
+  fontColor,
+  backgroundColor,
+});
 ```
+
+### useOpenSurvey
+
+A custom hook returns the function that opens the dropthought survey.
+
+```js
+import { useTheme } from '@dropthought/react-native-ui';
+
+const openSurvey = useOpenSurvey();
+```
+
+## Contributing
+
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+
+## License
+
+MIT
 
 ## Troubleshooting
 
@@ -89,226 +149,4 @@ dependencies {
 }
 
 
-```
-
-## Integrate Dropthought to your RN project
-
-### 1. Use DropthoughtContainer
-
-use `DropthoughtContainer` to initialize Dropthought with your apiKey and surveyId, put it to the parent of your component/screen that needs to open survey (or you can put it to one of your root providers).
-
-use `useOpenSurvey` hook to get the function that opens the dropthought survey
-
-```jsx
-import React from 'react'
-import {SafeAreaView, StyleSheet, Button, StatusBar} from 'react-native'
-
-import {DropthoughtContainer, useOpenSurvey} from 'dropthought-rn-sdk'
-
-const App = () => {
-    const openSurvey = useOpenSurvey()
-    return (
-        <>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView style={styles.container}>
-                <Button title="Open Survey" onPress={() => openSurvey()} />
-            </SafeAreaView>
-        </>
-    )
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-})
-
-const AppRoot = () => (
-    <DropthoughtContainer
-        apiKey="your-api-key"
-        surveyId="optional survey id">
-        <App />
-    </DropthoughtContainer>
-)
-
-export default AppRoot
-```
-
-#### open another survey
-
-```javascript
-const openSurvey = useOpenSurvey()
-
-// in some onPress handler
-openSurvey({
-    surveyId: 'another survey id',
-})
-```
-
-#### on submit feedback
-
-you can pass a callback function to get the feedback that is submitted by client
-
-for example:
-
-```javascript
-const openSurvey = useOpenSurvey()
-
-// in some onPress handler
-openSurvey({
-    surveyId: 'another survey id',
-    onSubmit: (feedback, error) => {
-        // if error is null, it means survey is sent to server
-        // if error is not null, then this feedback is stored offline
-        console.log('feedback', feedback)
-    },
-})
-```
-
-NOTE. onSubmitSuccess will be deprecated soon
-
-#### passing optional metadata
-
-you can pass optional metadata when user submits a survey, metadata can be anything
-
-for example:
-
-```javascript
-const openSurvey = useOpenSurvey()
-
-// in some onPress handler
-openSurvey({
-    surveyId: 'another survey id',
-    metadata: {
-        Email: 'some-email',
-        Name: 'the name',
-        EmpId: 'the id',
-        anythingId: 'anything you want',
-    },
-})
-```
-
-### 2. Use low-level API to have more control
-
-`DropthoughtContainer` is a high-level API, it automatically do initialization and upload offline feedbacks (once) for you. However, if you wish to do the initialization at other place, for example, you load your API key from other file or from an API call, then you need low-level API to have more control of your app.
-
-#### `initialize` dropthought with api key
-
-before displaying any survey or uploading offline feedbacks, make sure you initialize with your api key. This is a normal function, could be called from anywhere
-
-```javascript
-import {initialize} from 'dropthought-rn-sdk'
-
-// call this after you get your api key
-initialize({
-    apiKey: 'your api key',
-})
-```
-
-#### use `SurveyModal` to display survey
-
-`SurveyModal` works like the React Native's Modal, you have to control the `visible` prop to determine whether survey modal is visible. You can also config the animationType.
-
-**NOTE: you must call `initialize` before you set `visible` prop to true**
-
-##### Functional component example
-
-A button that open a survey
-
-```javascript
-import {SurveyModal} from 'dropthought-rn-sdk'
-
-const OpenSurveyButton = () => {
-    const [visible, setVisible] = React.useState(false)
-
-    return (
-        <>
-            <Button
-                title="Open Survey"
-                onPress={() => {
-                    // NOTE: before you display the survey modal, make sure `initialize` is already being called
-                    setVisible(true)
-                }}
-            />
-            <SurveyModal
-                visible={visible}
-                animationType="slide"
-                // NOTE: you have to control the visible here to close modal
-                onClose={() => setVisible(false)}
-                // you can pass metadata here
-                metadata={{
-                    randomId: 'test123456',
-                }}
-                // you can pass survey id here
-                surveyId="survey-id"
-            />
-        </>
-    )
-}
-```
-
-##### classical component example
-
-A button that open a survey
-
-```javascript
-class OpenSurveyButton extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            visible: false,
-        }
-    }
-
-    render() {
-        return (
-            <>
-                <Button
-                    title="Open Survey"
-                    onPress={() => {
-                        this.setState({
-                            visible: true,
-                        })
-                    }}
-                />
-                <SurveyModal
-                    visible={this.state.visible}
-                    animationType="slide"
-                    onClose={() => this.setState({visible: false})}
-                    metadata={{
-                        randomId: 'test123456',
-                    }}
-                    surveyId="survey-id"
-                />
-            </>
-        )
-    }
-}
-```
-
-#### use `feedbackUploader` to upload the queued feedbacks
-
-when there's error submitting feedback to server, we would keep the feedbacks in storage. use `feedbackUploader.upload()` to upload feedbacks
-
-```javascript
-<Button
-    title="Upload feedbacks"
-    onPress={() => {
-        feedbackUploader.upload()
-    }}
-/>
-```
-
-If you want to clear all the queued feedbacks, use `feedbackUpload.clear()`
-
-```javascript
-<Button
-    title="Logout"
-    onPress={async () => {
-        await feedbackUploader.clear()
-        realLogoutAction()
-    }}
-/>
 ```
