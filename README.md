@@ -4,7 +4,15 @@ This repository contains all the sources of dropthought SDK for react-native
 
 ## Latest version
 
-- 4.0.46
+- 5.2.0
+
+## Features
+
+- Multiple open question
+- Matrix rating
+- Dropdown
+- Rating slider
+- Ranking
 
 ## Requirement
 
