@@ -35,6 +35,10 @@ yarn add @dropthought/react-native-dt-sdk
 
 ### Installing dependencies
 
+```sh
+yarn add react-native-aes-crypto@2.1.1 react-native-secure-key-store@^2.0.10 react-native-safe-area-context@^3.0.7 lottie-react-native@5.1.6 react-native-image-picker@7.0.1
+```
+
 - [react-native-aes-crypto](https://www.npmjs.com/package/react-native-aes-crypto)
 - [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context#getting-started)
 - [react-native-secure-key-store](https://www.npmjs.com/package/react-native-secure-key-store)
