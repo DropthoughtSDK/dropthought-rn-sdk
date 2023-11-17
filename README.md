@@ -8,6 +8,7 @@ This repository contains all the sources of dropthought SDK for react-native
 
 ## Features
 
+- NEW: Picture Choice
 - Matrix choice
 - Multiple open question
 - Matrix rating
