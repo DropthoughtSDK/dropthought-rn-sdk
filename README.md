@@ -4,7 +4,7 @@ This repository contains all the sources of dropthought SDK for react-native
 
 ## Latest version
 
-- 5.6.0
+- 5.7.0
 
 ## Features
 
