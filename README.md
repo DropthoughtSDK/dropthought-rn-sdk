@@ -4,10 +4,11 @@ This repository contains all the sources of dropthought SDK for react-native
 
 ## Latest version
 
-- 5.8.0
+- 5.9.0
 
 ## Features
 
+- Auto Close on End Page
 - Bijliride Theme
 - Picture Choice
 - Matrix choice
@@ -124,6 +125,30 @@ const onButtonPress = () => {
   });
 };
 ```
+
+</br>
+
+### - Set auto close on end page
+
+```js
+import { useOpenSurvey } from '@dropthought/react-native-dt-sdk';
+
+// ...
+
+const onButtonPress = () => {
+  // declare this hook
+  const openSurvey = useOpenSurvey();
+
+  // survey screen will be open by calling below method
+  openSurvey({
+    visibilityId: 'YOUR_VISIBILITY_ID',
+    autoClose: true, // default is false
+    autoCloseCountdown: 3000, // countdown in milliseconds, defailt is 3000
+  });
+};
+```
+
+`autoClose` & `autoCloseCountdown` is temporary available in openSurvey props, will soon move to sdk-control-center.
 
 </br>
 
