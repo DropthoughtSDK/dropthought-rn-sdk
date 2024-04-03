@@ -4,10 +4,12 @@ This repository contains all the sources of dropthought SDK for react-native
 
 ## Latest version
 
-- 5.10.0
+- 5.11.0
 
 ## Features
 
+- File upload
+- Poll
 - Auto Close on End Page
 - Bijliride Theme
 - Picture Choice
@@ -39,14 +41,15 @@ yarn add @dropthought/react-native-dt-sdk
 ### Installing dependencies
 
 ```sh
-yarn add react-native-aes-crypto react-native-secure-key-store react-native-safe-area-context@^3.0.7 lottie-react-native@5.1.6 react-native-image-crop-picker
+yarn add react-native-aes-crypto react-native-secure-key-store react-native-safe-area-context lottie-react-native@5.1.6 react-native-image-crop-picker react-native-webview
 ```
 
 - [react-native-aes-crypto](https://www.npmjs.com/package/react-native-aes-crypto)
-- [react-native-safe-area-context, @^3.0.7](https://github.com/th3rdwave/react-native-safe-area-context#getting-started)
+- [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context#getting-started)
 - [react-native-secure-key-store](https://www.npmjs.com/package/react-native-secure-key-store)
 - [lottie-react-native, use 5.1.6](https://github.com/lottie-react-native/lottie-react-native)
 - [react-native-image-crop-picker](https://github.com/ivpusic/react-native-image-crop-picker)
+- [react-native-webview](https://github.com/react-native-webview/react-native-webview)
 
 ## initialize
 
