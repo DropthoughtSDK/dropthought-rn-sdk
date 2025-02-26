@@ -4,10 +4,14 @@ This repository contains all the sources of dropthought SDK for react-native
 
 ## Latest version
 
-- 5.11.0
+- 5.13.0
 
 ## Features
 
+- Auto close program
+- Skip welcome page
+- Change survey language
+- Statement
 - File upload
 - Poll
 - Auto Close on End Page
@@ -20,9 +24,9 @@ This repository contains all the sources of dropthought SDK for react-native
 - Rating slider
 - Ranking
 
-## Requirement
+## Minimum RN version required
 
-- react-native version above 0.64.1
+- &gt;= 0.74 (Please refer: [react-native-safe-area-context](https://appandflow.github.io/react-native-safe-area-context/))
 
 ## Installation
 
@@ -41,15 +45,16 @@ yarn add @dropthought/react-native-dt-sdk
 ### Installing dependencies
 
 ```sh
-yarn add react-native-aes-crypto react-native-secure-key-store react-native-safe-area-context lottie-react-native@5.1.6 react-native-image-crop-picker react-native-webview
+yarn add react-native-aes-crypto react-native-secure-key-store react-native-safe-area-context lottie-react-native@6.7.2 react-native-image-crop-picker react-native-webview react-native-svg
 ```
 
 - [react-native-aes-crypto](https://www.npmjs.com/package/react-native-aes-crypto)
 - [react-native-safe-area-context](https://github.com/th3rdwave/react-native-safe-area-context#getting-started)
 - [react-native-secure-key-store](https://www.npmjs.com/package/react-native-secure-key-store)
-- [lottie-react-native, use 5.1.6](https://github.com/lottie-react-native/lottie-react-native)
+- [lottie-react-native, use 6.7.2](https://github.com/lottie-react-native/lottie-react-native)
 - [react-native-image-crop-picker](https://github.com/ivpusic/react-native-image-crop-picker)
 - [react-native-webview](https://github.com/react-native-webview/react-native-webview)
+- [react-native-svg](https://github.com/react-native-community/react-native-svg)
 
 ## initialize
 
