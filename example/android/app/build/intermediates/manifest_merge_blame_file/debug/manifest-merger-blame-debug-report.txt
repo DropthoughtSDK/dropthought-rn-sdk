@@ -1,0 +1,178 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="35" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:3:5-67
+11-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:3:22-64
+12
+13    <queries>
+13-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-11:15
+14        <intent>
+14-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-10:18
+15            <action android:name="android.media.action.IMAGE_CAPTURE" />
+15-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-73
+15-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:21-70
+16        </intent>
+17    </queries>
+18
+19    <uses-permission
+19-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:5-15:38
+20        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+20-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-65
+21        android:maxSdkVersion="29" />
+21-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-35
+22    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+23    <!--
+24    This manifest file is used only by Gradle to configure debug-only capabilities
+25    for React Native Apps.
+26    -->
+27    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+27-->[com.facebook.react:react-android:0.74.7] /Users/bct-barney/.gradle/caches/transforms-4/a04c4d6c7d51b064f6a6baf4176ac594/transformed/jetified-react-android-0.74.7-debug/AndroidManifest.xml:16:5-78
+27-->[com.facebook.react:react-android:0.74.7] /Users/bct-barney/.gradle/caches/transforms-4/a04c4d6c7d51b064f6a6baf4176ac594/transformed/jetified-react-android-0.74.7-debug/AndroidManifest.xml:16:22-75
+28
+29    <permission
+29-->[androidx.core:core:1.9.0] /Users/bct-barney/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:22:5-24:47
+30        android:name="com.example.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+30-->[androidx.core:core:1.9.0] /Users/bct-barney/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:23:9-81
+31        android:protectionLevel="signature" />
+31-->[androidx.core:core:1.9.0] /Users/bct-barney/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:24:9-44
+32
+33    <uses-permission android:name="com.example.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+33-->[androidx.core:core:1.9.0] /Users/bct-barney/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:26:5-97
+33-->[androidx.core:core:1.9.0] /Users/bct-barney/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:26:22-94
+34
+35    <application
+35-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:5:5-24:19
+36        android:name="com.example.MainApplication"
+36-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:6:7-38
+37        android:allowBackup="false"
+37-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:10:7-34
+38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+38-->[androidx.core:core:1.9.0] /Users/bct-barney/.gradle/caches/transforms-4/6621c239d1e00abea0752787fff99403/transformed/core-1.9.0/AndroidManifest.xml:28:18-86
+39        android:debuggable="true"
+40        android:extractNativeLibs="false"
+41        android:icon="@mipmap/ic_launcher"
+41-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:8:7-41
+42        android:label="@string/app_name"
+42-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:7:7-39
+43        android:roundIcon="@mipmap/ic_launcher_round"
+43-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:9:7-52
+44        android:testOnly="true"
+45        android:theme="@style/AppTheme"
+45-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:11:7-38
+46        android:usesCleartextTraffic="true" >
+46-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/debug/AndroidManifest.xml:6:9-44
+47        <activity
+47-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:12:7-23:18
+48            android:name="com.example.MainActivity"
+48-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:13:9-37
+49            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+49-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:15:9-118
+50            android:exported="true"
+50-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:18:9-32
+51            android:label="@string/app_name"
+51-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:14:9-41
+52            android:launchMode="singleTask"
+52-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:16:9-40
+53            android:windowSoftInputMode="adjustResize" >
+53-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:17:9-51
+54            <intent-filter>
+54-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:19:9-22:25
+55                <action android:name="android.intent.action.MAIN" />
+55-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:20:13-65
+55-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:20:21-62
+56
+57                <category android:name="android.intent.category.LAUNCHER" />
+57-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:21:13-73
+57-->/Users/bct-barney/Documents/dropthought-rn-sdk/example/android/app/src/main/AndroidManifest.xml:21:23-70
+58            </intent-filter>
+59        </activity>
+60
+61        <provider
+61-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:9-26:20
+62            android:name="com.reactnative.ivpusic.imagepicker.IvpusicImagePickerFileProvider"
+62-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-94
+63            android:authorities="com.example.provider"
+63-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-60
+64            android:exported="false"
+64-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:13-37
+65            android:grantUriPermissions="true" >
+65-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:13-47
+66            <meta-data
+66-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:78
+67                android:name="android.support.FILE_PROVIDER_PATHS"
+67-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-67
+68                android:resource="@xml/ivpusic_imagepicker_provider_paths" />
+68-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-75
+69        </provider>
+70
+71        <activity
+71-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:9-30:72
+72            android:name="com.yalantis.ucrop.UCropActivity"
+72-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-60
+73            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+73-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:13-69
+74
+75        <provider
+75-->[:react-native-webview] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:8:9-16:20
+76            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
+76-->[:react-native-webview] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:9:13-83
+77            android:authorities="com.example.fileprovider"
+77-->[:react-native-webview] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:13-64
+78            android:exported="false"
+78-->[:react-native-webview] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-37
+79            android:grantUriPermissions="true" >
+79-->[:react-native-webview] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-47
+80            <meta-data
+80-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:23:13-25:78
+81                android:name="android.support.FILE_PROVIDER_PATHS"
+81-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:24:17-67
+82                android:resource="@xml/file_provider_paths" />
+82-->[:react-native-image-crop-picker] /Users/bct-barney/Documents/dropthought-rn-sdk/example/node_modules/react-native-image-crop-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:17-75
+83        </provider>
+84
+85        <activity
+85-->[com.facebook.react:react-android:0.74.7] /Users/bct-barney/.gradle/caches/transforms-4/a04c4d6c7d51b064f6a6baf4176ac594/transformed/jetified-react-android-0.74.7-debug/AndroidManifest.xml:19:9-21:40
+86            android:name="com.facebook.react.devsupport.DevSettingsActivity"
+86-->[com.facebook.react:react-android:0.74.7] /Users/bct-barney/.gradle/caches/transforms-4/a04c4d6c7d51b064f6a6baf4176ac594/transformed/jetified-react-android-0.74.7-debug/AndroidManifest.xml:20:13-77
+87            android:exported="false" />
+87-->[com.facebook.react:react-android:0.74.7] /Users/bct-barney/.gradle/caches/transforms-4/a04c4d6c7d51b064f6a6baf4176ac594/transformed/jetified-react-android-0.74.7-debug/AndroidManifest.xml:21:13-37
+88
+89        <provider
+89-->[androidx.emoji2:emoji2:1.2.0] /Users/bct-barney/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+90            android:name="androidx.startup.InitializationProvider"
+90-->[androidx.emoji2:emoji2:1.2.0] /Users/bct-barney/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+91            android:authorities="com.example.androidx-startup"
+91-->[androidx.emoji2:emoji2:1.2.0] /Users/bct-barney/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+92            android:exported="false" >
+92-->[androidx.emoji2:emoji2:1.2.0] /Users/bct-barney/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+93            <meta-data
+93-->[androidx.emoji2:emoji2:1.2.0] /Users/bct-barney/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+94-->[androidx.emoji2:emoji2:1.2.0] /Users/bct-barney/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+95                android:value="androidx.startup" />
+95-->[androidx.emoji2:emoji2:1.2.0] /Users/bct-barney/.gradle/caches/transforms-4/1f0c06f94521237f79abc32a5f8de33d/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+96            <meta-data
+96-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bct-barney/.gradle/caches/transforms-4/de53634973e45ba7b62012cb8e869aee/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:31:13-33:52
+97                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+97-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bct-barney/.gradle/caches/transforms-4/de53634973e45ba7b62012cb8e869aee/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:32:17-78
+98                android:value="androidx.startup" />
+98-->[androidx.lifecycle:lifecycle-process:2.4.1] /Users/bct-barney/.gradle/caches/transforms-4/de53634973e45ba7b62012cb8e869aee/transformed/jetified-lifecycle-process-2.4.1/AndroidManifest.xml:33:17-49
+99        </provider>
+100
+101        <meta-data
+101-->[com.facebook.soloader:soloader:0.10.5] /Users/bct-barney/.gradle/caches/transforms-4/c5277b14eec9cc4a12d0fb10c9f8e27e/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:12:9-14:37
+102            android:name="com.facebook.soloader.enabled"
+102-->[com.facebook.soloader:soloader:0.10.5] /Users/bct-barney/.gradle/caches/transforms-4/c5277b14eec9cc4a12d0fb10c9f8e27e/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:13:13-57
+103            android:value="false" />
+103-->[com.facebook.soloader:soloader:0.10.5] /Users/bct-barney/.gradle/caches/transforms-4/c5277b14eec9cc4a12d0fb10c9f8e27e/transformed/jetified-soloader-0.10.5/AndroidManifest.xml:14:13-34
+104    </application>
+105
+106</manifest>

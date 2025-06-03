@@ -1,0 +1,4 @@
+example/.yarn/*
+example/ios/Pods/
+example/vendor/bundle/
+example/node_modules/
