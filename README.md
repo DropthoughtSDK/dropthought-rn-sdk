@@ -4,10 +4,13 @@ This repository contains all the sources of dropthought SDK for react-native
 
 ## Latest version
 
-- 5.13.0
+- 5.14.0
 
 ## Features
 
+- Question Randomization (new)
+- Spam avoidance (new)
+- Reach quota limit (new)
 - Auto close program
 - Skip welcome page
 - Change survey language
@@ -45,7 +48,7 @@ yarn add @dropthought/react-native-dt-sdk
 ### Installing dependencies
 
 ```sh
-yarn add react-native-aes-crypto react-native-secure-key-store react-native-safe-area-context lottie-react-native@6.7.2 react-native-image-crop-picker react-native-webview react-native-svg
+yarn add react-native-aes-crypto react-native-secure-key-store react-native-safe-area-context lottie-react-native@6.7.2 react-native-image-crop-picker react-native-webview react-native-svg @react-native-documents/picker
 ```
 
 - [react-native-aes-crypto](https://www.npmjs.com/package/react-native-aes-crypto)
@@ -55,6 +58,7 @@ yarn add react-native-aes-crypto react-native-secure-key-store react-native-safe
 - [react-native-image-crop-picker](https://github.com/ivpusic/react-native-image-crop-picker)
 - [react-native-webview](https://github.com/react-native-webview/react-native-webview)
 - [react-native-svg](https://github.com/react-native-community/react-native-svg)
+- [@react-native-documents/picker](https://github.com/react-native-documents/document-picker)
 
 ## initialize
 
