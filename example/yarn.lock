@@ -1596,15 +1596,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dropthought/react-native-dt-sdk@npm:^5.13.0":
-  version: 5.13.0
-  resolution: "@dropthought/react-native-dt-sdk@npm:5.13.0"
+"@dropthought/react-native-dt-sdk@npm:^5.14.0":
+  version: 5.14.0
+  resolution: "@dropthought/react-native-dt-sdk@npm:5.14.0"
   dependencies:
     "@dropthought/dt-rn-encrypted-storage": 2.3.0
-    "@dropthought/react-native-ui": ^5.13.0
+    "@dropthought/react-native-ui": ^5.14.0
+    "@types/luxon": ^3.4.2
     axios: ^1.6.5
-    jotai: 1.13.1
+    jotai: 2.12.5
     jwt-decode: ^4.0.0
+    luxon: ^3.5.0
     ramda: ^0.29.1
     react-async: ^10.0.1
     react-native-aes-crypto: ^3.0.1
@@ -1612,35 +1614,39 @@ __metadata:
     react-native-secure-key-store: ^2.0.10
     uuid: ^9.0.1
   peerDependencies:
-    "@dropthought/react-native-ui": ^5.13.0
+    "@dropthought/react-native-ui": ^5.14.0
+    "@react-native-documents/picker": ^10.1.5
     react: "*"
     react-native: "*"
     react-native-safe-area-context: ">=4.8.2"
-  checksum: a9db188497e7aa2fd10558fc86280e7aff9c9cd9863d20797f0d21437c30c099db6cee6ab83c8f1b34a2cec5be9d07bef82b82fea9ee7e54948ea211aa3cdb19
+  checksum: e0b0e426e94d6c38e7b989bb68e4ef8aeddc59e4ccd90564c27d5087b24c1788da130b577339de4da15c6dfbaa0a3f11c66b0416915c67aa812e0ca5f6382105
   languageName: node
   linkType: hard
 
-"@dropthought/react-native-ui@npm:^5.13.0":
-  version: 5.13.0
-  resolution: "@dropthought/react-native-ui@npm:5.13.0"
+"@dropthought/react-native-ui@npm:^5.14.0":
+  version: 5.14.0
+  resolution: "@dropthought/react-native-ui@npm:5.14.0"
   dependencies:
     "@react-native-community/hooks": ^3.0.0
+    "@react-native-documents/picker": ^10.1.5
+    "@types/luxon": ^3.4.2
     i18next: ^23.7.16
-    jotai: ^1.13.1
+    jotai: ^2.12.5
     lodash: ^4.17.21
     lottie-react-native: ^6.7.2
+    luxon: ^3.5.0
     ramda: ^0.29.1
     react-native-autoheight-webview: ^1.6.5
-    react-native-document-picker: ^9.1.0
-    react-native-image-crop-picker: ^0.42.0
+    react-native-image-crop-picker: ^0.41.6
     react-native-safe-area-context: ^5.2.0
-    react-native-svg: ^14.1.0
+    react-native-svg: ^15.12.0
     react-native-webview: ^13.6.4
   peerDependencies:
+    "@react-native-documents/picker": ^10.1.5
     react: "*"
     react-native: "*"
     react-native-safe-area-context: ">=4.8.2"
-  checksum: f9ac46b194d9382ff18cc7eb3337689cfe173fe61450ceebf28451b63a5940639e399c760b0a5aa56ddd4852cc3284a353ab1b5e7675c86aae0fb8cd8c32364c
+  checksum: efd5af6d5a160884af3cd13f433ae6e363c73ab83b58ed01a103eac44f0e401b1a5425db42bdf3a9fa765f41d286af2581f6e63c0e87a443dc6d9861ed6604b4
   languageName: node
   linkType: hard
 
@@ -2348,6 +2354,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-documents/picker@npm:^10.1.5":
+  version: 10.1.5
+  resolution: "@react-native-documents/picker@npm:10.1.5"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: d92f97bcfb67328d1b73668e5f1aff8cf572d4b4c3b590258a365131344427d424baceea7549482bc9fb8cadf019386929fca1386f3b515f3af35d5af6e00497
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.74.89":
   version: 0.74.89
   resolution: "@react-native/assets-registry@npm:0.74.89"
@@ -2733,6 +2749,13 @@ __metadata:
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
   checksum: 97ed0cb44d4070aecea772b7b2e2ed971e10c81ec87dd4ecc160322ffa55ff330dace1793489540e3e318d90942064bb697cc0f8989391797792d919737b3b98
+  languageName: node
+  linkType: hard
+
+"@types/luxon@npm:^3.4.2":
+  version: 3.7.1
+  resolution: "@types/luxon@npm:3.7.1"
+  checksum: ec5181716f9a744d2be1a4a72c3509670e1030a9271736d95e9e04af075ac6f24f6b35f2934f6d7eab496c1eefd9f81b572ad63fd33fd17a100eb2b315702a77
   languageName: node
   linkType: hard
 
@@ -4888,8 +4911,9 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
-    "@dropthought/react-native-dt-sdk": ^5.13.0
+    "@dropthought/react-native-dt-sdk": ^5.14.0
     "@react-native-async-storage/async-storage": ^1.17.0
+    "@react-native-documents/picker": ^10.1.5
     "@react-native/babel-preset": 0.74.89
     "@react-native/eslint-config": 0.74.89
     "@react-native/metro-config": 0.74.89
@@ -6639,46 +6663,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jotai@npm:1.13.1, jotai@npm:^1.13.1":
-  version: 1.13.1
-  resolution: "jotai@npm:1.13.1"
+"jotai@npm:2.12.5":
+  version: 2.12.5
+  resolution: "jotai@npm:2.12.5"
   peerDependencies:
-    "@babel/core": "*"
-    "@babel/template": "*"
-    jotai-devtools: "*"
-    jotai-immer: "*"
-    jotai-optics: "*"
-    jotai-redux: "*"
-    jotai-tanstack-query: "*"
-    jotai-urql: "*"
-    jotai-valtio: "*"
-    jotai-xstate: "*"
-    jotai-zustand: "*"
-    react: ">=16.8"
+    "@types/react": ">=17.0.0"
+    react: ">=17.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    react:
+      optional: true
+  checksum: 04193808dd716a09d5231782983f124e83832b3942329d94f934fce371c3c4cc3e2037cfc4c1afbd68e9930dd6e02a0c6c3e5c73f69fd4369a98334fdc536ea9
+  languageName: node
+  linkType: hard
+
+"jotai@npm:^2.12.5":
+  version: 2.13.1
+  resolution: "jotai@npm:2.13.1"
+  peerDependencies:
+    "@babel/core": ">=7.0.0"
+    "@babel/template": ">=7.0.0"
+    "@types/react": ">=17.0.0"
+    react: ">=17.0.0"
   peerDependenciesMeta:
     "@babel/core":
       optional: true
     "@babel/template":
       optional: true
-    jotai-devtools:
+    "@types/react":
       optional: true
-    jotai-immer:
+    react:
       optional: true
-    jotai-optics:
-      optional: true
-    jotai-redux:
-      optional: true
-    jotai-tanstack-query:
-      optional: true
-    jotai-urql:
-      optional: true
-    jotai-valtio:
-      optional: true
-    jotai-xstate:
-      optional: true
-    jotai-zustand:
-      optional: true
-  checksum: bc1f88ec1d52dda7c2aa39d278b15c128a6babc91fe9294862feb1b2d8467e47fc37cd193fd1358107212b9a4e5f5a8ae9a5a5ed1e845b74421d4476ce5d9efd
+  checksum: 17b5e17ab03da48593e4b08593494eb413f13b5e9fa3c11050d82f2203555365dc25994f83da087463ae096ed7d4135a230ddfab7c530f25e4a7446414524018
   languageName: node
   linkType: hard
 
@@ -7037,6 +7054,13 @@ __metadata:
   dependencies:
     yallist: ^3.0.2
   checksum: c154ae1cbb0c2206d1501a0e94df349653c92c8cbb25236d7e85190bcaf4567a03ac6eb43166fabfa36fd35623694da7233e88d9601fbf411a9a481d85dbd2cb
+  languageName: node
+  linkType: hard
+
+"luxon@npm:^3.5.0":
+  version: 3.7.1
+  resolution: "luxon@npm:3.7.1"
+  checksum: 19e5b20304f2e558b1e5e1f4f04f227419642d373f7c10ccf8f0e7d63c05828187a6aa39d70caf87d18a4834800dcbf29cf5f5d81d03c7d2471cd0b61cee97f6
   languageName: node
   linkType: hard
 
@@ -8356,37 +8380,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-document-picker@npm:^9.1.0":
-  version: 9.3.1
-  resolution: "react-native-document-picker@npm:9.3.1"
-  dependencies:
-    invariant: ^2.2.4
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-    react-native-windows: "*"
-  peerDependenciesMeta:
-    react-native-windows:
-      optional: true
-  checksum: 5979e4b93f15e0568ae70b70cc2304cd727f20939a58412d483517942df6d3cf3821319b3b7934bcaa2866ed1918ef9e8de9933ce6953209340abe3455403e0d
-  languageName: node
-  linkType: hard
-
-"react-native-image-crop-picker@npm:^0.41.2":
+"react-native-image-crop-picker@npm:^0.41.2, react-native-image-crop-picker@npm:^0.41.6":
   version: 0.41.6
   resolution: "react-native-image-crop-picker@npm:0.41.6"
   peerDependencies:
     react-native: ">=0.40.0"
   checksum: 6e4ef44e9e74311f91ef783dd52105964cbe60ab1b0d6a48a7029f8faffed25451cfd62b3526ffa99d4e00feaeae473175d237f6bfb063f21691d5983ef78567
-  languageName: node
-  linkType: hard
-
-"react-native-image-crop-picker@npm:^0.42.0":
-  version: 0.42.0
-  resolution: "react-native-image-crop-picker@npm:0.42.0"
-  peerDependencies:
-    react-native: ">=0.40.0"
-  checksum: 40d13e9a610d15b0bbaf2a6ec6de476caffc941e7d70d9c2254c101f2f65b6fa3f2ebf7669a44c30508adc130c2ea7ddae9c9c9d35dc9468ebad4139833fe5a1
   languageName: node
   linkType: hard
 
@@ -8404,19 +8403,6 @@ __metadata:
   version: 2.0.10
   resolution: "react-native-secure-key-store@npm:2.0.10"
   checksum: 6b3a32ed016d8a0a2bb8a1a39261ffceae5b1825323ab9a93719a3d956f5eccbcbfec6f33dc360a9696f278e56591eff892603c1fce1a701472fb38ab57dacac
-  languageName: node
-  linkType: hard
-
-"react-native-svg@npm:^14.1.0":
-  version: 14.2.0
-  resolution: "react-native-svg@npm:14.2.0"
-  dependencies:
-    css-select: ^5.1.0
-    css-tree: ^1.1.3
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 2a3f1d8e0b94da5a231eda2cc0a77881a8651c7a8ee1aa8cfddbdad021c1aa0d9700cc6fe5a735e8065abdce21b0184d71a14ac86eb6f43cc961ee98b81574ae
   languageName: node
   linkType: hard
 
